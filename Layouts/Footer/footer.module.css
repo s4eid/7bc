@@ -38,4 +38,16 @@
     height: auto;
     flex-direction: column;
   }
+  .logo {
+    width: 100%;
+    justify-content: space-around;
+    text-align: center;
+    margin-left: 0;
+  }
+  .mapContainer {
+    width: 100%;
+  }
+  .contactHolder {
+    width: 100%;
+  }
 }
