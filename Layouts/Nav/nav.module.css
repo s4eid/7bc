@@ -1,0 +1,218 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  z-index: 999;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  /* position: sticky; */
+  align-items: center;
+  color: #101010;
+  /* top: 0; */
+}
+.container_active {
+  display: flex;
+  justify-content: space-around;
+  z-index: 999;
+  width: 100%;
+  /* height: 120px; */
+  background: rgba(16, 16, 16, 0.85);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  position: sticky;
+  align-items: center;
+  top: 0;
+}
+.container_active li {
+  color: white;
+}
+.linksContainer {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  color: #101010;
+  font-weight: bold;
+  width: 40%;
+  height: 100%;
+}
+.linksContainer ul {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+}
+.linksContainer li {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+.linksContainer li:hover {
+  color: #fff;
+  background-color: #111111;
+}
+.loginContainer {
+  width: 30%;
+  display: flex;
+  justify-content: right;
+}
+.loginContainer button {
+  background-color: #fff;
+  border: none;
+  color: #0081ef;
+  font-weight: 700;
+  border: 2px solid #0081ef;
+  border-radius: 5px;
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
+  margin-right: 20px;
+  transition: 0.3s ease-out;
+}
+.loginContainer button:hover {
+  background-color: #0081ef;
+  color: #fff;
+}
+.navBottomContainer {
+  width: 100%;
+  height: 80px;
+  z-index: 999;
+  display: flex;
+  border-bottom: 2px solid #0081ef;
+  justify-content: space-around;
+  background-color: #111111;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+.logoContainer {
+  /* width: 33%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+  color: #5773ff;
+}
+.logo {
+  cursor: pointer;
+}
+.searchContainerN {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchContainer {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchInputOpen {
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+.searchInputOpenN {
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+.searchInputClose {
+  display: none;
+}
+.searchIcon {
+  display: none;
+}
+.bascketContainer {
+  /* width: 33%; */
+  display: flex;
+  justify-content: center;
+}
+.bascket {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+}
+.bascketIcon {
+  font-size: 25px;
+  color: #111111;
+}
+@media screen and (max-width: 890px) {
+  .logoContainer {
+    font-size: 14px;
+  }
+  .loginContainer {
+    width: 50%;
+    justify-content: center;
+  }
+  .loginContainer button {
+    margin-right: 0px;
+  }
+  .linksContainer {
+    font-size: 16px;
+  }
+}
+.menuContainer {
+  display: none;
+  text-align: center;
+}
+.burgerOpen {
+  rotate: (45deg);
+}
+@media screen and (max-width: 768px) {
+  .linksContainer {
+    display: none;
+  }
+  .menuContainer {
+    display: block;
+    width: 50%;
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 500px) {
+  .searchInputOpen {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .navBottomContainer {
+    height: 70px;
+  }
+  .searchInputOpenN {
+    display: none;
+  }
+  .searchIcon {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    margin-left: 8px;
+    font-size: 18px;
+  }
+  .logoContainer img {
+    width: 40px;
+    height: 40px;
+  }
+  .loginContainer button {
+    font-size: 14px;
+    width: 120px;
+  }
+  .menuContainer img {
+    width: 25px;
+    height: 25px;
+  }
+}
