@@ -16,13 +16,12 @@
   transition: 0.5s ease-in-out;
   z-index: 999;
   width: 100%;
-  height: auto;
   height: 50px;
   border: none;
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
   background-color: rgba(0, 0, 0, 0.79);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border-bottom: 2px solid #0081ef;
   position: sticky;
   align-items: center;
   top: 0;
