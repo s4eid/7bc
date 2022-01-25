@@ -13,13 +13,16 @@
 .container_active {
   display: flex;
   justify-content: space-around;
+  transition: 0.5s ease-in-out;
   z-index: 999;
   width: 100%;
-  /* height: 120px; */
-  background: rgba(16, 16, 16, 0.85);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  height: auto;
+  height: 50px;
+  border: none;
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  background-color: rgba(0, 0, 0, 0.79);
+  border: 1px solid rgba(255, 255, 255, 0.125);
   position: sticky;
   align-items: center;
   top: 0;
@@ -89,6 +92,7 @@
   display: flex;
   border-bottom: 2px solid #0081ef;
   justify-content: space-around;
+  transition: 0.5s ease-in-out;
   background-color: #111111;
   align-items: center;
   position: sticky;

@@ -55,8 +55,9 @@
 .detailsContainer {
   display: flex;
   justify-content: space-around;
-  background-color: #6b6b6b;
+  background-color: #666666;
   border-radius: 0px 0px 5px 5px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 .detailName {
   color: #fff;

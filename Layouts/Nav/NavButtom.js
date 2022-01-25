@@ -8,16 +8,16 @@ import { faSearch, faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 export default function NavButtom() {
   const [navChange, setNavChange] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  // const scrolling = () => {
-  //   if (window.scrollY >= 80) {
-  //     setNavChange(true);
-  //   } else {
-  //     setNavChange(false);
-  //   }
-  // };
-  // useEffect(() => {
-  //   window.addEventListener("scroll", scrolling);
-  // }, []);
+  const scrolling = () => {
+    if (window.scrollY >= 100) {
+      setNavChange(true);
+    } else {
+      setNavChange(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", scrolling);
+  }, []);
   return (
     <div className={!navChange ? nav.navBottomContainer : nav.container_active}>
       {!searchOpen ? (
