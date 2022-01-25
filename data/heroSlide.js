@@ -6,7 +6,7 @@ export const slideItems = [
   },
   {
     name: "Carpet",
-    link: "/slide_2.jpg",
+    link: "/slide-overlay.jpg",
     id: "2",
   },
 ];

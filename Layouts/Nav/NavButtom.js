@@ -9,7 +9,7 @@ export default function NavButtom() {
   const [navChange, setNavChange] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const scrolling = () => {
-    if (window.scrollY >= 100) {
+    if (window.scrollY > 100) {
       setNavChange(true);
     } else {
       setNavChange(false);
