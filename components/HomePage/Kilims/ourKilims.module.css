@@ -11,7 +11,7 @@
 }
 
 .title {
-  color: #fff;
+  color: #111111;
   font-size: 25px;
   font-weight: 700;
 }
@@ -48,7 +48,7 @@
   width: 300px;
   align-items: center;
   border-radius: 5px 5px 0px 0px;
-  background-color: #fff;
+  background-color: #111111;
   height: 350px;
 }
 

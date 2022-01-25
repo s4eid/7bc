@@ -6,7 +6,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   font-family: "Inter", "Montserrat", sans-serif;
   /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
-  background-color: #111111;
+  background-color: #fff;
+  /* background-color: #111111; */
 }
 ul {
   padding: 0;

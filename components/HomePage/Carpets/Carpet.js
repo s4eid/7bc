@@ -9,7 +9,7 @@ export default function Carpet({ c }) {
         <Image
           src={c.img}
           alt="carpets"
-          layout="fixed"
+          layout="fill"
           loading="lazy"
           placeholder="blur"
           blurDataURL={c.img}
