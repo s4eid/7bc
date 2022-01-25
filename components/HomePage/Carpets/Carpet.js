@@ -13,8 +13,6 @@ export default function Carpet({ c }) {
           loading="lazy"
           placeholder="blur"
           blurDataURL={c.img}
-          height={300}
-          width={250}
         />
       </div>
       <div className={carpetsItems.detailsContainer}>

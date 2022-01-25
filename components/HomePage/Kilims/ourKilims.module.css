@@ -62,7 +62,7 @@
   color: #fff;
 }
 .detailPrice {
-  color: #111111;
+  color: #fff;
   font-weight: bold;
 }
 
@@ -88,4 +88,32 @@
 .more:hover {
   color: #fff;
   background-color: #0081ef;
+}
+
+@media screen and (max-width: 932px) {
+  .kilimMainHolder {
+    width: 200px;
+    height: 300px;
+  }
+  .kilimContainer {
+    width: 200px;
+    height: 300px;
+  }
+  .kilimMainContainer {
+    gap: 3;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .kilimMainHolder {
+    width: 150px;
+    height: auto;
+  }
+  .kilimMainContainer p {
+    font-size: 14px;
+  }
+  .kilimContainer {
+    width: 150px;
+    height: 200px;
+  }
 }

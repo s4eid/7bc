@@ -9,12 +9,10 @@ export default function Kilim({ k }) {
         <Image
           src={k.img}
           alt="carpets"
-          layout="fixed"
+          layout="fill"
           loading="lazy"
           placeholder="blur"
           blurDataURL={k.img}
-          height={300}
-          width={250}
         />
       </div>
       <div className={kilimItems.detailsContainer}>
