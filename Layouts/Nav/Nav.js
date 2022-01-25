@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import nav from "./nav.module.css";
 import Link from "next/link";
 import { navItems } from "../../data/navItem";
+import LoginRegister from "../../Modals/LoginRegister/LoginRegister";
 import Image from "next/image";
 import SideBar from "./SideBar";
 import { useRouter } from "next/router";
@@ -12,7 +13,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 export default function NavBar({ children }) {
   const [navOpen, setNavOpen] = useState(false);
   const router = useRouter();
-  const [pOpen, setPOpen] = useState(false);
+  const [openM, setOpenM] = useState(true);
   return (
     <>
       <div className={nav.container}>
@@ -26,11 +27,7 @@ export default function NavBar({ children }) {
           </ul>
         </div>
         <div className={nav.loginContainer}>
-          <button
-            onClick={() => setPOpen(!pOpen)}
-            // onClick={() => router.push("/loginTeacher")}
-            className={nav.loginBtn}
-          >
+          <button onClick={() => setOpenM(!openM)} className={nav.loginBtn}>
             Login/Register
           </button>
         </div>
@@ -44,6 +41,7 @@ export default function NavBar({ children }) {
       </div>
       <NavButtom />
       {/* <PopUp pOpen={pOpen} setPOpen={setPOpen} /> */}
+      <LoginRegister openM={openM} setOpenM={setOpenM} />
       {children}
     </>
   );
