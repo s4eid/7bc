@@ -13,7 +13,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 export default function NavBar({ children }) {
   const [navOpen, setNavOpen] = useState(false);
   const router = useRouter();
-  const [openM, setOpenM] = useState(true);
+  const [openM, setOpenM] = useState(false);
   return (
     <>
       <div className={nav.container}>

@@ -76,7 +76,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 30px;
+  /* padding: 30px; */
   height: 80%;
 }
 .field {
@@ -170,4 +170,10 @@
   right: 0;
   top: 0;
   /* position: absolute; */
+}
+
+@media screen and (max-height: 650px) {
+  .mainContainerR {
+    height: 500px;
+  }
 }
