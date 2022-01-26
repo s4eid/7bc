@@ -176,10 +176,7 @@
   .close {
     margin-top: 30px;
   }
-  /* .mainContainerR {
-    height: 500px;
+  .mainContainerR {
+    height: 100vh;
   }
-  .field {
-    margin: 2px;
-  } */
 }
