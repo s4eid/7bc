@@ -173,13 +173,11 @@
 }
 
 @media screen and (max-height: 650px) {
-  .fields {
-    overflow-y: scroll;
-  }
   .close {
     margin-top: 30px;
   }
   .mainContainerR {
-    height: 100vh;
+    height: 120vh;
+    overflow-y: scroll;
   }
 }
