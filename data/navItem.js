@@ -1,7 +1,7 @@
 export const navItems = [
   {
     name: "Carpet",
-    link: "/",
+    link: "/carpets",
     id: "1",
   },
   {

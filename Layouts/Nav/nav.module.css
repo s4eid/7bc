@@ -5,10 +5,8 @@
   width: 100%;
   height: 60px;
   background-color: #fff;
-  /* position: sticky; */
   align-items: center;
   color: #101010;
-  /* top: 0; */
 }
 .container_active {
   display: flex;
