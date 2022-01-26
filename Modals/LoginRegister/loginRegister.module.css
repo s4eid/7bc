@@ -162,9 +162,9 @@
     width: 100%;
     /* height: 400px; */
   }
-  .fields {
+  /* .fields {
     padding: 28px;
-  }
+  } */
 }
 .error {
   right: 0;
@@ -177,7 +177,7 @@
     margin-top: 30px;
   }
   .mainContainerR {
-    height: 120vh;
+    height: auto;
     overflow-y: scroll;
   }
 }
