@@ -173,7 +173,13 @@
 }
 
 @media screen and (max-height: 650px) {
-  .mainContainerR {
+  .close {
+    margin-top: 30px;
+  }
+  /* .mainContainerR {
     height: 500px;
   }
+  .field {
+    margin: 2px;
+  } */
 }
