@@ -42,3 +42,18 @@
   border-bottom: 2px solid #666666;
   margin: 0;
 }
+
+@media screen and (max-width: 733px) {
+  .mainContainer {
+    flex-direction: column;
+  }
+  .selectContainer {
+    width: 100%;
+  }
+  .info {
+    margin-top: 10px;
+    position: static;
+
+    /* left: auto; */
+  }
+}

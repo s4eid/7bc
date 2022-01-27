@@ -4,9 +4,6 @@ export default function Filter() {
   return (
     <div className={filter.mainContainer}>
       <div className={filter.selectContainer}>
-        <div className={filter.info}>
-          <p>Pieces:1500</p>
-        </div>
         <select name="price" id="price">
           <option value="" selected disabled hidden>
             Price
@@ -31,6 +28,9 @@ export default function Filter() {
           <option value="medium">Medium</option>
           <option value="large">Large</option>
         </select>
+      </div>
+      <div className={filter.info}>
+        <p>Pieces:1500</p>
       </div>
     </div>
   );
