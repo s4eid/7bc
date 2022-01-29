@@ -23,7 +23,7 @@ export default function Footer({ children }) {
             bootstrapURLKeys={{
               key: process.env.NEXT_PUBLIC_GOOGLE_MAP,
             }}
-            defaultCenter={{ lat: 59.95, lng: 30.33 }}
+            defaultCenter={{ lat: 38.64403004130668, lng: 34.83221456271912 }}
             defaultZoom={10}
           ></GoogleMapReact>
         </div>

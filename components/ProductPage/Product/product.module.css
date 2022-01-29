@@ -1,0 +1,51 @@
+.mainContainer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #666666;
+  margin-bottom: 40px;
+}
+.detailsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 25%;
+}
+.holder {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.for {
+  color: #111111;
+  font-weight: bold;
+}
+.info {
+  color: #666666;
+}
+.detailsMore {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  width: 25%;
+}

@@ -6,6 +6,7 @@
   align-items: center;
   border-top: 2px solid #0081ef;
   background-color: #111111;
+  z-index: 999;
   margin-top: 40px;
 }
 .logo {

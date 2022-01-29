@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import React from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function MyApp({ Component, pageProps }) {
   const Nav = Component.Nav ? Component.Nav : React.Fragment;

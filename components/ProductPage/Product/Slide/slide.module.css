@@ -1,0 +1,66 @@
+.mainContainer {
+  /* margin-top: 40px; */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 600px;
+  /* margin-bottom: 40px; */
+  overflow-x: hidden;
+}
+
+.childs {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.slideHolder {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  cursor: pointer;
+  position: relative;
+  border-radius: 5px;
+  overflow-y: hidden;
+  width: 500px;
+  height: 350px;
+}
+.slideHolder img {
+  border-radius: 5px;
+}
+.slideZoom {
+  display: flex;
+  border-radius: 5px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+  position: absolute;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  object-fit: cover;
+}
+.icon {
+  font-size: 60px;
+}
+.iconR {
+  position: absolute;
+  right: 5px;
+  font-size: 30px;
+  color: #0081ef;
+  cursor: pointer;
+  z-index: 1;
+  top: 50;
+}
+.iconL {
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 30px;
+  color: #0081ef;
+  left: 5px;
+}
