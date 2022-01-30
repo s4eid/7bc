@@ -1,49 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import slide from "./slide.module.css";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GlassMagnifier, SideBySideMagnifier } from "react-image-magnifiers";
+import { Magnifier } from "react-image-magnifiers";
 
-import Image from "next/image";
-
-export default function ChildsC({ img, direction, page, paginate }) {
-  const swipeConfidenceThreshold = 10000;
-  const swipePower = (offset, velocity) => {
-    return Math.abs(offset) * velocity;
-  };
-  const variants = {
-    enter: (direction) => {
-      return {
-        x: direction > 0 ? 1000 : -1000,
-        opacity: 0,
-      };
-    },
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    //     exit: (direction) => {
-    //       return {
-    //         zIndex: 0,
-    //         x: direction < 0 ? 1000 : -1000,
-    //         opacity: 0,
-    //       };
-    //     },
-  };
+export default function ChildsC({ img, direction, page }) {
   return (
     <motion.div
       className={slide.childs}
       key={page}
-      variants={variants}
       custom={direction}
       initial="enter"
       animate="center"
-      transition={{
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.3 },
-      }}
       // drag="none"
       // dragConstraints={{ left: 0, right: 0 }}
       // dragElastic={1}
@@ -58,7 +25,11 @@ export default function ChildsC({ img, direction, page, paginate }) {
       // }}
     >
       <div className={slide.slideHolder}>
-        <GlassMagnifier imageSrc={img} className={slide.slideZoom} />
+        <Magnifier
+          // alwaysInPlace={true}
+          imageSrc={img}
+          className={slide.slideZoom}
+        />
       </div>
     </motion.div>
   );

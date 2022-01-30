@@ -13,6 +13,8 @@ import ChildsC from "./ChildsC";
 export default function SliderC() {
   const [[page, direction], setPage] = useState([0, 0]);
   const imageIndex = wrap(0, carpetImage.length, page);
+  const indexOfImage = carpetImage.length;
+  const currentIndex = imageIndex + 1;
 
   const paginate = (newDirection) => {
     setPage([page + newDirection, newDirection]);
@@ -20,6 +22,10 @@ export default function SliderC() {
   return (
     <>
       <div className={slide.mainContainer}>
+        <div className={slide.pageInfo}>
+          <p>{currentIndex}/</p>
+          <p>{indexOfImage}</p>
+        </div>
         <AnimatePresence
           initial={false}
           className={slide.container}
@@ -28,8 +34,8 @@ export default function SliderC() {
           <ChildsC
             img={carpetImage[imageIndex]}
             direction={direction}
+            imageIndex={imageIndex}
             page={page}
-            paginate={paginate}
           />
         </AnimatePresence>
         <FontAwesomeIcon

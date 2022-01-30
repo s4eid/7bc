@@ -1,12 +1,26 @@
 .mainContainer {
-  /* margin-top: 40px; */
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 600px;
-  /* margin-bottom: 40px; */
   overflow-x: hidden;
+  overflow-y: hidden;
+}
+.pageInfo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #111111;
+  border-radius: 5px;
+  z-index: 999;
+  color: #fff;
+  position: absolute;
+  font-size: 14px;
+  bottom: 0;
+}
+.pageInfo p {
+  margin: 0;
 }
 
 .childs {
@@ -30,9 +44,10 @@
 .slideZoom {
   display: flex;
   /* border-radius: 5px; */
+  overflow-y: hidden;
+  overflow-x: hidden;
   justify-content: space-around;
   align-items: center;
-  border-radius: 5px;
   position: absolute;
   cursor: pointer;
   -webkit-user-drag: none;
@@ -40,7 +55,6 @@
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-
   object-fit: cover;
 }
 .icon {
@@ -80,21 +94,14 @@
 @media screen and (max-width: 560px) {
   .slideHolder {
     width: 450px;
-    height: auto;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .slideHolder {
-    width: 350px;
-    height: auto;
+    height: 280px;
   }
 }
 
 @media screen and (max-width: 416px) {
   .slideHolder {
     width: 300px;
-    height: auto;
+    height: 200px;
   }
   .iconL {
     left: 0;
