@@ -27,6 +27,9 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  border-left: 3px solid #666666;
+  border-right: 3px solid #666666;
+  /* border-radius: 5px; */
   flex-direction: column;
   width: 25%;
 }
@@ -47,5 +50,33 @@
   align-items: center;
   justify-content: space-around;
   text-align: center;
+  font-weight: 700;
   width: 25%;
+}
+
+@media screen and (max-width: 1288px) {
+  .details {
+    width: 50%;
+    border-right: none;
+  }
+  .detailsMore {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .details {
+    border-left: none;
+    border-right: 3px solid #666666;
+  }
+  .detailsMore {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (max-width: 416px) {
+  .detailsMore {
+    font-size: 14px;
+  }
 }

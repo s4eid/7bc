@@ -28,6 +28,10 @@ export default function Product({ p }) {
             <p className={product.for}>Stock:</p>
             <p className={product.info}>1</p>
           </div>
+          <div className={product.holder}>
+            <p className={product.for}>Origin:</p>
+            <p className={product.info}>Iran</p>
+          </div>
         </div>
         <div className={product.detailsMore}>
           <p>
