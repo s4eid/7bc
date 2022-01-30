@@ -17,7 +17,9 @@
   color: #fff;
   position: absolute;
   font-size: 14px;
+  opacity: 50%;
   bottom: 0;
+  padding: 2px;
 }
 .pageInfo p {
   margin: 0;

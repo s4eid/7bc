@@ -25,11 +25,7 @@ export default function ChildsC({ img, direction, page }) {
       // }}
     >
       <div className={slide.slideHolder}>
-        <Magnifier
-          // alwaysInPlace={true}
-          imageSrc={img}
-          className={slide.slideZoom}
-        />
+        <Magnifier imageSrc={img} className={slide.slideZoom} />
       </div>
     </motion.div>
   );
