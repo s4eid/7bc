@@ -12,7 +12,9 @@ export default function Register({ isRegister, setIsRegister }) {
     <>
       {isRegister ? (
         <>
-          <p className={loginRegister.title}>Register</p>
+          <div className={loginRegister.title}>
+            <p>Register</p>
+          </div>
           <Formik
             initialValues={initialValues}
             validationSchema={registerSchema}
