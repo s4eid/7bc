@@ -1,0 +1,26 @@
+.mainC {
+  min-width: 300px;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  min-height: 300px;
+  color: #666666;
+  width: 100%;
+}
+.navContainer li {
+  list-style: none;
+  border-bottom: 2px solid #666666;
+}
+
+@media screen and (max-width: 670px) {
+  .mainC {
+    min-width: 100%;
+  }
+}
