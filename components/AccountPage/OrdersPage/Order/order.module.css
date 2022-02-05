@@ -1,0 +1,24 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  padding: 10px;
+  color: #666666;
+  border-bottom: 1px solid #666666;
+}
+.productC {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-wrap: break-word;
+}
+.productC p {
+  margin: 10px;
+}
+.productImage {
+  position: relative;
+  width: 50px;
+  height: 80px;
+}

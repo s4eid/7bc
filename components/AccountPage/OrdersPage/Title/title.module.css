@@ -1,0 +1,20 @@
+.mainContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #111111;
+  color: #fff;
+  border-radius: 5px;
+}
+.listT {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.listT li {
+  list-style: none;
+  font-weight: bold;
+}

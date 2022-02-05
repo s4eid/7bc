@@ -44,7 +44,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.linksContainer li {
+.notActiveLink {
   display: flex;
   justify-content: center;
   width: 20%;
@@ -55,9 +55,21 @@
   transition: 0.3s ease-out;
   cursor: pointer;
 }
-.linksContainer li:hover {
+.notActiveLink:hover {
   color: #fff;
   background-color: #111111;
+}
+.activeLink {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  color: #fff;
+  background-color: #111111;
+  cursor: pointer;
 }
 .loginContainer {
   width: 30%;

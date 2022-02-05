@@ -3,13 +3,11 @@ import nav from "./nav.module.css";
 import Link from "next/link";
 import { navItems } from "../../data/navItem";
 import LoginRegister from "../../Modals/LoginRegister/LoginRegister";
-import Image from "next/image";
 import SideBar from "./SideBar";
-import { useRouter } from "next/router";
 import NavButtom from "./NavButtom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-// import PopUp from "./PopUp/PopUp";
+import { useRouter } from "next/router";
 export default function NavBar({ children }) {
   const [navOpen, setNavOpen] = useState(false);
   const router = useRouter();
@@ -21,7 +19,15 @@ export default function NavBar({ children }) {
           <ul>
             {navItems.map((n) => (
               <Link key={n.id} href={n.link}>
-                <li>{n.name}</li>
+                <li
+                  className={
+                    router.pathname === n.link
+                      ? nav.activeLink
+                      : nav.notActiveLink
+                  }
+                >
+                  {n.name}
+                </li>
               </Link>
             ))}
           </ul>
@@ -40,7 +46,6 @@ export default function NavBar({ children }) {
         <SideBar navItems={navItems} isOpen={navOpen} />
       </div>
       <NavButtom />
-      {/* <PopUp pOpen={pOpen} setPOpen={setPOpen} /> */}
       <LoginRegister openM={openM} setOpenM={setOpenM} />
       {children}
     </>
