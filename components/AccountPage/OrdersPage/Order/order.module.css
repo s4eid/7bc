@@ -7,12 +7,13 @@
   padding: 10px;
   color: #666666;
   border-bottom: 1px solid #666666;
+  word-wrap: break-word;
+  cursor: pointer;
 }
 .productC {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  word-wrap: break-word;
 }
 .productC p {
   margin: 10px;
@@ -21,4 +22,23 @@
   position: relative;
   width: 50px;
   height: 80px;
+}
+
+@media screen and (max-width: 660px) {
+  .mainContainer {
+    font-size: 14px;
+    padding: 0;
+  }
+  .productC p {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .mainContainer {
+    font-size: 12px;
+  }
+  .productImage {
+    width: 40px;
+    height: 60px;
+  }
 }
