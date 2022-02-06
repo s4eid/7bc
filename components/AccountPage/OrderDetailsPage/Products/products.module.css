@@ -1,4 +1,49 @@
 .mainContainer {
   display: flex;
   justify-content: space-around;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  height: 300px;
+  padding: 10px;
+  color: #666666;
+  border-bottom: 1px solid #666666;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+.productC {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.productC p {
+  margin: 10px;
+}
+.productImage {
+  position: relative;
+  width: 50px;
+  height: 80px;
+}
+.iconHolder {
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+  top: 10px;
+  color: #0081ef;
+}
+@media screen and (max-width: 660px) {
+  .mainContainer {
+    font-size: 14px;
+    padding: 0;
+  }
+  .iconHolder {
+    right: 0;
+  }
+}
+@media screen and (max-width: 400px) {
+  .productImage {
+    width: 40px;
+    height: 60px;
+  }
 }
