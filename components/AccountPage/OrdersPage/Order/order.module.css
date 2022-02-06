@@ -1,6 +1,7 @@
 .mainContainer {
   display: flex;
   justify-content: space-around;
+  position: relative;
   align-items: center;
   width: 100%;
   height: 300px;
@@ -9,6 +10,9 @@
   border-bottom: 1px solid #666666;
   word-wrap: break-word;
   cursor: pointer;
+}
+.mainContainer:hover {
+  color: #0081ef;
 }
 .productC {
   display: flex;
@@ -23,6 +27,14 @@
   width: 50px;
   height: 80px;
 }
+.iconHolder {
+  position: absolute;
+  right: 10px;
+
+  font-size: 20px;
+  top: 10px;
+  color: #0081ef;
+}
 
 @media screen and (max-width: 660px) {
   .mainContainer {
@@ -34,9 +46,6 @@
   }
 }
 @media screen and (max-width: 400px) {
-  .mainContainer {
-    font-size: 12px;
-  }
   .productImage {
     width: 40px;
     height: 60px;
