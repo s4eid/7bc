@@ -26,22 +26,23 @@ export default function Register() {
               <div className={register.inputsContainer}>
                 <div className={register.holder}>
                   <Field
-                    type="tel"
                     id="phone_number"
                     name="phone_number"
-                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                    // pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                     placeholder="phone_number"
-                    autoComplete="off"
+                    inputmode="numeric"
                     className={register.fieldE}
+                    enterkeyhint="next"
+                    required
                   />
                   {errors.phone_number && touched.phone_number ? (
-                    <div className={register.error}>
-                      <p>{errors.phone_number}</p>
-                    </div>
+                    <label className={register.error}>
+                      {errors.phone_number}
+                    </label>
                   ) : (
-                    <div className={register.errorC}>
-                      <p>Plaese Enter Your Number</p>
-                    </div>
+                    <label className={register.errorC}>
+                      Plaese Enter Your Number
+                    </label>
                   )}
                 </div>
                 <div className={register.holder}>
@@ -49,8 +50,9 @@ export default function Register() {
                     type="email"
                     name="email"
                     placeholder="Email"
-                    autoComplete="off"
                     className={register.fieldE}
+                    enterkeyhint="next"
+                    required
                   />
                   {errors.email && touched.email ? (
                     <div className={register.error}>
@@ -70,6 +72,8 @@ export default function Register() {
                     placeholder={"password"}
                     className={register.field}
                     name="password"
+                    enterkeyhint="next"
+                    required
                   />
                   {errors.password && touched.password ? (
                     <div className={register.error}>
@@ -87,6 +91,8 @@ export default function Register() {
                     placeholder={"repeat_password"}
                     className={register.field}
                     name="repeat_password"
+                    enterkeyhint="next"
+                    required
                   />
                   {errors.repeat_password && touched.repeat_password ? (
                     <div className={register.error}>
@@ -103,37 +109,18 @@ export default function Register() {
                 <div className={register.holder}>
                   <Field
                     type="text"
-                    placeholder={"first_name"}
-                    autoComplete="off"
+                    placeholder={"full_name"}
                     className={register.fieldE}
-                    name="first_name"
+                    name="full_name"
+                    enterkeyhint="done"
+                    required
                   />
-                  {errors.first_name && touched.first_name ? (
-                    <div className={register.error}>
-                      <p>{errors.first_name}</p>
-                    </div>
+                  {errors.full_name && touched.full_name ? (
+                    <label className={register.error}>{errors.full_name}</label>
                   ) : (
-                    <div className={register.errorC}>
-                      <p>Plaese Enter Your First_Name</p>
-                    </div>
-                  )}
-                </div>
-                <div className={register.holder}>
-                  <Field
-                    type="text"
-                    placeholder={"last_name"}
-                    autoComplete="off"
-                    className={register.fieldE}
-                    name="last_name"
-                  />
-                  {errors.last_name && touched.last_name ? (
-                    <div className={register.error}>
-                      <p>{errors.last_name}</p>
-                    </div>
-                  ) : (
-                    <div className={register.errorC}>
-                      <p>Plaese Enter Your Last_Name</p>
-                    </div>
+                    <label className={register.errorC}>
+                      Plaese Enter Your Full_Name
+                    </label>
                   )}
                 </div>
               </div>

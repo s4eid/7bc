@@ -6,6 +6,9 @@ export default function AddressesPage() {
   return (
     <div className={addresses.mainContainer}>
       <Address />
+      <div className={addresses.editC}>
+        <button className={addresses.editBtn}>Edit Address</button>
+      </div>
     </div>
   );
 }

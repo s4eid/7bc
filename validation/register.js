@@ -25,12 +25,12 @@ export const registerSchema = Yup.object().shape({
     .typeError("Phone Number Must Be A Number")
     .required("Required"),
 
-  first_name: Yup.string()
+  full_name: Yup.string()
     .min(2, "Too Short!")
     .max(30, "Too Long!")
     .required("Required"),
-  last_name: Yup.string()
-    .min(3, "Too Short!")
-    .max(30, "Too Long!")
-    .required("Required"),
+  // last_name: Yup.string()
+  //   .min(3, "Too Short!")
+  //   .max(30, "Too Long!")
+  //   .required("Required"),
 });
