@@ -1,0 +1,81 @@
+.mainC {
+  min-width: 300px;
+  min-height: 250px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  /* padding: 10px; */
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.infoHolders {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  align-items: center;
+  border-bottom: 1px solid #666666;
+}
+.infoHoldersPhone {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  align-items: center;
+}
+
+.icon {
+  font-size: 15px;
+  width: 10%;
+  /* position: absolute; */
+  /* left: 10px; */
+  color: #0081ef;
+}
+.nameTitle {
+  word-wrap: break-word;
+  font-weight: bold;
+  width: 90%;
+}
+.emailTitle {
+  word-wrap: break-word;
+  width: 90%;
+}
+.phoneTitle {
+  word-wrap: break-word;
+  width: 90%;
+}
+.changeContainer {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  right: -10px;
+  top: -10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+@media screen and (max-width: 670px) {
+  .mainC {
+    min-width: 100%;
+  }
+  .changeContainer {
+    width: 30px;
+    height: 30px;
+  }
+  .nameTitle {
+    font-size: 14px;
+  }
+  .emailTitle {
+    font-size: 14px;
+  }
+  .phoneTitle {
+    font-size: 14px;
+  }
+}

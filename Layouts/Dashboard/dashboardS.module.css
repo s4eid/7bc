@@ -15,6 +15,12 @@
   align-items: center;
   background-color: #fff;
 }
+.navInfoC {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  flex-direction: column;
+}
 .holder {
   display: flex;
   width: 100%;
@@ -22,11 +28,32 @@
   gap: 20px;
   align-items: center;
 }
+.goBackC {
+  display: none;
+  width: 100%;
+}
+.backContainer {
+  display: flex;
+  justify-content: space-around;
+  color: #0081ef;
+  font-weight: bold;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px;
+  gap: 10px;
+  align-items: center;
+}
 
 @media screen and (max-width: 1020px) {
   .mainContainer {
     margin-top: 40px;
     margin-bottom: 40px;
+  }
+  .goBackC {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .navInfoC {
+    display: none;
   }
   .container {
     justify-content: space-around;
