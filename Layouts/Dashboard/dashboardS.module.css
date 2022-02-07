@@ -31,6 +31,7 @@
 .goBackC {
   display: none;
   width: 100%;
+  font-size: 14px;
 }
 .backContainer {
   display: flex;
