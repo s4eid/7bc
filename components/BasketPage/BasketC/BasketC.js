@@ -2,8 +2,10 @@ import React from "react";
 import basketC from "./basketC.module.css";
 import { ordersItems } from "../../../data/ordersItems";
 import ProductOrders from "./ProductOrders/ProductOrders";
+import { useRouter } from "next/router";
 
 export default function BasketC() {
+  const router = useRouter();
   return (
     <div className={basketC.mainContainer}>
       <div className={basketC.basketHolder}>
@@ -36,7 +38,12 @@ export default function BasketC() {
             <p className={basketC.info}>2020$</p>
           </div>
         </div>
-        <button className={basketC.proccessTo}>Proccess To Address</button>
+        <button
+          className={basketC.proccessTo}
+          onClick={() => router.push("/basket/address")}
+        >
+          Proccess To Address
+        </button>
       </div>
     </div>
   );

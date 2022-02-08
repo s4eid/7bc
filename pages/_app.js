@@ -9,12 +9,15 @@ function MyApp({ Component, pageProps }) {
   const DashboardS = Component.DashboardS
     ? Component.DashboardS
     : React.Fragment;
+  const BasketAP = Component.BasketAP ? Component.BasketAP : React.Fragment;
   return (
     <Nav>
       <Footer>
         <Dashboard>
           <DashboardS>
-            <Component {...pageProps} />
+            <BasketAP>
+              <Component {...pageProps} />
+            </BasketAP>
           </DashboardS>
         </Dashboard>
       </Footer>

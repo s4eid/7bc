@@ -1,0 +1,33 @@
+.basketDHolder {
+  width: 100%;
+  /* min-width: 300px; */
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-weight: bold;
+}
+.detailsC {
+  width: 100%;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+}
+.infoHolder {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #666666;
+  width: 100%;
+}
+.infoHolder:last-child {
+  border-bottom: none;
+}
+.info {
+  color: #0081ef;
+}

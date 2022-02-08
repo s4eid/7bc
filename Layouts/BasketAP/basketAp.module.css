@@ -1,0 +1,46 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.sideContainer {
+  display: flex;
+  margin-top: 60px;
+  justify-content: space-around;
+  width: 100%;
+}
+.sideHolder {
+  display: flex;
+  width: 400px;
+  gap: 20px;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.orderItemC {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  /* overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 300px; */
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  /* margin-bottom: 10px; */
+}

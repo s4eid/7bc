@@ -1,0 +1,21 @@
+.holder {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #666666;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  width: 100%;
+}
+.imageC {
+  position: relative;
+  width: 50px;
+  height: 80px;
+}
+@media screen and (max-width: 450px) {
+  .imageC {
+    width: 40px;
+    height: 60px;
+  }
+}

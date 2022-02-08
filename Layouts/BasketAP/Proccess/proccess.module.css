@@ -1,0 +1,85 @@
+.proccessContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.proccessHolder {
+  display: flex;
+  background-color: #111111;
+  color: #fff;
+  width: 300px;
+  align-items: center;
+  border-radius: 5px;
+  height: 100px;
+  justify-content: space-around;
+  z-index: 2;
+}
+.proccessHolderS {
+  display: flex;
+  background-color: #0081ef;
+  color: #fff;
+  width: 300px;
+  align-items: center;
+  border-radius: 5px;
+  height: 100px;
+  /* font-size: 30px; */
+  justify-content: space-around;
+  z-index: 2;
+}
+.icon {
+  font-size: 30px;
+}
+.lineC {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.line {
+  width: 50%;
+  background-color: #0081ef;
+  border: none;
+  height: 5px;
+}
+.lineS {
+  width: 50%;
+  background-color: #111111;
+  border: none;
+  height: 5px;
+}
+@media screen and (max-width: 1000px) {
+  .proccessHolder {
+    width: 200px;
+  }
+  .proccessHolderS {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .proccessHolder {
+    width: 100px;
+  }
+  .proccessHolderS {
+    width: 100px;
+  }
+  .proccessHolder p {
+    display: none;
+  }
+
+  .proccessHolderS p {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .proccessHolder {
+    width: 60px;
+    height: 60px;
+  }
+  .proccessHolderS {
+    width: 60px;
+    height: 60px;
+  }
+}
