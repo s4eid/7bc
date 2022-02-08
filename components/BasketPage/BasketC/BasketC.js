@@ -36,6 +36,7 @@ export default function BasketC() {
             <p className={basketC.info}>2020$</p>
           </div>
         </div>
+        <button className={basketC.proccessTo}>Proccess To Address</button>
       </div>
     </div>
   );

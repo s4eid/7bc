@@ -71,14 +71,8 @@
 
 @media screen and (max-width: 380px) {
   .mainContainer {
-    border: none;
-    border-bottom: 1px solid #666666;
-    border-radius: 0;
     padding: 10px;
     flex-wrap: wrap;
-  }
-  .mainContainer:last-child {
-    border-bottom: 0;
   }
   .productC {
     justify-content: center;
@@ -86,14 +80,14 @@
   .icon {
     font-size: 18px;
   }
-  .productC {
+  /* .productC {
     width: 100%;
-  }
-  .price {
+  } */
+  /* .price {
     text-align: center;
     width: 50%;
-  }
+  } */
   .quantityContainer {
-    width: 50%;
+    width: 100%;
   }
 }
