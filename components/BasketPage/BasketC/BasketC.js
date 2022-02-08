@@ -9,9 +9,11 @@ export default function BasketC() {
       <div className={basketC.basketHolder}>
         <p className={basketC.title}>Basket</p>
         <div className={basketC.productContainer}>
-          {ordersItems.map((o, index) => (
-            <ProductOrders key={index} o={o} />
-          ))}
+          <div className={basketC.productHC}>
+            {ordersItems.map((o, index) => (
+              <ProductOrders key={index} o={o} />
+            ))}
+          </div>
         </div>
       </div>
       <div className={basketC.basketDHolder}>

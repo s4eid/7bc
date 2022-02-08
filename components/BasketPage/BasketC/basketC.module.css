@@ -15,14 +15,24 @@
 }
 .productContainer {
   width: 100%;
-  display: flex;
+  max-height: 400px;
+  overflow-y: scroll;
+  /* display: flex; */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 5px;
-  justify-content: space-around;
-  gap: 10px;
-  flex-direction: column;
-  padding: 20px;
+  /* justify-content: space-around; */
+  /* flex-direction: column; */
+  /* padding: 20px; */
   align-items: center;
+}
+.productHC {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  justify-content: space-around;
+  flex-direction: column;
 }
 .basketDHolder {
   width: 20%;
