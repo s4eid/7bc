@@ -1,0 +1,78 @@
+.mainContainer {
+  width: 100%;
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.basketHolder {
+  /* min-width: 500px; */
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.productContainer {
+  width: 100%;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  justify-content: space-around;
+  gap: 10px;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+}
+.basketDHolder {
+  width: 20%;
+  /* min-width: 300px; */
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-weight: bold;
+}
+.detailsC {
+  width: 100%;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+}
+.infoHolder {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #666666;
+  width: 100%;
+}
+.infoHolder:last-child {
+  border-bottom: none;
+}
+.info {
+  color: #0081ef;
+}
+
+@media screen and (max-width: 1000px) {
+  .mainContainer {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .basketHolder {
+    width: 100%;
+  }
+  .basketDHolder {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .productContainer {
+    padding: 5px;
+  }
+}
