@@ -4,12 +4,15 @@
   flex-direction: column;
   width: 100%;
   margin-top: 40px;
+  position: relative;
   margin-bottom: 40px;
 }
 .sideContainer {
   display: flex;
   margin-top: 60px;
   justify-content: space-around;
+  gap: 10px;
+  flex-wrap: wrap;
   width: 100%;
 }
 .sideHolder {

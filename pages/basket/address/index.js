@@ -5,11 +5,7 @@ import Nav from "../../../Layouts/Nav/Nav";
 import Footer from "../../../Layouts/Footer/Footer";
 
 export default function Address() {
-  return (
-    <div>
-      <AddressPage />
-    </div>
-  );
+  return <AddressPage />;
 }
 
 Address.Nav = Nav;
