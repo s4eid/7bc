@@ -4,7 +4,12 @@ import PaymentForm from "./PaymentForm/PaymentForm";
 export default function PaymentPage() {
   return (
     <div className={payment.mainContainer}>
-      <PaymentForm />
+      <div>
+        <div className={payment.title}>
+          <p>Payment information</p>
+        </div>
+        <PaymentForm />
+      </div>
     </div>
   );
 }
