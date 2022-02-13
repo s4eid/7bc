@@ -6,7 +6,9 @@ import { Formik, Field, Form } from "formik";
 export default function AddressForm({ address }) {
   const getA = address.address;
   const inisitial = {
-    address: getA.country + " " + getA.city + " " + getA.state,
+    address: getA.country
+      ? getA.country + " " + getA.city + " " + getA.state
+      : "",
     country: getA.country,
     city: getA.city,
     area: getA.state,
@@ -35,10 +37,11 @@ export default function AddressForm({ address }) {
                   </label>
                 )}
                 <Field
+                  as="textarea"
                   id="address"
                   name="address"
                   placeholder="Address"
-                  className={addressForm.fieldE}
+                  className={addressForm.fieldA}
                   enterkeyhint="next"
                   required
                 />
@@ -109,7 +112,7 @@ export default function AddressForm({ address }) {
                   placeholder={"ZipCode"}
                   className={addressForm.fieldE}
                   name="zipCode"
-                  inputmode="numeric"
+                  inputMode="numeric"
                   enterkeyhint="done"
                   required
                 />

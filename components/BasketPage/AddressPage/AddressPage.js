@@ -5,7 +5,6 @@ import AddressForm from "./AddressForm/AddressForm";
 
 export default function AddressPage() {
   const [address, setAddress] = useState({});
-  console.log(address);
   return (
     <div className={addressC.mainContainer}>
       <div className={addressC.mapHolder}>

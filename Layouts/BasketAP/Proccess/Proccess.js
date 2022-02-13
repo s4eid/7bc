@@ -12,7 +12,10 @@ export default function Proccess() {
   const path = router.pathname;
   return (
     <div className={proccess.proccessContainer}>
-      <div className={proccess.proccessHolderS}>
+      <div
+        onClick={() => router.push("/basket")}
+        className={proccess.proccessHolderS}
+      >
         <FontAwesomeIcon icon={faBox} className={proccess.icon} />
         <p>Basket</p>
       </div>

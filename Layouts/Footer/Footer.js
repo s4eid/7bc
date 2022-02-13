@@ -19,13 +19,13 @@ export default function Footer({ children }) {
           <p>Copyright © 2022 7bc. All rights reserved.</p>
         </div>
         <div className={footer.mapContainer}>
-          <GoogleMapReact
+          {/* <GoogleMapReact
             bootstrapURLKeys={{
               key: process.env.NEXT_PUBLIC_GOOGLE_MAP,
             }}
             defaultCenter={{ lat: 38.64403004130668, lng: 34.83221456271912 }}
             defaultZoom={10}
-          ></GoogleMapReact>
+          ></GoogleMapReact> */}
         </div>
         <div className={footer.contactHolder}>
           <div className={footer.contactContainer}>

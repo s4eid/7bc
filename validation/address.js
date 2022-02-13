@@ -8,7 +8,7 @@ export const initialValues = {
   zipCode: "",
 };
 export const addressSchema = Yup.object().shape({
-  address: Yup.string().max(200).required(),
+  address: Yup.string().max(200).required("Required"),
   country: Yup.string().max(100).required("Required"),
   city: Yup.string().max(100).required("Required"),
   area: Yup.string().max(100).required("Required"),
