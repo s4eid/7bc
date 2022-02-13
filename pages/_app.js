@@ -1,5 +1,8 @@
 import "../styles/globals.css";
 import React from "react";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function MyApp({ Component, pageProps }) {

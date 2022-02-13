@@ -1,0 +1,15 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* justify-content: flex-start; */
+  /* width: 500px; */
+  width: 50%;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 850px) {
+  .mainContainer {
+    width: 100%;
+  }
+}

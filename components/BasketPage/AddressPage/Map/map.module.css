@@ -22,22 +22,29 @@
   color: #fff;
   border: 1px solid transparent;
   border-radius: 4px;
-  /* margin: 10px; */
   height: 40px;
   font-size: 16px;
 }
 
 .findMe {
-  width: 100px;
-  height: 30px;
+  width: 200px;
+  height: 40px;
   cursor: pointer;
-  /* background-color: #6b6b6b; */
-  background-color: #888888;
+  background-color: #0081ef;
   font-size: 16px;
-  color: #111111;
+  color: #fff;
   border: none;
   border-radius: 5px;
   transition: 0.2s ease-in;
-  /* margin-top: 40px; */
   font-weight: bold;
+}
+
+@media screen and (max-width: 400px) {
+  .mainContainer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .findMe {
+    font-size: 14px;
+  }
 }

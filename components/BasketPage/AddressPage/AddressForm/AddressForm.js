@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import addressForm from "./addressForm.module.css";
-import { addressSchema, initialValues } from "../../../../validation/address";
+import { addressSchema } from "../../../../validation/address";
 import { Formik, Field, Form } from "formik";
 
 export default function AddressForm({ address }) {
@@ -14,8 +14,6 @@ export default function AddressForm({ address }) {
     area: getA.state,
     zipCode: getA.zip,
   };
-  const [addressInfo, setAddressInfo] = useState(inisitial);
-  console.log(addressInfo);
   return (
     <div className={addressForm.mainContainer}>
       <Formik

@@ -79,7 +79,7 @@ function Map({ setAddress }) {
           }}
         />
         <button className={map.findMe} onClick={findMyLocation}>
-          Find Me
+          Find My Location
         </button>
       </div>
     </div>
