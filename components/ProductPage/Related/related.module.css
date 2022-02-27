@@ -18,7 +18,6 @@
 .mainRelateHolder {
   width: 100%;
   display: flex;
-  gap: 10%;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }

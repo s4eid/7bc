@@ -1,28 +1,28 @@
 import Image from "next/image";
 import React from "react";
-import carpetsItems from "./ourCarpets.module.css";
+import productItems from "./ourCarpets.module.css";
 import { useRouter } from "next/router";
 
 export default function Carpet({ c }) {
   const router = useRouter();
   return (
     <div
-      className={carpetsItems.carpetMainHolder}
-      onClick={() => router.push(`/carpets/${c.name}`)}
+      className={productItems.productMainHolder}
+      onClick={() => router.push(`/carpets/${c.product_id}`)}
     >
-      <div className={carpetsItems.carpetContainer}>
-        <Image
-          src={c.img}
-          alt="carpets"
-          layout="fill"
-          loading="lazy"
-          placeholder="blur"
-          blurDataURL={c.img}
-        />
+      <div className={productItems.productContainer}>
+        <Image src={c.img} alt="carpets" layout="fill" loading="lazy" />
       </div>
-      <div className={carpetsItems.detailsContainer}>
-        <p className={carpetsItems.detailName}>{c.name}</p>
-        <p className={carpetsItems.detailPrice}>{c.price}$</p>
+      <div className={productItems.detailsContainer}>
+        <div className={productItems.infoHolder}>
+          <p className={productItems.detailName}>{c.name}</p>
+          <p className={productItems.detailSize}>
+            {c.width}x{c.height}
+          </p>
+        </div>
+        <div className={productItems.infoHolderP}>
+          <p className={productItems.detailPrice}>{c.price}$</p>
+        </div>
       </div>
     </div>
   );

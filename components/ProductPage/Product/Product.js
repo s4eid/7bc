@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import Info from "./Info/Info";
 import product from "./product.module.css";
@@ -14,7 +13,7 @@ export default function Product({ p }) {
         <Slide />
         <Info />
       </div>
-      <div className={product.addToCart}>
+      <div className={product.productBtnC}>
         <button>Add To Cart</button>
       </div>
     </div>

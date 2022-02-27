@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import register from "../register.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { initialValues, registerSchema } from "../../../validation/register";
-import { faTimes, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Formik, Field, Form } from "formik";
 
 export default function Register() {

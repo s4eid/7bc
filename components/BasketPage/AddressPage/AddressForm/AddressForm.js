@@ -1,9 +1,11 @@
 import React from "react";
 import addressForm from "./addressForm.module.css";
+import { useRouter } from "next/router";
 import { addressSchema } from "../../../../validation/address";
 import { Formik, Field, Form } from "formik";
 
 export default function AddressForm({ address }) {
+  const router = useRouter();
   const getA = address.address;
   const inisitial = {
     address: getA.country
@@ -21,6 +23,7 @@ export default function AddressForm({ address }) {
         validationSchema={addressSchema}
         onSubmit={async (data) => {
           console.log(data);
+          router.push("/basket/payment");
         }}
       >
         {({ errors, touched, isValid, dirty }) => (
