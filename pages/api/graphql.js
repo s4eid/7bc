@@ -1,8 +1,6 @@
 import { ApolloServer } from "apollo-server-micro";
 import Cors from "micro-cors";
 import { pool } from "../../db/index";
-// import resolverAdmin from "../../graphql/admin/admin_resolver";
-// import typeAdmin from "../../graphql/admin/admin_type";
 import typeUser from "../../graphql/user/user_type";
 import resolverUser from "../../graphql/user/user_resolver";
 import typeProduct from "../../graphql/product/typeProduct";
