@@ -1,7 +1,6 @@
 import { ApolloServer } from "apollo-server-micro";
 import Cors from "micro-cors";
 import { pool } from "../../db/index";
-import cookieParser from "cookie-parser";
 // import resolverAdmin from "../../graphql/admin/admin_resolver";
 // import typeAdmin from "../../graphql/admin/admin_type";
 import typeUser from "../../graphql/user/user_type";
@@ -11,8 +10,9 @@ import resolverProduct from "../../graphql/product/resolverProduct";
 
 const cors = Cors({
   allowCredentials: true,
-  origin: "https://studio.apollographql.com",
+  origin: process.env.URL,
 });
+
 const apolloServer = new ApolloServer({
   resolvers: [resolverUser, resolverProduct],
   typeDefs: [typeUser, typeProduct],
