@@ -11,7 +11,7 @@ export default function Carpet({ c }) {
       onClick={() => router.push(`/carpets/${c.product_id}`)}
     >
       <div className={productItems.productContainer}>
-        <Image src={c.img} alt="carpets" layout="fill" loading="lazy" />
+        <Image src={c.img_1} alt="carpets" layout="fill" loading="lazy" />
       </div>
       <div className={productItems.detailsContainer}>
         <div className={productItems.infoHolder}>

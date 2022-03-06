@@ -2,67 +2,67 @@ export const carpetsItems = [
   {
     name: "CappadociaSp",
     price: 100,
-    img: "/carpet_1.jpg",
+    img_1: "/carpet_1.jpg",
   },
   {
     name: "CappadociaSp",
     price: 100,
-    img: "/carpet_1.jpg",
+    img_1: "/carpet_1.jpg",
   },
 
   {
     name: "CappadociaSp",
     price: 100,
-    img: "/carpet_1.jpg",
+    img_1: "/carpet_1.jpg",
   },
 ];
 export const carpetsItemsMore = [
   {
     name: "CappadociaSp",
     price: 100,
-    img: "/carpet_1.jpg",
+    img_1: "/carpet_1.jpg",
   },
   {
     name: "CappadociaSp",
     price: 100,
-    img: "/carpet_1.jpg",
-  },
-
-  {
-    name: "CappadociaSp",
-    price: 100,
-    img: "/carpet_1.jpg",
-  },
-  {
-    name: "CappadociaSp",
-    price: 100,
-    img: "/carpet_1.jpg",
-  },
-  {
-    name: "CappadociaSp",
-    price: 100,
-    img: "/carpet_1.jpg",
+    img_1: "/carpet_1.jpg",
   },
 
   {
     name: "CappadociaSp",
     price: 100,
-    img: "/carpet_1.jpg",
+    img_1: "/carpet_1.jpg",
   },
   {
     name: "CappadociaSp",
     price: 100,
-    img: "/carpet_1.jpg",
+    img_1: "/carpet_1.jpg",
   },
   {
     name: "CappadociaSp",
     price: 100,
-    img: "/carpet_1.jpg",
+    img_1: "/carpet_1.jpg",
   },
 
   {
     name: "CappadociaSp",
     price: 100,
-    img: "/carpet_1.jpg",
+    img_1: "/carpet_1.jpg",
+  },
+  {
+    name: "CappadociaSp",
+    price: 100,
+    img_1: "/carpet_1.jpg",
+  },
+  {
+    name: "CappadociaSp",
+    price: 100,
+    img_1: "/carpet_1.jpg",
+  },
+
+  {
+    name: "CappadociaSp",
+    price: 100,
+    img_1: "/carpet_1.jpg",
   },
 ];

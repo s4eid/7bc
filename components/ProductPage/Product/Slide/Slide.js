@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { carpetImage } from "../../../../data/carpetDetails";
 
 import { AnimatePresence } from "framer-motion";
 import slide from "./slide.module.css";
@@ -10,10 +9,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { wrap } from "popmotion";
 import ChildsC from "./ChildsC";
-export default function SliderC() {
+export default function SliderC({ imgs }) {
   const [[page, direction], setPage] = useState([0, 0]);
-  const imageIndex = wrap(0, carpetImage.length, page);
-  const indexOfImage = carpetImage.length;
+  const imageIndex = wrap(0, imgs.length, page);
+  const indexOfImage = imgs.length;
   const currentIndex = imageIndex + 1;
 
   const paginate = (newDirection) => {
@@ -32,7 +31,7 @@ export default function SliderC() {
           custom={direction}
         >
           <ChildsC
-            img={carpetImage[imageIndex]}
+            img={imgs[imageIndex]}
             direction={direction}
             imageIndex={imageIndex}
             page={page}

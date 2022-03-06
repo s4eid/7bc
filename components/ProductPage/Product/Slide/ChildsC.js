@@ -12,7 +12,12 @@ export default function ChildsC({ img, direction, page }) {
       animate="center"
     >
       <div className={slide.slideHolder}>
-        <Image layout="fill" src={img} className={slide.slideZoom} />
+        <Image
+          layout="fill"
+          src={img}
+          alt="product_image"
+          className={slide.slideZoom}
+        />
       </div>
     </motion.div>
   );

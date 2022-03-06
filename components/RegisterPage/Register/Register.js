@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import register from "../register.module.css";
+import { useMutation } from "@apollo/client";
+import { useRouter } from "next/router";
 import { initialValues, registerSchema } from "../../../validation/register";
+import { REGISTER_USER } from "../../../graphql_f/users/Mutation/registerUser";
 import { Formik, Field, Form } from "formik";
 
 export default function Register() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [registerUser, { data, loading, error }] = useMutation(REGISTER_USER);
   return (
     <div className={register.mainContainer}>
       <div className={register.title}>
@@ -16,7 +21,17 @@ export default function Register() {
           validationSchema={registerSchema}
           onSubmit={async (data) => {
             data.email = await data.email.toLowerCase();
-            console.log(data);
+            registerUser({
+              variables: {
+                fullName: data.full_name,
+                email: data.email,
+                password: data.password,
+                phoneNumber: data.phone_number,
+              },
+              onCompleted: () => {
+                router.push("/");
+              },
+            });
           }}
         >
           {({ errors, touched, isValid, dirty }) => (

@@ -7,12 +7,12 @@ export default function Carpet({ c }) {
     <div className={carpetsItems.carpetMainHolder}>
       <div className={carpetsItems.carpetContainer}>
         <Image
-          src={c.img}
+          src={c.img_1}
           alt="carpets"
           layout="fill"
           loading="lazy"
           placeholder="blur"
-          blurDataURL={c.img}
+          blurDataURL={c.img_1}
         />
       </div>
       <div className={carpetsItems.detailsContainer}>
