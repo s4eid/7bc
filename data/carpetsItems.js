@@ -55,7 +55,7 @@ export const carpetsItemsMore = [
     img_1: "/carpet_1.jpg",
   },
   {
-    name: "CappadociaSp",
+    name: "CappadociaaSp",
     price: 100,
     img_1: "/carpet_1.jpg",
   },
