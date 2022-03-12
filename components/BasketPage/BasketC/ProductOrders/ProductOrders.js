@@ -13,12 +13,12 @@ export default function ProductOrders({ o }) {
     <div className={productOrders.mainContainer}>
       <div className={productOrders.productC}>
         <div className={productOrders.productImage}>
-          <Image src={o.img} alt="Product" layout="fill" />
+          <Image src={o.img_1} alt="Product" layout="fill" />
         </div>
         <p>{o.name}</p>
       </div>
       <div className={productOrders.price}>
-        <p>{o.price}</p>
+        <p>${o.price}</p>
       </div>
       <div className={productOrders.quantityContainer}>
         <div className={productOrders.quantityHolder}>

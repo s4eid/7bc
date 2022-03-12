@@ -8,6 +8,19 @@ export default function OrderDetails() {
   return <OrderDetailsPage />;
 }
 
+export async function getServerSideProps({ req, res }) {
+  if (!req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 OrderDetails.Nav = Nav;
 OrderDetails.Footer = Footer;
 OrderDetails.DashboardS = DashboardS;

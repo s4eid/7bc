@@ -8,7 +8,7 @@ import resolverProduct from "../../graphql/product/resolverProduct";
 
 const cors = Cors({
   allowCredentials: true,
-  origin: process.env.URL,
+  // origin: process.env.URL,
 });
 
 const apolloServer = new ApolloServer({

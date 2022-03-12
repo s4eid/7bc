@@ -1,6 +1,5 @@
 import { registerUser } from "../../Querys/user/registerUser";
 import { loginUser } from "../../Querys/user/loginUser";
-import cookie from "cookie";
 // import { addUser } from "../../Querys/user/addUser";
 
 // import { deleteUser } from "../../Querys/user/deleteUser";

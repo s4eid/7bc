@@ -21,10 +21,12 @@ export const loginUser = async (email, password, res, pool) => {
     }
     const full_name = exist.rows[0].full_name;
     const user_id = exist.rows[0].user_id;
+    const phone_number = exist.rows[0].phone_number;
     const { accessToken, refreshToken } = await jwtGenerate(
       email,
       full_name,
-      user_id
+      user_id,
+      phone_number
     );
     await pool
       .query("UPDATE users SET refresh_token=$1 WHERE user_id=$2", [

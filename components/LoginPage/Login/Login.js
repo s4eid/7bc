@@ -45,7 +45,7 @@ export default function Register() {
                     name="email"
                     placeholder="Email"
                     className={login.fieldE}
-                    enterkeyhint="next"
+                    enterKeyHint="next"
                     required
                   />
                   {errors.email && touched.email ? (
@@ -66,7 +66,7 @@ export default function Register() {
                     placeholder={"password"}
                     className={login.field}
                     name="password"
-                    enterkeyhint="next"
+                    enterKeyHint="next"
                     required
                   />
                   {errors.password && touched.password ? (

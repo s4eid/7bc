@@ -10,5 +10,18 @@ export default function Login() {
     </>
   );
 }
+export async function getServerSideProps({ req, res }) {
+  if (req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 Login.Nav = Nav;
 Login.Footer = Footer;

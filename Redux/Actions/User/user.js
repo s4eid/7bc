@@ -6,6 +6,6 @@ export const getUserInfo = () => async (dispatch) => {
     const user = await getUser("refreshToken");
     dispatch({ type: USER_TYPE.USER_INFO_TYPE, payload: user });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };

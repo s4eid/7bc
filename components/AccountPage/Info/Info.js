@@ -8,20 +8,20 @@ import {
   faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Info() {
+export default function Info({ user }) {
   return (
     <div className={info.mainC}>
       <div className={info.infoHolders}>
         <FontAwesomeIcon icon={faUserMinus} className={info.icon} />
-        <p className={info.nameTitle}>Saeid Noormohammad</p>
+        <p className={info.nameTitle}>{user.full_name}</p>
       </div>
       <div className={info.infoHolders}>
         <FontAwesomeIcon icon={faAt} className={info.icon} />
-        <p className={info.emailTitle}>saeid.noormohammad@gmail.com</p>
+        <p className={info.emailTitle}>{user.email}</p>
       </div>
       <div className={info.infoHoldersPhone}>
         <FontAwesomeIcon icon={faMobile} className={info.icon} />
-        <p className={info.phoneTitle}>05510193686</p>
+        <p className={info.phoneTitle}>{user.phone_number}</p>
       </div>
       <div className={info.changeContainer}>
         <FontAwesomeIcon icon={faEdit} className={info.icon} />

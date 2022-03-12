@@ -43,9 +43,9 @@ export default function Register() {
                     name="phone_number"
                     // pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                     placeholder="phone_number"
-                    inputmode="numeric"
+                    inputMode="numeric"
                     className={register.fieldE}
-                    enterkeyhint="next"
+                    enterKeyHint="next"
                     required
                   />
                   {errors.phone_number && touched.phone_number ? (
@@ -64,7 +64,7 @@ export default function Register() {
                     name="email"
                     placeholder="Email"
                     className={register.fieldE}
-                    enterkeyhint="next"
+                    enterKeyHint="next"
                     required
                   />
                   {errors.email && touched.email ? (
@@ -85,7 +85,7 @@ export default function Register() {
                     placeholder={"password"}
                     className={register.field}
                     name="password"
-                    enterkeyhint="next"
+                    enterKeyHint="next"
                     required
                   />
                   {errors.password && touched.password ? (
@@ -104,7 +104,7 @@ export default function Register() {
                     placeholder={"repeat_password"}
                     className={register.field}
                     name="repeat_password"
-                    enterkeyhint="next"
+                    enterKeyHint="next"
                     required
                   />
                   {errors.repeat_password && touched.repeat_password ? (
@@ -125,7 +125,7 @@ export default function Register() {
                     placeholder={"full_name"}
                     className={register.fieldE}
                     name="full_name"
-                    enterkeyhint="done"
+                    enterKeyHint="done"
                     required
                   />
                   {errors.full_name && touched.full_name ? (

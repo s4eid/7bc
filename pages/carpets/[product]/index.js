@@ -10,11 +10,9 @@ import { GET_PRODUCT } from "../../../graphql_f/product/Query/getOneProduct";
 export default function Product() {
   const router = useRouter();
   const route = router.query.product;
-  console.log(route);
   const { data, loading, error } = useQuery(GET_PRODUCT, {
     variables: { product_id: route },
   });
-  console.log(data, error);
   return <ProductPage product={data.product} />;
 }
 export async function getServerSideProps(req, res) {

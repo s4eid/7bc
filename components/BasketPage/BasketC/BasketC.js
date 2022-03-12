@@ -4,7 +4,7 @@ import { ordersItems } from "../../../data/ordersItems";
 import ProductOrders from "./ProductOrders/ProductOrders";
 import { useRouter } from "next/router";
 
-export default function BasketC() {
+export default function BasketC({ products, cartDetails }) {
   const router = useRouter();
   return (
     <div className={basketC.mainContainer}>
@@ -12,7 +12,7 @@ export default function BasketC() {
         <p className={basketC.title}>Basket</p>
         <div className={basketC.productContainer}>
           <div className={basketC.productHC}>
-            {ordersItems.map((o, index) => (
+            {products.map((o, index) => (
               <ProductOrders key={index} o={o} />
             ))}
           </div>
@@ -23,19 +23,19 @@ export default function BasketC() {
         <div className={basketC.detailsC}>
           <div className={basketC.infoHolder}>
             <p className={basketC.title}>Price</p>
-            <p className={basketC.info}>2000$</p>
+            <p className={basketC.info}>${cartDetails.price}</p>
           </div>
           <div className={basketC.infoHolder}>
             <p className={basketC.title}>Shipping</p>
-            <p className={basketC.info}>20$</p>
+            <p className={basketC.info}>${cartDetails.shipping}</p>
           </div>
           <div className={basketC.infoHolder}>
             <p className={basketC.title}>Discount</p>
-            <p className={basketC.info}>0$</p>
+            <p className={basketC.info}>${cartDetails.discount}</p>
           </div>
           <div className={basketC.infoHolder}>
             <p className={basketC.title}>Total</p>
-            <p className={basketC.info}>2020$</p>
+            <p className={basketC.info}>${cartDetails.total}</p>
           </div>
         </div>
         <button
