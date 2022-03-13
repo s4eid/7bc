@@ -21,21 +21,32 @@ export default function Proccess() {
       </div>
       <div
         className={
-          path !== "/basket/address"
+          path !== "/basket/address" && path !== "/basket/payment"
             ? proccess.proccessHolder
             : proccess.proccessHolderS
         }
+        onClick={() => router.push("/basket/address")}
       >
         <FontAwesomeIcon icon={faMapMarkedAlt} className={proccess.icon} />
         <p>Address</p>
       </div>
-      <div className={proccess.proccessHolder}>
+      <div
+        className={
+          path !== "/basket/payment"
+            ? proccess.proccessHolder
+            : proccess.proccessHolderS
+        }
+      >
         <FontAwesomeIcon icon={faMoneyCheckAlt} className={proccess.icon} />
         <p>Payment</p>
       </div>
       <div className={proccess.lineC}>
         <hr className={proccess.line}></hr>
-        <hr className={proccess.lineS}></hr>
+        <hr
+          className={
+            path !== "/basket/payment" ? proccess.lineS : proccess.line
+          }
+        ></hr>
       </div>
     </div>
   );

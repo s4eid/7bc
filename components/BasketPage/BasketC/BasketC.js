@@ -8,7 +8,9 @@ export default function BasketC({ products }) {
   return (
     <div className={basketC.mainContainer}>
       <div className={basketC.basketHolder}>
-        <p className={basketC.title}>Basket</p>
+        <p className={basketC.title}>
+          {products.length !== 0 ? "Basket" : "Basket is emty!!!"}
+        </p>
         <div className={basketC.productContainer}>
           <div className={basketC.productHC}>
             {products.map((o, index) => (
@@ -41,12 +43,16 @@ export default function BasketC({ products }) {
             </p>
           </div>
         </div>
-        <button
-          className={basketC.proccessTo}
-          onClick={() => router.push("/basket/address")}
-        >
-          Proccess To Address
-        </button>
+        {products.length !== 0 ? (
+          <button
+            className={basketC.proccessTo}
+            onClick={() => router.push("/basket/address")}
+          >
+            Proccess To Address
+          </button>
+        ) : (
+          <button className={basketC.proccessTo}>Basket Is Emty</button>
+        )}
       </div>
     </div>
   );

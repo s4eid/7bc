@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 export default function Basket() {
   const { product } = useSelector((state) => state);
+  console.log(product.cartItems.length);
   return <BasketPage products={product.cartItems} />;
 }
 export async function getServerSideProps({ req, res }) {

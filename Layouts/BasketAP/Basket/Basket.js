@@ -6,9 +6,11 @@ export default function Basket({ p }) {
   return (
     <div className={basket.holder}>
       <div className={basket.imageC}>
-        <Image src={p.img} layout="fill" />
+        <Image src={p.img_1} layout="fill" />
       </div>
-      <p>{p.price}</p>
+      <p>
+        ${p.price}x{p.quantity}
+      </p>
     </div>
   );
 }
