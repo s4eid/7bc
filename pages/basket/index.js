@@ -25,18 +25,18 @@ export default function Basket(props) {
     </>
   );
 }
-// export async function getServerSideProps() {
-//   const client = initializeApollo();
-//   await client.query({
-//     query: GET_PRODUCTS,
-//     variables: { type: "carpet" },
-//   });
-//   return {
-//     props: {
-//       initialApolloState: client.cache.extract(),
-//     },
-//   };
-// }
-
+export async function getServerSideProps({ req, res }) {
+  if (!req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 Basket.Nav = Nav;
 Basket.Footer = Footer;

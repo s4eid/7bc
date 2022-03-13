@@ -7,8 +7,11 @@ import {
   faMinusSquare,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { plusQuantity, minusQuantity } from "../../../../Redux/Actions/Product";
 
 export default function ProductOrders({ o }) {
+  const dispatch = useDispatch();
   return (
     <div className={productOrders.mainContainer}>
       <div className={productOrders.productC}>
@@ -24,10 +27,15 @@ export default function ProductOrders({ o }) {
         <div className={productOrders.quantityHolder}>
           <FontAwesomeIcon
             icon={faMinusSquare}
+            onClick={() => dispatch(minusQuantity(o.product_id))}
             className={productOrders.icon}
           />
           <p>{o.quantity}</p>
-          <FontAwesomeIcon icon={faPlusSquare} className={productOrders.icon} />
+          <FontAwesomeIcon
+            onClick={() => dispatch(plusQuantity(o.product_id))}
+            icon={faPlusSquare}
+            className={productOrders.icon}
+          />
         </div>
         <FontAwesomeIcon icon={faTrash} className={productOrders.icon} />
       </div>

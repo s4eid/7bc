@@ -5,6 +5,7 @@ import ProductOrders from "./ProductOrders/ProductOrders";
 import { useRouter } from "next/router";
 
 export default function BasketC({ products, cartDetails }) {
+  console.log(products);
   const router = useRouter();
   return (
     <div className={basketC.mainContainer}>
