@@ -19,9 +19,14 @@
   margin-left: 10px;
 }
 .mapContainer {
-  background-color: gray;
   width: 33%;
   height: 90px;
+  color: #0081ef;
+  font-size: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  display: flex;
 }
 .contactHolder {
   display: flex;

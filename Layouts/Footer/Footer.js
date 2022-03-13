@@ -2,11 +2,13 @@ import Image from "next/image";
 import React from "react";
 import footer from "./footer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import GoogleMapReact from "google-map-react";
+// import GoogleMapReact from "google-map-react";
 import {
   faInstagram,
   faWhatsapp,
   faTelegram,
+  faCcVisa,
+  faCcMastercard,
 } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer({ children }) {
@@ -19,6 +21,8 @@ export default function Footer({ children }) {
           <p>Copyright © 2022 7bc. All rights reserved.</p>
         </div>
         <div className={footer.mapContainer}>
+          <FontAwesomeIcon icon={faCcVisa} />
+          <FontAwesomeIcon icon={faCcMastercard} />
           {/* <GoogleMapReact
             bootstrapURLKeys={{
               key: process.env.NEXT_PUBLIC_GOOGLE_MAP,
