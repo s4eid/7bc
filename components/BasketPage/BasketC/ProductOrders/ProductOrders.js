@@ -8,7 +8,11 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { plusQuantity, minusQuantity } from "../../../../Redux/Actions/Product";
+import {
+  plusQuantity,
+  minusQuantity,
+  deleteProduct,
+} from "../../../../Redux/Actions/Product";
 
 export default function ProductOrders({ o }) {
   const dispatch = useDispatch();
@@ -37,7 +41,11 @@ export default function ProductOrders({ o }) {
             className={productOrders.icon}
           />
         </div>
-        <FontAwesomeIcon icon={faTrash} className={productOrders.icon} />
+        <FontAwesomeIcon
+          icon={faTrash}
+          className={productOrders.icon}
+          onClick={() => dispatch(deleteProduct(o.product_id))}
+        />
       </div>
     </div>
   );

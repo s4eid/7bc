@@ -1,117 +1,81 @@
 import { PRODUCT_TYPE } from "../../Types/Product";
-
-const inisialState = {
+let inisialState;
+if (typeof window !== "undefined") {
+  inisialState = {
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+    loading: false,
+  };
+}
+const inisialState_2 = {
   cartItems: [],
-  cartItemProperty: [],
   loading: false,
-  cartDetails: {
-    shipping: 0,
-    discount: 0,
-    total: 0,
-    price: 0,
-  },
 };
 
-export const product = (state = inisialState, action) => {
-  console.log(action.payload);
-  let item = action.payload;
+export const product = (
+  state = typeof window !== "undefined" ? inisialState : inisialState_2,
+  action
+) => {
+  const item = action.payload;
+
   switch (action.type) {
     case PRODUCT_TYPE.ADD_PRODUCT_TYPE:
-      let found = state.cartItems.find((s) => s == action.payload);
-      if (!found) {
-        const has = localStorage.getItem("cartItems");
-        if (has) {
-          const _has = JSON.parse(has);
-          let foundR = _has.find((s) => s == item);
-          if (!foundR) {
-            _has.push(item);
-            localStorage.setItem("cartItems", JSON.stringify(_has));
-            return {
-              ...state,
-              cartItems: [...state.cartItems, item],
-            };
-          }
-          return {
-            ...state,
-          };
-        } else {
-          localStorage.setItem("cartItems", JSON.stringify([item]));
-          return {
-            ...state,
-            cartItems: [...state.cartItems, item],
-          };
-        }
-      }
-    case PRODUCT_TYPE.GET_PRODUCTS_TYPE:
-      const price = item.prices.reduce((p, c) => p + c);
-      const total =
-        price + state.cartDetails.discount + state.cartDetails.shipping;
-      return {
-        ...state,
-        cartItems: [...state.cartItems],
-        cartItemProperty: item._item,
-        cartDetails: {
-          ...state.cartDetails,
-          total,
-          price,
-        },
-      };
-    case PRODUCT_TYPE.PLUS_PRODUCT_TYPE:
-      var foundIndex = state.cartItemProperty.findIndex(
-        (x) => x.product_id === item
+      const existItem = state.cartItems.find(
+        (x) => x.product_id === item.product_id
       );
-      if (
-        state.cartItemProperty[foundIndex].pieces - 1 >
-        state.cartItemProperty[foundIndex].quantity
-      ) {
-        let newArray = state.cartItemProperty;
-        newArray[foundIndex].quantity = newArray[foundIndex].quantity + 1;
-        let price = state.cartDetails.price + newArray[foundIndex].price;
-        let total =
-          price + state.cartDetails.discount + state.cartDetails.shipping;
+      if (existItem) {
         return {
           ...state,
-          cartItems: [...state.cartItems],
-          cartItemProperty: newArray,
-          cartDetails: {
-            ...state.cartDetails,
-            price,
-            total,
-          },
+          cartItems: state.cartItems.map((x) =>
+            x.product_id === existItem.product_id ? item : x
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          cartItems: [...state.cartItems, item],
+        };
+      }
+
+    case PRODUCT_TYPE.PLUS_PRODUCT_TYPE:
+      var foundIndex = state.cartItems.findIndex((x) => x.product_id === item);
+      if (
+        state.cartItems[foundIndex].pieces - 1 >
+        state.cartItems[foundIndex].quantity
+      ) {
+        let newArray = state.cartItems;
+        newArray[foundIndex].quantity = newArray[foundIndex].quantity + 1;
+        return {
+          ...state,
+          cartItems: newArray,
         };
       } else return state;
     case PRODUCT_TYPE.MINUS_PRODUCT_TYPE:
-      var foundIndex = state.cartItemProperty.findIndex(
-        (x) => x.product_id === item
-      );
-      if (state.cartItemProperty[foundIndex].quantity > 1) {
-        let newArray = state.cartItemProperty;
+      var foundIndex = state.cartItems.findIndex((x) => x.product_id === item);
+      if (state.cartItems[foundIndex].quantity > 1) {
+        let newArray = state.cartItems;
         newArray[foundIndex].quantity = newArray[foundIndex].quantity - 1;
-        let price = state.cartDetails.price - newArray[foundIndex].price;
-        let total =
-          price + state.cartDetails.discount + state.cartDetails.shipping;
         return {
           ...state,
-          cartItems: [...state.cartItems],
-          cartItemProperty: newArray,
-          cartDetails: {
-            ...state.cartDetails,
-            price,
-            total,
-          },
+          cartItems: newArray,
         };
       } else return state;
+    case PRODUCT_TYPE.DELETE_PRODUCT_TYPE:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((x) => x.product_id !== item),
+      };
+
     case PRODUCT_TYPE.LOADING_PRODUCTS_TRUE:
       return {
         ...state,
-        cartItemProperty: [...state.cartItemProperty],
         cartItems: [...state.cartItems],
         loading: item,
       };
     case PRODUCT_TYPE.LOADING_PRODUCTS_FALSE:
       return {
         ...state,
-        cartItemProperty: [...state.cartItemProperty],
         cartItems: [...state.cartItems],
         loading: item,
       };

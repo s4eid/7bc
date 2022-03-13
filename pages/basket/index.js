@@ -1,29 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import BasketPage from "../../components/BasketPage/BasketPage";
 import Nav from "../../Layouts/Nav/Nav";
 import Footer from "../../Layouts/Footer/Footer";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { getProductsProperty } from "../../Redux/Actions/Product/index";
 
-export default function Basket(props) {
+export default function Basket() {
   const { product } = useSelector((state) => state);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProductsProperty(product.cartItems));
-  }, []);
-  return (
-    <>
-      {product.cartItemProperty.length !== 0 || !product.loading ? (
-        <BasketPage
-          products={product.cartItemProperty}
-          cartDetails={product.cartDetails}
-        />
-      ) : (
-        <p>loading</p>
-      )}
-    </>
-  );
+  return <BasketPage products={product.cartItems} />;
 }
 export async function getServerSideProps({ req, res }) {
   if (!req.cookies.refreshToken) {

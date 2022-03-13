@@ -1,99 +1,67 @@
 import { PRODUCT_TYPE } from "../../Types/Product";
-import { GET_PRODUCTS_F } from "../../../graphql_f/product/Query/getProducts";
+import { GET_PRODUCT } from "../../../graphql_f/product/Query/getOneProduct";
 import { initializeApollo } from "../../../apolloConfig/apollo";
 
-export const addProduct = (product_id) => async (dispatch) => {
+export const addProduct = (product_id) => async (dispatch, getState) => {
   try {
+    const client = initializeApollo();
+    const data = await client.query({
+      query: GET_PRODUCT,
+      variables: { product_id },
+    });
+    const product = data.data.product;
     dispatch({
       type: PRODUCT_TYPE.ADD_PRODUCT_TYPE,
-      payload: product_id,
+      payload: {
+        name: product.name,
+        price: product.price,
+        img_1: product.img_1,
+        pieces: product.pieces,
+        product_id: product.product_id,
+        quantity: 1,
+      },
     });
-  } catch (error) {
-    // console.log(error);
-  }
-};
-
-export const getProductsProperty = (product_array) => async (dispatch) => {
-  const productArray = JSON.parse(localStorage.getItem("cartItems"));
-  try {
-    if (product_array.length !== 0) {
-      console.log("raft tu state gasht gasht");
-      dispatch({
-        type: PRODUCT_TYPE.LOADING_PRODUCTS_TRUE,
-        payload: true,
-      });
-      const client = initializeApollo();
-      const data = await client.query({
-        query: GET_PRODUCTS_F,
-        variables: { productArray: product_array },
-      });
-      const info = data.data.getProducts;
-      const _item = info.map((i) => ({
-        ...i,
-        quantity: 1,
-      }));
-      const prices = info.map((d) => d.price);
-      dispatch({
-        type: PRODUCT_TYPE.GET_PRODUCTS_TYPE,
-        payload: {
-          _item,
-          prices,
-        },
-      });
-      dispatch({
-        type: PRODUCT_TYPE.LOADING_PRODUCTS_FALSE,
-        payload: false,
-      });
-    } else if (productArray) {
-      console.log("raft tu localstorage gasht");
-      dispatch({
-        type: PRODUCT_TYPE.LOADING_PRODUCTS_TRUE,
-        payload: true,
-      });
-      const client = initializeApollo();
-      const data = await client.query({
-        query: GET_PRODUCTS_F,
-        variables: { productArray },
-      });
-      const info = data.data.getProducts;
-      const _item = info.map((i) => ({
-        ...i,
-        quantity: 1,
-      }));
-      const prices = info.map((d) => d.price);
-      dispatch({
-        type: PRODUCT_TYPE.GET_PRODUCTS_TYPE,
-        payload: {
-          _item,
-          prices,
-        },
-      });
-      dispatch({
-        type: PRODUCT_TYPE.LOADING_PRODUCTS_FALSE,
-        payload: false,
-      });
-    }
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(getState().product.cartItems)
+    );
   } catch (error) {}
 };
 
-export const plusQuantity = (product_id) => async (dispatch) => {
+export const plusQuantity = (product_id) => async (dispatch, getState) => {
   try {
     dispatch({
       type: PRODUCT_TYPE.PLUS_PRODUCT_TYPE,
       payload: product_id,
     });
-  } catch (error) {
-    // console.log(error);
-  }
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(getState().product.cartItems)
+    );
+  } catch (error) {}
 };
 
-export const minusQuantity = (product_id) => async (dispatch) => {
+export const minusQuantity = (product_id) => async (dispatch, getState) => {
   try {
     dispatch({
       type: PRODUCT_TYPE.MINUS_PRODUCT_TYPE,
       payload: product_id,
     });
-  } catch (error) {
-    // console.log(error);
-  }
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(getState().product.cartItems)
+    );
+  } catch (error) {}
+};
+export const deleteProduct = (product_id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: PRODUCT_TYPE.DELETE_PRODUCT_TYPE,
+      payload: product_id,
+    });
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(getState().product.cartItems)
+    );
+  } catch (error) {}
 };
