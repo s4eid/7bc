@@ -28,6 +28,7 @@ export default function Product({ p }) {
           stock={p.pieces}
           origin={p.origin}
           description={p.description}
+          id={p.product_id}
         />
       </div>
       <div className={productC.productBtnC}>

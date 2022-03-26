@@ -30,6 +30,7 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 40px;
   padding: 20px;
+  /* max-width: 300px; */
   border-radius: 5px;
   align-items: center;
   justify-content: flex-start;
@@ -76,10 +77,13 @@
   font-weight: bold;
 }
 .infoHolderP {
+  display: flex;
+  justify-content: space-between;
   border-top: 2px solid #0081ef;
   width: 100%;
   margin-top: 5px;
-  padding: 10px;
+  align-items: center;
+  /* padding: 10px; */
 }
 .detailName {
   margin: 3px;
@@ -90,6 +94,14 @@
   color: #111111;
   margin: 3px;
   width: 100%;
+  font-weight: bold;
+}
+.detailsId {
+  color: #666666;
+  margin: 3px;
+  /* text-align: right; */
+  width: 100%;
+  font-size: 12px;
   font-weight: bold;
 }
 @media screen and (max-width: 834px) {

@@ -1,0 +1,18 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  border: 2px solid #666666;
+  border-radius: 5px;
+  align-items: center;
+  word-wrap: break-word;
+}
+.addressHolder {
+  width: 50%;
+}
+.iconC {
+  width: 25%;
+  text-align: center;
+  color: #0081ef;
+  font-size: 20px;
+}

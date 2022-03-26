@@ -55,8 +55,19 @@ const typeUser = gql`
     zip_code: Int
     ip: String
   }
+  type UserAddress {
+    user_id: ID
+    user_address_id: ID
+    address: String
+    country: String
+    city: String
+    area: String
+    zip_code: Int
+    ip: String
+  }
   type Query {
     users: [getUser!]!
+    getUserAddress(user_id: ID!): UserAddress
   }
   type Mutation {
     # addUser(
@@ -66,15 +77,15 @@ const typeUser = gql`
     #   password: String!
     # ): User!
     # deleteUser(user_id: ID!): User
-    # addUser_address(
-    #   address: String!
-    #   country: String!
-    #   city: String!
-    #   area: String!
-    #   zip_code: Int!
-    #   ip: String!
-    #   user_id: ID!
-    # ): addUserAddress!
+    addUser_address(
+      address: String!
+      country: String!
+      city: String!
+      area: String!
+      zip_code: Int!
+      ip: String!
+      user_id: ID!
+    ): addUserAddress!
     # addUser_payment(
     #   owner: String!
     #   cart_number: String!

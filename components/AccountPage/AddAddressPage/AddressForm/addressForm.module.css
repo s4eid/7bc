@@ -1,0 +1,149 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.fields {
+  display: flex;
+  /* position: relative; */
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.field {
+  width: 400px;
+  background-color: #111111;
+  outline: none;
+  /* position: relative; */
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin: 10px;
+  height: 40px;
+  font-size: 16px;
+}
+
+.field::placeholder {
+  text-align: center;
+}
+
+.fieldE {
+  width: 400px;
+  color: #fff;
+  margin: 10px;
+  outline: none;
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #111111;
+  height: 40px;
+  font-size: 16px;
+  text-transform: lowercase;
+}
+.fieldA {
+  width: 400px;
+  color: #fff;
+  margin: 10px;
+  outline: none;
+  max-height: 100px;
+  max-width: 400px;
+  height: 100px;
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #111111;
+  font-size: 16px;
+  font-family: "inter";
+  text-transform: lowercase;
+}
+
+.fieldE::placeholder {
+  text-align: center;
+}
+
+.fieldA::placeholder {
+  text-align: center;
+}
+
+.inputsContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.holder {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* height: 80px; */
+  flex-direction: column;
+}
+.errorC {
+  color: #666666;
+}
+.error {
+  color: rgb(255, 68, 68);
+}
+.confrimBtn {
+  width: 200px;
+  border-radius: 5px;
+  background-color: #0081ef;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  height: 35px;
+  font-size: 16px;
+  transition: 0.3s ease-out;
+}
+.confrimBtnD {
+  width: 200px;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #666666;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  height: 35px;
+  font-size: 16px;
+}
+.container p {
+  margin: 2px;
+}
+.confrimBtn:hover {
+  color: #111111;
+}
+.icon {
+  position: absolute;
+  font-size: 20px;
+  right: 0;
+  bottom: 0;
+  color: #111111;
+}
+@media screen and (max-width: 460px) {
+  .holder {
+    width: 90%;
+  }
+  .field {
+    width: 100%;
+  }
+  .fieldE {
+    width: 100%;
+  }
+  .fieldA {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 839px) {
+  .mainContainer {
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+}

@@ -5,15 +5,32 @@ import Nav from "../../../Layouts/Nav/Nav";
 import Footer from "../../../Layouts/Footer/Footer";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { useQuery } from "@apollo/client";
+import { GET_USER_ADDRESS } from "../../../graphql_f/users/Query/getUserAddress";
 
 export default function Address() {
   const router = useRouter();
   const { product } = useSelector((state) => state);
+  const user = useSelector((d) => d.user);
+
+  const { data, error, loading } = useQuery(GET_USER_ADDRESS, {
+    variables: {
+      userId: user.user_id,
+    },
+  });
   if (product.cartItems === 0 && typeof window !== "undefined") {
     router.push("/basket");
   }
 
-  return <>{product.cartItems.length !== 0 ? <AddressPage /> : <></>}</>;
+  return (
+    <>
+      {product.cartItems.length !== 0 && !loading ? (
+        <AddressPage addressInfo={data.getUserAddress} />
+      ) : (
+        <></>
+      )}
+    </>
+  );
 }
 export async function getServerSideProps({ req, res }) {
   if (!req.cookies.refreshToken) {

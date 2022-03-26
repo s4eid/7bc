@@ -45,6 +45,12 @@
 .info {
   color: #666666;
 }
+.infoId {
+  color: #666666;
+  font-size: 15px;
+  word-wrap: break-word;
+  text-align: center;
+}
 .detailsMore {
   display: flex;
   align-items: center;

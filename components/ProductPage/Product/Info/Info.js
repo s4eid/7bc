@@ -8,6 +8,7 @@ export default function Info({
   stock,
   description,
   origin,
+  id,
 }) {
   return (
     <>
@@ -33,6 +34,9 @@ export default function Info({
         <div className={product.holder}>
           <p className={product.for}>Origin:</p>
           <p className={product.info}>{origin}</p>
+        </div>
+        <div className={product.holder}>
+          <p className={product.infoId}>{id}</p>
         </div>
       </div>
       <div className={product.detailsMore}>

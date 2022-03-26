@@ -1,0 +1,27 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+  /* justify-content: flex-start; */
+  /* width: 500px; */
+  margin: auto;
+  width: 100%;
+  flex-direction: column;
+}
+.mapHolder {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.title {
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+}
+@media screen and (max-width: 900px) {
+  .mainContainer {
+    /* margin-top: 40px; */
+    width: 100%;
+  }
+}

@@ -18,6 +18,30 @@
   text-align: center;
   align-items: center;
 }
+.existAddressC {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+.existAB {
+  width: 200px;
+  border-radius: 5px;
+  background-color: #0081ef;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  height: 35px;
+  font-size: 16px;
+  transition: 0.3s ease-out;
+}
+.existAB:hover {
+  color: #111111;
+}
 @media screen and (max-width: 900px) {
   .mainContainer {
     margin-top: 40px;
