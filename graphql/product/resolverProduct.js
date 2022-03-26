@@ -4,8 +4,8 @@ import { getProductsP } from "../../Querys/product/getProductsP";
 
 const resolverProduct = {
   Query: {
-    async products(_, { type }, { pool }) {
-      const data = await getProducts(type, pool);
+    async products(_, { first, afterCursor }, { pool }) {
+      const data = await getProducts(first, afterCursor, pool);
       return data;
     },
     async product(_, { product_id }, { pool }) {

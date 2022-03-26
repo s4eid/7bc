@@ -29,9 +29,20 @@ const typeProduct = gql`
     img_3: String
     img3_id: String
   }
-
+  type PageInfo {
+    startCursor: String
+    hasNextPage: Boolean
+  }
+  type Edge {
+    node: [Product]
+  }
+  type GetProducts {
+    edges: Edge
+    pageInfo: PageInfo
+  }
   type Query {
-    products(type: String!): [Product!]
+    # products(type: String!): [Product!]
+    products(first: Int, afterCursor: String): GetProducts
     product(product_id: ID!): Product!
     getProducts(product_array: [String!]!): [Product]!
   }

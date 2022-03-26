@@ -7,20 +7,29 @@ import { GET_PRODUCTS } from "../../graphql_f/product/Query/getProduct";
 import { useQuery } from "@apollo/client";
 
 export default function Carpet() {
-  const { data, loading } = useQuery(GET_PRODUCTS, {
-    variables: { type: "carpet" },
+  const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
+    fetchPolicy: "cache-first",
+    variables: { first: 5 },
   });
   return (
     <>
-      <CarpetPage products={data.products} />
+      {!loading ? (
+        <CarpetPage
+          products={data.products.edges.node}
+          pageInfo={data.products.pageInfo}
+          refetch={fetchMore}
+        />
+      ) : (
+        <p>loading...</p>
+      )}
     </>
   );
 }
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const client = initializeApollo();
   await client.query({
     query: GET_PRODUCTS,
-    variables: { type: "carpet" },
+    variables: { first: 5 },
   });
   return {
     props: {
