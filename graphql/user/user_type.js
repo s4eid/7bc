@@ -86,6 +86,16 @@ const typeUser = gql`
       ip: String!
       user_id: ID!
     ): addUserAddress!
+    editUser_address(
+      address: String!
+      country: String!
+      city: String!
+      area: String!
+      zip_code: Int!
+      ip: String!
+      user_id: ID!
+    ): addUserAddress!
+
     # addUser_payment(
     #   owner: String!
     #   cart_number: String!

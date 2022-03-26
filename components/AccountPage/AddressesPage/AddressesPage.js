@@ -11,7 +11,12 @@ export default function AddressesPage({ userAddress }) {
         <div className={addresses.mainContainer}>
           <Address userAddress={userAddress} />
           <div className={addresses.editC}>
-            <button className={addresses.editBtn}>Edit Address</button>
+            <button
+              className={addresses.editBtn}
+              onClick={() => router.push("/account/editAddress")}
+            >
+              Edit Address
+            </button>
           </div>
         </div>
       ) : (

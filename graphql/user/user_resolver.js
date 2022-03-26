@@ -1,6 +1,7 @@
 import { registerUser } from "../../Querys/user/registerUser";
 import { loginUser } from "../../Querys/user/loginUser";
 import { getUserAddress } from "../../Querys/user/getUserAddress";
+import { editUser_address } from "../../Querys/user/editUser_address";
 // import { addUser } from "../../Querys/user/addUser";
 // import { deleteUser } from "../../Querys/user/deleteUser";
 import { addUser_address } from "../../Querys/user/addUser_address";
@@ -52,6 +53,23 @@ const resolverUser = {
       { pool }
     ) {
       const data = await addUser_address(
+        address,
+        country,
+        city,
+        area,
+        zip_code,
+        ip,
+        user_id,
+        pool
+      );
+      return data;
+    },
+    async editUser_address(
+      _,
+      { address, country, city, area, zip_code, ip, user_id },
+      { pool }
+    ) {
+      const data = await editUser_address(
         address,
         country,
         city,

@@ -1,4 +1,4 @@
-export const addUser_address = async (
+export const editUser_address = async (
   address,
   country,
   city,
@@ -10,7 +10,7 @@ export const addUser_address = async (
 ) => {
   try {
     const data = await pool.query(
-      "INSERT INTO user_address (address,country,city,area,zip_code,ip,user_id) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *",
+      "UPDATE user_address SET address=$1,country=$2,city=$3,area=$4,zip_code=$5,ip=$6 WHERE user_id=$7 RETURNING *",
       [address, country, city, area, zip_code, ip, user_id]
     );
     return data.rows[0];
