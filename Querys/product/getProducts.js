@@ -1,4 +1,4 @@
-export const getProducts = async (first, afterCursor, pool) => {
+export const getProducts = async (type, first, afterCursor, pool) => {
   const count = await pool.query("SELECT COUNT(product_id) FROM product");
   try {
     if (!afterCursor) {
@@ -7,10 +7,10 @@ export const getProducts = async (first, afterCursor, pool) => {
  SELECT * FROM product p 
  INNER JOIN product_details b ON p.product_id=b.product_id
  INNER JOIN product_inventory i ON p.product_id=i.product_id
- INNER JOIN product_img m ON p.product_id=m.product_id
-     ORDER BY p.product_id ASC LIMIT $1
+ INNER JOIN product_img m ON p.product_id=m.product_id WHERE p.type=$1
+     ORDER BY p.product_id ASC LIMIT $2
 `,
-        [first]
+        [type, first]
       );
       return {
         edges: {
@@ -32,9 +32,9 @@ export const getProducts = async (first, afterCursor, pool) => {
  INNER JOIN product_details b ON p.product_id=b.product_id
  INNER JOIN product_inventory i ON p.product_id=i.product_id
  INNER JOIN product_img m ON p.product_id=m.product_id
-      WHERE p.product_id > $1  ORDER BY p.product_id ASC LIMIT $2
+      WHERE p.product_id > $1 AND p.type=$2  ORDER BY p.product_id ASC LIMIT $3
       `,
-      [afterCursor, first]
+      [afterCursor, type, first]
     );
     return {
       edges: {

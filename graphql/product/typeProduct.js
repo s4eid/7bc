@@ -42,7 +42,7 @@ const typeProduct = gql`
   }
   type Query {
     # products(type: String!): [Product!]
-    products(first: Int, afterCursor: String): GetProducts
+    products(type: String!, first: Int, afterCursor: String): GetProducts
     product(product_id: ID!): Product!
     getProducts(product_array: [String!]!): [Product]!
   }

@@ -8,6 +8,7 @@ export default function OurCarpets({ products, pageInfo, refetch }) {
     if (hasMore) {
       refetch({
         variables: {
+          type: "carpet",
           afterCursor: afterCursor,
           first: 5,
         },
