@@ -25,6 +25,18 @@ export default function Carpet() {
     </>
   );
 }
+export async function getStaticProps() {
+  const client = initializeApollo();
+  await client.query({
+    query: GET_PRODUCTS,
+    variables: { first: 5 },
+  });
+  return {
+    props: {
+      initialApolloState: client.cache.extract(),
+    },
+  };
+}
 
 Carpet.Nav = Nav;
 Carpet.Footer = Footer;
