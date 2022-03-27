@@ -28,7 +28,7 @@ export default function OurCarpets({ products, pageInfo, refetch }) {
         next={() => getMore(pageInfo.startCursor, pageInfo.hasNextPage)}
         className={ourCarpets.productsHolder}
         hasMore={pageInfo.hasNextPage}
-        loader={<h4>Loading...</h4>}
+        // loader={<h4>Loading...</h4>}
         scrollableTarget="scrollableDiv"
       >
         <div className={ourCarpets.productMainContainer}>
