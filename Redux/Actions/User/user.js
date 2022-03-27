@@ -4,6 +4,7 @@ import signOut from "../../../Functions/signOut/signOut";
 
 export const getUserInfo = () => async (dispatch) => {
   try {
+    console.log("getUserInfo fired.....");
     const user = await getUser("refreshToken");
     dispatch({ type: USER_TYPE.USER_INFO_TYPE, payload: user });
   } catch (error) {
