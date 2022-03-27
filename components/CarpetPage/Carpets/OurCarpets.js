@@ -4,13 +4,12 @@ import Carpet from "./Carpet";
 import InfiniteScroll from "react-infinite-scroll-component";
 export default function OurCarpets({ products, pageInfo, refetch }) {
   const getMore = (afterCursor, hasMore) => {
-    console.log(afterCursor);
     if (hasMore) {
       refetch({
         variables: {
           type: "carpet",
           afterCursor: afterCursor,
-          first: 100,
+          first: 10,
         },
         updateQuery: (prevResult, { fetchMoreResult }) => {
           fetchMoreResult.products.edges.node = [
