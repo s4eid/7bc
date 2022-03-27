@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { initializeApollo } from "../../../apolloConfig/apollo";
 import { GET_PRODUCT } from "../../../graphql_f/product/Query/getOneProduct";
+import { GET_PRODUCTS } from "../../../graphql_f/product/Query/getProduct";
 
 export default function Product() {
   const router = useRouter();
@@ -15,8 +16,24 @@ export default function Product() {
   });
   return <ProductPage product={data.product} />;
 }
-export async function getServerSideProps(req, res) {
-  const product_id = req.params.product;
+export async function getStaticPaths() {
+  const client = initializeApollo();
+  await client.query({
+    query: GET_PRODUCTS,
+    variables: { type: "carpet", first: 100 },
+  });
+  const paths = client.data.products.map((p) => {
+    return {
+      params: { product: p.product_id },
+    };
+  });
+  return {
+    paths,
+    fallback: false,
+  };
+}
+export async function getServerSideProps({ params }) {
+  const product_id = params.product;
   const client = initializeApollo();
   await client.query({
     query: GET_PRODUCT,
