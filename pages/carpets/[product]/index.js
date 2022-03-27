@@ -18,11 +18,11 @@ export default function Product() {
 }
 export async function getStaticPaths() {
   const client = initializeApollo();
-  await client.query({
+  const data = await client.query({
     query: GET_PRODUCTS,
     variables: { type: "carpet", first: 100 },
   });
-  const paths = client.data.products.map((p) => {
+  const paths = data.data.products.edges.node.map((p) => {
     return {
       params: { product: p.product_id },
     };
@@ -39,7 +39,6 @@ export async function getStaticProps({ params }) {
     query: GET_PRODUCT,
     variables: { product_id },
   });
-
   return {
     props: {
       initialApolloState: client.cache.extract(),
