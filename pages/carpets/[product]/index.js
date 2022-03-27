@@ -32,7 +32,7 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
   const product_id = params.product;
   const client = initializeApollo();
   await client.query({
