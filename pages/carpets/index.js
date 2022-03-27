@@ -13,7 +13,7 @@ export default function Carpet() {
   const products = useSelector((s) => s.products);
   const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
     fetchPolicy: "cache-first",
-    variables: { type: "carpet", first: 5 },
+    variables: { type: "carpet", first: 4 },
   });
   console.log(products);
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Carpet() {
   }, [data]);
   return (
     <>
-      {!loading && !products.loading ? (
+      {!products.loading ? (
         <CarpetPage
           products={products.products}
           pageInfo={products.pageInfo}
@@ -37,7 +37,7 @@ export async function getStaticProps() {
   const client = initializeApollo();
   await client.query({
     query: GET_PRODUCTS,
-    variables: { type: "carpet", first: 5 },
+    variables: { type: "carpet", first: 4 },
   });
   return {
     props: {
