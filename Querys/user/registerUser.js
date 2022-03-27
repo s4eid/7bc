@@ -34,7 +34,7 @@ export const registerUser = async (
         name: "saeid noormohammad",
       },
       subject: "Please Verify Your Email",
-      html: `Click the link from verify:<a href="${url}">${url}</a>`,
+      html: `Click the link for verifying your account:<a href="${url}">${url}</a>`,
     };
     await sendGrid.send(message);
     return data.rows[0];

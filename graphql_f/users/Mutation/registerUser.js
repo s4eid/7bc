@@ -14,6 +14,7 @@ export const REGISTER_USER = gql`
       password: $password
     ) {
       full_name
+      email
     }
   }
 `;

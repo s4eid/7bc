@@ -5,11 +5,13 @@ import { useRouter } from "next/router";
 import { initialValues, registerSchema } from "../../../validation/register";
 import { REGISTER_USER } from "../../../graphql_f/users/Mutation/registerUser";
 import { Formik, Field, Form } from "formik";
+import SendEmail from "../../../Modals/SendEmail/SendEmail";
 
 export default function Register() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [registerUser, { data, loading, error }] = useMutation(REGISTER_USER);
+  const [openM, setOpenM] = useState(false);
   return (
     <div className={register.mainContainer}>
       <div className={register.title}>
@@ -20,7 +22,7 @@ export default function Register() {
           initialValues={initialValues}
           validationSchema={registerSchema}
           onSubmit={async (data) => {
-            data.email = await data.email.toLowerCase();
+            data.email = data.email.toLowerCase();
             registerUser({
               variables: {
                 fullName: data.full_name,
@@ -28,8 +30,9 @@ export default function Register() {
                 password: data.password,
                 phoneNumber: data.phone_number,
               },
-              onCompleted: () => {
-                router.push("/");
+              onCompleted: (data) => {
+                console.log(data);
+                setOpenM(data.registerUser.email);
               },
             });
           }}
@@ -41,7 +44,6 @@ export default function Register() {
                   <Field
                     id="phone_number"
                     name="phone_number"
-                    // pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                     placeholder="phone_number"
                     inputMode="numeric"
                     className={register.fieldE}
@@ -168,6 +170,7 @@ export default function Register() {
           )}
         </Formik>
       </div>
+      <SendEmail openM={openM} setOpenM={setOpenM} />
     </div>
   );
 }

@@ -10,7 +10,7 @@ export default function OurCarpets({ products, pageInfo, refetch }) {
         variables: {
           type: "carpet",
           afterCursor: afterCursor,
-          first: 5,
+          first: 100,
         },
         updateQuery: (prevResult, { fetchMoreResult }) => {
           fetchMoreResult.products.edges.node = [
@@ -20,7 +20,6 @@ export default function OurCarpets({ products, pageInfo, refetch }) {
           return fetchMoreResult;
         },
       });
-      // getProducts({ variables: { afterCursor: afterCursor, first: 1 } });
     }
   };
   return (
@@ -28,8 +27,7 @@ export default function OurCarpets({ products, pageInfo, refetch }) {
       <InfiniteScroll
         dataLength={products.length}
         next={() => getMore(pageInfo.startCursor, pageInfo.hasNextPage)}
-        // style={{ display: "flex", flexDirection: "column-reverse" }} //To put endMessage and loader to the top.
-        // inverse={true} //
+        className={ourCarpets.productsHolder}
         hasMore={pageInfo.hasNextPage}
         loader={<h4>Loading...</h4>}
         scrollableTarget="scrollableDiv"

@@ -76,6 +76,12 @@
   color: #111111;
   font-weight: bold;
 }
+.productsHolder {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .infoHolderP {
   display: flex;
   justify-content: space-between;
