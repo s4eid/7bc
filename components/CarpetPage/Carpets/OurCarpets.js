@@ -9,7 +9,7 @@ export default function OurCarpets({ products, pageInfo, refetch }) {
         variables: {
           type: "carpet",
           afterCursor: afterCursor,
-          first: 100,
+          first: 5,
         },
         updateQuery: (prevResult, { fetchMoreResult }) => {
           fetchMoreResult.products.edges.node = [

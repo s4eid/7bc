@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CarpetPage from "../../components/CarpetPage/CarpetPage.js";
 import Footer from "../../Layouts/Footer/Footer.js";
 import Nav from "../../Layouts/Nav/Nav.js";
 import { initializeApollo } from "../../apolloConfig/apollo";
+import { getProduct } from "../../Redux/Actions/Products";
 import { GET_PRODUCTS } from "../../graphql_f/product/Query/getProduct";
 import { useQuery } from "@apollo/client";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Carpet() {
+  const dispatch = useDispatch();
+  const products = useSelector((s) => s.products);
   const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
     fetchPolicy: "cache-first",
-    variables: { type: "carpet", first: 100 },
+    variables: { type: "carpet", first: 5 },
   });
+  console.log(products);
+  useEffect(() => {
+    dispatch(getProduct(data.products.edges.node, data.products.pageInfo));
+  }, [data]);
   return (
     <>
-      {!loading ? (
+      {!loading && !products.loading ? (
         <CarpetPage
-          products={data.products.edges.node}
-          pageInfo={data.products.pageInfo}
+          products={products.products}
+          pageInfo={products.pageInfo}
           refetch={fetchMore}
         />
       ) : (
@@ -29,7 +37,7 @@ export async function getStaticProps() {
   const client = initializeApollo();
   await client.query({
     query: GET_PRODUCTS,
-    variables: { type: "carpet", first: 100 },
+    variables: { type: "carpet", first: 5 },
   });
   return {
     props: {
