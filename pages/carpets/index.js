@@ -9,7 +9,7 @@ import { useQuery } from "@apollo/client";
 export default function Carpet() {
   const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
     fetchPolicy: "cache-first",
-    variables: { type: "carpet", first: 10 },
+    variables: { type: "carpet", first: 100 },
   });
   return (
     <>
@@ -25,18 +25,18 @@ export default function Carpet() {
     </>
   );
 }
-// export async function getStaticProps() {
-//   const client = initializeApollo();
-//   await client.query({
-//     query: GET_PRODUCTS,
-//     variables: { type: "carpet", first: 500 },
-//   });
-//   return {
-//     props: {
-//       initialApolloState: client.cache.extract(),
-//     },
-//   };
-// }
+export async function getStaticProps() {
+  const client = initializeApollo();
+  await client.query({
+    query: GET_PRODUCTS,
+    variables: { type: "carpet", first: 100 },
+  });
+  return {
+    props: {
+      initialApolloState: client.cache.extract(),
+    },
+  };
+}
 
 Carpet.Nav = Nav;
 Carpet.Footer = Footer;
