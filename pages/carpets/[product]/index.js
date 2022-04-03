@@ -14,7 +14,9 @@ export default function Product() {
   const { data, loading, error } = useQuery(GET_PRODUCT, {
     variables: { product_id: route },
   });
-  return <ProductPage product={data.product} />;
+  return (
+    <>{!loading ? <ProductPage product={data.product} /> : <p>loading...</p>}</>
+  );
 }
 export async function getStaticPaths() {
   const client = initializeApollo();
