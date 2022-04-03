@@ -1,13 +1,13 @@
 import React from "react";
-import ourCarpets from "./ourCarpets.module.css";
-import Carpet from "./Carpet";
+import ourKilims from "./ourKilims.module.css";
+import Kilim from "./Kilim";
 import InfiniteScroll from "react-infinite-scroll-component";
-export default function OurCarpets({ products, pageInfo, refetch }) {
+export default function OurKilims({ products, pageInfo, refetch }) {
   const getMore = (afterCursor, hasMore) => {
     if (hasMore) {
       refetch({
         variables: {
-          type: "carpet",
+          type: "kilim",
           afterCursor: afterCursor,
           first: 5,
         },
@@ -22,18 +22,18 @@ export default function OurCarpets({ products, pageInfo, refetch }) {
     }
   };
   return (
-    <div className={ourCarpets.container}>
+    <div className={ourKilims.container}>
       <InfiniteScroll
         dataLength={products.length}
         next={() => getMore(pageInfo.startCursor, pageInfo.hasNextPage)}
-        className={ourCarpets.productsHolder}
+        className={ourKilims.productsHolder}
         hasMore={pageInfo.hasNextPage}
         loader={<p>Loading...</p>}
         scrollableTarget="scrollableDiv"
       >
-        <div className={ourCarpets.productMainContainer}>
+        <div className={ourKilims.productMainContainer}>
           {products.map((carpet, index) => (
-            <Carpet c={carpet} key={index} />
+            <Kilim c={carpet} key={index} />
           ))}
         </div>
       </InfiniteScroll>

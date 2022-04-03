@@ -8,6 +8,7 @@ export const addProduct = (product_id) => async (dispatch, getState) => {
     const data = await client.query({
       query: GET_PRODUCT,
       variables: { product_id },
+      fetchPolicy: "network-only",
     });
     const product = data.data.product;
     dispatch({

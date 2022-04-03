@@ -6,7 +6,7 @@ export const navItems = [
   },
   {
     name: "Kilim",
-    link: "/kilim",
+    link: "/kilims",
     id: "2",
   },
   {

@@ -23,6 +23,7 @@ export default function Product({ p }) {
         <Info
           family={p.family}
           age={p.age}
+          price={p.price}
           width={p.width}
           height={p.height}
           stock={p.pieces}
