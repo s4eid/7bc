@@ -15,13 +15,15 @@ export default function Carpet() {
     fetchPolicy: "cache-first",
     variables: { type: "carpet", first: 4 },
   });
-  console.log(products);
+  // let notLoading = !loading ?? console.log(products);
   useEffect(() => {
-    dispatch(getProduct(data.products.edges.node, data.products.pageInfo));
+    if (data?.products.edges.node) {
+      dispatch(getProduct(data.products.edges.node, data.products.pageInfo));
+    }
   }, [data]);
   return (
     <>
-      {!products.loading ? (
+      {!products.loading && !loading ? (
         <CarpetPage
           products={products.products}
           pageInfo={products.pageInfo}
