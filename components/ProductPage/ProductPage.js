@@ -6,7 +6,7 @@ export default function ProductPage({ product }) {
   return (
     <>
       <Product p={product} />
-      <Related />
+      <Related product_id={product.product_id} />
     </>
   );
 }

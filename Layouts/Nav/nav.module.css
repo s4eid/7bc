@@ -223,9 +223,6 @@
   }
 }
 @media screen and (max-width: 500px) {
-  .navBottomContainer {
-    height: 70px;
-  }
   .searchInputOpenN {
     display: none;
   }

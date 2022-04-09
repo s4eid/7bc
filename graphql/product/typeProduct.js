@@ -44,6 +44,7 @@ const typeProduct = gql`
     # products(type: String!): [Product!]
     products(type: String!, first: Int, afterCursor: String): GetProducts
     product(product_id: ID!): Product!
+    notOneProduct(product_id: ID!): [Product]!
     getProducts(product_array: [String!]!): [Product]!
   }
   # type Mutation {}

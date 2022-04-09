@@ -1,9 +1,9 @@
 .container {
   position: fixed;
-  top: 140px;
+  top: 112px;
   width: 100%;
   right: 0;
-  z-index: 999;
+  z-index: 1000;
   color: white;
   background: rgba(16, 16, 16, 0.85);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -37,9 +37,4 @@
   margin: 30px;
   font-weight: bold;
   font-size: 18px;
-}
-@media screen and (max-width: 500px) {
-  .container {
-    top: 130px;
-  }
 }
