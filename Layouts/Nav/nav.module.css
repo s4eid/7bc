@@ -4,6 +4,8 @@
   z-index: 999;
   width: 100%;
   height: 60px;
+  position: sticky;
+  top: 0;
   background-color: #fff;
   align-items: center;
   color: #101010;
@@ -94,7 +96,7 @@
 }
 .navBottomContainer {
   width: 100%;
-  height: 80px;
+  /* height: 50px; */
   z-index: 999;
   display: flex;
   border-bottom: 2px solid #0081ef;
@@ -102,7 +104,7 @@
   background-color: #111111;
   align-items: center;
   position: sticky;
-  top: 0;
+  top: 60px;
 }
 
 .profile {
