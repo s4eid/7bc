@@ -28,7 +28,9 @@ export default function Address() {
       {product.cartItems.length !== 0 && !loading ? (
         <AddressPage addressInfo={data.getUserAddress} />
       ) : (
-        <></>
+        <>
+          <p>Loading...</p>
+        </>
       )}
     </>
   );
