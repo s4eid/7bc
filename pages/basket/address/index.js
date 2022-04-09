@@ -17,6 +17,7 @@ export default function Address() {
     variables: {
       userId: user.user_id,
     },
+    fetchPolicy: "network-only",
   });
   if (product.cartItems === 0 && typeof window !== "undefined") {
     router.push("/basket");

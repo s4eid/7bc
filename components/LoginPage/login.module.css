@@ -96,6 +96,7 @@
 .holder {
   display: flex;
   justify-content: space-around;
+  position: relative;
   align-items: center;
   height: 80px;
   flex-direction: column;
@@ -119,6 +120,18 @@
   height: 35px;
   font-size: 16px;
   transition: 0.3s ease-out;
+}
+.loginBtnD {
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #666666;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  width: 80px;
+  height: 35px;
+  font-size: 16px;
 }
 .loginOr {
   display: flex;
@@ -156,6 +169,14 @@
   position: absolute;
   font-size: 20px;
   right: 0;
+  bottom: 0;
+  color: #111111;
+}
+.eyeIconO {
+  position: absolute;
+  font-size: 20px;
+  right: 0;
+  cursor: pointer;
   bottom: 0;
   color: #111111;
 }

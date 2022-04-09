@@ -51,16 +51,16 @@ export default function NavButtom() {
         />
       </div>
       {!searchOpen ? (
-        <div className={nav.bascketContainer}>
-          <div className={nav.bascket}>
-            <Link href="/basket">
+        <Link href="/basket">
+          <div className={nav.bascketContainer}>
+            <div className={nav.bascket}>
               <FontAwesomeIcon
                 icon={faShoppingBasket}
                 className={nav.bascketIcon}
               />
-            </Link>
+            </div>
           </div>
-        </div>
+        </Link>
       ) : (
         <></>
       )}

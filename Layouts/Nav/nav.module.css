@@ -167,6 +167,7 @@
 }
 .bascketContainer {
   /* width: 33%; */
+  cursor: pointer;
   display: flex;
   justify-content: center;
 }

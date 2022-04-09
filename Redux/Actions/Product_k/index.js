@@ -3,7 +3,7 @@ import { PRODUCTS_K_TYPE } from "../../Types/Products_k";
 export const getProduct_k =
   (products, pageInfo) => async (dispatch, getState) => {
     try {
-      const existData = getState().products.products;
+      const existData = getState().products_k.products;
       if (products.length == 4 && existData == null) {
         dispatch({
           type: PRODUCTS_K_TYPE.LOADING_ON_K,

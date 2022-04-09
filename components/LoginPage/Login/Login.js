@@ -7,13 +7,17 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../../graphql_f/users/Mutation/loginUser";
 import { getUserInfo } from "../../../Redux/Actions/User/user";
 import { useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
   const router = useRouter();
+  console.log(error);
   return (
     <div className={login.mainContainer}>
+      {error ?? <p>{error}</p>}
       <div className={login.title}>
         <p>Login</p>
       </div>
@@ -78,6 +82,19 @@ export default function Register() {
                       <p>Plaese Enter Your Password</p>
                     </div>
                   )}
+                  {!showPassword ? (
+                    <FontAwesomeIcon
+                      icon={faEye}
+                      onClick={() => setShowPassword(!showPassword)}
+                      className={login.eyeIconO}
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faEyeSlash}
+                      onClick={() => setShowPassword(!showPassword)}
+                      className={login.eyeIconO}
+                    />
+                  )}
                 </div>
               </div>
               {/* <FontAwesomeIcon
@@ -89,7 +106,7 @@ export default function Register() {
                 <button
                   type="submit"
                   disabled={!isValid && dirty}
-                  className={login.loginBtn}
+                  className={!isValid ? login.loginBtnD : login.loginBtn}
                 >
                   Login
                 </button>

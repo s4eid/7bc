@@ -14,6 +14,7 @@ export default function Addresses() {
     variables: {
       userId: user.user_id,
     },
+    fetchPolicy: "network-only",
   });
   console.log(data);
   return (

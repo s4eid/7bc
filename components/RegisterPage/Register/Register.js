@@ -3,6 +3,8 @@ import register from "../register.module.css";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { initialValues, registerSchema } from "../../../validation/register";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { REGISTER_USER } from "../../../graphql_f/users/Mutation/registerUser";
 import { Formik, Field, Form } from "formik";
 import SendEmail from "../../../Modals/SendEmail/SendEmail";
@@ -12,8 +14,10 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [registerUser, { data, loading, error }] = useMutation(REGISTER_USER);
   const [openM, setOpenM] = useState(false);
+  console.log(showPassword);
   return (
     <div className={register.mainContainer}>
+      {error ?? <p>{error}</p>}
       <div className={register.title}>
         <p>Register</p>
       </div>
@@ -118,6 +122,19 @@ export default function Register() {
                       <p>Plaese Enter Your Confrim_Password</p>
                     </div>
                   )}
+                  {!showPassword ? (
+                    <FontAwesomeIcon
+                      icon={faEye}
+                      onClick={() => setShowPassword(!showPassword)}
+                      className={register.eyeIconO}
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faEyeSlash}
+                      onClick={() => setShowPassword(!showPassword)}
+                      className={register.eyeIconO}
+                    />
+                  )}
                 </div>
               </div>
               <div className={register.inputsContainer}>
@@ -148,7 +165,7 @@ export default function Register() {
                 <button
                   type="submit"
                   disabled={!isValid && dirty}
-                  className={register.loginBtn}
+                  className={isValid ? register.loginBtn : register.loginBtnD}
                 >
                   Register
                 </button>

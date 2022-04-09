@@ -3,9 +3,11 @@ import addressForm from "./addressForm.module.css";
 import { useRouter } from "next/router";
 import { addressSchema } from "../../../../validation/address";
 import { Formik, Field, Form } from "formik";
+import { gql } from "@apollo/client";
 // import { ADD_USER_ADDRESS } from "../../../../graphql_f/users/Mutation/addUserAddress";
 import { EDIT_USER_ADDRESS } from "../../../../graphql_f/users/Mutation/editUserAddress";
 import { useMutation } from "@apollo/client";
+import { GET_USER_ADDRESS } from "../../../../graphql_f/users/Query/getUserAddress";
 
 export default function AddressForm({ address, userId }) {
   const router = useRouter();

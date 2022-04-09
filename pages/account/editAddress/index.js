@@ -12,6 +12,7 @@ export default function EditAddress() {
     variables: {
       userId: user.user_id,
     },
+    nextFetchPolicy: "network-only",
   });
 
   return (

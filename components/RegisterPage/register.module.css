@@ -97,6 +97,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: relative;
   height: 80px;
   flex-direction: column;
 }
@@ -119,6 +120,18 @@
   height: 35px;
   font-size: 16px;
   transition: 0.3s ease-out;
+}
+.loginBtnD {
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #666666;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  width: 80px;
+  height: 35px;
+  font-size: 16px;
 }
 .loginOr {
   display: flex;
@@ -154,6 +167,14 @@
   bottom: 0;
   color: #111111;
 }
+.eyeIconO {
+  position: absolute;
+  font-size: 20px;
+  right: 0;
+  cursor: pointer;
+  bottom: 0;
+  color: #111111;
+}
 @media screen and (max-width: 460px) {
   .holder {
     width: 100%;
@@ -164,6 +185,9 @@
   .fieldE {
     width: 90%;
   }
+  /* .eyeIconO {
+    position: static;
+  } */
 }
 
 @media screen and (max-width: 839px) {

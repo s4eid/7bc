@@ -15,8 +15,6 @@ export default function Kilim() {
     fetchPolicy: "cache-first",
     variables: { type: "kilim", first: 4 },
   });
-  console.log(data);
-  console.log(loading);
   useEffect(() => {
     if (data?.products.edges.node) {
       dispatch(getProduct_k(data.products.edges.node, data.products.pageInfo));
