@@ -175,6 +175,14 @@
   bottom: 0;
   color: #111111;
 }
+.errorMessage {
+  color: red;
+  word-wrap: break-word;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid red;
+}
 @media screen and (max-width: 460px) {
   .holder {
     width: 100%;

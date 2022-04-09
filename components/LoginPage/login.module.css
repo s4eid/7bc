@@ -93,6 +93,17 @@
   width: 100%;
   flex-wrap: wrap;
 }
+.errorMessage {
+  color: red;
+  word-wrap: break-word;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid red;
+}
+.errorMessage p {
+  margin: 10px;
+}
 .holder {
   display: flex;
   justify-content: space-around;

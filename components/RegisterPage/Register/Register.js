@@ -14,10 +14,17 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [registerUser, { data, loading, error }] = useMutation(REGISTER_USER);
   const [openM, setOpenM] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   console.log(showPassword);
   return (
     <div className={register.mainContainer}>
-      {error ?? <p>{error}</p>}
+      {error ? (
+        <div className={register.errorMessage}>
+          <p>{errorMessage}</p>
+        </div>
+      ) : (
+        <></>
+      )}
       <div className={register.title}>
         <p>Register</p>
       </div>
@@ -34,6 +41,7 @@ export default function Register() {
                 password: data.password,
                 phoneNumber: data.phone_number,
               },
+              onError: (err) => setErrorMessage(err.message),
               onCompleted: (data) => {
                 console.log(data);
                 setOpenM(data.registerUser.email);

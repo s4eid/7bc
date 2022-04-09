@@ -13,11 +13,17 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
+  const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
-  console.log(error);
   return (
     <div className={login.mainContainer}>
-      {error ?? <p>{error}</p>}
+      {error ? (
+        <div className={login.errorMessage}>
+          <p>{errorMessage}</p>
+        </div>
+      ) : (
+        <></>
+      )}
       <div className={login.title}>
         <p>Login</p>
       </div>
@@ -27,12 +33,12 @@ export default function Register() {
           validationSchema={loginSchema}
           onSubmit={async (data) => {
             data.email = await data.email.toLowerCase();
-
             loginUser({
               variables: {
                 email: data.email,
                 password: data.password,
               },
+              onError: (err) => setErrorMessage(err.message),
               onCompleted: () => {
                 dispatch(getUserInfo());
                 router.push("/");
