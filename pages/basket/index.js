@@ -3,14 +3,16 @@ import BasketPage from "../../components/BasketPage/BasketPage";
 import Nav from "../../Layouts/Nav/Nav";
 import Footer from "../../Layouts/Footer/Footer";
 import { useSelector } from "react-redux";
+import { getSession } from "next-auth/react";
 
-export default function Basket() {
+export default function Basket({ _user }) {
   const { product } = useSelector((state) => state);
-  console.log(product.cartItems.length);
   return <BasketPage products={product.cartItems} />;
 }
 export async function getServerSideProps({ req, res }) {
-  if (!req.cookies.refreshToken) {
+  const session = await getSession({ req });
+
+  if (!req.cookies.refreshToken && !session) {
     return {
       redirect: {
         destination: "/login",
@@ -19,7 +21,7 @@ export async function getServerSideProps({ req, res }) {
     };
   }
   return {
-    props: {},
+    props: { _user: session },
   };
 }
 Basket.Nav = Nav;

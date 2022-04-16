@@ -8,6 +8,7 @@ export const ADD_USER_ADDRESS = gql`
     $area: String!
     $zipCode: Int!
     $ip: String!
+    $phone_number: String!
     $userId: ID!
   ) {
     addUser_address(
@@ -17,6 +18,7 @@ export const ADD_USER_ADDRESS = gql`
       area: $area
       zip_code: $zipCode
       ip: $ip
+      phone_number: $phone_number
       user_id: $userId
     ) {
       address

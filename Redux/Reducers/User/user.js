@@ -3,8 +3,8 @@ import { USER_TYPE } from "../../Types/User/user";
 const inisialState = {
   email: null,
   user_id: null,
-  full_name: null,
-  exp: null,
+  name: null,
+  // exp: null,
 };
 
 export const user = (state = inisialState, action) => {

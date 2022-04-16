@@ -3,20 +3,16 @@ import addressForm from "./addressForm.module.css";
 import { useRouter } from "next/router";
 import { addressSchema } from "../../../../validation/address";
 import { Formik, Field, Form } from "formik";
-import { gql } from "@apollo/client";
-// import { ADD_USER_ADDRESS } from "../../../../graphql_f/users/Mutation/addUserAddress";
 import { EDIT_USER_ADDRESS } from "../../../../graphql_f/users/Mutation/editUserAddress";
 import { useMutation } from "@apollo/client";
-import { GET_USER_ADDRESS } from "../../../../graphql_f/users/Query/getUserAddress";
-
 export default function AddressForm({ address, userId }) {
   const router = useRouter();
-  const [editUserAddress, { data }] = useMutation(EDIT_USER_ADDRESS);
-  console.log(data);
+  const [editUserAddress] = useMutation(EDIT_USER_ADDRESS);
   const getA = address;
   const inisitial = {
     address: getA.address,
     country: getA.country,
+    phone_number: getA.phone_number,
     city: getA.city,
     area: getA.area,
     zipCode: getA.zip_code,
@@ -28,7 +24,6 @@ export default function AddressForm({ address, userId }) {
         validationSchema={addressSchema}
         onSubmit={async (data) => {
           const zip = JSON.parse(data.zipCode);
-          console.log(zip);
           editUserAddress({
             variables: {
               address: data.address,
@@ -36,6 +31,7 @@ export default function AddressForm({ address, userId }) {
               city: data.city,
               country: data.country,
               userId: userId,
+              phone_number: data.phone_number,
               zipCode: zip,
               ip: "445.254",
             },
@@ -43,7 +39,6 @@ export default function AddressForm({ address, userId }) {
               router.push("/account");
             },
           });
-          console.log(data);
         }}
       >
         {({ errors, touched, isValid, dirty }) => (
@@ -114,6 +109,28 @@ export default function AddressForm({ address, userId }) {
                   placeholder={"Coutry"}
                   className={addressForm.field}
                   name="country"
+                  enterkeyhint="next"
+                  required
+                />
+              </div>
+            </div>
+            <div className={addressForm.inputsContainer}>
+              <div className={addressForm.holder}>
+                {errors.phone_number && touched.phone_number ? (
+                  <label className={addressForm.error}>
+                    {errors.phone_number}
+                  </label>
+                ) : (
+                  <label className={addressForm.errorC}>
+                    Plaese Enter Your Phone_number
+                  </label>
+                )}
+                <Field
+                  type="text"
+                  placeholder={"Phone_number"}
+                  className={addressForm.fieldE}
+                  name="phone_number"
+                  inputMode="numeric"
                   enterkeyhint="next"
                   required
                 />

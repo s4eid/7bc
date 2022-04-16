@@ -29,18 +29,8 @@ const resolverUser = {
     //   );
     //   return data;
     // },
-    async registerUser(
-      _,
-      { email, password, full_name, phone_number },
-      { pool }
-    ) {
-      const data = await registerUser(
-        full_name,
-        email,
-        password,
-        phone_number,
-        pool
-      );
+    async registerUser(_, { email, password, name }, { pool }) {
+      const data = await registerUser(name, email, password, pool);
       return data;
     },
     async loginUser(_, { email, password }, { res, pool }) {
@@ -49,7 +39,7 @@ const resolverUser = {
     },
     async addUser_address(
       _,
-      { address, country, city, area, zip_code, ip, user_id },
+      { address, country, city, area, zip_code, ip, phone_number, user_id },
       { pool }
     ) {
       const data = await addUser_address(
@@ -59,6 +49,7 @@ const resolverUser = {
         area,
         zip_code,
         ip,
+        phone_number,
         user_id,
         pool
       );
@@ -66,7 +57,7 @@ const resolverUser = {
     },
     async editUser_address(
       _,
-      { address, country, city, area, zip_code, ip, user_id },
+      { address, country, city, area, zip_code, ip, phone_number, user_id },
       { pool }
     ) {
       const data = await editUser_address(
@@ -76,6 +67,7 @@ const resolverUser = {
         area,
         zip_code,
         ip,
+        phone_number,
         user_id,
         pool
       );

@@ -15,7 +15,7 @@ export default function Address() {
 
   const { data, error, loading } = useQuery(GET_USER_ADDRESS, {
     variables: {
-      userId: user.user_id,
+      user_id: user.user_id,
     },
     fetchPolicy: "network-only",
   });

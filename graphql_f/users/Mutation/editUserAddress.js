@@ -8,6 +8,7 @@ export const EDIT_USER_ADDRESS = gql`
     $area: String!
     $zipCode: Int!
     $ip: String!
+    $phone_number: String!
     $userId: ID!
   ) {
     editUser_address(
@@ -17,6 +18,7 @@ export const EDIT_USER_ADDRESS = gql`
       area: $area
       zip_code: $zipCode
       ip: $ip
+      phone_number: $phone_number
       user_id: $userId
     ) {
       user_address_id
@@ -25,6 +27,7 @@ export const EDIT_USER_ADDRESS = gql`
       area
       city
       country
+      phone_number
       ip
       zip_code
     }

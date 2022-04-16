@@ -19,14 +19,12 @@ export const loginUser = async (email, password, res, pool) => {
     if (confrimPass === false) {
       return new ApolloError("Email or password is Wrong!");
     }
-    const full_name = exist.rows[0].full_name;
+    const name = exist.rows[0].name;
     const user_id = exist.rows[0].user_id;
-    const phone_number = exist.rows[0].phone_number;
     const { accessToken, refreshToken } = await jwtGenerate(
       email,
-      full_name,
-      user_id,
-      phone_number
+      name,
+      user_id
     );
     await pool
       .query("UPDATE users SET refresh_token=$1 WHERE user_id=$2", [

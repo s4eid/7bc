@@ -16,6 +16,7 @@ export default function AddressForm({ address, userId }) {
       ? getA.country + " " + getA.city + " " + getA.state
       : "",
     country: getA.country,
+    phone_number: getA.phone_number,
     city: getA.city,
     area: getA.state,
     zipCode: getA.zip,
@@ -27,7 +28,6 @@ export default function AddressForm({ address, userId }) {
         validationSchema={addressSchema}
         onSubmit={async (data) => {
           const zip = JSON.parse(data.zipCode);
-          console.log(zip);
           addUserAddress({
             variables: {
               address: data.address,
@@ -36,13 +36,13 @@ export default function AddressForm({ address, userId }) {
               country: data.country,
               userId: userId,
               zipCode: zip,
+              phone_number: phone,
               ip: "445.254",
             },
             onCompleted: () => {
               router.push("/account");
             },
           });
-          console.log(data);
         }}
       >
         {({ errors, touched, isValid, dirty }) => (
@@ -113,6 +113,28 @@ export default function AddressForm({ address, userId }) {
                   placeholder={"Coutry"}
                   className={addressForm.field}
                   name="country"
+                  enterkeyhint="next"
+                  required
+                />
+              </div>
+            </div>
+            <div className={addressForm.inputsContainer}>
+              <div className={addressForm.holder}>
+                {errors.phone_number && touched.phone_number ? (
+                  <label className={addressForm.error}>
+                    {errors.phone_number}
+                  </label>
+                ) : (
+                  <label className={addressForm.errorC}>
+                    Plaese Enter Your Phone_number
+                  </label>
+                )}
+                <Field
+                  type="text"
+                  placeholder={"Phone_number"}
+                  className={addressForm.fieldE}
+                  name="phone_number"
+                  inputMode="numeric"
                   enterkeyhint="next"
                   required
                 />

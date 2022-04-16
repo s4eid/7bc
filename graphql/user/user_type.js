@@ -2,15 +2,15 @@ import { gql } from "apollo-server-micro";
 const typeUser = gql`
   type User {
     user_id: ID!
-    full_name: String!
+    name: String!
     email: String!
     password: String!
     created_at: String!
-    phone_number: String!
     refresh_token: String
   }
   type addUserAddress {
     user_address_id: ID!
+    phone_number: String!
     user_id: ID!
     address: String!
     country: String!
@@ -33,11 +33,10 @@ const typeUser = gql`
   }
   type getUser {
     user_id: ID!
-    full_name: String!
+    name: String!
     email: String!
     password: String!
     created_at: String!
-    phone_number: String!
     refresh_token: String
     user_payment_id: ID
     owner: String
@@ -52,6 +51,7 @@ const typeUser = gql`
     country: String
     city: String
     area: String
+    phone_number: String
     zip_code: Int
     ip: String
   }
@@ -60,6 +60,7 @@ const typeUser = gql`
     user_address_id: ID
     address: String
     country: String
+    phone_number: String
     city: String
     area: String
     zip_code: Int
@@ -70,18 +71,12 @@ const typeUser = gql`
     getUserAddress(user_id: ID!): UserAddress
   }
   type Mutation {
-    # addUser(
-    #   full_name: String!
-    #   phone_number: String!
-    #   email: String!
-    #   password: String!
-    # ): User!
-    # deleteUser(user_id: ID!): User
     addUser_address(
       address: String!
       country: String!
       city: String!
       area: String!
+      phone_number: String!
       zip_code: Int!
       ip: String!
       user_id: ID!
@@ -89,6 +84,7 @@ const typeUser = gql`
     editUser_address(
       address: String!
       country: String!
+      phone_number: String!
       city: String!
       area: String!
       zip_code: Int!
@@ -106,12 +102,7 @@ const typeUser = gql`
     #   company: String
     #   user_id: ID!
     # ): addUserPayment!
-    registerUser(
-      full_name: String!
-      phone_number: String!
-      email: String!
-      password: String!
-    ): User
+    registerUser(name: String!, email: String!, password: String!): User
     loginUser(email: String!, password: String!): User
   }
 `;

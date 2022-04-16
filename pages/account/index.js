@@ -4,6 +4,7 @@ import Footer from "../../Layouts/Footer/Footer";
 import AccountPage from "../../components/AccountPage/AccountPage";
 import Dashboard from "../../Layouts/Dashboard/Dashboard";
 import { useSelector } from "react-redux";
+import { getSession } from "next-auth/react";
 
 export default function Account() {
   const { user } = useSelector((state) => state);
@@ -11,7 +12,8 @@ export default function Account() {
 }
 
 export async function getServerSideProps({ req, res }) {
-  if (!req.cookies.refreshToken) {
+  const session = await getSession({ req });
+  if (!req.cookies.refreshToken && !session) {
     return {
       redirect: {
         destination: "/login",

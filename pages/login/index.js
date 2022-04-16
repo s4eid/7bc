@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "../../Layouts/Nav/Nav";
 import Footer from "../../Layouts/Footer/Footer";
 import LoginPage from "../../components/LoginPage/LoginPage";
+import { getSession } from "next-auth/react";
 
 export default function Login() {
   return (
@@ -11,7 +12,8 @@ export default function Login() {
   );
 }
 export async function getServerSideProps({ req, res }) {
-  if (req.cookies.refreshToken) {
+  const session = await getSession({ req });
+  if (req.cookies.refreshToken || session) {
     return {
       redirect: {
         destination: "/",

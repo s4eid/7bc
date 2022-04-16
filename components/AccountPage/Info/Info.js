@@ -20,16 +20,16 @@ export default function Info({ user }) {
     <div className={info.mainC}>
       <div className={info.infoHolders}>
         <FontAwesomeIcon icon={faUserMinus} className={info.icon} />
-        <p className={info.nameTitle}>{user?.full_name}</p>
+        <p className={info.nameTitle}>{user?.name}</p>
       </div>
       <div className={info.infoHolders}>
         <FontAwesomeIcon icon={faAt} className={info.icon} />
         <p className={info.emailTitle}>{user?.email}</p>
       </div>
-      <div className={info.infoHoldersPhone}>
+      {/* <div className={info.infoHoldersPhone}>
         <FontAwesomeIcon icon={faMobile} className={info.icon} />
         <p className={info.phoneTitle}>{user?.phone_number}</p>
-      </div>
+      </div> */}
       <div className={info.changeContainer}>
         <FontAwesomeIcon icon={faEdit} className={info.icon} />
       </div>
