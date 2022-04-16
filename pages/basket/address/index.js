@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { GET_USER_ADDRESS } from "../../../graphql_f/users/Query/getUserAddress";
+import { getSession } from "next-auth/react";
 
 export default function Address() {
   const router = useRouter();
@@ -36,7 +37,8 @@ export default function Address() {
   );
 }
 export async function getServerSideProps({ req, res }) {
-  if (!req.cookies.refreshToken) {
+  const session = await getSession({ req });
+  if (!req.cookies.refreshToken && !session) {
     return {
       redirect: {
         destination: "/login",
