@@ -147,6 +147,12 @@
   justify-content: center;
   align-items: center;
 }
+.closeSearchBox {
+  display: none;
+}
+.notDisplay {
+  display: none;
+}
 .searchInputOpen {
   height: 30px;
   width: 100%;
@@ -164,7 +170,15 @@
 .searchInputClose {
   display: none;
 }
+.searchIconOpenOne {
+  color: white;
+  font-size: 18px;
+  margin-left: 8px;
+}
 .searchIcon {
+  display: none;
+}
+.searchIconCloser {
   display: none;
 }
 .bascketContainer {
@@ -204,6 +218,9 @@
   display: none;
   text-align: center;
 }
+.searchIconClose {
+  display: none;
+}
 .burgerOpen {
   rotate: (45deg);
 }
@@ -226,7 +243,32 @@
   .searchInputOpenN {
     display: none;
   }
+  .closeSearchBox {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    margin-right: 8px;
+    font-size: 18px;
+  }
+  .searchIconOpenOne {
+    display: none;
+  }
+  .searchIconClose {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    margin-left: 8px;
+    font-size: 18px;
+  }
   .searchIcon {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    margin-left: 8px;
+    font-size: 18px;
+  }
+
+  .searchIconCloser {
     display: block;
     cursor: pointer;
     color: #fff;

@@ -1,69 +1,103 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import nav from "./nav.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
+import { SEARCH_PRODUCT } from "../../graphql_f/product/Query/searchProduct";
+import { useLazyQuery } from "@apollo/client";
+import SearchResult from "./SearchResult";
+import {
+  faSearch,
+  faSlash,
+  faShoppingBasket,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function NavButtom() {
-  // const [navChange, setNavChange] = useState(false);
+  const [text, setText] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
-  // const scrolling = () => {
-  //   if (window.scrollY > 99.99) {
-  //     setNavChange(true);
-  //   } else {
-  //     setNavChange(false);
-  //   }
-  // };
-  // useEffect(() => {
-  //   window.addEventListener("scroll", scrolling);
-  // }, []);
+  const [searchP, { data, loading }] = useLazyQuery(SEARCH_PRODUCT);
   return (
-    <div className={nav.navBottomContainer}>
-      {/* <div className={!navChange ? nav.navBottomContainer : nav.container_active}> */}
-      {!searchOpen ? (
-        <div className={nav.logoContainer}>
-          <Link href="/">
-            <Image
-              alt="logo"
-              loading="eager"
-              className={nav.logo}
-              src="/logo.svg"
-              layout="intrinsic"
-              width={50}
-              height={50}
-            />
-          </Link>
-        </div>
-      ) : (
-        <></>
-      )}
-      <div className={!searchOpen ? nav.searchContainerN : nav.searchContainer}>
-        <input type="text" className={nav.searchInputOpenN} />
-        <input
-          type="text"
-          className={searchOpen ? nav.searchInputOpen : nav.searchInputClose}
-        />
-        <FontAwesomeIcon
-          icon={faSearch}
-          className={nav.searchIcon}
-          onClick={() => setSearchOpen(!searchOpen)}
-        />
-      </div>
-      {!searchOpen ? (
-        <Link href="/basket">
-          <div className={nav.bascketContainer}>
-            <div className={nav.bascket}>
-              <FontAwesomeIcon
-                icon={faShoppingBasket}
-                className={nav.bascketIcon}
+    <>
+      <div className={nav.navBottomContainer}>
+        {!searchOpen ? (
+          <div className={nav.logoContainer}>
+            <Link href="/">
+              <Image
+                alt="logo"
+                loading="eager"
+                className={nav.logo}
+                src="/logo.svg"
+                layout="intrinsic"
+                width={50}
+                height={50}
               />
-            </div>
+            </Link>
           </div>
-        </Link>
-      ) : (
-        <></>
-      )}
-    </div>
+        ) : (
+          <></>
+        )}
+        <div
+          className={!searchOpen ? nav.searchContainerN : nav.searchContainer}
+        >
+          <input
+            type="text"
+            value={text}
+            enterKeyHint="done"
+            onChange={(e) => {
+              setText(e.target.value);
+              searchP({ variables: { text: e.target.value } });
+            }}
+            className={nav.searchInputOpenN}
+          />
+          <FontAwesomeIcon
+            icon={faSearch}
+            className={nav.searchIconOpenOne}
+            onClick={() => {
+              searchP({ variables: { text: text } });
+            }}
+          />
+          <FontAwesomeIcon
+            icon={faSlash}
+            onClick={() => setSearchOpen(!searchOpen)}
+            className={searchOpen ? nav.closeSearchBox : nav.notDisplay}
+          />
+          <input
+            type="text"
+            value={text}
+            enterKeyHint="done"
+            onChange={(e) => {
+              setText(e.target.value);
+            }}
+            className={searchOpen ? nav.searchInputOpen : nav.searchInputClose}
+          />
+          <FontAwesomeIcon
+            icon={faSearch}
+            className={nav.searchIcon}
+            onClick={() => {
+              if (searchOpen) {
+                searchP({ variables: { text: text } });
+              } else {
+                setSearchOpen(!searchOpen);
+              }
+            }}
+          />
+        </div>
+        {!searchOpen ? (
+          <Link href="/basket">
+            <div className={nav.bascketContainer}>
+              <div className={nav.bascket}>
+                <FontAwesomeIcon
+                  icon={faShoppingBasket}
+                  className={nav.bascketIcon}
+                />
+              </div>
+            </div>
+          </Link>
+        ) : (
+          <></>
+        )}
+      </div>
+      {data && !loading ? <SearchResult data={data.searchProduct} /> : <></>}
+    </>
   );
 }

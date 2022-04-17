@@ -80,7 +80,7 @@
   background-color: #0081ef;
 }
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 500px) {
   .carpetMainHolder {
     width: 150px;
     height: auto;

@@ -1,15 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import footer from "./footer.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import GoogleMapReact from "google-map-react";
-import {
-  faInstagram,
-  faWhatsapp,
-  faTelegram,
-  faCcVisa,
-  faCcMastercard,
-} from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer({ children }) {
   return (
@@ -21,8 +13,8 @@ export default function Footer({ children }) {
           <p>Copyright © 2022 7bc. All rights reserved.</p>
         </div>
         <div className={footer.mapContainer}>
-          <FontAwesomeIcon icon={faCcVisa} />
-          <FontAwesomeIcon icon={faCcMastercard} />
+          <Image src="/visa.svg" height={50} width={50} layout="fixed" />
+          <Image src="/mastercard.svg" height={50} width={50} layout="fixed" />
           {/* <GoogleMapReact
             bootstrapURLKeys={{
               key: process.env.NEXT_PUBLIC_GOOGLE_MAP,
@@ -33,9 +25,9 @@ export default function Footer({ children }) {
         </div>
         <div className={footer.contactHolder}>
           <div className={footer.contactContainer}>
-            <FontAwesomeIcon icon={faInstagram} />
-            <FontAwesomeIcon icon={faWhatsapp} />
-            <FontAwesomeIcon icon={faTelegram} />
+            <Image src="/telegram.svg" height={35} width={35} layout="fixed" />
+            <Image src="/whatsapp.svg" height={35} width={35} layout="fixed" />
+            <Image src="/instagram.svg" height={35} width={35} layout="fixed" />
           </div>
         </div>
       </div>

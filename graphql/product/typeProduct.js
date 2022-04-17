@@ -4,6 +4,7 @@ const typeProduct = gql`
     product_id: ID!
     name: String!
     price: Int!
+    made: String
     type: String!
     created_at: String!
     product_details_id: ID
@@ -29,6 +30,11 @@ const typeProduct = gql`
     img_3: String
     img3_id: String
   }
+  type searchProductR {
+    name: String!
+    type: String!
+    made: String
+  }
   type PageInfo {
     startCursor: String
     hasNextPage: Boolean
@@ -46,6 +52,7 @@ const typeProduct = gql`
     product(product_id: ID!): Product!
     notOneProduct(product_id: ID!): [Product]!
     getProducts(product_array: [String!]!): [Product]!
+    searchProduct(text: String!): [searchProductR]
   }
   # type Mutation {}
 `;

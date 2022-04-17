@@ -11,14 +11,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo } from "../../Redux/Actions/User/user";
 export default function NavBar({ children }) {
   const [navOpen, setNavOpen] = useState(false);
-  // const { data: session } = useSession();
   const dispatch = useDispatch();
   const router = useRouter();
   const { user } = useSelector((state) => state);
-  console.log(user);
   useEffect(() => {
     dispatch(getUserInfo());
   }, []);
+  useEffect(() => {
+    setNavOpen(false);
+  }, [router]);
   const email = user?.name;
   const letter = email?.charAt(0);
   return (
