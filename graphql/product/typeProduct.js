@@ -34,6 +34,7 @@ const typeProduct = gql`
     name: String!
     type: String!
     made: String
+    product_id: ID!
   }
   type PageInfo {
     startCursor: String

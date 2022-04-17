@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import nav from "./nav.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,11 +11,16 @@ import {
   faSlash,
   faShoppingBasket,
 } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/router";
 
 export default function NavButtom() {
   const [text, setText] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchP, { data, loading }] = useLazyQuery(SEARCH_PRODUCT);
+  const router = useRouter();
+  useEffect(() => {
+    setText("");
+  }, [router]);
   return (
     <>
       <div className={nav.navBottomContainer}>
@@ -43,6 +48,7 @@ export default function NavButtom() {
             type="text"
             value={text}
             enterKeyHint="done"
+            placeholder="name/type/made"
             onChange={(e) => {
               setText(e.target.value);
               searchP({ variables: { text: e.target.value } });
@@ -65,6 +71,7 @@ export default function NavButtom() {
             type="text"
             value={text}
             enterKeyHint="done"
+            placeholder="name type made"
             onChange={(e) => {
               setText(e.target.value);
             }}
@@ -97,7 +104,11 @@ export default function NavButtom() {
           <></>
         )}
       </div>
-      {data && !loading ? <SearchResult data={data.searchProduct} /> : <></>}
+      {data && !loading && text ? (
+        <SearchResult data={data.searchProduct} />
+      ) : (
+        <></>
+      )}
     </>
   );
 }

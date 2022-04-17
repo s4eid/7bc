@@ -6,6 +6,7 @@ export const SEARCH_PRODUCT = gql`
       name
       made
       type
+      product_id
     }
   }
 `;
