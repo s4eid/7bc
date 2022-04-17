@@ -41,7 +41,7 @@ export async function getServerSideProps({ req, res }) {
   }
   const token = req.cookies.refreshToken;
   const user = await getUser_server(token, session?.user);
-  const client = initializeApollo();
+  const client = await initializeApollo();
   const { data } = await client.query({
     query: GET_USER_ADDRESS,
     variables: {
@@ -57,7 +57,9 @@ export async function getServerSideProps({ req, res }) {
     };
   }
   return {
-    props: {},
+    props: {
+      initialApolloState: client.cache.extract(),
+    },
   };
 }
 

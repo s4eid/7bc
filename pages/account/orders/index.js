@@ -3,16 +3,19 @@ import OrdersPage from "../../../components/AccountPage/OrdersPage/OrdersPage";
 import Nav from "../../../Layouts/Nav/Nav";
 import Footer from "../../../Layouts/Footer/Footer";
 import DashboardS from "../../../Layouts/Dashboard/DashboardS";
+import { getSession } from "next-auth/react";
 
 export default function Orders() {
   return <OrdersPage />;
 }
 
 export async function getServerSideProps({ req, res }) {
-  if (!req.cookies.refreshToken) {
+  const session = await getSession({ req });
+
+  if (!req.cookies.refreshToken && !session) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/login",
         permanent: false,
       },
     };

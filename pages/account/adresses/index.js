@@ -3,7 +3,10 @@ import Nav from "../../../Layouts/Nav/Nav";
 import Footer from "../../../Layouts/Footer/Footer";
 import { useQuery } from "@apollo/client";
 import AddressesPage from "../../../components/AccountPage/AddressesPage/AddressesPage";
+import { initializeApollo } from "../../../apolloConfig/apollo";
 import { GET_USER_ADDRESS } from "../../../graphql_f/users/Query/getUserAddress";
+import { getSession } from "next-auth/react";
+import { getUser_server } from "../../../Functions/userC";
 import DashboardS from "../../../Layouts/Dashboard/DashboardS";
 import { useSelector } from "react-redux";
 
@@ -14,9 +17,9 @@ export default function Addresses() {
     variables: {
       user_id: user.user_id,
     },
-    fetchPolicy: "network-only",
+    // skip: !user.user_id,
+    // fetchPolicy: "network-only",
   });
-  console.log(data);
   return (
     <>
       {!loading ? (
@@ -26,6 +29,31 @@ export default function Addresses() {
       )}
     </>
   );
+}
+export async function getServerSideProps({ req, res }) {
+  const session = await getSession({ req });
+  if (!req.cookies.refreshToken && !session) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+  const token = req.cookies.refreshToken;
+  const user = await getUser_server(token, session?.user);
+  const client = await initializeApollo();
+  await client.query({
+    query: GET_USER_ADDRESS,
+    variables: {
+      user_id: user.user_id,
+    },
+  });
+  return {
+    props: {
+      initialApolloState: client.cache.extract(),
+    },
+  };
 }
 
 Addresses.Nav = Nav;

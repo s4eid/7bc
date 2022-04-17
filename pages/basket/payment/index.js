@@ -5,6 +5,7 @@ import Nav from "../../../Layouts/Nav/Nav";
 import Footer from "../../../Layouts/Footer/Footer";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import { getSession } from "next-auth/react";
 
 export default function Payment() {
   const router = useRouter();
@@ -15,7 +16,8 @@ export default function Payment() {
   return <>{product.cartItems.length !== 0 ? <PaymentPage /> : <></>}</>;
 }
 export async function getServerSideProps({ req, res }) {
-  if (!req.cookies.refreshToken) {
+  const session = await getSession({ req });
+  if (!req.cookies.refreshToken && !session) {
     return {
       redirect: {
         destination: "/login",

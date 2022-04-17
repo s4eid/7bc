@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "../../Layouts/Nav/Nav";
 import Footer from "../../Layouts/Footer/Footer";
 import RegisterPage from "../../components/RegisterPage/RegisterPage";
+import { getSession } from "next-auth/react";
 
 export default function Register() {
   return (
@@ -12,7 +13,8 @@ export default function Register() {
 }
 
 export async function getServerSideProps({ req, res }) {
-  if (req.cookies.refreshToken) {
+  const session = await getSession({ req });
+  if (req.cookies.refreshToken || session) {
     return {
       redirect: {
         destination: "/",

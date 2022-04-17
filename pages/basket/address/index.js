@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { GET_USER_ADDRESS } from "../../../graphql_f/users/Query/getUserAddress";
 import { getSession } from "next-auth/react";
+import { initializeApollo } from "../../../apolloConfig/apollo";
+import { getUser_server } from "../../../Functions/userC";
 
 export default function Address() {
   const router = useRouter();
@@ -18,7 +20,7 @@ export default function Address() {
     variables: {
       user_id: user.user_id,
     },
-    fetchPolicy: "network-only",
+    // fetchPolicy: "network-only",
   });
   if (product.cartItems === 0 && typeof window !== "undefined") {
     router.push("/basket");
@@ -46,8 +48,19 @@ export async function getServerSideProps({ req, res }) {
       },
     };
   }
+  const token = req.cookies.refreshToken;
+  const user = await getUser_server(token, session?.user);
+  const client = await initializeApollo();
+  await client.query({
+    query: GET_USER_ADDRESS,
+    variables: {
+      user_id: user.user_id,
+    },
+  });
   return {
-    props: {},
+    props: {
+      initialApolloState: client.cache.extract(),
+    },
   };
 }
 

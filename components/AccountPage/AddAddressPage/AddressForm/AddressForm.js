@@ -9,7 +9,6 @@ import { useMutation } from "@apollo/client";
 export default function AddressForm({ address, userId }) {
   const router = useRouter();
   const [addUserAddress, { data }] = useMutation(ADD_USER_ADDRESS);
-  console.log(data);
   const getA = address.address;
   const inisitial = {
     address: getA.country
@@ -36,7 +35,7 @@ export default function AddressForm({ address, userId }) {
               country: data.country,
               userId: userId,
               zipCode: zip,
-              phone_number: phone,
+              phone_number: data.phone_number,
               ip: "445.254",
             },
             onCompleted: () => {
