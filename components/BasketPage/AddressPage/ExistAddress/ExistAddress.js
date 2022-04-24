@@ -28,6 +28,10 @@ export default function ExistAddress({ userAddress }) {
           <p>{userAddress.area}</p>
         </div>
         <div className={address.addressHolder}>
+          <p className={address.main}>Phone_number:</p>
+          <p>{userAddress.phone_number}</p>
+        </div>
+        <div className={address.addressHolder}>
           <p className={address.main}>Zip_code:</p>
           <p>{userAddress.zip_code}</p>
         </div>

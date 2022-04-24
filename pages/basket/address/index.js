@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BasketAP from "../../../Layouts/BasketAP/BasketAP";
 import AddressPage from "../../../components/BasketPage/AddressPage/AddressPage";
 import Nav from "../../../Layouts/Nav/Nav";
 import Footer from "../../../Layouts/Footer/Footer";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { GET_USER_ADDRESS } from "../../../graphql_f/users/Query/getUserAddress";
 import { getSession } from "next-auth/react";
@@ -12,8 +11,15 @@ import { initializeApollo } from "../../../apolloConfig/apollo";
 import { getUser_server } from "../../../Functions/userC";
 
 export default function Address() {
-  const router = useRouter();
   const { product } = useSelector((state) => state);
+  const [ip, setIp] = useState();
+  useEffect(() => {
+    fetch("https://api.ipify.org?format=json", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => setIp(data.ip));
+  }, []);
   const user = useSelector((d) => d.user);
 
   const { data, error, loading } = useQuery(GET_USER_ADDRESS, {
@@ -22,14 +28,15 @@ export default function Address() {
     },
     // fetchPolicy: "network-only",
   });
-  if (product.cartItems === 0 && typeof window !== "undefined") {
-    router.push("/basket");
-  }
 
   return (
     <>
       {product.cartItems.length !== 0 && !loading ? (
-        <AddressPage addressInfo={data.getUserAddress} />
+        <AddressPage
+          ip={ip}
+          addressInfo={data.getUserAddress}
+          userId={user.user_id}
+        />
       ) : (
         <>
           <p>Loading...</p>

@@ -46,6 +46,8 @@ export const product = (
       ) {
         let newArray = state.cartItems;
         newArray[foundIndex].quantity = newArray[foundIndex].quantity + 1;
+        newArray[foundIndex]._price =
+          newArray[foundIndex].price * newArray[foundIndex].quantity;
         return {
           ...state,
           cartItems: newArray,
@@ -56,6 +58,8 @@ export const product = (
       if (state.cartItems[foundIndex].quantity > 1) {
         let newArray = state.cartItems;
         newArray[foundIndex].quantity = newArray[foundIndex].quantity - 1;
+        newArray[foundIndex]._price =
+          newArray[foundIndex].price * newArray[foundIndex].quantity;
         return {
           ...state,
           cartItems: newArray,

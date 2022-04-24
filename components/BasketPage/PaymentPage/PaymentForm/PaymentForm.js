@@ -1,8 +1,22 @@
 import React from "react";
 import paymentForm from "./paymentForm.module.css";
 import { Formik, Field, Form } from "formik";
-import { paymentSchema, initialValues } from "../../../../validation/payment";
-export default function PaymentForm() {
+import { paymentSchema } from "../../../../validation/payment";
+import { getRightInfo } from "../../../../Functions/payment";
+import { ADD_ORDER } from "../../../../graphql_f/order/Mutation/addOrder";
+import { useMutation } from "@apollo/client";
+import { useRouter } from "next/router";
+
+export default function PaymentForm({ info, user, product }) {
+  const [addOrder, { data }] = useMutation(ADD_ORDER);
+  const router = useRouter();
+  const initialValues = {
+    ownerName: info?.owner ? info.owner : "",
+    cardNumber: info?.card_number ? info.card_number : "",
+    month: info?.expire_m ? info.expire_m : "",
+    year: info?.expire_y ? info.expire_y : "",
+    cvv: info?.cvv ? info.cvv : "",
+  };
   return (
     <div className={paymentForm.mainContainer}>
       <Formik
@@ -10,25 +24,60 @@ export default function PaymentForm() {
         validationSchema={paymentSchema}
         onSubmit={async (data) => {
           console.log(data);
+          try {
+            const { _info, list } = await getRightInfo(product.cartItems);
+            const total = _info.reduce((x, y) => x + y.price, 0);
+            const _cvv = parseInt(data.cvv);
+            const _month = parseInt(data.month);
+            const _year = parseInt(data.year);
+            addOrder({
+              variables: {
+                userId: user.user_id,
+                email: user.email,
+                fullName: user.name,
+                owner: data.ownerName,
+                cardNumber: data.cardNumber,
+                expireM: _month,
+                expireY: _year,
+                totalPrice: total,
+                productList: list,
+                cvv: _cvv,
+                address: info.address,
+                country: info.country,
+                phoneNumber: info.phone_number,
+                city: info.city,
+                area: info.area,
+                zipCode: info.zip_code,
+                ip: info.ip,
+                cartItems: _info,
+              },
+              onCompleted: () => {
+                localStorage.removeItem("cartItems");
+                router.reload();
+              },
+            });
+          } catch (error) {
+            console.log(error);
+          }
         }}
       >
         {({ errors, touched, isValid, dirty }) => (
           <Form className={paymentForm.fields}>
             <div className={paymentForm.inputsContainer}>
               <div className={paymentForm.holder}>
-                {errors.cartNumber && touched.cartNumber ? (
+                {errors.cardNumber && touched.cardNumber ? (
                   <label className={paymentForm.error}>
-                    {errors.cartNumber}
+                    {errors.cardNumber}
                   </label>
                 ) : (
                   <label className={paymentForm.errorC}>
-                    Plaese enter your cart number
+                    Plaese enter your card number
                   </label>
                 )}
                 <Field
-                  id="cartNumber"
-                  name="cartNumber"
-                  placeholder="Cart number"
+                  id="cardNumber"
+                  name="cardNumber"
+                  placeholder="Card number"
                   className={paymentForm.fieldE}
                   enterKeyHint="next"
                   required
@@ -41,13 +90,13 @@ export default function PaymentForm() {
                   </label>
                 ) : (
                   <label className={paymentForm.errorC}>
-                    Plaese enter cart owner name
+                    Plaese enter card owner name
                   </label>
                 )}
                 <Field
                   type="text"
                   name="ownerName"
-                  placeholder="Cart owner"
+                  placeholder="Card owner"
                   className={paymentForm.fieldE}
                   enterKeyHint="next"
                   required

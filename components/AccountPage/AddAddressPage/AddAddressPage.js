@@ -3,7 +3,7 @@ import addressC from "./addAddress.module.css";
 import Map from "./Map/Map";
 import AddressForm from "./AddressForm/AddressForm";
 
-export default function AddAddressPage({ userId }) {
+export default function AddAddressPage({ userId, ip }) {
   const [address, setAddress] = useState({});
   return (
     <div className={addressC.mainContainer}>
@@ -20,7 +20,7 @@ export default function AddAddressPage({ userId }) {
             <div className={addressC.title}>
               <p>Complate Your Address</p>
             </div>
-            <AddressForm address={{ address }} userId={userId} />
+            <AddressForm ip={ip} address={{ address }} userId={userId} />
           </>
         )}
       </div>

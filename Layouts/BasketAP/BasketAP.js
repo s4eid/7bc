@@ -10,7 +10,7 @@ export default function BasketAP({ children }) {
   const router = useRouter();
   const { product } = useSelector((state) => state);
   const path = router.pathname;
-  // if (product.cartItems !== 0 && typeof window !== "undefined") {
+  // if (product.cardItems !== 0 && typeof window !== "undefined") {
   //   router.push("/basket");
   // }
   return (

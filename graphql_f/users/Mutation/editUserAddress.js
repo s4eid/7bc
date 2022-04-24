@@ -6,7 +6,7 @@ export const EDIT_USER_ADDRESS = gql`
     $country: String!
     $city: String!
     $area: String!
-    $zipCode: Int!
+    $zipCode: String!
     $ip: String!
     $phone_number: String!
     $userId: ID!

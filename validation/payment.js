@@ -2,14 +2,14 @@ import * as Yup from "yup";
 
 export const initialValues = {
   ownerName: "",
-  cartNumber: "",
+  cardNumber: "",
   month: "",
   year: "",
   cvv: "",
 };
 export const paymentSchema = Yup.object().shape({
   ownerName: Yup.string().max(100).required("Required"),
-  cartNumber: Yup.string()
+  cardNumber: Yup.string()
     .matches(/^[0-9]+$/, "Must be only digits")
     .min(16, "Must be at least 16 digits")
     .max(19, "Must be max 19 digits")
@@ -18,6 +18,6 @@ export const paymentSchema = Yup.object().shape({
   year: Yup.string().required("Required"),
   cvv: Yup.string()
     .matches(/^[0-9]+$/, "Must be only digits")
-    .max(4, "Must be max 4 digits")
+    .max(6, "Must be max 6 digits")
     .required("Required"),
 });

@@ -15,6 +15,7 @@ export const addProduct = (product_id) => async (dispatch, getState) => {
       type: PRODUCT_TYPE.ADD_PRODUCT_TYPE,
       payload: {
         name: product.name,
+        _price: product.price,
         price: product.price,
         img_1: product.img_1,
         pieces: product.pieces,

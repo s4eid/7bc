@@ -25,7 +25,7 @@ export default function MoreDetails() {
           <p>Payment:</p>
         </div>
         <div className={moreDetails.infoC}>
-          <p>Cart</p>
+          <p>Card</p>
         </div>
       </div>
     </div>

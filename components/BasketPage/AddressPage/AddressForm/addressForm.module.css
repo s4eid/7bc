@@ -82,6 +82,30 @@
   /* height: 80px; */
   flex-direction: column;
 }
+.holderPhone {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.selectContainer {
+  display: flex;
+  margin: 10px;
+  justify-content: space-around;
+  align-items: center;
+}
+.selectContainer select {
+  height: 40px;
+  font-weight: 100;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #111111;
+  color: #fff;
+  text-align: center;
+}
 .errorC {
   color: #666666;
 }

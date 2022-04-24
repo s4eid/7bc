@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import EditAddressPage from "../../../components/AccountPage/EditAddressPage/EditAddressPage";
 import Nav from "../../../Layouts/Nav/Nav";
 import { useSelector } from "react-redux";
@@ -11,6 +11,14 @@ import { getUser_server } from "../../../Functions/userC";
 
 export default function EditAddress() {
   const user = useSelector((state) => state.user);
+  const [ip, setIp] = useState();
+  useEffect(() => {
+    fetch("https://api.ipify.org?format=json", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => setIp(data.ip));
+  }, []);
   const { data, error, loading } = useQuery(GET_USER_ADDRESS, {
     variables: {
       user_id: user.user_id,
@@ -21,7 +29,11 @@ export default function EditAddress() {
   return (
     <>
       {!loading ? (
-        <EditAddressPage userId={user.user_id} address={data.getUserAddress} />
+        <EditAddressPage
+          ip={ip}
+          userId={user.user_id}
+          address={data.getUserAddress}
+        />
       ) : (
         <p>loading...</p>
       )}

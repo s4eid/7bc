@@ -25,7 +25,7 @@ export default function ProductOrders({ o }) {
         <p>{o.name}</p>
       </div>
       <div className={productOrders.price}>
-        <p>${o.price}</p>
+        <p>${o._price}</p>
       </div>
       <div className={productOrders.quantityContainer}>
         <div className={productOrders.quantityHolder}>

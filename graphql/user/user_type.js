@@ -16,14 +16,14 @@ const typeUser = gql`
     country: String!
     city: String!
     area: String!
-    zip_code: Int!
+    zip_code: String!
     ip: String!
     created_at: String!
   }
   type addUserPayment {
     user_payment_id: ID!
     owner: String!
-    cart_number: String!
+    card_number: String!
     expire_m: Int!
     expire_y: Int!
     cvv: Int!
@@ -40,19 +40,20 @@ const typeUser = gql`
     refresh_token: String
     user_payment_id: ID
     owner: String
-    cart_number: String
+    card_number: String
     expire_m: Int
     expire_y: Int
     cvv: Int
-    company: String
-    type: String
+    card_type: String
+    card_family: String
+    card_association: String
     user_address_id: ID
     address: String
     country: String
     city: String
     area: String
     phone_number: String
-    zip_code: Int
+    zip_code: String
     ip: String
   }
   type UserAddress {
@@ -63,12 +64,27 @@ const typeUser = gql`
     phone_number: String
     city: String
     area: String
-    zip_code: Int
+    zip_code: String
     ip: String
+  }
+  type UserInfo {
+    owner: String
+    card_number: String
+    expire_m: Int
+    expire_y: Int
+    cvv: Int
+    address: String!
+    country: String!
+    phone_number: String!
+    city: String!
+    area: String!
+    zip_code: String!
+    ip: String!
   }
   type Query {
     users: [getUser!]!
-    getUserAddress(user_id: ID!): UserAddress
+    getUserAddress(user_id: ID): UserAddress
+    getUserInfo(user_id: ID): UserInfo!
   }
   type Mutation {
     addUser_address(
@@ -77,7 +93,7 @@ const typeUser = gql`
       city: String!
       area: String!
       phone_number: String!
-      zip_code: Int!
+      zip_code: String!
       ip: String!
       user_id: ID!
     ): addUserAddress!
@@ -87,14 +103,14 @@ const typeUser = gql`
       phone_number: String!
       city: String!
       area: String!
-      zip_code: Int!
+      zip_code: String!
       ip: String!
       user_id: ID!
     ): addUserAddress!
 
     # addUser_payment(
     #   owner: String!
-    #   cart_number: String!
+    #   _number: String!
     #   expire_m: Int!
     #   expire_y: Int!
     #   type: String

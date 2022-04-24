@@ -2,6 +2,7 @@ import { registerUser } from "../../Querys/user/registerUser";
 import { loginUser } from "../../Querys/user/loginUser";
 import { getUserAddress } from "../../Querys/user/getUserAddress";
 import { editUser_address } from "../../Querys/user/editUser_address";
+import { getUserInfo } from "../../Querys/user/getUserInfo";
 // import { addUser } from "../../Querys/user/addUser";
 // import { deleteUser } from "../../Querys/user/deleteUser";
 import { addUser_address } from "../../Querys/user/addUser_address";
@@ -12,23 +13,12 @@ const resolverUser = {
       const data = await getUserAddress(user_id, pool);
       return data;
     },
+    async getUserInfo(_, { user_id }, { pool }) {
+      const data = await getUserInfo(user_id, pool);
+      return data;
+    },
   },
   Mutation: {
-    // async addUser(
-    //   _,
-    //   { full_name, email, password, phone_number },
-    //   { pool, res }
-    // ) {
-    //   const data = await addUser(
-    //     full_name,
-    //     email,
-    //     password,
-    //     phone_number,
-    //     pool,
-    //     res
-    //   );
-    //   return data;
-    // },
     async registerUser(_, { email, password, name }, { pool }) {
       const data = await registerUser(name, email, password, pool);
       return data;
@@ -75,12 +65,12 @@ const resolverUser = {
     },
     // async addUser_payment(
     //   _,
-    //   { owner, cart_number, expire_m, expire_y, type, cvv, company, user_id },
+    //   { owner, card_number, expire_m, expire_y, type, cvv, company, user_id },
     //   { pool }
     // ) {
     //   const data = await addUser_payment(
     //     owner,
-    //     cart_number,
+    //     card_number,
     //     expire_m,
     //     expire_y,
     //     type,
