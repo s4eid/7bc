@@ -32,7 +32,7 @@ export default function Address() {
 
   return (
     <>
-      {product.cartItems.length !== 0 && !loading && ip ? (
+      {product.cartItems.length !== 0 && !loading && ip && !user.loading ? (
         <AddressPage
           ip={ip}
           addressInfo={data.getUserAddress}
