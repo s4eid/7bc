@@ -4,18 +4,18 @@ const inisialState = {
   email: null,
   user_id: null,
   name: null,
-  loading: false,
+  loading: true,
   // exp: null,
 };
 
 export const user = (state = inisialState, action) => {
   switch (action.type) {
-    case USER_TYPE.LOADING_OFF:
+    case USER_TYPE.LOADING_OFF_USER:
       return {
         ...state,
         loading: action.payload,
       };
-    case USER_TYPE.LOADING_ON:
+    case USER_TYPE.LOADING_ON_USER:
       return {
         ...state,
         loading: action.payload,
