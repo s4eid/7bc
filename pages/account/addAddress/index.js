@@ -4,6 +4,7 @@ import Nav from "../../../Layouts/Nav/Nav";
 import { useSelector } from "react-redux";
 import Footer from "../../../Layouts/Footer/Footer";
 import { getSession } from "next-auth/react";
+import Loading from "../../../Layouts/Loading";
 
 export default function AddAddress() {
   const [ip, setIp] = useState();
@@ -15,8 +16,17 @@ export default function AddAddress() {
       .then((data) => setIp(data.ip));
   }, []);
   const user = useSelector((state) => state.user);
-
-  return <AddAddressPage userId={user.user_id} ip={ip} />;
+  return (
+    <>
+      {ip ? (
+        <AddAddressPage userId={user.user_id} ip={ip} />
+      ) : (
+        <>
+          <Loading />
+        </>
+      )}
+    </>
+  );
 }
 
 export async function getServerSideProps({ req }) {

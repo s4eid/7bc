@@ -4,6 +4,7 @@ import Footer from "../../../Layouts/Footer/Footer";
 import { useQuery } from "@apollo/client";
 import AddressesPage from "../../../components/AccountPage/AddressesPage/AddressesPage";
 import { initializeApollo } from "../../../apolloConfig/apollo";
+import Loading from "../../../Layouts/Loading";
 import { GET_USER_ADDRESS } from "../../../graphql_f/users/Query/getUserAddress";
 import { getSession } from "next-auth/react";
 import { getUser_server } from "../../../Functions/userC";
@@ -25,7 +26,7 @@ export default function Addresses() {
       {!loading ? (
         <AddressesPage userAddress={data.getUserAddress} />
       ) : (
-        <p>loading...</p>
+        <Loading />
       )}
     </>
   );

@@ -15,7 +15,6 @@ export default function Register() {
   const [registerUser, { data, loading, error }] = useMutation(REGISTER_USER);
   const [openM, setOpenM] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  console.log(showPassword);
   return (
     <div className={register.mainContainer}>
       {error ? (
@@ -33,13 +32,13 @@ export default function Register() {
           initialValues={initialValues}
           validationSchema={registerSchema}
           onSubmit={async (data) => {
-            data.email = data.email.toLowerCase();
+            let _email = data.email.toLowerCase();
+            let _name = data.full_name.toLowerCase();
             registerUser({
               variables: {
-                fullName: data.full_name,
-                email: data.email,
+                name: _name,
+                email: _email,
                 password: data.password,
-                phoneNumber: data.phone_number,
               },
               onError: (err) => setErrorMessage(err.message),
               onCompleted: (data) => {
@@ -52,26 +51,6 @@ export default function Register() {
           {({ errors, touched, isValid, dirty }) => (
             <Form className={register.fields}>
               <div className={register.inputsContainer}>
-                <div className={register.holder}>
-                  <Field
-                    id="phone_number"
-                    name="phone_number"
-                    placeholder="phone_number"
-                    inputMode="numeric"
-                    className={register.fieldE}
-                    enterKeyHint="next"
-                    required
-                  />
-                  {errors.phone_number && touched.phone_number ? (
-                    <label className={register.error}>
-                      {errors.phone_number}
-                    </label>
-                  ) : (
-                    <label className={register.errorC}>
-                      Plaese Enter Your Number
-                    </label>
-                  )}
-                </div>
                 <div className={register.holder}>
                   <Field
                     type="email"

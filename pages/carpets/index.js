@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import CarpetPage from "../../components/CarpetPage/CarpetPage.js";
 import Footer from "../../Layouts/Footer/Footer.js";
 import Nav from "../../Layouts/Nav/Nav.js";
+import Loading from "../../Layouts/Loading";
 import { initializeApollo } from "../../apolloConfig/apollo";
 import { getProduct } from "../../Redux/Actions/Products";
 import { GET_PRODUCTS } from "../../graphql_f/product/Query/getProduct";
@@ -30,7 +31,7 @@ export default function Carpet() {
           refetch={fetchMore}
         />
       ) : (
-        <p>loading...</p>
+        <Loading />
       )}
     </>
   );

@@ -9,6 +9,7 @@ import { GET_USER_ADDRESS } from "../../../graphql_f/users/Query/getUserAddress"
 import { getSession } from "next-auth/react";
 import { initializeApollo } from "../../../apolloConfig/apollo";
 import { getUser_server } from "../../../Functions/userC";
+import Loading from "../../../Layouts/Loading";
 
 export default function Address() {
   const { product } = useSelector((state) => state);
@@ -31,7 +32,7 @@ export default function Address() {
 
   return (
     <>
-      {product.cartItems.length !== 0 && !loading ? (
+      {product.cartItems.length !== 0 && !loading && ip ? (
         <AddressPage
           ip={ip}
           addressInfo={data.getUserAddress}
@@ -39,7 +40,7 @@ export default function Address() {
         />
       ) : (
         <>
-          <p>Loading...</p>
+          <Loading />
         </>
       )}
     </>

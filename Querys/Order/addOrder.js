@@ -25,7 +25,8 @@ export const add_order = async (
   try {
     const existPI = await pool.query(
       `
-SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory i ON p.product_id=i.product_id  WHERE p.product_id=ANY($1) 
+SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory i ON
+ p.product_id=i.product_id  WHERE p.product_id=ANY($1) 
 	    `,
       [product_list]
     );

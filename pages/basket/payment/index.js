@@ -3,13 +3,14 @@ import BasketAP from "../../../Layouts/BasketAP/BasketAP";
 import PaymentPage from "../../../components/BasketPage/PaymentPage/PaymentPage";
 import Nav from "../../../Layouts/Nav/Nav";
 import Footer from "../../../Layouts/Footer/Footer";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { getSession } from "next-auth/react";
 import { initializeApollo } from "../../../apolloConfig/apollo";
 import { GET_USER_INFO } from "../../../graphql_f/users/Query/getUserInfo";
 import { useQuery } from "@apollo/client";
 import { getUser_server } from "../../../Functions/userC";
+import Loading from "../../../Layouts/Loading";
 
 export default function Payment() {
   const { product, user } = useSelector((state) => state);
@@ -18,18 +19,18 @@ export default function Payment() {
       userId: user.user_id,
     },
   });
-  console.log(data);
-  const router = useRouter();
+  // console.log(data);
+  // const router = useRouter();
 
   // if (product.cartItems === 0 && typeof window !== "undefined") {
   //   router.push("/basket");
   // }
   return (
     <>
-      {!loading ? (
+      {!loading && product.cartItems.length !== 0 ? (
         <PaymentPage info={data.getUserInfo} user={user} product={product} />
       ) : (
-        <p>loading...</p>
+        <Loading />
       )}
     </>
   );

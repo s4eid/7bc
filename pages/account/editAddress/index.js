@@ -4,6 +4,7 @@ import Nav from "../../../Layouts/Nav/Nav";
 import { useSelector } from "react-redux";
 import { useQuery } from "@apollo/client";
 import { GET_USER_ADDRESS } from "../../../graphql_f/users/Query/getUserAddress";
+import Loading from "../../../Layouts/Loading";
 import { initializeApollo } from "../../../apolloConfig/apollo";
 import Footer from "../../../Layouts/Footer/Footer";
 import { getSession } from "next-auth/react";
@@ -28,14 +29,14 @@ export default function EditAddress() {
 
   return (
     <>
-      {!loading ? (
+      {!loading && ip ? (
         <EditAddressPage
           ip={ip}
           userId={user.user_id}
           address={data.getUserAddress}
         />
       ) : (
-        <p>loading...</p>
+        <Loading />
       )}
     </>
   );

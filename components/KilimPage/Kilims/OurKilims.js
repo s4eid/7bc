@@ -2,6 +2,7 @@ import React from "react";
 import ourKilims from "./ourKilims.module.css";
 import Kilim from "./Kilim";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from "../../../Layouts/Loading";
 export default function OurKilims({ products, pageInfo, refetch }) {
   const getMore = (afterCursor, hasMore) => {
     if (hasMore) {
@@ -28,7 +29,7 @@ export default function OurKilims({ products, pageInfo, refetch }) {
         next={() => getMore(pageInfo.startCursor, pageInfo.hasNextPage)}
         className={ourKilims.productsHolder}
         hasMore={pageInfo.hasNextPage}
-        loader={<p>Loading...</p>}
+        loader={<Loading />}
         scrollableTarget="scrollableDiv"
       >
         <div className={ourKilims.productMainContainer}>

@@ -7,6 +7,7 @@ import { getProduct_k } from "../../Redux/Actions/Product_k";
 import { GET_PRODUCTS } from "../../graphql_f/product/Query/getProduct";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
+import Loading from "../../Layouts/Loading/index.js";
 
 export default function Kilim() {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ export default function Kilim() {
           refetch={fetchMore}
         />
       ) : (
-        <p>loading...</p>
+        <Loading />
       )}
     </>
   );

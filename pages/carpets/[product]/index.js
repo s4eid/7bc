@@ -5,6 +5,7 @@ import Footer from "../../../Layouts/Footer/Footer";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { initializeApollo } from "../../../apolloConfig/apollo";
+import Loading from "../../../Layouts/Loading";
 import { GET_PRODUCT } from "../../../graphql_f/product/Query/getOneProduct";
 import { GET_PRODUCTS } from "../../../graphql_f/product/Query/getProduct";
 
@@ -14,9 +15,7 @@ export default function Product() {
   const { data, loading, error } = useQuery(GET_PRODUCT, {
     variables: { product_id: route },
   });
-  return (
-    <>{!loading ? <ProductPage product={data.product} /> : <p>loading...</p>}</>
-  );
+  return <>{!loading ? <ProductPage product={data.product} /> : <Loading />}</>;
 }
 export async function getStaticPaths() {
   const client = initializeApollo();
