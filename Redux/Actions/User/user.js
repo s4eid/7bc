@@ -4,8 +4,10 @@ import signOut from "../../../Functions/signOut/signOut";
 
 export const getUserInfo = () => async (dispatch) => {
   try {
+    dispatch({ type: USER_TYPE.LOADING_ON, payload: true });
     const user = await getUser("refreshToken");
     dispatch({ type: USER_TYPE.USER_INFO_TYPE, payload: user });
+    dispatch({ type: USER_TYPE.LOADING_OFF, payload: false });
   } catch (error) {
     // console.log(error);
   }

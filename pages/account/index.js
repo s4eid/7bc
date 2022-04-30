@@ -3,12 +3,13 @@ import Nav from "../../Layouts/Nav/Nav";
 import Footer from "../../Layouts/Footer/Footer";
 import AccountPage from "../../components/AccountPage/AccountPage";
 import Dashboard from "../../Layouts/Dashboard/Dashboard";
+import Loading from "../../Layouts/Loading";
 import { useSelector } from "react-redux";
 import { getSession } from "next-auth/react";
 
 export default function Account() {
   const { user } = useSelector((state) => state);
-  return <AccountPage user={user} />;
+  return <>{!user.loading ? <AccountPage user={user} /> : <Loading />}</>;
 }
 
 export async function getServerSideProps({ req, res }) {

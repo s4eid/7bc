@@ -29,7 +29,7 @@ export default function EditAddress() {
 
   return (
     <>
-      {!loading && ip ? (
+      {!loading && ip && !user.loading ? (
         <EditAddressPage
           ip={ip}
           userId={user.user_id}

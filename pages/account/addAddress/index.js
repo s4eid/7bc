@@ -18,7 +18,7 @@ export default function AddAddress() {
   const user = useSelector((state) => state.user);
   return (
     <>
-      {ip ? (
+      {ip && !user.loading ? (
         <AddAddressPage userId={user.user_id} ip={ip} />
       ) : (
         <>

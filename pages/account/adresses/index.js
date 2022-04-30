@@ -23,7 +23,7 @@ export default function Addresses() {
   });
   return (
     <>
-      {!loading ? (
+      {!loading && !user.loading ? (
         <AddressesPage userAddress={data.getUserAddress} />
       ) : (
         <Loading />
