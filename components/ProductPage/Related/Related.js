@@ -5,6 +5,7 @@ import Carpet from "../../CarpetPage/Carpets/Carpet";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useLazyQuery } from "@apollo/client";
 import { GET_NOT_ONE_PRODUCT } from "../../../graphql_f/product/Query/getNotOneProduct";
+import Loading from "../../../Layouts/Loading";
 
 export default function Related({ product_id }) {
   const [moreProduct, { data, loading, error }] =
@@ -25,7 +26,7 @@ export default function Related({ product_id }) {
         next={() => getMore()}
         className={related.productsHolder}
         hasMore={!data}
-        loader={<p>Loading...</p>}
+        loader={<Loading />}
         scrollableTarget="scrollableDiv"
       >
         <div className={related.title}>
