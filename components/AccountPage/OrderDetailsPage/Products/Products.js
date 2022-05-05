@@ -10,7 +10,7 @@ export default function Products({ o }) {
   return (
     <div
       className={products.mainContainer}
-      onClick={() => router.push("/carpets/1")}
+      onClick={() => router.push(`/carpets/${o.product_id}`)}
     >
       <div className={products.productC}>
         <div className={products.productImage}>

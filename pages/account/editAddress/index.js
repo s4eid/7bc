@@ -24,6 +24,7 @@ export default function EditAddress() {
     variables: {
       user_id: user.user_id,
     },
+    skip: !user.user_id,
     nextFetchPolicy: "network-only",
   });
 

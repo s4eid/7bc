@@ -84,7 +84,7 @@ const typeUser = gql`
   type Query {
     users: [getUser!]!
     getUserAddress(user_id: ID): UserAddress
-    getUserInfo(user_id: ID): UserInfo!
+    getUserInfo(user_id: ID): UserInfo
   }
   type Mutation {
     addUser_address(
