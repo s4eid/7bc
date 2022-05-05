@@ -3,15 +3,30 @@ import OrderDetailsPage from "../../../../components/AccountPage/OrderDetailsPag
 import Nav from "../../../../Layouts/Nav/Nav";
 import Footer from "../../../../Layouts/Footer/Footer";
 import DashboardS from "../../../../Layouts/Dashboard/DashboardS";
+import { initializeApollo } from "../../../../apolloConfig/apollo";
+import { useQuery } from "@apollo/client";
 import { getSession } from "next-auth/react";
+import { GET_ORDER } from "../../../../graphql_f/order/Query/getOrder";
+import { useRouter } from "next/router";
+import Loading from "../../../../Layouts/Loading";
 
 export default function OrderDetails() {
-  return <OrderDetailsPage />;
+  const router = useRouter();
+  const order_id = router.query;
+  console.log(order_id);
+  const { data, error, loading } = useQuery(GET_ORDER, {
+    variables: {
+      orderId: order_id.order,
+    },
+  });
+  console.log(data);
+  return (
+    <>{!loading ? <OrderDetailsPage order={data.getOrder} /> : <Loading />}</>
+  );
 }
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps({ req, res, query }) {
   const session = await getSession({ req });
-
   if (!req.cookies.refreshToken && !session) {
     return {
       redirect: {
@@ -20,8 +35,18 @@ export async function getServerSideProps({ req, res }) {
       },
     };
   }
+  const order_id = query.order;
+  const client = initializeApollo();
+  await client.query({
+    query: GET_ORDER,
+    variables: {
+      orderId: order_id,
+    },
+  });
   return {
-    props: {},
+    props: {
+      initialApolloState: client.cache.extract(),
+    },
   };
 }
 OrderDetails.Nav = Nav;

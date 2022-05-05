@@ -15,21 +15,22 @@
   color: #0081ef;
 }
 .productC {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 33%;
+  text-align: center;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
 }
-.productC p {
-  margin: 10px;
-}
-.productImage {
-  position: relative;
-  width: 50px;
-  height: 80px;
-}
+
 .statusC {
+  width: 33%;
+  text-align: center;
   font-size: 18px;
   color: #111111;
+}
+.priceC {
+  width: 33%;
+  text-align: center;
 }
 .iconHolder {
   position: absolute;
@@ -44,9 +45,6 @@
   .mainContainer {
     font-size: 14px;
     padding: 0;
-  }
-  .productC p {
-    display: none;
   }
 }
 @media screen and (max-width: 400px) {

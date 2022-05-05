@@ -21,7 +21,6 @@ export const add_order = async (
   ip,
   pool
 ) => {
-  console.log(cart_items);
   try {
     const existPI = await pool.query(
       `
@@ -32,7 +31,6 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
     );
     const existP = existPI.rows;
     let hasError = false;
-    console.log(existP);
     for (let i = 0; i < existP.length; i++) {
       let currentId = existP[i].product_id;
       let findOne = cart_items.find(({ id }) => id == currentId);
@@ -114,7 +112,8 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
     };
 
     await iyzipay.payment.create(request, async function (err, result) {
-      console.log(err, result);
+      console.log(err);
+      console.log(result);
       let status = result.status;
       let currency = result.currency;
       let conversationId = result.paymentId;
@@ -128,7 +127,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       let iyziCommissionFee = result.iyziCommissionFee;
       let iyziCommissionRateAmount = result.iyziCommissionRateAmount;
       let itemTransactions = result.itemTransactions;
-      if (err) {
+      if (status === "failure") {
         return new ApolloError("Somthing Went Wrong!");
       }
       const order = await pool.query(

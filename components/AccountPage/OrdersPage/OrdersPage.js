@@ -4,13 +4,13 @@ import Order from "./Order/Order";
 import Title from "./Title/Title";
 import { ordersItems } from "../../../data/ordersItems";
 
-export default function OrdersPage() {
+export default function OrdersPage({ _orders }) {
   return (
     <div className={orders.mainContainer}>
       <div className={orders.titleContainer}>
         <Title />
       </div>
-      {ordersItems.map((o, index) => (
+      {_orders?.map((o, index) => (
         <Order key={index} o={o} />
       ))}
     </div>

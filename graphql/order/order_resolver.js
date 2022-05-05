@@ -1,7 +1,19 @@
 import { add_order } from "../../Querys/Order/addOrder";
+import { getOrder } from "../../Querys/Order/getOrder";
+import { getOrders } from "../../Querys/Order/getOrders";
 
 const resolverUser = {
-  Query: {},
+  Query: {
+    async getOrder(_, { order_id }, { pool }) {
+      const data = await getOrder(order_id, pool);
+      console.log(data);
+      return data;
+    },
+    async getOrders(_, { user_id }, { pool }) {
+      const data = await getOrders(user_id, pool);
+      return data;
+    },
+  },
   Mutation: {
     async add_order(
       _,

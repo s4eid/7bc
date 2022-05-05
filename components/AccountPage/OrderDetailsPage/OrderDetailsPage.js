@@ -5,16 +5,21 @@ import Title from "./Title/Title";
 import { ordersItems } from "../../../data/ordersItems";
 import MoreDetails from "./MoreDetails/MoreDetails";
 
-export default function OrderDetailsPage() {
+export default function OrderDetailsPage({ order }) {
   return (
     <div className={orderDetails.mainContainer}>
       <div className={orderDetails.titleContainer}>
-        <Title />
+        <Title
+          date={order.order_info.created_at}
+          order_id={order.order_info.order_id}
+          //  total={order.paid_price}
+          // status={order.order_info.status}
+        />
       </div>
-      {ordersItems.map((o, index) => (
+      {order.order_items.map((o, index) => (
         <Products o={o} key={index} />
       ))}
-      <MoreDetails />
+      <MoreDetails order_info={order.order_info} />
     </div>
   );
 }

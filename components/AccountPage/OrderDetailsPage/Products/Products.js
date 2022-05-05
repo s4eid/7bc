@@ -14,12 +14,12 @@ export default function Products({ o }) {
     >
       <div className={products.productC}>
         <div className={products.productImage}>
-          <Image src={o.img} layout="fill" />
+          <Image src={o.img_1} layout="fill" />
         </div>
         <p>{o.name}</p>
       </div>
       <div className={products.priceHolder}>
-        <p>{o.price}</p>
+        <p>{o.paid_price}$</p>
       </div>
       <div className={products.quantityHolder}>
         <p>{o.quantity}</p>

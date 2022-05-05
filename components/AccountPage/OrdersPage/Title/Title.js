@@ -5,7 +5,7 @@ export default function Title() {
   return (
     <div className={title.mainContainer}>
       <ul className={title.listT}>
-        <li>Product</li>
+        <li>Date</li>
         <li>Price</li>
         <li>Status</li>
       </ul>
