@@ -23,7 +23,7 @@ export default function AddressForm({ address, ip, userId }) {
         initialValues={inisitial}
         validationSchema={addressSchema}
         onSubmit={async (data) => {
-          const _phone = `+${data.code}${data.phone_number}`;
+          // const _phone = `${data.phone_number}`;
           editUserAddress({
             variables: {
               address: data.address,
@@ -31,7 +31,7 @@ export default function AddressForm({ address, ip, userId }) {
               city: data.city,
               country: data.country,
               userId: userId,
-              phone_number: _phone,
+              phone_number: data.phone_number,
               zipCode: data.zipCode,
               ip: ip,
             },
@@ -41,7 +41,7 @@ export default function AddressForm({ address, ip, userId }) {
           });
         }}
       >
-        {({ errors, touched, isValid, dirty }) => (
+        {({ errors, touched, isValid, dirty, setFieldValue, values }) => (
           <Form className={addressForm.fields}>
             <div className={addressForm.inputsContainer}>
               <div className={addressForm.holder}>
@@ -129,6 +129,12 @@ export default function AddressForm({ address, ip, userId }) {
                   <div className={addressForm.selectContainer}>
                     <Field
                       required
+                      // type=""
+                      onChange={(e) => {
+                        setFieldValue("phone_number", `+${e.target.value}`);
+                        setFieldValue("code", e.target.value);
+                      }}
+                      value={values.code}
                       as="select"
                       name="code"
                       placeholder={"Code"}

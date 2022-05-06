@@ -1,0 +1,66 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.mainContainer {
+  border-radius: 3px;
+  background: rgba(17, 17, 17, 0.84);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  border: 1px solid rgba(17, 17, 17, 0.3);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 5px;
+  width: 50vw;
+  height: 100vh;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+}
+.cartBtn {
+  border-radius: 5px;
+  background-color: #0081ef;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  transition: 0.3s ease-out;
+}
+.cartBtn:hover {
+  color: #111111;
+}
+.closeBtn {
+  border-radius: 5px;
+  background-color: red;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  transition: 0.3s ease-out;
+}
+.closeBtn:hover {
+  color: #111111;
+}
+.cartItemC {
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 900px) {
+  .cartBtn {
+    font-size: 14px;
+  }
+}
