@@ -15,14 +15,14 @@ export default function AddBasket({ setOpen, open }) {
       <motion.div
         initial={{
           x: "100vw",
-          opacity: 0,
+          //   opacity: 0,
         }}
         animate={{
           x: "50vw",
-          opacity: 1,
+          //   opacity: 1,
           //   scale: 1.5,
         }}
-        transition={{ type: "spring", stiffness: 100 }}
+        // transition={{ type: "spring", stiffness: 100 }}
         className={addBasket.mainContainer}
       >
         <div className={addBasket.cartItemC}>

@@ -1,5 +1,7 @@
 .overlay {
   position: fixed;
+  display: flex;
+  align-items: center;
   top: 0;
   left: 0;
   right: 0;
@@ -21,11 +23,12 @@
   flex-direction: column;
   padding: 5px;
   width: 50vw;
-  height: 100vh;
+  height: 90vh;
 }
 .buttonContainer {
   display: flex;
   justify-content: space-around;
+  margin-top: 10px;
 }
 .cartBtn {
   border-radius: 5px;
