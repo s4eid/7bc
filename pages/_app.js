@@ -1,15 +1,19 @@
 import "../styles/globals.css";
 import React from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Router from "next/router";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Provider } from "react-redux";
 import { SessionProvider } from "next-auth/react";
+import Head from "next/head";
 import { createWrapper } from "next-redux-wrapper";
 import store from "../Redux/Store/store";
 import { useApollo } from "../apolloConfig/apollo";
 import { ApolloProvider } from "@apollo/client";
+import NProgress from "nprogress";
+NProgress.configure({ showSpinner: false });
 
 function App({ Component, pageProps }) {
   const apolloClient = useApollo(pageProps.initialApolloState);
@@ -20,24 +24,43 @@ function App({ Component, pageProps }) {
     ? Component.DashboardS
     : React.Fragment;
   const BasketAP = Component.BasketAP ? Component.BasketAP : React.Fragment;
+  Router.events.on("routeChangeStart", (uri) => {
+    console.log("route is changing");
+    NProgress.start();
+  });
+  Router.events.on("routeChangeComplete", (uri) => {
+    console.log("route is changed");
+    NProgress.done();
+  });
   return (
-    <SessionProvider session={pageProps.session}>
-      <ApolloProvider client={apolloClient}>
-        <Provider store={store}>
-          <Nav>
-            <Footer>
-              <Dashboard>
-                <DashboardS>
-                  <BasketAP>
-                    <Component {...pageProps} />
-                  </BasketAP>
-                </DashboardS>
-              </Dashboard>
-            </Footer>
-          </Nav>
-        </Provider>
-      </ApolloProvider>
-    </SessionProvider>
+    <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
+          integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
+      </Head>
+      <SessionProvider session={pageProps.session}>
+        <ApolloProvider client={apolloClient}>
+          <Provider store={store}>
+            <Nav>
+              <Footer>
+                <Dashboard>
+                  <DashboardS>
+                    <BasketAP>
+                      <Component {...pageProps} />
+                    </BasketAP>
+                  </DashboardS>
+                </Dashboard>
+              </Footer>
+            </Nav>
+          </Provider>
+        </ApolloProvider>
+      </SessionProvider>
+    </>
   );
 }
 const makeStore = () => store;
