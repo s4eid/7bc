@@ -84,6 +84,7 @@ const typeUser = gql`
   type Query {
     users: [getUser!]!
     getUserAddress(user_id: ID): UserAddress
+    resetPassword(email: String!): String
     getUserInfo(user_id: ID): UserInfo
   }
   type Mutation {
@@ -120,6 +121,7 @@ const typeUser = gql`
     # ): addUserPayment!
     registerUser(name: String!, email: String!, password: String!): User
     loginUser(email: String!, password: String!): User
+    confrimPassword(user_id: ID!, password: String!): String
   }
 `;
 export default typeUser;

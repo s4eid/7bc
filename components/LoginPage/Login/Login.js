@@ -9,7 +9,7 @@ import { getUserInfo } from "../../../Redux/Actions/User/user";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-export default function Register() {
+export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);

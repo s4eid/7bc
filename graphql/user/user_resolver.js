@@ -6,7 +6,10 @@ import { getUserInfo } from "../../Querys/user/getUserInfo";
 // import { addUser } from "../../Querys/user/addUser";
 // import { deleteUser } from "../../Querys/user/deleteUser";
 import { addUser_address } from "../../Querys/user/addUser_address";
+import { confrimPassword } from "../../Querys/user/confrimPassword";
+import { resetPassword } from "../../Querys/user/resetPassword";
 // import { addUser_payment } from "../../Querys/user/addUser_payment";
+
 const resolverUser = {
   Query: {
     async getUserAddress(_, { user_id }, { pool }) {
@@ -15,6 +18,10 @@ const resolverUser = {
     },
     async getUserInfo(_, { user_id }, { pool }) {
       const data = await getUserInfo(user_id, pool);
+      return data;
+    },
+    async resetPassword(_, { email }, { pool }) {
+      const data = await resetPassword(email, pool);
       return data;
     },
   },
@@ -61,6 +68,10 @@ const resolverUser = {
         user_id,
         pool
       );
+      return data;
+    },
+    async confrimPassword(_, { user_id, password }, { pool }) {
+      const data = await confrimPassword(user_id, password, pool);
       return data;
     },
     // async addUser_payment(
