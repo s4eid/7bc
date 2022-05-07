@@ -21,9 +21,7 @@ export default function AddAddress() {
       {ip && !user.loading ? (
         <AddAddressPage userId={user.user_id} ip={ip} />
       ) : (
-        <>
-          <Loading />
-        </>
+        <Loading />
       )}
     </>
   );

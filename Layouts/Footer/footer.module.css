@@ -1,7 +1,9 @@
 .mainContainer {
   width: 100%;
-  min-height: 50px;
+  height: auto;
+  /* min-height: 50px; */
   display: flex;
+  /* flex-direction: column; */
   justify-content: space-around;
   align-items: center;
   border-top: 2px solid #0081ef;
@@ -16,15 +18,35 @@
   justify-content: left;
   margin-left: 10px;
 }
+.secureTitle {
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .mapContainer {
   width: 33%;
-  height: 90px;
-  color: #0081ef;
+  /* height: 90px; */
+  color: #fff;
   font-size: 40px;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 40px;
   display: flex;
+}
+.shoppingC {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.shippingC {
+  display: flex;
+  justify-content: space-around;
+  font-size: 30px;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
 }
 .contactHolder {
   display: flex;
@@ -32,16 +54,21 @@
   align-items: center;
   width: 33%;
 }
+.IconHolder {
+  background-color: #fff;
+  color: #111111;
+  padding: 5px;
+  border-radius: 10px;
+}
 .contactContainer {
   display: flex;
   justify-content: space-around;
   align-items: center;
   gap: 10px;
-  color: #fff;
   font-size: 35px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .mainContainer {
     height: auto;
     flex-direction: column;

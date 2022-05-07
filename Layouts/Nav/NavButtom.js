@@ -6,11 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SEARCH_PRODUCT } from "../../graphql_f/product/Query/searchProduct";
 import { useLazyQuery } from "@apollo/client";
 import SearchResult from "./SearchResult";
-import {
-  faSearch,
-  faSlash,
-  faShoppingBasket,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
+import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons";
 import { useRouter } from "next/router";
 
 export default function NavButtom() {
@@ -63,7 +60,7 @@ export default function NavButtom() {
             }}
           />
           <FontAwesomeIcon
-            icon={faSlash}
+            icon={faXmarkCircle}
             onClick={() => setSearchOpen(!searchOpen)}
             className={searchOpen ? nav.closeSearchBox : nav.notDisplay}
           />

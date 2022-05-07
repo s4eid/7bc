@@ -43,7 +43,7 @@ export default function AddressForm({ address, userId, ip }) {
           });
         }}
       >
-        {({ errors, touched, isValid, dirty }) => (
+        {({ errors, touched, isValid, dirty, values, setFieldValue }) => (
           <Form className={addressForm.fields}>
             <div className={addressForm.inputsContainer}>
               <div className={addressForm.holder}>
@@ -395,7 +395,6 @@ export default function AddressForm({ address, userId, ip }) {
                   placeholder={"ZipCode"}
                   className={addressForm.fieldE}
                   name="zipCode"
-                  inputMode="numeric"
                   enterKeyHint="done"
                   required
                 />

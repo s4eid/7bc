@@ -394,7 +394,6 @@ export default function AddressForm({ address, ip, userId }) {
                   placeholder={"ZipCode"}
                   className={addressForm.fieldE}
                   name="zipCode"
-                  inputMode="numeric"
                   enterKeyHint="done"
                   required
                 />
