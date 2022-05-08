@@ -7,7 +7,10 @@ export const confrimPassword = async (user_id, password, pool) => {
       `select change_password from users where user_id=$1`,
       [user_id]
     );
-    if (changeOr.rows[0].change_password == true) {
+    if (
+      changeOr.rows[0].change_password == true &&
+      changeOr.rows[0].verified == true
+    ) {
       const _password = await hash(password, 10);
       await pool.query("update users SET password=$1 WHERE user_id=$2", [
         _password,

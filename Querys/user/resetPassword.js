@@ -4,10 +4,11 @@ import { ApolloError } from "apollo-server-errors";
 
 export const resetPassword = async (email, pool) => {
   try {
-    const user = await pool.query(`select user_id from users where email=$1`, [
-      email,
-    ]);
-    if (user.rowCount !== 0) {
+    const user = await pool.query(
+      `select user_id,verified from users where email=$1`,
+      [email]
+    );
+    if (user.rowCount !== 0 && user.rows[0].verified == true) {
       const user_id = user.rows[0].user_id;
       const token = jwt.sign({ user_id }, process.env.PASSWORD_CONFRIM_SEC, {
         expiresIn: "1h",
@@ -23,7 +24,7 @@ export const resetPassword = async (email, pool) => {
         html: `Reset Your Password:<a href="${url}">${url}</a>`,
       };
       await sendGrid.send(message);
-      return "done";
+      return email;
     }
     return new ApolloError("User Is Not Exist!");
   } catch (error) {
