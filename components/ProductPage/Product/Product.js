@@ -19,7 +19,7 @@ export default function Product({ p }) {
     <>
       <div className={productC.mainContainer}>
         <div className={productC.title}>
-          <p>{p.name}</p>
+          <h1>{p.name}</h1>
         </div>
         <div className={productC.detailsContainer}>
           <Slide imgs={imgs} />

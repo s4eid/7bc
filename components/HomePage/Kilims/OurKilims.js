@@ -6,7 +6,7 @@ export default function OurKilims() {
   return (
     <div className={ourKilims.container}>
       <div className={ourKilims.mainContainer}>
-        <p className={ourKilims.title}>Our Kilims</p>
+        <h1 className={ourKilims.title}>Our Kilims</h1>
       </div>
       <div className={ourKilims.kilimMainContainer}>
         {kilimsItems.map((kilim, index) => (

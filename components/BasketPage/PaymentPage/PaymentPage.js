@@ -8,7 +8,7 @@ export default function PaymentPage({ info, user, product }) {
     <div className={payment.mainContainer}>
       <div>
         <div className={payment.title}>
-          <p>Payment information</p>
+          <h1>Payment information</h1>
         </div>
         <PaymentForm product={product} user={user} info={info} />
       </div>

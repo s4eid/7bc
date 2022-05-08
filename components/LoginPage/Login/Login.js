@@ -25,7 +25,7 @@ export default function Login() {
         <></>
       )}
       <div className={login.title}>
-        <p>Login</p>
+        <h1>Login</h1>
       </div>
       <div className={login.container}>
         <Formik

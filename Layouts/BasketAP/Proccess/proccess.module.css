@@ -48,6 +48,12 @@
   border: none;
   height: 5px;
 }
+.proccessHolder h1 {
+  font-size: 20px;
+}
+.proccessHolderS h1 {
+  font-size: 20px;
+}
 @media screen and (max-width: 1000px) {
   .proccessHolder {
     width: 200px;
@@ -64,11 +70,11 @@
   .proccessHolderS {
     width: 100px;
   }
-  .proccessHolder p {
+  .proccessHolder h1 {
     display: none;
   }
 
-  .proccessHolderS p {
+  .proccessHolderS h1 {
     display: none;
   }
 }

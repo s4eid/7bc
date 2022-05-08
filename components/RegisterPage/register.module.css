@@ -28,10 +28,12 @@
   border-bottom: 3px solid #666666;
   justify-content: space-around;
   align-items: center;
-  font-size: 16px;
   font-weight: 700;
   color: #666666;
   margin-bottom: 40px;
+}
+.title h1 {
+  font-size: 20px;
 }
 
 .logo {

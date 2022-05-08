@@ -8,7 +8,7 @@ export default function ExistAddress({ userAddress }) {
     <div className={address.mainContainer}>
       <div className={address.iconC}>
         <FontAwesomeIcon className={address.iconCIcon} icon={faMapMarkerAlt} />
-        <p>Location</p>
+        <h1 className={address.title}>Location</h1>
       </div>
       <div className={address.mainHolder}>
         <div className={address.addressHolder}>

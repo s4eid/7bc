@@ -6,7 +6,7 @@ export default function EditAddressPage({ ip, userId, address }) {
   return (
     <div className={addressC.mainContainer}>
       <div className={addressC.title}>
-        <p>Edit Your Address</p>
+        <h1>Edit Your Address</h1>
       </div>
       <AddressForm address={address} ip={ip} userId={userId} />
     </div>

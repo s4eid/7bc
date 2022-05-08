@@ -21,7 +21,7 @@ export default function BasketAP({ children }) {
         <div className={basketAp.sideHolder}>
           {path !== "/basket/payment" ? (
             <div className={basketAp.container}>
-              <p className={basketAp.title}>Basket</p>
+              <h1 className={basketAp.title}>Basket</h1>
 
               <div className={basketAp.orderItemC}>
                 {product.cartItems.map((p, index) => (

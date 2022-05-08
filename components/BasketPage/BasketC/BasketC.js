@@ -8,9 +8,9 @@ export default function BasketC({ products }) {
   return (
     <div className={basketC.mainContainer}>
       <div className={basketC.basketHolder}>
-        <p className={basketC.title}>
+        <h1 className={basketC.titleC}>
           {products.length !== 0 ? "Basket" : "Basket is emty!!!"}
-        </p>
+        </h1>
         <div className={basketC.productContainer}>
           <div className={basketC.productHC}>
             {products.map((o, index) => (
@@ -20,7 +20,7 @@ export default function BasketC({ products }) {
         </div>
       </div>
       <div className={basketC.basketDHolder}>
-        <p className={basketC.title}>Basket Details</p>
+        <h1 className={basketC.titleC}>Basket Details</h1>
         <div className={basketC.detailsC}>
           <div className={basketC.infoHolder}>
             <p className={basketC.title}>Price</p>

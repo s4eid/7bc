@@ -15,6 +15,9 @@
   color: #666666;
   margin-bottom: 40px;
 }
+.title h1 {
+  font-size: 20px;
+}
 .mainRelateHolder {
   width: 100%;
   display: flex;

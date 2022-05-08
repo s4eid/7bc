@@ -12,6 +12,9 @@
   align-items: center;
   word-wrap: break-word;
 }
+.title {
+  font-size: 20px;
+}
 .mainHolder {
   /* width: 50%; */
   gap: 10px;

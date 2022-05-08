@@ -11,14 +11,14 @@ export default function AddAddressPage({ userId, ip }) {
         {!address.country ? (
           <>
             <div className={addressC.title}>
-              <p>Search Your Address</p>
+              <h1>Search Your Address</h1>
             </div>
             <Map setAddress={setAddress} />
           </>
         ) : (
           <>
             <div className={addressC.title}>
-              <p>Complate Your Address</p>
+              <h1>Complate Your Address</h1>
             </div>
             <AddressForm ip={ip} address={{ address }} userId={userId} />
           </>

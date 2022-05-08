@@ -25,7 +25,7 @@ export default function Register() {
         <></>
       )}
       <div className={register.title}>
-        <p>Register</p>
+        <h1>Register</h1>
       </div>
       <div className={register.container}>
         <Formik

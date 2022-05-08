@@ -37,6 +37,9 @@
 .title {
   font-weight: bold;
 }
+.titleC {
+  font-size: 20px;
+}
 .detailsC {
   width: 100%;
   display: flex;

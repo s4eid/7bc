@@ -17,7 +17,7 @@ export default function Proccess() {
         className={proccess.proccessHolderS}
       >
         <FontAwesomeIcon icon={faBox} className={proccess.icon} />
-        <p>Basket</p>
+        <h1>Basket</h1>
       </div>
       <div
         className={
@@ -28,7 +28,7 @@ export default function Proccess() {
         onClick={() => router.push("/basket/address")}
       >
         <FontAwesomeIcon icon={faMapMarkedAlt} className={proccess.icon} />
-        <p>Address</p>
+        <h1>Address</h1>
       </div>
       <div
         className={
@@ -38,7 +38,7 @@ export default function Proccess() {
         }
       >
         <FontAwesomeIcon icon={faMoneyCheckAlt} className={proccess.icon} />
-        <p>Payment</p>
+        <h1>Payment</h1>
       </div>
       <div className={proccess.lineC}>
         <hr className={proccess.line}></hr>

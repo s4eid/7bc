@@ -6,7 +6,7 @@ export default function OurCarpets() {
   return (
     <div className={ourCarpets.container}>
       <div className={ourCarpets.mainContainer}>
-        <p className={ourCarpets.title}>Our Carpets</p>
+        <h1 className={ourCarpets.title}>Our Carpets</h1>
       </div>
       <div className={ourCarpets.carpetMainContainer}>
         {carpetsItems.map((carpet, index) => (

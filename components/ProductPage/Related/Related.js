@@ -30,7 +30,7 @@ export default function Related({ product_id }) {
         scrollableTarget="scrollableDiv"
       >
         <div className={related.title}>
-          <p>Related Products</p>
+          <h1>Related Products</h1>
         </div>
         <div className={related.mainRelateHolder}>
           {data?.notOneProduct.map((c, index) => (

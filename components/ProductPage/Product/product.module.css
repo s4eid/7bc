@@ -16,6 +16,9 @@
   color: #666666;
   margin-bottom: 40px;
 }
+.title h1 {
+  font-size: 20px;
+}
 .detailsContainer {
   display: flex;
   justify-content: space-around;

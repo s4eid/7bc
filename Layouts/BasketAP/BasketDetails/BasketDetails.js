@@ -4,7 +4,7 @@ import basketDetails from "./basketDetails.module.css";
 export default function BasketDetails({ product }) {
   return (
     <div className={basketDetails.basketDHolder}>
-      <p className={basketDetails.title}>Basket Details</p>
+      <h1 className={basketDetails.titleC}>Basket Details</h1>
       <div className={basketDetails.detailsC}>
         <div className={basketDetails.infoHolder}>
           <p className={basketDetails.title}>Price</p>
