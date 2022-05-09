@@ -2,12 +2,10 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  /* width: 100%; */
   padding: 20px;
   position: relative;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  /* border: 2px solid #666666; */
   border-radius: 5px;
   align-items: center;
   word-wrap: break-word;
@@ -16,29 +14,22 @@
   font-size: 20px;
 }
 .mainHolder {
-  /* width: 50%; */
   gap: 10px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  /* flex-direction: column; */
 }
 .addressHolder {
-  /* width: 50%; */
   text-align: center;
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
 }
 .iconC {
-  /* position: absolute;
-  left: 0; */
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* width: 25%; */
   text-align: center;
   color: #0081ef;
 }

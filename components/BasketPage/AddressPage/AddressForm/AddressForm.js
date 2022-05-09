@@ -4,11 +4,18 @@ import { useRouter } from "next/router";
 import { addressSchema } from "../../../../validation/address";
 import { Formik, Field, Form } from "formik";
 import { useMutation } from "@apollo/client";
-import { EDIT_USER_ADDRESS } from "../../../../graphql_f/users/Mutation/editUserAddress";
 
-export default function AddressForm({ address, ip, userId }) {
+import { EDIT_USER_ADDRESS } from "../../../../graphql_f/users/Mutation/editUserAddress";
+import { ADD_USER_ADDRESS } from "../../../../graphql_f/users/Mutation/addUserAddress";
+
+export default function AddressForm({ address, ip, addressInfo, userId }) {
   const router = useRouter();
-  const [editUserAddress] = useMutation(EDIT_USER_ADDRESS);
+  const [editUserAddress] = useMutation(
+    addressInfo ? EDIT_USER_ADDRESS : ADD_USER_ADDRESS
+  );
+  // const [addUserAddress] = useMutation(
+  //   addressInfo ? EDIT_USER_ADDRESS : GET_USER_ADDRESS
+  // );
   const getA = address.address;
   const inisitial = {
     address: getA.country

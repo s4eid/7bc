@@ -12,7 +12,6 @@ p on o.order_id=p.order_id where o.order_id=$1
       ` select * from order_items o inner join product_img p on o.product_id=p.product_id where order_id=$1;`,
       [order_id]
     );
-    console.log(order_items);
     const orderResult = {
       order_items: order_items.rows,
       order_info: order.rows[0],

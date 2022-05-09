@@ -1,6 +1,5 @@
 .container {
   position: fixed;
-
   top: 112px;
   width: 100%;
   right: 0;
@@ -35,7 +34,8 @@
   justify-content: space-around;
 }
 .menuItems li {
-  margin: 30px;
+  margin: 10px;
   font-weight: bold;
+  cursor: pointer;
   font-size: 18px;
 }

@@ -1,8 +1,6 @@
 .mainContainer {
   display: flex;
   justify-content: space-around;
-  /* justify-content: flex-start; */
-  /* width: 500px; */
   margin: auto;
   width: 100%;
   flex-direction: column;
@@ -24,7 +22,6 @@
 }
 @media screen and (max-width: 900px) {
   .mainContainer {
-    /* margin-top: 40px; */
     width: 100%;
   }
 }

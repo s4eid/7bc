@@ -25,7 +25,12 @@ export default function AddressPage({ addressInfo, ip, userId }) {
               <div className={addressC.title}>
                 <h1>Complate Your Address</h1>
               </div>
-              <AddressForm ip={ip} address={{ address }} userId={userId} />
+              <AddressForm
+                ip={ip}
+                addressInfo={addressInfo}
+                address={{ address }}
+                userId={userId}
+              />
             </>
           )}
         </div>

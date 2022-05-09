@@ -5,7 +5,6 @@ export const getOrders = async (user_id, pool) => {
       on o.order_id=p.order_id where user_id=$1`,
       [user_id]
     );
-    console.log(data.rows);
     return data.rows;
   } catch (error) {
     console.log(error);
