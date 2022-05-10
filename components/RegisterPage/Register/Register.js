@@ -149,26 +149,21 @@ export default function Register() {
                 onClick={() => setShowPassword(!showPassword)}
               /> */}
               <div className={register.loginOr}>
-                <button
-                  type="submit"
-                  disabled={!isValid && dirty}
-                  className={isValid ? register.loginBtn : register.loginBtnD}
-                >
-                  Register
-                </button>
-                {/* <button
-                  onClick={() => setIsRegister(!isRegister)}
-                  className={register.orRegister}
-                >
-                  Have Account?
-                </button> */}
-                {/* {loading ? ( */}
-                {/* <Loading /> */}
-                {/* ) : error ? ( */}
-                {/* <Error error={errorLogin} /> */}
-                {/* ) : ( */}
-                <></>
-                {/* )} */}
+                {!loading ? (
+                  <button
+                    type="submit"
+                    disabled={!isValid && dirty}
+                    className={
+                      !isValid ? register.loginBtnD : register.loginBtn
+                    }
+                  >
+                    Register
+                  </button>
+                ) : (
+                  <button disabled={true} className={register.button}>
+                    <span className={register.buttonLoading}> </span>
+                  </button>
+                )}
               </div>
             </Form>
           )}

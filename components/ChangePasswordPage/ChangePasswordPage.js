@@ -85,7 +85,7 @@ export default function ChangePasswordPage() {
                       Change Password
                     </button>
                   ) : (
-                    <button className={changePassword.button}>
+                    <button disabled={true} className={changePassword.button}>
                       <span className={changePassword.buttonLoading}> </span>
                     </button>
                   )}

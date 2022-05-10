@@ -10,7 +10,7 @@ import CountryCode from "../../../../Layouts/CountryCode";
 
 export default function AddressForm({ address, userId, ip }) {
   const router = useRouter();
-  const [addUserAddress, { data }] = useMutation(ADD_USER_ADDRESS);
+  const [addUserAddress, { loading }] = useMutation(ADD_USER_ADDRESS);
   const getA = address.address;
   const inisitial = {
     address: getA.country
@@ -180,22 +180,21 @@ export default function AddressForm({ address, userId, ip }) {
               </div>
             </div>
             <div className={addressForm.loginOr}>
-              <button
-                type="submit"
-                disabled={!isValid && dirty}
-                className={
-                  !isValid ? addressForm.confrimBtnD : addressForm.confrimBtn
-                }
-              >
-                Add Address
-              </button>
-              {/* {loading ? ( */}
-              {/* <Loading /> */}
-              {/* ) : error ? ( */}
-              {/* <Error error={errorLogin} /> */}
-              {/* ) : ( */}
-              <></>
-              {/* )} */}
+              {!loading ? (
+                <button
+                  type="submit"
+                  disabled={!isValid && dirty}
+                  className={
+                    !isValid ? addressForm.confrimBtnD : addressForm.confrimBtn
+                  }
+                >
+                  Add Address
+                </button>
+              ) : (
+                <button disabled={true} className={addressForm.button}>
+                  <span className={addressForm.buttonLoading}> </span>
+                </button>
+              )}
             </div>
           </Form>
         )}

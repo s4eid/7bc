@@ -9,7 +9,7 @@ import Country from "../../../../Layouts/Countrys";
 import CountryCode from "../../../../Layouts/CountryCode";
 export default function AddressForm({ address, ip, userId }) {
   const router = useRouter();
-  const [editUserAddress] = useMutation(EDIT_USER_ADDRESS);
+  const [editUserAddress, { loading }] = useMutation(EDIT_USER_ADDRESS);
   const getA = address;
   const inisitial = {
     address: getA.address,
@@ -178,22 +178,21 @@ export default function AddressForm({ address, ip, userId }) {
               </div>
             </div>
             <div className={addressForm.loginOr}>
-              <button
-                type="submit"
-                disabled={!isValid && dirty}
-                className={
-                  !isValid ? addressForm.confrimBtnD : addressForm.confrimBtn
-                }
-              >
-                Edit Address
-              </button>
-              {/* {loading ? ( */}
-              {/* <Loading /> */}
-              {/* ) : error ? ( */}
-              {/* <Error error={errorLogin} /> */}
-              {/* ) : ( */}
-              <></>
-              {/* )} */}
+              {!loading ? (
+                <button
+                  type="submit"
+                  disabled={!isValid && dirty}
+                  className={
+                    !isValid ? addressForm.confrimBtnD : addressForm.confrimBtn
+                  }
+                >
+                  Edit Address
+                </button>
+              ) : (
+                <button disabled={true} className={addressForm.button}>
+                  <span className={addressForm.buttonLoading}> </span>
+                </button>
+              )}
             </div>
           </Form>
         )}

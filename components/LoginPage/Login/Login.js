@@ -103,19 +103,21 @@ export default function Login() {
                   )}
                 </div>
               </div>
-              {/* <FontAwesomeIcon
-                className={register.icon}
-                icon={!showPassword ? faEye : faEyeSlash}
-                onClick={() => setShowPassword(!showPassword)}
-              /> */}
+
               <div className={login.loginOr}>
-                <button
-                  type="submit"
-                  disabled={!isValid && dirty}
-                  className={!isValid ? login.loginBtnD : login.loginBtn}
-                >
-                  Login
-                </button>
+                {!loading ? (
+                  <button
+                    type="submit"
+                    disabled={!isValid && dirty}
+                    className={!isValid ? login.loginBtnD : login.loginBtn}
+                  >
+                    Login
+                  </button>
+                ) : (
+                  <button disabled={true} className={login.button}>
+                    <span className={login.buttonLoading}> </span>
+                  </button>
+                )}
                 <div
                   type="button"
                   onClick={() => router.push("/register")}
@@ -123,13 +125,6 @@ export default function Login() {
                 >
                   Have no account?
                 </div>
-                {/* {loading ? ( */}
-                {/* <Loading /> */}
-                {/* ) : error ? ( */}
-                {/* <Error error={errorLogin} /> */}
-                {/* ) : ( */}
-                <></>
-                {/* )} */}
               </div>
             </Form>
           )}

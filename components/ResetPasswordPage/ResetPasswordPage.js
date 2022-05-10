@@ -12,7 +12,7 @@ import { CHANGE_PASSWORD } from "../../graphql_f/users/Mutation/changePassword";
 import { useMutation } from "@apollo/client";
 export default function ResetPasswordPage({ user_id }) {
   const [showPassword, setShowPassword] = useState(false);
-  const [changePass, { error }] = useMutation(CHANGE_PASSWORD);
+  const [changePass, { error, loading }] = useMutation(CHANGE_PASSWORD);
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
   return (
@@ -103,15 +103,23 @@ export default function ResetPasswordPage({ user_id }) {
               </div>
 
               <div className={resetPassword.loginOr}>
-                <button
-                  type="submit"
-                  disabled={!isValid && dirty}
-                  className={
-                    !isValid ? resetPassword.loginBtnD : resetPassword.loginBtn
-                  }
-                >
-                  Change Password
-                </button>
+                {!loading ? (
+                  <button
+                    type="submit"
+                    disabled={!isValid && dirty}
+                    className={
+                      !isValid
+                        ? resetPassword.loginBtnD
+                        : resetPassword.loginBtn
+                    }
+                  >
+                    Reset Passowrd
+                  </button>
+                ) : (
+                  <button disabled={true} className={resetPassword.button}>
+                    <span className={resetPassword.buttonLoading}> </span>
+                  </button>
+                )}
 
                 {/* {loading ? ( */}
                 {/* <Loading /> */}

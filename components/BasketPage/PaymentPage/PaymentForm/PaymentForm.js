@@ -8,7 +8,7 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 
 export default function PaymentForm({ info, user, product }) {
-  const [addOrder, { data }] = useMutation(ADD_ORDER);
+  const [addOrder, { loading }] = useMutation(ADD_ORDER);
   const router = useRouter();
   const initialValues = {
     ownerName: info?.owner ? info.owner : "",
@@ -199,22 +199,21 @@ export default function PaymentForm({ info, user, product }) {
               </div>
             </div>
             <div className={paymentForm.loginOr}>
-              <button
-                type="submit"
-                disabled={!isValid && dirty}
-                className={
-                  !isValid ? paymentForm.confrimBtnD : paymentForm.confrimBtn
-                }
-              >
-                Pay
-              </button>
-              {/* {loading ? ( */}
-              {/* <Loading /> */}
-              {/* ) : error ? ( */}
-              {/* <Error error={errorLogin} /> */}
-              {/* ) : ( */}
-              <></>
-              {/* )} */}
+              {!loading ? (
+                <button
+                  type="submit"
+                  disabled={!isValid && dirty}
+                  className={
+                    !isValid ? paymentForm.confrimBtnD : paymentForm.confrimBtn
+                  }
+                >
+                  Pay
+                </button>
+              ) : (
+                <button disabled={true} className={paymentForm.button}>
+                  <span className={paymentForm.buttonLoading}> </span>
+                </button>
+              )}
             </div>
           </Form>
         )}

@@ -124,20 +124,21 @@ export default function SendForm() {
                 </div>
               </div>
               <div className={sendForm.loginOr}>
-                <button
-                  type="submit"
-                  disabled={!isValid && dirty}
-                  className={!isValid ? sendForm.loginBtnD : sendForm.loginBtn}
-                >
-                  Send
-                </button>
-                {/* {loading ? ( */}
-                {/* <Loading /> */}
-                {/* ) : error ? ( */}
-                {/* <Error error={errorLogin} /> */}
-                {/* ) : ( */}
-                <></>
-                {/* )} */}
+                {!loading ? (
+                  <button
+                    type="submit"
+                    disabled={!isValid && dirty}
+                    className={
+                      !isValid ? sendForm.loginBtnD : sendForm.loginBtn
+                    }
+                  >
+                    Send
+                  </button>
+                ) : (
+                  <button disabled={true} className={sendForm.button}>
+                    <span className={sendForm.buttonLoading}> </span>
+                  </button>
+                )}
               </div>
             </Form>
           )}
