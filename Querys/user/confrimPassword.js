@@ -4,7 +4,7 @@ import { hash } from "bcrypt";
 export const confrimPassword = async (user_id, password, pool) => {
   try {
     const changeOr = await pool.query(
-      `select change_password from users where user_id=$1`,
+      `select change_password,verified from users where user_id=$1`,
       [user_id]
     );
     if (

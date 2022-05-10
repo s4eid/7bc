@@ -1,36 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import sendForm from "./sendMessage.module.css";
 import { Formik, Field, Form } from "formik";
 import { initialValues, messageSchema } from "../../../validation/sendMessage";
+import { useLazyQuery } from "@apollo/client";
+import { SEND_EMIAL } from "../../../graphql_f/users/Query/sendEmail";
+import { useRouter } from "next/router";
 
 export default function SendForm() {
+  const router = useRouter();
+  const [sendMail, { loading, error }] = useLazyQuery(SEND_EMIAL);
+  const [errorMessage, setErrorMessage] = useState("");
   return (
     <div className={sendForm.mainContainer}>
-      {/* {error ? (
+      {error ? (
         <div className={sendForm.errorMessage}>
           <p>{errorMessage}</p>
         </div>
       ) : (
         <></>
-      )} */}
+      )}
       <div className={sendForm.container}>
         <Formik
           initialValues={initialValues}
           validationSchema={messageSchema}
           onSubmit={async (data) => {
-            //     data.email = await data.email.toLowerCase();
-            console.log(data);
-            //     loginUser({
-            //       variables: {
-            //         email: data.email,
-            //         password: data.password,
-            //       },
-            //       onError: (err) => setErrorMessage(err.message),
-            //       onCompleted: () => {
-            //         dispatch(getUserInfo());
-            //         router.push("/");
-            //       },
-            //     });
+            data.email = await data.email.toLowerCase();
+            sendMail({
+              variables: {
+                email: data.email,
+                name: data.name,
+                phoneNumber: data.phone_number,
+                message: data.message,
+              },
+              onError: (err) => setErrorMessage(err.message),
+              onCompleted: () => {
+                router.push("/");
+              },
+            });
           }}
         >
           {({ errors, touched, isValid, dirty }) => (

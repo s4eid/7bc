@@ -8,6 +8,7 @@ import { getUserInfo } from "../../Querys/user/getUserInfo";
 import { addUser_address } from "../../Querys/user/addUser_address";
 import { confrimPassword } from "../../Querys/user/confrimPassword";
 import { resetPassword } from "../../Querys/user/resetPassword";
+import { sendEmail } from "../../Querys/user/sendEmail";
 // import { addUser_payment } from "../../Querys/user/addUser_payment";
 
 const resolverUser = {
@@ -22,6 +23,10 @@ const resolverUser = {
     },
     async resetPassword(_, { email }, { pool }) {
       const data = await resetPassword(email, pool);
+      return data;
+    },
+    async sendEmail(_, { email, name, message, phone_number }, { pool }) {
+      const data = await sendEmail(email, name, message, phone_number, pool);
       return data;
     },
   },

@@ -86,6 +86,12 @@ const typeUser = gql`
     getUserAddress(user_id: ID): UserAddress
     resetPassword(email: String!): String
     getUserInfo(user_id: ID): UserInfo
+    sendEmail(
+      email: String!
+      name: String!
+      message: String!
+      phone_number: String
+    ): String
   }
   type Mutation {
     addUser_address(
