@@ -1,0 +1,36 @@
+.mainC {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.childC {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 500px;
+  background-color: #111111;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+}
+.childCMap {
+  width: 500px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #111111;
+  height: 171px;
+}
+.infoHolder {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.icon {
+  font-size: 27px;
+  color: #0081ef;
+}
