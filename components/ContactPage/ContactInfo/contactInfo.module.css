@@ -19,9 +19,9 @@
 }
 .childCMap {
   width: 500px;
-  padding: 10px;
+  padding: 2px;
   border-radius: 10px;
-  background-color: #111111;
+  border: 2px solid #111111;
   height: 171px;
 }
 .infoHolder {
@@ -33,4 +33,14 @@
 .icon {
   font-size: 27px;
   color: #0081ef;
+}
+@media screen and (max-width: 530px) {
+  .childC {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .childCMap {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }
