@@ -13,13 +13,11 @@ import Loading from "../../../../Layouts/Loading";
 export default function OrderDetails() {
   const router = useRouter();
   const order_id = router.query;
-  console.log(order_id);
   const { data, error, loading } = useQuery(GET_ORDER, {
     variables: {
       orderId: order_id.order,
     },
   });
-  console.log(data);
   return (
     <>{!loading ? <OrderDetailsPage order={data.getOrder} /> : <Loading />}</>
   );

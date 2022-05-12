@@ -25,11 +25,9 @@ function App({ Component, pageProps }) {
     : React.Fragment;
   const BasketAP = Component.BasketAP ? Component.BasketAP : React.Fragment;
   Router.events.on("routeChangeStart", (uri) => {
-    console.log("route is changing");
     NProgress.start();
   });
   Router.events.on("routeChangeComplete", (uri) => {
-    console.log("route is changed");
     NProgress.done();
   });
   return (
@@ -39,8 +37,8 @@ function App({ Component, pageProps }) {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
           integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
         />
       </Head>
       <SessionProvider session={pageProps.session}>

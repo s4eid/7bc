@@ -16,6 +16,7 @@ export const GET_ORDER = gql`
         # status
       }
       order_items {
+        product_id
         quantity
         paid_price
         img_1

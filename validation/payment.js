@@ -20,4 +20,5 @@ export const paymentSchema = Yup.object().shape({
     .matches(/^[0-9]+$/, "Must be only digits")
     .max(6, "Must be max 6 digits")
     .required("Required"),
+  threeD: Yup.boolean(),
 });

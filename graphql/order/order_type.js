@@ -91,6 +91,7 @@ const typeOrder = gql`
       area: String!
       zip_code: String!
       ip: String!
+      threeD: Boolean
     ): Order
   }
 `;

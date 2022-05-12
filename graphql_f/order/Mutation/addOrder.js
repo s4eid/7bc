@@ -20,6 +20,7 @@ export const ADD_ORDER = gql`
     $zipCode: String!
     $ip: String!
     $cartItems: [Cart_items!]!
+    $threeD: Boolean
   ) {
     add_order(
       user_id: $userId
@@ -40,6 +41,7 @@ export const ADD_ORDER = gql`
       zip_code: $zipCode
       cart_items: $cartItems
       ip: $ip
+      threeD: $threeD
     ) {
       status
     }

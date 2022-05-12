@@ -116,7 +116,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       console.log(result);
       let status = result.status;
       let currency = result.currency;
-      let conversationId = result.paymentId;
+      let paymentId = result.paymentId;
       let paidPrice = result.paidPrice;
       let price = result.price;
       let cardAssociation = result.cardAssociation;
@@ -142,7 +142,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       );
       await pool.query(
         `INSERT INTO order_payment 
-      (order_id,status,owner,card_number,expire_m,expire_y,cvv,currency,conversion_id,paid_price,card_association,card_family,card_type,
+      (order_id,status,owner,card_number,expire_m,expire_y,cvv,currency,payment_id,paid_price,card_association,card_family,card_type,
         price,installment,fraud_status,iyzico_commission_fee,iyzico_commission_rate)
         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)
         `,
@@ -155,7 +155,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
           expire_y,
           cvv,
           currency,
-          conversationId,
+          paymentId,
           paidPrice,
           cardAssociation,
           cardFamily,
