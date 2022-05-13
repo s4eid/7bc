@@ -9,7 +9,6 @@ export default function AddBasket({ setOpen, open }) {
   if (!open) return null;
   const { product } = useSelector((d) => d);
   const router = useRouter();
-  console.log(product);
   return (
     <div className={addBasket.overlay}>
       <motion.div

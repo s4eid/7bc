@@ -66,7 +66,6 @@ function Map({ setAddress }) {
     }
   };
 
-  console.log("rendered");
   return (
     <div className={map.mainContainer}>
       <div className={map.searchHolder}>

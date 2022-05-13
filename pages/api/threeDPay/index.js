@@ -6,7 +6,6 @@ export default async function handlre(req, res) {
     try {
       const { status, paymentId, conversationData, conversationId, mdStatus } =
         req.body;
-      console.log(req.body);
       if (status == "success") {
         var iyzipay = new Iyzipay({
           apiKey: process.env.IYZICO_API_KEY,
@@ -67,7 +66,7 @@ export default async function handlre(req, res) {
               ]
             );
             const items = await pool.query(
-              `select product_id from order_items where order_id=$1`,
+              `select product_id,quantity from order_items where order_id=$1`,
               [order_id]
             );
             const cart_items = items.rows;
@@ -93,13 +92,21 @@ export default async function handlre(req, res) {
                 ]
               );
             }
+            for (let m = 0; m < cart_items.length; m++) {
+              let currnetP = cart_items[m];
+              await pool.query(
+                `
+      update product_inventory set pieces=pieces-$1 where product_id=$2
+	    `,
+                [currnetP.quantity, currnetP.product_id]
+              );
+            }
           }
         );
         return res.redirect(`${process.env.URL}/`);
       }
       res.redirect(`${process.env.URL}/payment_error`);
     } catch (error) {
-      console.log(error);
       res.redirect(`${process.env.URL}/payment_error`);
     }
   }

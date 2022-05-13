@@ -170,8 +170,6 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       const success = (status) => {
         res.status(200).json({ status: status });
       };
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 }

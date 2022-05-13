@@ -4,7 +4,6 @@ export default async function handlre(req, res) {
   try {
     const { token } = req.query;
     //     const password = req.body.password;
-    console.log(token);
     //     console.log(password);
     //     const _password = await hash(password, 10);
     //     await pool.query("UPDATE users SET password=$1 WHERE user_id=$2", [

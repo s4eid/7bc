@@ -168,15 +168,16 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
         ]
       );
       for (let i = 0; i < cart_items.length; i++) {
-        let currnetI = cart_items[i];
         let currentIY = itemTransactions[i];
+        let findOne = cart_items.find(({ id }) => id == currentIY.itemId);
+        console.log(findOne);
         await pool.query(
           `INSERT INTO order_items (order_id,product_id,quantity,payment_transaction_id,price,
   paid_price,transaction_status,iyzico_commission_fee,iyzico_commission_rate) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
           [
             order_id,
-            currnetI.id,
-            currnetI.quantity,
+            findOne.id,
+            findOne.quantity,
             currentIY.paymentTransactionId,
             currentIY.price,
             currentIY.paidPrice,
@@ -184,6 +185,16 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
             currentIY.iyziCommissionFee,
             currentIY.iyziCommissionRateAmount,
           ]
+        );
+      }
+      for (let m = 0; m < cart_items.length; m++) {
+        let currnetP = cart_items[m];
+
+        await pool.query(
+          `
+      update product_inventory set pieces=pieces-$1 where product_id=$2
+	    `,
+          [currnetP.quantity, currnetP.id]
         );
       }
     });

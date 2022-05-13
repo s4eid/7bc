@@ -10,7 +10,6 @@ export default function Product({ p }) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const { product } = useSelector((state) => state);
-  console.log(product);
   let imgs = [p.img_1, p.img_2, p.img_3];
   imgs = imgs.filter(function (item) {
     return item !== null;

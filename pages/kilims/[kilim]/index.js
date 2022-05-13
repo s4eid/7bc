@@ -34,7 +34,6 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params }) {
-  console.log(params);
   const product_id = params.kilim;
   const client = initializeApollo();
   await client.query({

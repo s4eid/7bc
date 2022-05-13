@@ -2,7 +2,6 @@ import React from "react";
 import title from "./title.module.css";
 
 export default function Title({ date, order_id }) {
-  console.log(date);
   const parsedD = JSON.parse(date);
   const _date = new Date(parsedD).toLocaleDateString();
   return (

@@ -27,7 +27,6 @@ export default function Login({ openM, setOpenM }) {
               validationSchema={loginSchema}
               onSubmit={async (data) => {
                 data.email = await data.email.toLowerCase();
-                console.log(data);
               }}
             >
               {({ errors, touched, isValid, dirty }) => (

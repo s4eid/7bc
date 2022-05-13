@@ -42,7 +42,6 @@ export default function Register() {
               },
               onError: (err) => setErrorMessage(err.message),
               onCompleted: (data) => {
-                console.log(data);
                 setOpenM(data.registerUser.email);
               },
             });

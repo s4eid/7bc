@@ -19,7 +19,6 @@ export default function Payment() {
       userId: user.user_id,
     },
   });
-  // console.log(data);
   // const router = useRouter();
 
   // if (product.cartItems === 0 && typeof window !== "undefined") {

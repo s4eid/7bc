@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 
 export default function Products({ o }) {
   const router = useRouter();
-  console.log(o);
   return (
     <div
       className={products.mainContainer}

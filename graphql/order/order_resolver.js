@@ -6,7 +6,6 @@ const resolverUser = {
   Query: {
     async getOrder(_, { order_id }, { pool }) {
       const data = await getOrder(order_id, pool);
-      console.log(data);
       return data;
     },
     async getOrders(_, { user_id }, { pool }) {

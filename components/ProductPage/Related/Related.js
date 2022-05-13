@@ -16,9 +16,7 @@ export default function Related({ product_id }) {
         product_id: product_id,
       },
     });
-    console.log(data);
   };
-  console.log(data);
   return (
     <div className={related.mainContainer}>
       <InfiniteScroll

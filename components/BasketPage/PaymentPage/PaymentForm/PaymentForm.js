@@ -18,7 +18,6 @@ export default function PaymentForm({ info, user, product }) {
     cvv: info?.cvv ? info.cvv : "",
     threeD: false,
   };
-  console.log(error);
   return (
     <>
       <div className={paymentForm.mainContainer}>
@@ -26,7 +25,6 @@ export default function PaymentForm({ info, user, product }) {
           initialValues={initialValues}
           validationSchema={paymentSchema}
           onSubmit={async (data) => {
-            console.log(data);
             try {
               const { _info, list } = await getRightInfo(product.cartItems);
               const total = _info.reduce((x, y) => x + y.price, 0);
@@ -65,7 +63,7 @@ export default function PaymentForm({ info, user, product }) {
                 addOrder({
                   variables: {
                     userId: user.user_id,
-                    emaill: user.email,
+                    email: user.email,
                     fullName: user.name,
                     owner: data.ownerName,
                     cardNumber: data.cardNumber,
@@ -89,9 +87,7 @@ export default function PaymentForm({ info, user, product }) {
                   },
                 });
               }
-            } catch (error) {
-              console.log(error);
-            }
+            } catch (error) {}
           }}
         >
           {({ errors, touched, isValid, dirty }) => (
