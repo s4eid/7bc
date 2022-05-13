@@ -34,9 +34,9 @@ function App({ Component, pageProps }) {
   });
   Router.events.on("routeChangeComplete", (uri) => {
     // console.log(!!error.status);
-    if (error.has) {
-      dispatch(addError(null, false));
-    }
+    // if (error.has) {
+    //   dispatch(addError(null, false));
+    // }
     NProgress.done();
   });
   console.log(error);
