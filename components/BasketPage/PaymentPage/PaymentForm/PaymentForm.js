@@ -6,10 +6,14 @@ import { getRightInfo } from "../../../../Functions/payment";
 import { ADD_ORDER } from "../../../../graphql_f/order/Mutation/addOrder";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { addError } from "../../../../Redux/Actions/Error/error";
+import { clearCart } from "../../../../Redux/Actions/Product";
 
 export default function PaymentForm({ info, user, product }) {
   const [addOrder, { loading, error }] = useMutation(ADD_ORDER);
   const router = useRouter();
+  const dispatch = useDispatch();
   const initialValues = {
     ownerName: info?.owner ? info.owner : "",
     cardNumber: info?.card_number ? info.card_number : "",
@@ -57,8 +61,16 @@ export default function PaymentForm({ info, user, product }) {
                 })
                   .then((res) => res.json())
                   .then((data) => {
+                    console.log(data);
                     if (data.status == "success") {
                       router.push("/api/renderThreeD");
+                    }
+                    if (data.code === "CART_ITEMS") {
+                      dispatch(clearCart());
+                      dispatch(addError(data.error, true));
+                    }
+                    if (data.error) {
+                      dispatch(addError(data.error, true));
                     }
                   });
               } else {

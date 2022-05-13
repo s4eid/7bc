@@ -7,24 +7,27 @@ import {
 import { onError } from "@apollo/client/link/error";
 import store from "../Redux/Store/store";
 import { addError } from "../Redux/Actions/Error/error";
-import Error from "next/error";
-
-// import Cookies from "js-cookie";
+import { clearCart } from "../Redux/Actions/Product";
+import Cookies from "js-cookie";
 
 const errorLink = onError(
   ({ graphQLErrors, networkError, operation, response }) => {
-    // if (graphQLErrors) {
-    //   graphQLErrors.forEach(({ message, locations, path, extensions }) => {
-    //     if (extensions.code === "UNAUTHENTICATED") {
-    //       Cookies.remove("refresh");
-    //     }
-    //     console.log(
-    //       `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path} code:${extensions.code}`
-    //     );
-    //   });
-    // }
-
+    if (graphQLErrors) {
+      graphQLErrors.forEach(({ message, locations, path, extensions }) => {
+        if (extensions.code === "UNAUTHENTICATED") {
+          Cookies.remove("refresh");
+        }
+        if (extensions.code === "CART_ITEMS") {
+          store.dispatch(clearCart());
+          store.dispatch(addError(message, true));
+        }
+        console.log(
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path} code:${extensions.code}`
+        );
+      });
+    }
     if (networkError) {
+      console.log(networkError);
       store.dispatch(addError(networkError.statusCode, true));
     }
   }

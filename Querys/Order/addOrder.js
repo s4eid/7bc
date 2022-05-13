@@ -44,10 +44,10 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       }
     }
     if (hasError) {
-      return new ApolloError({
-        message: "Somthing is Wrong With Products!",
-        code: ERROR_CODES.CART_ITEMS,
-      });
+      return new ApolloError(
+        "Product Quantity Is Not Available In Stock!",
+        ERROR_CODES.CART_ITEMS
+      );
     }
 
     var iyzipay = new Iyzipay({

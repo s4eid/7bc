@@ -41,7 +41,7 @@ export const product = (
     case PRODUCT_TYPE.PLUS_PRODUCT_TYPE:
       var foundIndex = state.cartItems.findIndex((x) => x.product_id === item);
       if (
-        state.cartItems[foundIndex].pieces - 1 >
+        state.cartItems[foundIndex].pieces >
         state.cartItems[foundIndex].quantity
       ) {
         let newArray = state.cartItems;
@@ -70,7 +70,11 @@ export const product = (
         ...state,
         cartItems: state.cartItems.filter((x) => x.product_id !== item),
       };
-
+    case PRODUCT_TYPE.CLEAR_PRODUCT_TYPE:
+      return {
+        ...state,
+        cartItems: [],
+      };
     case PRODUCT_TYPE.LOADING_PRODUCTS_TRUE:
       return {
         ...state,

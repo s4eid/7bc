@@ -48,7 +48,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       }
       if (hasError) {
         return res.status(500).json({
-          error: "Somthing is Wrong With Products!",
+          error: "Product Quantity Is Not Available In Stock!",
           code: ERROR_CODES.CART_ITEMS,
         });
       }

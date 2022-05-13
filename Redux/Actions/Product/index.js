@@ -29,6 +29,15 @@ export const addProduct = (product_id) => async (dispatch, getState) => {
     );
   } catch (error) {}
 };
+export const clearCart = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: PRODUCT_TYPE.CLEAR_PRODUCT_TYPE,
+      payload: null,
+    });
+    localStorage.removeItem("cartItems");
+  } catch (error) {}
+};
 
 export const plusQuantity = (product_id) => async (dispatch, getState) => {
   try {
