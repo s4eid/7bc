@@ -114,7 +114,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       await iyzipay.threedsInitialize.create(
         request,
         async function (err, result) {
-          if (result.status == "success") {
+          if (result.status === "success") {
             for (let i = 0; i < cart_items.length; i++) {
               let currnetI = cart_items[i];
               // let currentIY = itemTransactions[i];

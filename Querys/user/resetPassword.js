@@ -9,7 +9,7 @@ export const resetPassword = async (email, pool) => {
       `select user_id,verified from users where email=$1`,
       [email]
     );
-    if (user.rowCount !== 0 && user.rows[0].verified == true) {
+    if (user.rowCount !== 0 && user.rows[0].verified === true) {
       const user_id = user.rows[0].user_id;
       const token = jwt.sign({ user_id }, process.env.PASSWORD_CONFRIM_SEC, {
         expiresIn: "1h",

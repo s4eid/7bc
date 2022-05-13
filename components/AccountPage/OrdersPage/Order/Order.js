@@ -26,9 +26,9 @@ export default function Order({ o }) {
         <p>{o.paid_price}$</p>
       </div>
       <div className={order.statusC}>
-        {o.status == 0 ? (
+        {o.status === 0 ? (
           <FontAwesomeIcon icon={faBoxOpen} />
-        ) : o.status == 1 ? (
+        ) : o.status === 1 ? (
           <FontAwesomeIcon icon={faTruck} />
         ) : (
           <FontAwesomeIcon icon={faCheckCircle} />

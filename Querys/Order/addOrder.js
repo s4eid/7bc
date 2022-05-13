@@ -34,7 +34,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
     let hasError = false;
     for (let i = 0; i < existP.length; i++) {
       let currentId = existP[i].product_id;
-      let findOne = cart_items.find(({ id }) => id == currentId);
+      let findOne = cart_items.find(({ id }) => id === currentId);
       if (
         existP[i].pieces < findOne.quantity ||
         existP[i].price !== findOne.priceEach
@@ -176,7 +176,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       );
       for (let i = 0; i < cart_items.length; i++) {
         let currentIY = itemTransactions[i];
-        let findOne = cart_items.find(({ id }) => id == currentIY.itemId);
+        let findOne = cart_items.find(({ id }) => id === currentIY.itemId);
         console.log(findOne);
         await pool.query(
           `INSERT INTO order_items (order_id,product_id,quantity,payment_transaction_id,price,

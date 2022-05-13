@@ -7,7 +7,7 @@ export default async function handlre(req, res) {
     try {
       const { status, paymentId, conversationData, conversationId, mdStatus } =
         req.body;
-      if (status == "success") {
+      if (status === "success") {
         var iyzipay = new Iyzipay({
           apiKey: process.env.IYZICO_API_KEY,
           secretKey: process.env.IYZICO_SECRET_KEY,
@@ -78,7 +78,7 @@ export default async function handlre(req, res) {
               let currentId = currnetI.product_id;
               let currentIY = itemTransactions[i];
               let findOne = itemTransactions.find(
-                ({ itemId }) => itemId == currentId
+                ({ itemId }) => itemId === currentId
               );
               await pool.query(
                 `update order_items set payment_transaction_id=$1,price=$2,

@@ -62,7 +62,7 @@ export default function PaymentForm({ info, user, product }) {
                   .then((res) => res.json())
                   .then((data) => {
                     console.log(data);
-                    if (data.status == "success") {
+                    if (data.status === "success") {
                       router.push("/api/renderThreeD");
                     }
                     if (data.code === "CART_ITEMS") {
