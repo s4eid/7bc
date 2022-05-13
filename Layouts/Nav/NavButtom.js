@@ -89,7 +89,9 @@ export default function NavButtom({ cartItems }) {
         {!searchOpen ? (
           <Link href="/basket">
             <div className={nav.bascketContainer}>
-              <div className={!cartItems ? nav.bascket : nav.bascketActive}>
+              <div
+                className={cartItems === 0 ? nav.bascket : nav.bascketActive}
+              >
                 <FontAwesomeIcon
                   icon={faShoppingBasket}
                   className={nav.bascketIcon}
