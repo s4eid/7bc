@@ -13,12 +13,17 @@ import {
   minusQuantity,
   deleteProduct,
 } from "../../../../Redux/Actions/Product";
+import { useRouter } from "next/router";
 
 export default function ProductOrders({ o }) {
   const dispatch = useDispatch();
+  const router = useRouter();
   return (
     <div className={productOrders.mainContainer}>
-      <div className={productOrders.productC}>
+      <div
+        className={productOrders.productC}
+        onClick={() => router.push(`/carpets/${o.product_id}`)}
+      >
         <div className={productOrders.productImage}>
           <Image src={o.img_1} alt="Product" layout="fill" />
         </div>

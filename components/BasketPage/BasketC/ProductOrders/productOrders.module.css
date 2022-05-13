@@ -11,6 +11,7 @@
 .productC {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
   align-items: center;
   word-wrap: break-word;
 }

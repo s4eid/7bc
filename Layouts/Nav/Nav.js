@@ -13,7 +13,7 @@ export default function NavBar({ children }) {
   const [navOpen, setNavOpen] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
-  const { user } = useSelector((state) => state);
+  const { user, product } = useSelector((state) => state);
   useEffect(() => {
     dispatch(getUserInfo());
   }, []);
@@ -67,7 +67,7 @@ export default function NavBar({ children }) {
         </div>
         <SideBar navItems={navItems} isOpen={navOpen} />
       </div>
-      <NavButtom />
+      <NavButtom cartItems={product?.cartItems?.length} />
       {children}
     </>
   );

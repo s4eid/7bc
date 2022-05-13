@@ -10,7 +10,7 @@ import { faSearch, faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons";
 import { useRouter } from "next/router";
 
-export default function NavButtom() {
+export default function NavButtom({ cartItems }) {
   const [text, setText] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchP, { data, loading }] = useLazyQuery(SEARCH_PRODUCT);
@@ -89,11 +89,12 @@ export default function NavButtom() {
         {!searchOpen ? (
           <Link href="/basket">
             <div className={nav.bascketContainer}>
-              <div className={nav.bascket}>
+              <div className={!cartItems ? nav.bascket : nav.bascketActive}>
                 <FontAwesomeIcon
                   icon={faShoppingBasket}
                   className={nav.bascketIcon}
                 />
+                <p className={nav.cartItems}>{cartItems}</p>
               </div>
             </div>
           </Link>
