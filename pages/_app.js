@@ -54,21 +54,21 @@ function App({ Component, pageProps }) {
       <SessionProvider session={pageProps.session}>
         <ApolloProvider client={apolloClient}>
           <Provider store={store}>
-            {error.has ? (
+            {/* {error.has ? (
               <Error statusCode={error.status} />
-            ) : (
-              <Nav>
-                <Footer>
-                  <Dashboard>
-                    <DashboardS>
-                      <BasketAP>
-                        <Component {...pageProps} />
-                      </BasketAP>
-                    </DashboardS>
-                  </Dashboard>
-                </Footer>
-              </Nav>
-            )}
+            ) : ( */}
+            <Nav>
+              <Footer>
+                <Dashboard>
+                  <DashboardS>
+                    <BasketAP>
+                      <Component {...pageProps} />
+                    </BasketAP>
+                  </DashboardS>
+                </Dashboard>
+              </Footer>
+            </Nav>
+            {/* )} */}
           </Provider>
         </ApolloProvider>
       </SessionProvider>
