@@ -17,6 +17,6 @@ export default async function handlre(req, res) {
     ]);
     return res.redirect(`${process.env.URL}/reset_password/${user_id}`);
   } catch (error) {
-    res.redirect(`${process.env.URL}`);
+    return res.redirect(`${process.env.URL}`);
   }
 }

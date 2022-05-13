@@ -1,5 +1,6 @@
 import { pool } from "../../../db";
 import Iyzipay from "iyzipay";
+import { ERROR_CODES } from "../../../errorCodes/errorCodes";
 
 export default async function handlre(req, res) {
   if (req.method === "POST") {
@@ -36,7 +37,9 @@ export default async function handlre(req, res) {
             let iyziCommissionRateAmount = result.iyziCommissionRateAmount;
             let itemTransactions = result.itemTransactions;
             if (status === "failure") {
-              res.status(500).json({ error: "Somthing Went Wrong!" });
+              return res
+                .status(500)
+                .json({ error: "Payment Failed!", code: ERROR_CODES.PAYMENT });
             }
             const order = await pool.query(
               `update orders set status=$1 where order_id=$2 returning order_id`,
@@ -105,9 +108,10 @@ export default async function handlre(req, res) {
         );
         return res.redirect(`${process.env.URL}/`);
       }
-      res.redirect(`${process.env.URL}/payment_error`);
     } catch (error) {
-      res.redirect(`${process.env.URL}/payment_error`);
+      return res
+        .status(500)
+        .json({ error: "Payment Failed!", code: ERROR_CODES.PAYMENT });
     }
   }
 }

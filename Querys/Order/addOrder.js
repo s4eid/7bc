@@ -1,5 +1,6 @@
 import { ApolloError } from "apollo-server-errors";
 import Iyzipay from "iyzipay";
+import { ERROR_CODES } from "../../errorCodes/errorCodes";
 export const add_order = async (
   user_id,
   email,
@@ -43,7 +44,10 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       }
     }
     if (hasError) {
-      return new ApolloError("Somthing is Wrong With Products!");
+      return new ApolloError({
+        message: "Somthing is Wrong With Products!",
+        code: ERROR_CODES.CART_ITEMS,
+      });
     }
 
     var iyzipay = new Iyzipay({
@@ -128,7 +132,10 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       let iyziCommissionRateAmount = result.iyziCommissionRateAmount;
       let itemTransactions = result.itemTransactions;
       if (status === "failure") {
-        return new ApolloError("Somthing Went Wrong!");
+        return new ApolloError({
+          message: "Payment Failed!",
+          code: ERROR_CODES.PAYMENT,
+        });
       }
       const order = await pool.query(
         `INSERT INTO orders (status,user_id) VALUES ($1,$2) RETURNING order_id`,
@@ -212,6 +219,9 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
     //     );
     //     return data.rows;
   } catch (error) {
-    console.log(error);
+    return new ApolloError({
+      message: "Payment Failed!",
+      code: ERROR_CODES.PAYMENT,
+    });
   }
 };

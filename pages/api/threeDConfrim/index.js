@@ -1,5 +1,6 @@
 import { pool } from "../../../db";
 import Iyzipay from "iyzipay";
+import { ERROR_CODES } from "../../../errorCodes/errorCodes";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -46,7 +47,10 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
         }
       }
       if (hasError) {
-        res.status(500).json({ error: "Somthing is Wrong With Products!" });
+        return res.status(500).json({
+          error: "Somthing is Wrong With Products!",
+          code: ERROR_CODES.CART_ITEMS,
+        });
       }
       const order = await pool.query(
         `insert into orders(status,user_id)values($1,$2) returning order_id`,
@@ -168,7 +172,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
         }
       );
       const success = (status) => {
-        res.status(200).json({ status: status });
+        return res.status(200).json({ status: status });
       };
     } catch (error) {}
   }

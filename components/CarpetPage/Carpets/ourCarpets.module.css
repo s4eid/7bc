@@ -39,6 +39,10 @@
 .productContainer img {
   transition: 0.3s ease-in-out;
 }
+.notAvailable {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
 .productMainHolder :hover img {
   transform: scale(1.3);
 }

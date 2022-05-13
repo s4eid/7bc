@@ -11,6 +11,7 @@ export const GET_PRODUCTS = gql`
           width
           height
           product_id
+          pieces
         }
       }
       pageInfo {

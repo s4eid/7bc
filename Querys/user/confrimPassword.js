@@ -1,5 +1,6 @@
 import { ApolloError } from "apollo-server-errors";
 import { hash } from "bcrypt";
+import { ERROR_CODES } from "../../errorCodes/errorCodes";
 
 export const confrimPassword = async (user_id, password, pool) => {
   try {
@@ -22,9 +23,15 @@ export const confrimPassword = async (user_id, password, pool) => {
       ]);
       return "done";
     } else {
-      return new ApolloError("Somthing Went Wrong!");
+      return new ApolloError({
+        message: "Password Error!",
+        code: ERROR_CODES.PASSWORD_CHANGE,
+      });
     }
   } catch (error) {
-    return new ApolloError("Somthing Went Wrong!");
+    return new ApolloError({
+      message: "Password Error!",
+      code: ERROR_CODES.PASSWORD_CHANGE,
+    });
   }
 };

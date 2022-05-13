@@ -35,14 +35,18 @@ export default function Product({ p }) {
           />
         </div>
         <div className={productC.productBtnC}>
-          <button
-            onClick={() => {
-              dispatch(addProduct(p.product_id));
-              setOpen(true);
-            }}
-          >
-            Add To Cart
-          </button>
+          {p.pieces > 0 ? (
+            <button
+              onClick={() => {
+                dispatch(addProduct(p.product_id));
+                setOpen(true);
+              }}
+            >
+              Add To Cart
+            </button>
+          ) : (
+            <button>Not Available</button>
+          )}
         </div>
       </div>
       <AddBasket setOpen={setOpen} open={open} />

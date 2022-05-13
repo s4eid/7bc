@@ -2,6 +2,7 @@ import { ApolloError } from "apollo-server-errors";
 import { compare } from "bcrypt";
 import { jwtGenerate } from "../../Functions/jwtGen/jwtGenerate";
 import cookie from "cookie";
+import { ERROR_CODES } from "../../errorCodes/errorCodes";
 
 export const loginUser = async (email, password, res, pool) => {
   try {
@@ -9,15 +10,24 @@ export const loginUser = async (email, password, res, pool) => {
       email,
     ]);
     if (!exist.rows[0]) {
-      return new ApolloError("Email or password is Wrong!");
+      return new ApolloError({
+        message: "Login Failed!",
+        code: ERROR_CODES.LOGIN,
+      });
     }
     if (exist.rows[0].verified === false) {
-      return new ApolloError("Account is not verifiyed!");
+      return new ApolloError({
+        message: "Account Is Not Verified Yet!",
+        code: ERROR_CODES.VERIFI,
+      });
     }
     const _password = exist.rows[0].password;
     const confrimPass = await compare(password, _password);
     if (confrimPass === false) {
-      return new ApolloError("Email or password is Wrong!");
+      return new ApolloError({
+        message: "Login Failed!",
+        code: ERROR_CODES.LOGIN,
+      });
     }
     const name = exist.rows[0].name;
     const user_id = exist.rows[0].user_id;
@@ -50,6 +60,9 @@ export const loginUser = async (email, password, res, pool) => {
 
     return exist.rows[0];
   } catch (error) {
-    console.log(error);
+    return new ApolloError({
+      message: "Login Failed!",
+      code: ERROR_CODES.LOGIN,
+    });
   }
 };

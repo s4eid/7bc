@@ -57,7 +57,9 @@ export default function PaymentForm({ info, user, product }) {
                 })
                   .then((res) => res.json())
                   .then((data) => {
-                    router.push("/api/renderThreeD");
+                    if (data.status == "success") {
+                      router.push("/api/renderThreeD");
+                    }
                   });
               } else {
                 addOrder({

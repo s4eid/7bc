@@ -1,6 +1,7 @@
 import sendGrid from "../../emailConfig";
 import jwt from "jsonwebtoken";
 import { ApolloError } from "apollo-server-errors";
+import { ERROR_CODES } from "../../errorCodes/errorCodes";
 
 export const resetPassword = async (email, pool) => {
   try {
@@ -26,7 +27,10 @@ export const resetPassword = async (email, pool) => {
       await sendGrid.send(message);
       return email;
     }
-    return new ApolloError("User Is Not Exist!");
+    return new ApolloError({
+      message: "Password Error!",
+      code: ERROR_CODES.PASSWORD_CHANGE,
+    });
   } catch (error) {
     console.log(error);
   }

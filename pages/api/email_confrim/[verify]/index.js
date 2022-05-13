@@ -4,7 +4,6 @@ import { pool } from "../../../../db/index";
 export default async function handlre(req, res) {
   try {
     const { verify } = req.query;
-    console.log(verify);
     const { user_id } = jwt.verify(verify, process.env.EMAIL_CONFRIM_SEC);
     await pool.query("UPDATE users SET verified=$1 WHERE user_id=$2", [
       true,
@@ -12,6 +11,6 @@ export default async function handlre(req, res) {
     ]);
     return res.redirect(`${process.env.URL}/login`);
   } catch (error) {
-    res.redirect(`${process.env.URL}`);
+    return res.redirect(`${process.env.URL}`);
   }
 }

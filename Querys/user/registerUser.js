@@ -2,6 +2,7 @@ import { ApolloError } from "apollo-server-errors";
 import sendGrid from "../../emailConfig";
 import { hash } from "bcrypt";
 import jwt from "jsonwebtoken";
+import { ERROR_CODES } from "../../errorCodes/errorCodes";
 
 export const registerUser = async (name, email, password, pool) => {
   try {
@@ -9,7 +10,10 @@ export const registerUser = async (name, email, password, pool) => {
       email,
     ]);
     if (exist.rows[0]) {
-      return new ApolloError("User exist!");
+      return new ApolloError({
+        message: "Register Failed!",
+        code: ERROR_CODES.REGISTER,
+      });
     }
     const _password = await hash(password, 10);
     const data = await pool.query(
@@ -33,6 +37,9 @@ export const registerUser = async (name, email, password, pool) => {
     await sendGrid.send(message);
     return data.rows[0];
   } catch (error) {
-    console.log(error);
+    return new ApolloError({
+      message: "Register Failed!",
+      code: ERROR_CODES.REGISTER,
+    });
   }
 };

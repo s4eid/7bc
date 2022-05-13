@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import { getSession } from "next-auth/react";
 import { pool } from "../../../db";
+import { ERROR_CODES } from "../../../errorCodes/errorCodes";
 
 export default async function handler(req, res) {
   try {
@@ -11,7 +12,7 @@ export default async function handler(req, res) {
       ]);
       const payHtml = user.rows[0].p_html;
       let payPage = Buffer.from(payHtml, "base64").toString("utf8");
-      res.send(payPage);
+      return res.send(payPage);
     }
     const token = req.cookies.refreshToken;
     const decodeToken = await jwt.verify(token, process.env.REFRESH_TOKEN);
@@ -24,8 +25,8 @@ export default async function handler(req, res) {
       null,
       decodeToken.email,
     ]);
-    res.send(payPage);
+    return res.send(payPage);
   } catch (error) {
-    res.status(500);
+    return res.status(500).json({ error, code: ERROR_CODES.PAYMENT });
   }
 }
