@@ -13,6 +13,9 @@ import store from "../Redux/Store/store";
 import { useApollo } from "../apolloConfig/apollo";
 import { ApolloProvider } from "@apollo/client";
 import NProgress from "nprogress";
+import { useSelector, useDispatch } from "react-redux";
+import { addError } from "../Redux/Actions/Error/error";
+import Error from "next/error";
 NProgress.configure({ showSpinner: false });
 
 function App({ Component, pageProps }) {
@@ -24,12 +27,19 @@ function App({ Component, pageProps }) {
     ? Component.DashboardS
     : React.Fragment;
   const BasketAP = Component.BasketAP ? Component.BasketAP : React.Fragment;
+  const dispatch = useDispatch();
+  const error = useSelector((data) => data.error);
   Router.events.on("routeChangeStart", (uri) => {
     NProgress.start();
   });
   Router.events.on("routeChangeComplete", (uri) => {
+    // console.log(!!error.status);
+    if (error.has) {
+      dispatch(addError(null, false));
+    }
     NProgress.done();
   });
+  console.log(error);
   return (
     <>
       <Head>
@@ -44,17 +54,21 @@ function App({ Component, pageProps }) {
       <SessionProvider session={pageProps.session}>
         <ApolloProvider client={apolloClient}>
           <Provider store={store}>
-            <Nav>
-              <Footer>
-                <Dashboard>
-                  <DashboardS>
-                    <BasketAP>
-                      <Component {...pageProps} />
-                    </BasketAP>
-                  </DashboardS>
-                </Dashboard>
-              </Footer>
-            </Nav>
+            {error.has ? (
+              <Error statusCode={error.status} />
+            ) : (
+              <Nav>
+                <Footer>
+                  <Dashboard>
+                    <DashboardS>
+                      <BasketAP>
+                        <Component {...pageProps} />
+                      </BasketAP>
+                    </DashboardS>
+                  </Dashboard>
+                </Footer>
+              </Nav>
+            )}
           </Provider>
         </ApolloProvider>
       </SessionProvider>

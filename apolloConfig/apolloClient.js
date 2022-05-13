@@ -5,6 +5,10 @@ import {
   from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
+import store from "../Redux/Store/store";
+import { addError } from "../Redux/Actions/Error/error";
+import Error from "next/error";
+
 // import Cookies from "js-cookie";
 
 const errorLink = onError(
@@ -20,7 +24,9 @@ const errorLink = onError(
     //   });
     // }
 
-    if (networkError) console.log(`[Network error]: ${networkError}`);
+    if (networkError) {
+      store.dispatch(addError(networkError.statusCode, true));
+    }
   }
 );
 const link = createHttpLink({

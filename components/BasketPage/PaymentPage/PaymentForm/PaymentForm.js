@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import paymentForm from "./paymentForm.module.css";
 import { Formik, Field, Form } from "formik";
 import { paymentSchema } from "../../../../validation/payment";
@@ -8,8 +8,7 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 
 export default function PaymentForm({ info, user, product }) {
-  const [addOrder, { loading }] = useMutation(ADD_ORDER);
-  const [page, setPage] = useState();
+  const [addOrder, { loading, error }] = useMutation(ADD_ORDER);
   const router = useRouter();
   const initialValues = {
     ownerName: info?.owner ? info.owner : "",
@@ -19,7 +18,7 @@ export default function PaymentForm({ info, user, product }) {
     cvv: info?.cvv ? info.cvv : "",
     threeD: false,
   };
-  console.log(page);
+  console.log(error);
   return (
     <>
       <div className={paymentForm.mainContainer}>
@@ -66,7 +65,7 @@ export default function PaymentForm({ info, user, product }) {
                 addOrder({
                   variables: {
                     userId: user.user_id,
-                    email: user.email,
+                    emaill: user.email,
                     fullName: user.name,
                     owner: data.ownerName,
                     cardNumber: data.cardNumber,

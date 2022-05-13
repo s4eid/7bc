@@ -95,7 +95,7 @@ export default async function handlre(req, res) {
             }
           }
         );
-        return res.redirect(`${process.env.URL}`);
+        return res.redirect(`${process.env.URL}/`);
       }
       res.redirect(`${process.env.URL}/payment_error`);
     } catch (error) {
