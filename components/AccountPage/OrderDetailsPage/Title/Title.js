@@ -1,7 +1,7 @@
 import React from "react";
 import title from "./title.module.css";
 
-export default function Title({ date, order_id }) {
+export default function Title({ date, order_id, total, status }) {
   const parsedD = JSON.parse(date);
   const _date = new Date(parsedD).toLocaleDateString();
   return (
@@ -13,7 +13,7 @@ export default function Title({ date, order_id }) {
         </div>
         <div className={title.infoHolder}>
           <p className={title.titleC}>Total</p>
-          <p className={title.info}>1550$</p>
+          <p className={title.info}>{total}$</p>
         </div>
         <div className={title.infoHolder}>
           <p className={title.titleC}>Date Placed</p>
@@ -21,7 +21,15 @@ export default function Title({ date, order_id }) {
         </div>
         <div className={title.infoHolder}>
           <p className={title.titleC}>Status</p>
-          <p className={title.info}>Delivred Jan,25,2022</p>
+          {status == 0 ? (
+            <p className={title.info}>Preparing</p>
+          ) : status == 1 ? (
+            <p className={title.info}>On Shipping Company</p>
+          ) : status == 3 ? (
+            <p className={title.info}>Done</p>
+          ) : (
+            <p className={title.info}>Waiting</p>
+          )}
         </div>
       </div>
     </div>

@@ -11,6 +11,9 @@
   word-wrap: break-word;
   cursor: pointer;
 }
+.mainContainer:last-child {
+  border-bottom: none;
+}
 .mainContainer:hover {
   color: #0081ef;
 }

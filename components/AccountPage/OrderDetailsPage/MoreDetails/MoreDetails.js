@@ -9,7 +9,7 @@ export default function MoreDetails({ order_info }) {
           <p>Shipping:</p>
         </div>
         <div className={moreDetails.infoC}>
-          <p>0$</p>
+          <p>{order_info.shipping_price}$</p>
         </div>
       </div>
       <div className={moreDetails.holderC}>
@@ -57,7 +57,7 @@ export default function MoreDetails({ order_info }) {
           <p>Paid Price:</p>
         </div>
         <div className={moreDetails.infoC}>
-          <p>{order_info.paid_price}</p>
+          <p>{order_info.paid_price}$</p>
         </div>
       </div>
     </div>

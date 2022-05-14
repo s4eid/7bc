@@ -12,8 +12,8 @@ export default function OrderDetailsPage({ order }) {
         <Title
           date={order.order_info.created_at}
           order_id={order.order_info.order_id}
-          //  total={order.paid_price}
-          // status={order.order_info.status}
+          total={order.order_info.paid_price}
+          status={order.order_info.status}
         />
       </div>
       {order.order_items.map((o, index) => (

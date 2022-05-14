@@ -10,10 +10,11 @@ export const GET_ORDER = gql`
         city
         country
         created_at
-        # currency
-        # paid_price
+        currency
+        paid_price
         phone_number
-        # status
+        shipping_price
+        status
       }
       order_items {
         product_id
