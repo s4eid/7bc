@@ -2,6 +2,7 @@ import sendGrid from "../../emailConfig";
 import jwt from "jsonwebtoken";
 import { ApolloError } from "apollo-server-errors";
 import { ERROR_CODES } from "../../errorCodes/errorCodes";
+import { resetPass } from "../../emailTemplates/ResetPassword";
 
 export const resetPassword = async (email, pool) => {
   try {
@@ -15,6 +16,7 @@ export const resetPassword = async (email, pool) => {
         expiresIn: "1h",
       });
       const url = `${process.env.URL}/api/reset_password/${token}`;
+      const page = resetPass(url);
       const message = {
         to: email,
         from: {
@@ -22,7 +24,7 @@ export const resetPassword = async (email, pool) => {
           name: "saeid noormohammad",
         },
         subject: "To Reset Your Password Click The Link Below",
-        html: `Reset Your Password:<a href="${url}">${url}</a>`,
+        html: `${page}`,
       };
       await sendGrid.send(message);
       return email;

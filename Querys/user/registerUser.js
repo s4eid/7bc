@@ -3,6 +3,7 @@ import sendGrid from "../../emailConfig";
 import { hash } from "bcrypt";
 import jwt from "jsonwebtoken";
 import { ERROR_CODES } from "../../errorCodes/errorCodes";
+import { verifi } from "../../emailTemplates/VerifiAccount";
 
 export const registerUser = async (name, email, password, pool) => {
   try {
@@ -25,6 +26,7 @@ export const registerUser = async (name, email, password, pool) => {
       expiresIn: "1h",
     });
     const url = `${process.env.URL}/api/email_confrim/${token}`;
+    const page = verifi(url);
     const message = {
       to: email,
       from: {
@@ -32,7 +34,7 @@ export const registerUser = async (name, email, password, pool) => {
         name: "saeid noormohammad",
       },
       subject: "Please Verify Your Email",
-      html: `Click the link for verifying your account:<a href="${url}">${url}</a>`,
+      html: `${page}`,
     };
     await sendGrid.send(message);
     return data.rows[0];
