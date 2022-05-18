@@ -2,6 +2,7 @@ import {
   ApolloClient,
   InMemoryCache,
   createHttpLink,
+  HttpLink,
   from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
@@ -32,7 +33,7 @@ const errorLink = onError(
     }
   }
 );
-const link = createHttpLink({
+const link = new HttpLink({
   uri: process.env.NEXT_PUBLIC_URI,
   // credentials: "include",
   // fetchOptions: {
@@ -57,17 +58,17 @@ export default function createApolloClient() {
     }),
   });
 }
-export const go = new ApolloClient({
-  link: from([errorLink, link]),
-  credentials: "include",
-  cache: new InMemoryCache({
-    // typePolicies: {
-    //   TeacherTests: {
-    //     keyFields: ["test_id"],
-    //   },
-    //   TestResults: {
-    //     keyFields: ["test_result_id"],
-    //   },
-    // },
-  }),
-});
+// export const go = new ApolloClient({
+//   link: from([errorLink, link]),
+//   credentials: "include",
+//   cache: new InMemoryCache({
+// typePolicies: {
+//   TeacherTests: {
+//     keyFields: ["test_id"],
+//   },
+//   TestResults: {
+//     keyFields: ["test_result_id"],
+//   },
+// },
+// }),
+// });
