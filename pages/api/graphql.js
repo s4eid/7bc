@@ -16,7 +16,7 @@ const cors = Cors({
 const apolloServer = new ApolloServer({
   resolvers: [resolverUser, resolverProduct, resolverOrder],
   typeDefs: [typeUser, typeProduct, typeOrder],
-
+  csrfPrevention: true,
   context: async ({ req, res }) => {
     return { pool, req, res };
   },
