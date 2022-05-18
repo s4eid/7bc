@@ -41,6 +41,8 @@ const link = createHttpLink({
 });
 
 export default function createApolloClient() {
+  console.log(`next publick uri : ${process.env.NEXT_PUBLIC_URI}`);
+  console.log(link);
   return new ApolloClient({
     credentials: "include",
     ssrMode: typeof window === "undefined",
