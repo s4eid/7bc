@@ -29,6 +29,6 @@ const resolverProduct = {
     },
   },
 
-  Mutation: {},
+  // Mutation: {},
 };
 export default resolverProduct;
