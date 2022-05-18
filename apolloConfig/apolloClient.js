@@ -49,13 +49,12 @@ export default function createApolloClient() {
     ssrMode: typeof window === "undefined",
     link: link,
     // link: from([errorLink, link]),
-    cache: new InMemoryCache({
-      // typePolicies: {
-      //   products: {
-      //     keyFields: ["product_id"],
-      //   },
-      // },
-    }),
+    cache: new InMemoryCache(),
+    // typePolicies: {
+    //   products: {
+    //     keyFields: ["product_id"],
+    //   },
+    // },
   });
 }
 // export const go = new ApolloClient({
