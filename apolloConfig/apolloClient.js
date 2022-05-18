@@ -34,23 +34,24 @@ const errorLink = onError(
 );
 const link = createHttpLink({
   uri: process.env.NEXT_PUBLIC_URI,
-  credentials: "include",
-  fetchOptions: {
-    credentials: "include",
-  },
+  // credentials: "include",
+  // fetchOptions: {
+  //   credentials: "include",
+  // },
 });
 
 export default function createApolloClient() {
   return new ApolloClient({
     credentials: "include",
     ssrMode: typeof window === "undefined",
-    link: from([errorLink, link]),
+    link: link,
+    // link: from([errorLink, link]),
     cache: new InMemoryCache({
-      typePolicies: {
-        products: {
-          keyFields: ["product_id"],
-        },
-      },
+      // typePolicies: {
+      //   products: {
+      //     keyFields: ["product_id"],
+      //   },
+      // },
     }),
   });
 }
