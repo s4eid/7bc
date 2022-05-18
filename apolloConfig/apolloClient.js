@@ -45,7 +45,7 @@ export default function createApolloClient() {
   console.log(`next publick uri : ${process.env.NEXT_PUBLIC_URI}`);
   console.log(link);
   return new ApolloClient({
-    credentials: "include",
+    credentials: "same-origin",
     ssrMode: typeof window === "undefined",
     link: link,
     // link: from([errorLink, link]),
