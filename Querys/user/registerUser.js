@@ -25,7 +25,7 @@ export const registerUser = async (name, email, password, pool) => {
     const token = await jwt.sign({ user_id }, process.env.EMAIL_CONFRIM_SEC, {
       expiresIn: "1h",
     });
-    const url = `${process.env.URL}/api/email_confrim/${token}`;
+    const url = `${process.env.URLL}/api/email_confrim/${token}`;
     const page = verifi(url);
     const message = {
       to: email,

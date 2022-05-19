@@ -10,7 +10,7 @@ import resolverOrder from "../../graphql/order/order_resolver";
 
 const cors = Cors({
   allowCredentials: true,
-  // origin: process.env.URL,
+  // origin: process.env.URLL,
 });
 
 const apolloServer = new ApolloServer({

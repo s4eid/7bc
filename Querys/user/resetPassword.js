@@ -15,7 +15,7 @@ export const resetPassword = async (email, pool) => {
       const token = jwt.sign({ user_id }, process.env.PASSWORD_CONFRIM_SEC, {
         expiresIn: "1h",
       });
-      const url = `${process.env.URL}/api/reset_password/${token}`;
+      const url = `${process.env.URLL}/api/reset_password/${token}`;
       const page = resetPass(url);
       const message = {
         to: email,

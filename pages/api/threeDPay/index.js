@@ -106,7 +106,7 @@ export default async function handlre(req, res) {
             }
           }
         );
-        return res.redirect(`${process.env.URL}/`);
+        return res.redirect(`${process.env.URLL}/`);
       }
     } catch (error) {
       return res
