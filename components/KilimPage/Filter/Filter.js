@@ -1,36 +1,102 @@
 import React from "react";
 import filter from "./filter.module.css";
-export default function Filter({ index }) {
+export default function Filter({ index, setFilter, _filter, refetch }) {
   return (
     <div className={filter.mainContainer}>
       <div className={filter.selectContainer}>
-        <select name="price" id="price">
-          <option value="" selected disabled hidden>
-            Price
-          </option>
-          <option value="high_to_low">High To Low</option>
-          <option value="low_to_high">Low To High</option>
-          {/* <option value="papularity">Papularity</option> */}
-        </select>
-        <select name="origin" id="origin">
-          <option value="" selected disabled hidden>
+        <select
+          onChange={(e) => {
+            setFilter({
+              ..._filter,
+              origin: e.target.value == "Origin" ? null : e.target.value,
+              action: true,
+            });
+            refetch({
+              variables: {
+                type: "kilim",
+                price: _filter.price ? _filter.price : null,
+                made: _filter.made ? _filter.made : null,
+                origin: e.target.value == "Origin" ? null : e.target.value,
+                first: 5,
+              },
+              updateQuery: (prevResult, { fetchMoreResult }) => {
+                fetchMoreResult.products.edges.node = [
+                  // ...prevResult.products.edges.node,
+                  ...fetchMoreResult.products.edges.node,
+                ];
+                return fetchMoreResult;
+              },
+            });
+          }}
+          value={_filter.origin}
+          name="origin"
+          id="origin"
+        >
+          <option value="" selected>
             Origin
           </option>
-          <option value="Turkey">Turkey</option>
-          <option value="Iran">Iran</option>
-          <option value="Afghan">Afghan</option>
+          <option value="turkey">Turkey</option>
+          <option value="iran">Iran</option>
+          <option value="afghan">Afghan</option>
         </select>
-        <select name="size" id="size">
-          <option value="" selected disabled hidden>
-            Size
+        <select
+          onChange={(e) => {
+            setFilter({
+              ..._filter,
+              made: e.target.value == "Made" ? null : e.target.value,
+              action: true,
+            });
+            refetch({
+              variables: {
+                type: "kilim",
+                price: _filter.price ? _filter.price : null,
+                made: e.target.value == "Made" ? null : e.target.value,
+                origin: _filter.origin ? _filter.origin : null,
+                first: 5,
+              },
+              updateQuery: (prevResult, { fetchMoreResult }) => {
+                fetchMoreResult.products.edges.node = [
+                  // ...prevResult.products.edges.node,
+                  ...fetchMoreResult.products.edges.node,
+                ];
+                return fetchMoreResult;
+              },
+            });
+          }}
+          value={_filter.made}
+          name="size"
+          id="size"
+        >
+          <option value={""} selected>
+            Made
           </option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
+          <option value="hand">Hand</option>
+          <option value="machine">Machine</option>
         </select>
       </div>
       <div className={filter.info}>
-        <p>Pieces:{index}</p>
+        <button
+          className={filter.clearBtn}
+          onClick={() => {
+            setFilter({ price: "", made: "", origin: "", action: false });
+            refetch({
+              variables: {
+                type: "kilim",
+                first: 5,
+              },
+              updateQuery: (prevResult, { fetchMoreResult }) => {
+                fetchMoreResult.products.edges.node = [
+                  // ...prevResult.products.edges.node,
+                  ...fetchMoreResult.products.edges.node,
+                ];
+                return fetchMoreResult;
+              },
+            });
+          }}
+        >
+          Clear All
+        </button>
+        {/* <p>Pieces:{index}</p> */}
       </div>
     </div>
   );

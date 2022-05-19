@@ -132,7 +132,7 @@ export default function AddressForm({ address, ip, userId }) {
                 <div className={addressForm.holderPhone}>
                   <div className={addressForm.selectContainer}>
                     <Field
-                      required
+                      // required
                       // type=""
                       onChange={(e) => {
                         setFieldValue("phone_number", `+${e.target.value}`);

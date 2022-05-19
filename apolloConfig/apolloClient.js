@@ -44,7 +44,6 @@ const link = createHttpLink({
 });
 
 export default function createApolloClient() {
-  console.log(process.env.URLL);
   return new ApolloClient({
     credentials: "include",
     ssrMode: typeof window === "undefined",

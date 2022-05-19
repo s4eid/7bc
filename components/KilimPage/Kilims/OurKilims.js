@@ -3,15 +3,15 @@ import ourKilims from "./ourKilims.module.css";
 import Kilim from "./Kilim";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "../../../Layouts/Loading";
-export default function OurKilims({ products, pageInfo, refetch }) {
+export default function OurKilims({ products, pageInfo, refetch, filter }) {
   const getMore = (afterCursor, hasMore) => {
     if (hasMore) {
       refetch({
         variables: {
           type: "kilim",
-          price: null,
-          made: null,
-          origin: null,
+          price: filter.price ? filter.price : null,
+          made: filter.made ? filter.made : null,
+          origin: filter.origin ? filter.origin : null,
           afterCursor: afterCursor,
           first: 5,
         },

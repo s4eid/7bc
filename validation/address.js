@@ -16,5 +16,5 @@ export const addressSchema = Yup.object().shape({
   area: Yup.string().max(100).required("Required"),
   phone_number: Yup.string().max(100).required("Required"),
   zipCode: Yup.string().required("Required"),
-  code: Yup.number().required("Required"),
+  code: Yup.number(),
 });

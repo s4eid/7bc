@@ -29,6 +29,22 @@
 /* .selectContainer select option {
   outline: none;
 } */
+.clearBtn {
+  /* width: 200px; */
+  height: 40px;
+  cursor: pointer;
+  background-color: #0081ef;
+  font-size: 16px;
+  color: #fff;
+  border: 2px solid #0081ef;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  font-weight: bold;
+}
+.clearBtn:hover {
+  background-color: #fff;
+  color: #111111;
+}
 
 .info {
   position: absolute;

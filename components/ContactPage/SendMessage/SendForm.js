@@ -94,7 +94,7 @@ export default function SendForm() {
                     </div>
                   ) : (
                     <div className={sendForm.errorC}>
-                      <p>Plaese Enter Your Name</p>
+                      <p>Plaese Enter Your Phone Number</p>
                     </div>
                   )}
                 </div>
