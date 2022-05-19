@@ -38,6 +38,7 @@ export default function Carpet() {
 }
 export async function getStaticProps() {
   const client = initializeApollo();
+  console.log(client);
   await client.query({
     query: GET_PRODUCTS,
     variables: { type: "carpet", first: 4 },
