@@ -9,8 +9,8 @@ export default async function handlre(req, res) {
       true,
       user_id,
     ]);
-    return res.redirect(`${process.env.URL}/login`);
+    return res.redirect(`${process.env.URLL}/login`);
   } catch (error) {
-    return res.redirect(`${process.env.URL}`);
+    return res.redirect(`${process.env.URLL}`);
   }
 }
