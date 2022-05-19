@@ -9,8 +9,8 @@ import typeOrder from "../../graphql/order/order_type";
 import resolverOrder from "../../graphql/order/order_resolver";
 
 const cors = Cors({
-  // origin: process.env.URL,
   allowCredentials: true,
+  // origin: process.env.URL,
 });
 
 const apolloServer = new ApolloServer({
@@ -23,7 +23,7 @@ const apolloServer = new ApolloServer({
 });
 
 const startServer = apolloServer.start();
-export default cors(async function handler(req, res) {
+export default cors(async (req, res) => {
   console.log(`cors ${cors}`);
   console.log("in function of server");
   if (req.method === "OPTIONS") {
@@ -34,17 +34,6 @@ export default cors(async function handler(req, res) {
   console.log(`start sersver ${startServer}`);
   await apolloServer.createHandler({ path: "/api/graphql" })(req, res);
 });
-// export default async function handler(req, res) {
-//   console.log(`cors ${cors}`);
-//   console.log("in function of server");
-//   if (req.method === "OPTIONS") {
-//     res.end();
-//     return false;
-//   }
-//   await startServer;
-//   console.log(`start sersver ${startServer}`);
-//   await apolloServer.createHandler({ path: "/api/graphql" })(req, res);
-// }
 
 export const config = {
   api: {

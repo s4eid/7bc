@@ -36,9 +36,9 @@ const errorLink = onError(
 const link = new HttpLink({
   uri: process.env.NEXT_PUBLIC_URI,
   credentials: "same-origin",
-  // fetchOptions: {
-  //   credentials: "include",
-  // },
+  fetchOptions: {
+    credentials: "include",
+  },
 });
 
 export default function createApolloClient() {
