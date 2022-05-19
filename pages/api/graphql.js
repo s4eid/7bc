@@ -9,7 +9,7 @@ import typeOrder from "../../graphql/order/order_type";
 import resolverOrder from "../../graphql/order/order_resolver";
 
 const cors = Cors({
-  origin: process.env.URL,
+  // origin: process.env.URL,
   allowCredentials: true,
 });
 
