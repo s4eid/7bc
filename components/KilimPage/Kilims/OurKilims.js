@@ -9,6 +9,9 @@ export default function OurKilims({ products, pageInfo, refetch }) {
       refetch({
         variables: {
           type: "kilim",
+          price: null,
+          made: null,
+          origin: null,
           afterCursor: afterCursor,
           first: 5,
         },

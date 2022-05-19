@@ -43,18 +43,28 @@ const typeProduct = gql`
   type Edge {
     node: [Product]
   }
-  type GetProducts {
+  type GetProductss {
     edges: Edge
     pageInfo: PageInfo
   }
+  input Filter {
+    price: String
+    made: String
+    origin: String
+  }
   type Query {
-    # products(type: String!): [Product!]
-    products(type: String!, first: Int, afterCursor: String): GetProducts
+    products(
+      type: String!
+      made: String
+      origin: String
+      price: String
+      afterCursor: String
+      first: Int
+    ): GetProductss
     product(product_id: ID!): Product!
     notOneProduct(product_id: ID!): [Product]!
     getProducts(product_array: [String!]!): [Product]!
     searchProduct(text: String!): [searchProductR]
   }
-  # type Mutation {}
 `;
 export default typeProduct;

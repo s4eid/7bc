@@ -25,6 +25,22 @@
   color: #fff;
   text-align: center;
 }
+.clearBtn {
+  /* width: 200px; */
+  height: 40px;
+  cursor: pointer;
+  background-color: #0081ef;
+  font-size: 16px;
+  color: #fff;
+  border: 2px solid #0081ef;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  font-weight: bold;
+}
+.clearBtn:hover {
+  background-color: #fff;
+  color: #111111;
+}
 
 /* .selectContainer select option {
   outline: none;
@@ -37,10 +53,6 @@
   font-weight: bold;
   color: #666666;
   /* border: 5px solid black; */
-}
-.info p {
-  border-bottom: 2px solid #666666;
-  margin: 0;
 }
 
 @media screen and (max-width: 733px) {

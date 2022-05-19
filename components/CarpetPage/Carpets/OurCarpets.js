@@ -3,13 +3,16 @@ import ourCarpets from "./ourCarpets.module.css";
 import Carpet from "./Carpet";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "../../../Layouts/Loading";
-export default function OurCarpets({ products, pageInfo, refetch }) {
+export default function OurCarpets({ products, pageInfo, refetch, filter }) {
   const getMore = (afterCursor, hasMore) => {
     if (hasMore) {
       refetch({
         variables: {
           type: "carpet",
           afterCursor: afterCursor,
+          price: filter.price ? filter.price : null,
+          made: filter.made ? filter.made : null,
+          origin: filter.origin ? filter.origin : null,
           first: 5,
         },
         updateQuery: (prevResult, { fetchMoreResult }) => {

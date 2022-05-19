@@ -31,6 +31,25 @@ export const getProduct =
       }
     } catch (error) {}
   };
+export const getProduct_filter = (products, pageInfo) => async (dispatch) => {
+  try {
+    dispatch({
+      type: PRODUCTS_TYPE.LOADING_ON,
+      payload: true,
+    });
+    dispatch({
+      type: PRODUCTS_TYPE.GET_PRODUCTS,
+      payload: {
+        products,
+        pageInfo,
+      },
+    });
+    dispatch({
+      type: PRODUCTS_TYPE.LOAIDNG_OFF,
+      payload: false,
+    });
+  } catch (error) {}
+};
 export const getMoreProduct = (products, pageInfo) => async (dispatch) => {
   try {
     dispatch({

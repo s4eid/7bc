@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 export default function Carpet({ c }) {
   const router = useRouter();
-  console.log(c);
   return (
     <div
       className={productItems.productMainHolder}

@@ -2,7 +2,6 @@ import {
   ApolloClient,
   InMemoryCache,
   createHttpLink,
-  HttpLink,
   from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
@@ -33,41 +32,43 @@ const errorLink = onError(
     }
   }
 );
-const link = new HttpLink({
+const link = createHttpLink({
   uri: process.env.NEXT_PUBLIC_URI,
-  credentials: "same-origin",
+  credentials: "include",
+  headers: {
+    Origin: process.env.NEXT_PUBLIC_URL, // <- Added this and now builds are no longer 500 erroring on vercel
+  },
   fetchOptions: {
     credentials: "include",
   },
 });
 
 export default function createApolloClient() {
-  console.log(`next publick uri : ${process.env.NEXT_PUBLIC_URI}`);
-  console.log(link);
+  console.log(process.env.URLL);
   return new ApolloClient({
-    credentials: "same-origin",
+    credentials: "include",
     ssrMode: typeof window === "undefined",
-    link: link,
-    // link: from([errorLink, link]),
-    cache: new InMemoryCache(),
-    // typePolicies: {
-    //   products: {
-    //     keyFields: ["product_id"],
-    //   },
-    // },
+    link: from([errorLink, link]),
+    cache: new InMemoryCache({
+      // typePolicies: {
+      // products: {
+      //   keyFields: ["product_id"],
+      // },
+      // },
+    }),
   });
 }
-// export const go = new ApolloClient({
-//   link: from([errorLink, link]),
-//   credentials: "include",
-//   cache: new InMemoryCache({
-// typePolicies: {
-//   TeacherTests: {
-//     keyFields: ["test_id"],
-//   },
-//   TestResults: {
-//     keyFields: ["test_result_id"],
-//   },
-// },
-// }),
-// });
+export const go = new ApolloClient({
+  link: from([errorLink, link]),
+  credentials: "include",
+  cache: new InMemoryCache({
+    // typePolicies: {
+    //   TeacherTests: {
+    //     keyFields: ["test_id"],
+    //   },
+    //   TestResults: {
+    //     keyFields: ["test_result_id"],
+    //   },
+    // },
+  }),
+});

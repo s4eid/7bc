@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import OurCarpets from "./Carpets/OurCarpets";
 import Filter from "./Filter/Filter";
 import carpetPage from "./carpetPage.module.css";
 
-export default function CarpetPage({ products, pageInfo, refetch }) {
+export default function CarpetPage({
+  products,
+  pageInfo,
+  refetch,
+  filter,
+  setFilter,
+}) {
   return (
     <div className={carpetPage.mainContainer}>
-      <Filter index={products.length} />
-      <OurCarpets products={products} pageInfo={pageInfo} refetch={refetch} />
+      <Filter
+        _filter={filter}
+        index={products.length}
+        setFilter={setFilter}
+        refetch={refetch}
+      />
+      <OurCarpets
+        products={products}
+        pageInfo={pageInfo}
+        filter={filter}
+        refetch={refetch}
+      />
     </div>
   );
 }

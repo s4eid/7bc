@@ -1,4 +1,4 @@
-import { getProducts } from "../../Querys/product/getProducts";
+import { _getProducts } from "../../Querys/product/getProducts";
 import { getOneProduct } from "../../Querys/product/getOneProduct";
 import { getProductsP } from "../../Querys/product/getProductsP";
 import { getNotOneProduct } from "../../Querys/product/getNotOneProduct";
@@ -6,8 +6,20 @@ import { searchProducts } from "../../Querys/product/searchProducts";
 
 const resolverProduct = {
   Query: {
-    async products(_, { type, first, afterCursor }, { pool }) {
-      const data = await getProducts(type, first, afterCursor, pool);
+    async products(
+      _,
+      { type, first, afterCursor, price, made, origin },
+      { pool }
+    ) {
+      const data = await _getProducts(
+        type,
+        first,
+        afterCursor,
+        price,
+        made,
+        origin,
+        pool
+      );
       return data;
     },
     async product(_, { product_id }, { pool }) {
@@ -29,6 +41,6 @@ const resolverProduct = {
     },
   },
 
-  // Mutation: {},
+  Mutation: {},
 };
 export default resolverProduct;

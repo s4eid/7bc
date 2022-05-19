@@ -21,7 +21,13 @@ export async function getStaticPaths() {
   const client = initializeApollo();
   const data = await client.query({
     query: GET_PRODUCTS,
-    variables: { type: "carpet", first: 100 },
+    variables: {
+      type: "carpet",
+      first: 100,
+      origin: null,
+      price: null,
+      made: null,
+    },
   });
   const paths = data.data.products.edges.node.map((p) => {
     return {
