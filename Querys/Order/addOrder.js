@@ -132,10 +132,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       let iyziCommissionRateAmount = result.iyziCommissionRateAmount;
       let itemTransactions = result.itemTransactions;
       if (status === "failure") {
-        return new ApolloError({
-          message: "Payment Failed!",
-          code: ERROR_CODES.PAYMENT,
-        });
+        return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
       }
       const order = await pool.query(
         `INSERT INTO orders (status,user_id) VALUES ($1,$2) RETURNING order_id`,
@@ -219,9 +216,6 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
     //     );
     //     return data.rows;
   } catch (error) {
-    return new ApolloError({
-      message: "Payment Failed!",
-      code: ERROR_CODES.PAYMENT,
-    });
+    return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
   }
 };

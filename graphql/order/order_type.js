@@ -12,6 +12,7 @@ const typeOrder = gql`
     itemType: String!
     quantity: Int!
   }
+  # directive @auth on FIELD_DEFINITION
   type OrderItems {
     quantity: Int!
     paid_price: Int!

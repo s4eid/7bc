@@ -10,24 +10,18 @@ export const loginUser = async (email, password, res, pool) => {
       email,
     ]);
     if (!exist.rows[0]) {
-      return new ApolloError({
-        message: "Login Failed!",
-        code: ERROR_CODES.LOGIN,
-      });
+      return new ApolloError("Login Failed!", ERROR_CODES.LOGIN);
     }
     if (exist.rows[0].verified === false) {
-      return new ApolloError({
-        message: "Account Is Not Verified Yet!",
-        code: ERROR_CODES.VERIFI,
-      });
+      return new ApolloError(
+        "Account Is Not Verified Yet!",
+        ERROR_CODES.VERIFI
+      );
     }
     const _password = exist.rows[0].password;
     const confrimPass = await compare(password, _password);
     if (confrimPass === false) {
-      return new ApolloError({
-        message: "Login Failed!",
-        code: ERROR_CODES.LOGIN,
-      });
+      return new ApolloError("Login Failed!", ERROR_CODES.LOGIN);
     }
     const name = exist.rows[0].name;
     const user_id = exist.rows[0].user_id;
@@ -45,10 +39,12 @@ export const loginUser = async (email, password, res, pool) => {
         const refreshC = cookie.serialize("refreshToken", refreshToken, {
           secure: process.env.NODE_ENV === "production",
           path: "/",
+          sameSite: "lax",
           maxAge: 60 * 60 * 24,
         });
         const accessC = cookie.serialize("accessToken", accessToken, {
           secure: process.env.NODE_ENV === "production",
+          sameSite: "lax",
           path: "/",
           maxAge: 60 * 60,
         });
@@ -60,9 +56,6 @@ export const loginUser = async (email, password, res, pool) => {
 
     return exist.rows[0];
   } catch (error) {
-    return new ApolloError({
-      message: "Login Failed!",
-      code: ERROR_CODES.LOGIN,
-    });
+    return new ApolloError("Login Failed!", ERROR_CODES.LOGIN);
   }
 };

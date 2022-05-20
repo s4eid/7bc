@@ -9,7 +9,7 @@ import { getSession } from "next-auth/react";
 
 export default function Account() {
   const { user } = useSelector((state) => state);
-  return <>{!user.loading ? <AccountPage user={user} /> : <Loading />}</>;
+  return <>{!user?.loading ? <AccountPage user={user} /> : <Loading />}</>;
 }
 
 export async function getServerSideProps({ req, res }) {

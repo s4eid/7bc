@@ -29,10 +29,7 @@ export const resetPassword = async (email, pool) => {
       await sendGrid.send(message);
       return email;
     }
-    return new ApolloError({
-      message: "Password Error!",
-      code: ERROR_CODES.PASSWORD_CHANGE,
-    });
+    return new ApolloError("Password Error!", ERROR_CODES.PASSWORD_CHANGE);
   } catch (error) {
     console.log(error);
   }

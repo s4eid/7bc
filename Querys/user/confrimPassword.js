@@ -23,15 +23,9 @@ export const confrimPassword = async (user_id, password, pool) => {
       ]);
       return "done";
     } else {
-      return new ApolloError({
-        message: "Password Error!",
-        code: ERROR_CODES.PASSWORD_CHANGE,
-      });
+      return new ApolloError("Password Error!", ERROR_CODES.PASSWORD_CHANGE);
     }
   } catch (error) {
-    return new ApolloError({
-      message: "Password Error!",
-      code: ERROR_CODES.PASSWORD_CHANGE,
-    });
+    return new ApolloError("Password Error!", ERROR_CODES.PASSWORD_CHANGE);
   }
 };

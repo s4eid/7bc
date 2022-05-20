@@ -11,10 +11,7 @@ export const registerUser = async (name, email, password, pool) => {
       email,
     ]);
     if (exist.rows[0]) {
-      return new ApolloError({
-        message: "Register Failed!",
-        code: ERROR_CODES.REGISTER,
-      });
+      return new ApolloError("Register Failed!", ERROR_CODES.REGISTER);
     }
     const _password = await hash(password, 10);
     const data = await pool.query(
@@ -39,9 +36,6 @@ export const registerUser = async (name, email, password, pool) => {
     await sendGrid.send(message);
     return data.rows[0];
   } catch (error) {
-    return new ApolloError({
-      message: "Register Failed!",
-      code: ERROR_CODES.REGISTER,
-    });
+    return new ApolloError("Register Failed!", ERROR_CODES.REGISTER);
   }
 };

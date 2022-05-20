@@ -6,38 +6,7 @@
   flex-direction: column;
   align-items: center;
 }
-.googleBtn {
-  width: 230px;
-  cursor: pointer;
-  margin-top: 20px;
-  height: 42px;
-  background-color: #4285f4;
-  border-radius: 10px;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
-}
-.googleIconWrapper {
-  position: absolute;
-  margin-top: 1px;
-  margin-left: 1px;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background-color: #fff;
-}
-.googleIcon {
-  position: absolute;
-  margin-top: 11px;
-  margin-left: 11px;
-  width: 18px;
-  height: 18px;
-}
-.btnText {
-  float: right;
-  margin: 11px 11px 0 0;
-  color: #fff;
-  font-weight: bold;
-  letter-spacing: 0.2px;
-}
+
 .mainContainer {
   display: flex;
   justify-content: center;
@@ -259,6 +228,26 @@
 }
 .orRegister:hover {
   color: #0081ef;
+}
+.resetPass {
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid red;
+  align-items: center;
+  color: #111111;
+  font-weight: 700;
+  margin-top: 10px;
+  cursor: pointer;
+  height: 35px;
+
+  padding: 10px;
+  font-size: 16px;
+  transition: 0.3s ease-out;
+}
+.resetPass:hover {
+  color: red;
 }
 .container p {
   margin: 2px;

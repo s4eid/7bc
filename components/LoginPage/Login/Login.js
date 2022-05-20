@@ -15,6 +15,8 @@ export default function Login() {
   const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
+  console.log(error);
+  console.log(errorMessage.message);
   return (
     <div className={login.mainContainer}>
       {error ? (
@@ -124,6 +126,13 @@ export default function Login() {
                   className={login.orRegister}
                 >
                   Have no account?
+                </div>
+                <div
+                  type="button"
+                  onClick={() => router.push("/change_password")}
+                  className={login.resetPass}
+                >
+                  Forgot Your Password?
                 </div>
               </div>
             </Form>
