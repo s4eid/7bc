@@ -3,10 +3,14 @@ import { getOrder } from "../../Querys/Order/getOrder";
 import { getOrders } from "../../Querys/Order/getOrders";
 import { ApolloError } from "apollo-server-errors";
 import { ERROR_CODES } from "../../errorCodes/errorCodes";
+import { getSession } from "next-auth/react";
 
 const resolverUser = {
   Query: {
-    async getOrder(_, { order_id }, { pool, user, _user }) {
+    async getOrder(_, { order_id }, { pool, user, req }) {
+      let _user;
+      const googleUser = await getSession({ req });
+      _user = googleUser?.user ? googleUser.user : null;
       if (!user && !_user) {
         return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
       }

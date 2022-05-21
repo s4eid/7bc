@@ -30,9 +30,9 @@ const apolloServer = new ApolloServer({
   context: async ({ req, res }) => {
     let user = null;
     let _user = null;
-    // let _user = req.cookies.__Secure - next - auth.session - token;
-    const googleUser = await getSession({ req });
-    _user = googleUser?.user ? googleUser.user : null;
+    // let _user = req.cookies?.__Secure - next - auth?.session - token;
+    // const googleUser = await getSession({ req });
+    // _user = googleUser?.user ? googleUser.user : null;
     const _token = req.cookies || "";
     if (_token) {
       user = await jwtCheck(_token, pool, res);
