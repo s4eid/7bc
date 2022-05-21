@@ -24,7 +24,6 @@ const cors = Cors({
 // });
 
 const apolloServer = new ApolloServer({
-  // schema,
   resolvers: [resolverUser, resolverProduct, resolverOrder],
   typeDefs: [typeUser, typeProduct, typeOrder],
   csrfPrevention: true,

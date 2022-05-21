@@ -8,12 +8,12 @@ import { getSession } from "next-auth/react";
 const resolverUser = {
   Query: {
     async getOrder(_, { order_id }, { pool, user, req }) {
-      // let _user;
-      // const googleUser = await getSession({ req });
-      // _user = googleUser?.user ? googleUser.user : null;
-      // if (!user && !_user) {
-      //   return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
-      // }
+      let _user;
+      const googleUser = await getSession({ req });
+      _user = googleUser?.user ? googleUser.user : null;
+      if (!user && !_user) {
+        return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
+      }
       const data = await getOrder(order_id, pool);
       return data;
     },
