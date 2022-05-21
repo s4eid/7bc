@@ -8,7 +8,9 @@ import typeProduct from "../../graphql/product/typeProduct";
 import resolverProduct from "../../graphql/product/resolverProduct";
 import typeOrder from "../../graphql/order/order_type";
 import resolverOrder from "../../graphql/order/order_resolver";
+import { getSession } from "next-auth/react";
 // import { makeExecutableSchema } from "@graphql-tools/schema";
+
 // import pkg from "graphql";
 
 const cors = Cors({
@@ -29,12 +31,12 @@ const apolloServer = new ApolloServer({
     let user = null;
     let _user = null;
     const googleUser = await getSession({ req });
-    _user = googleUser.user ? googleUser.user : null;
+    _user = googleUser?.user ? googleUser.user : null;
+
     const token = req.cookies || "";
     if (token) {
       user = await jwtCheck(token, pool, res);
     }
-    // console.log(user);
     return { pool, req, res, user, _user };
   },
 });
