@@ -8,7 +8,8 @@ import typeProduct from "../../graphql/product/typeProduct";
 import resolverProduct from "../../graphql/product/resolverProduct";
 import typeOrder from "../../graphql/order/order_type";
 import resolverOrder from "../../graphql/order/order_resolver";
-import { getSession } from "next-auth/react";
+// import { getSession } from "next-auth/react";
+// import {getServerSession} from "next-auth"
 // import { makeExecutableSchema } from "@graphql-tools/schema";
 
 // import pkg from "graphql";
