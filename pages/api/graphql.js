@@ -8,7 +8,7 @@ import typeProduct from "../../graphql/product/typeProduct";
 import resolverProduct from "../../graphql/product/resolverProduct";
 import typeOrder from "../../graphql/order/order_type";
 import resolverOrder from "../../graphql/order/order_resolver";
-// import { getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 // import {getServerSession} from "next-auth"
 // import { makeExecutableSchema } from "@graphql-tools/schema";
 
@@ -30,9 +30,8 @@ const apolloServer = new ApolloServer({
   context: async ({ req, res }) => {
     let user = null;
     let _user = null;
-    // let _user = req.cookies?.__Secure - next - auth?.session - token;
-    // const googleUser = await getSession({ req });
-    // _user = googleUser?.user ? googleUser.user : null;
+    const googleUser = await getSession({ req });
+    _user = googleUser?.user ? googleUser.user : null;
     const _token = req.cookies || "";
     if (_token) {
       user = await jwtCheck(_token, pool, res);
