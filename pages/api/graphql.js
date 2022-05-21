@@ -13,7 +13,6 @@ import resolverOrder from "../../graphql/order/order_resolver";
 
 const cors = Cors({
   allowCredentials: true,
-
   origin: process.env.URLL,
 });
 // const schema = makeExecutableSchema({
@@ -28,12 +27,10 @@ const apolloServer = new ApolloServer({
   csrfPrevention: true,
   context: async ({ req, res }) => {
     let user = null;
-    // console.log(req);
-    // const token = req.cookies || "";
-    // if (token) {
-    //   user = await jwtCheck(token, pool, res);
-    // }
-    // console.log(user);
+    const token = req.cookies || "";
+    if (token) {
+      user = await jwtCheck(token, pool, res);
+    }
     return { pool, req, res, user };
     // return { pool, req, res };
   },

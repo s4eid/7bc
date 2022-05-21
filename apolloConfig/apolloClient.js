@@ -34,18 +34,18 @@ const errorLink = onError(
 );
 const link = createHttpLink({
   uri: process.env.NEXT_PUBLIC_URI,
-  credentials: "include",
+  credentials: "same-origin",
   headers: {
-    Origin: process.env.NEXT_PUBLIC_URL, // <- Added this and now builds are no longer 500 erroring on vercel
+    Origin: process.env.NEXT_PUBLIC_URL,
   },
   fetchOptions: {
-    credentials: "include",
+    credentials: "same-origin",
   },
 });
 
 export default function createApolloClient() {
   return new ApolloClient({
-    credentials: "include",
+    credentials: "same-origin",
     ssrMode: typeof window === "undefined",
     link: from([errorLink, link]),
     cache: new InMemoryCache({
@@ -59,7 +59,7 @@ export default function createApolloClient() {
 }
 export const go = new ApolloClient({
   link: from([errorLink, link]),
-  credentials: "include",
+  credentials: "same-origin",
   cache: new InMemoryCache({
     // typePolicies: {
     //   TeacherTests: {

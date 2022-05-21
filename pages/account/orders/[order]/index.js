@@ -33,17 +33,22 @@ export async function getServerSideProps({ req, res, query }) {
       },
     };
   }
-  const order_id = query.order;
-  const client = initializeApollo();
-  await client.query({
-    query: GET_ORDER,
-    variables: {
-      orderId: order_id,
-    },
-  });
+  // const order_id = query.order;
+  // const client = initializeApollo();
+  // await client.query({
+  //   query: GET_ORDER,
+  //   variables: {
+  //     orderId: order_id,
+  //   },
+  //   context: {
+  //     headers: {
+  //       Cookie: req.headers.cookie,
+  //     },
+  //   },
+  // });
   return {
     props: {
-      initialApolloState: client.cache.extract(),
+      // initialApolloState: client.cache.extract(),
     },
   };
 }

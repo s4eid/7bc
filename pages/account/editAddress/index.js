@@ -61,6 +61,11 @@ export async function getServerSideProps({ req, res }) {
     variables: {
       user_id: user.user_id,
     },
+    context: {
+      headers: {
+        Cookie: req.headers.cookie,
+      },
+    },
   });
   if (!data.getUserAddress) {
     return {
@@ -72,7 +77,7 @@ export async function getServerSideProps({ req, res }) {
   }
   return {
     props: {
-      initialApolloState: client.cache.extract(),
+      initialApolloStatee: client.cache.extract(),
     },
   };
 }

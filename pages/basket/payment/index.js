@@ -44,16 +44,21 @@ export async function getServerSideProps({ req, res }) {
       },
     };
   }
-  const token = req.cookies.refreshToken;
-  const user = await getUser_server(token, session?.user);
-  const client = await initializeApollo();
-  await client.query({
-    query: GET_USER_INFO,
-    variables: { userId: user.user_id },
-  });
+  // const token = req.cookies.refreshToken;
+  // const user = await getUser_server(token, session?.user);
+  // const client = await initializeApollo();
+  // await client.query({
+  //   query: GET_USER_INFO,
+  //   variables: { userId: user.user_id },
+  //   context: {
+  //     headers: {
+  //       Cookie: req.headers.cookie,
+  //     },
+  //   },
+  // });
   return {
     props: {
-      initialApolloState: client.cache.extract(),
+      // initialApolloState: client.cache.extract(),
     },
   };
 }

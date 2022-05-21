@@ -39,12 +39,13 @@ export const loginUser = async (email, password, res, pool) => {
         const refreshC = cookie.serialize("refreshToken", refreshToken, {
           secure: process.env.NODE_ENV === "production",
           path: "/",
-          sameSite: "lax",
+          // sameSite: "lax",
+          sameSite: "strict",
           maxAge: 60 * 60 * 24,
         });
         const accessC = cookie.serialize("accessToken", accessToken, {
           secure: process.env.NODE_ENV === "production",
-          sameSite: "lax",
+          sameSite: "strict",
           path: "/",
           maxAge: 60 * 60,
         });
