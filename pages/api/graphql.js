@@ -27,12 +27,15 @@ const apolloServer = new ApolloServer({
   csrfPrevention: true,
   context: async ({ req, res }) => {
     let user = null;
+    let _user = null;
+    const googleUser = await getSession({ req });
+    _user = googleUser.user ? googleUser.user : null;
     const token = req.cookies || "";
     if (token) {
       user = await jwtCheck(token, pool, res);
     }
     // console.log(user);
-    return { pool, req, res, user };
+    return { pool, req, res, user, _user };
   },
 });
 

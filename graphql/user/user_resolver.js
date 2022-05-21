@@ -15,15 +15,16 @@ import { ERROR_CODES } from "../../errorCodes/errorCodes";
 
 const resolverUser = {
   Query: {
-    async getUserAddress(_, { user_id }, { pool, user }) {
-      if (!user) {
+    async getUserAddress(_, { user_id }, { pool, user, _user }) {
+      if (!user && !_user) {
         return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
       }
+
       const data = await getUserAddress(user_id, pool);
       return data;
     },
-    async getUserInfo(_, { user_id }, { pool, user }) {
-      if (!user) {
+    async getUserInfo(_, { user_id }, { pool, user, _user }) {
+      if (!user && !_user) {
         return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
       }
       const data = await getUserInfo(user_id, pool);
@@ -50,9 +51,9 @@ const resolverUser = {
     async addUser_address(
       _,
       { address, country, city, area, zip_code, ip, phone_number, user_id },
-      { pool, user }
+      { pool, user, _user }
     ) {
-      if (!user) {
+      if (!user && !_user) {
         return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
       }
       const data = await addUser_address(
@@ -71,9 +72,9 @@ const resolverUser = {
     async editUser_address(
       _,
       { address, country, city, area, zip_code, ip, phone_number, user_id },
-      { pool, user }
+      { pool, user, _user }
     ) {
-      if (!user) {
+      if (!user && !_user) {
         return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
       }
       const data = await editUser_address(

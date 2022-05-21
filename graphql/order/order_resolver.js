@@ -6,15 +6,15 @@ import { ERROR_CODES } from "../../errorCodes/errorCodes";
 
 const resolverUser = {
   Query: {
-    async getOrder(_, { order_id }, { pool, user }) {
-      if (!user) {
+    async getOrder(_, { order_id }, { pool, user, _user }) {
+      if (!user && !_user) {
         return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
       }
       const data = await getOrder(order_id, pool);
       return data;
     },
-    async getOrders(_, { user_id }, { pool, user }) {
-      if (!user) {
+    async getOrders(_, { user_id }, { pool, user, _user }) {
+      if (!user && !_user) {
         return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
       }
       const data = await getOrders(user_id, pool);
@@ -44,9 +44,9 @@ const resolverUser = {
         zip_code,
         ip,
       },
-      { pool, user }
+      { pool, user, _user }
     ) {
-      if (!user) {
+      if (!user && !_user) {
         return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
       }
       const data = await add_order(

@@ -18,7 +18,7 @@ export default function Addresses() {
     variables: {
       user_id: user.user_id,
     },
-    // skip: !user.user_id,
+    skip: !user.user_id,
     // fetchPolicy: "network-only",
   });
   return (
