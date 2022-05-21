@@ -31,8 +31,8 @@ const apolloServer = new ApolloServer({
     if (token) {
       user = await jwtCheck(token, pool, res);
     }
+    // console.log(user);
     return { pool, req, res, user };
-    // return { pool, req, res };
   },
 });
 

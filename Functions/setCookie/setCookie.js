@@ -1,6 +1,5 @@
 import cookie from "cookie";
 export const setCookie = async (token, res) => {
-  console.log(token);
   let option = {
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",

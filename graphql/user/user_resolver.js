@@ -10,14 +10,22 @@ import { confrimPassword } from "../../Querys/user/confrimPassword";
 import { resetPassword } from "../../Querys/user/resetPassword";
 import { sendEmail } from "../../Querys/user/sendEmail";
 // import { addUser_payment } from "../../Querys/user/addUser_payment";
+import { ApolloError } from "apollo-server-errors";
+import { ERROR_CODES } from "../../errorCodes/errorCodes";
 
 const resolverUser = {
   Query: {
-    async getUserAddress(_, { user_id }, { pool }) {
+    async getUserAddress(_, { user_id }, { pool, user }) {
+      if (!user) {
+        return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
+      }
       const data = await getUserAddress(user_id, pool);
       return data;
     },
-    async getUserInfo(_, { user_id }, { pool }) {
+    async getUserInfo(_, { user_id }, { pool, user }) {
+      if (!user) {
+        return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
+      }
       const data = await getUserInfo(user_id, pool);
       return data;
     },
@@ -42,8 +50,11 @@ const resolverUser = {
     async addUser_address(
       _,
       { address, country, city, area, zip_code, ip, phone_number, user_id },
-      { pool }
+      { pool, user }
     ) {
+      if (!user) {
+        return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
+      }
       const data = await addUser_address(
         address,
         country,
@@ -60,8 +71,11 @@ const resolverUser = {
     async editUser_address(
       _,
       { address, country, city, area, zip_code, ip, phone_number, user_id },
-      { pool }
+      { pool, user }
     ) {
+      if (!user) {
+        return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
+      }
       const data = await editUser_address(
         address,
         country,
@@ -79,24 +93,6 @@ const resolverUser = {
       const data = await confrimPassword(user_id, password, pool);
       return data;
     },
-    // async addUser_payment(
-    //   _,
-    //   { owner, card_number, expire_m, expire_y, type, cvv, company, user_id },
-    //   { pool }
-    // ) {
-    //   const data = await addUser_payment(
-    //     owner,
-    //     card_number,
-    //     expire_m,
-    //     expire_y,
-    //     type,
-    //     cvv,
-    //     company,
-    //     user_id,
-    //     pool
-    //   );
-    //   return data;
-    // },
   },
 };
 export default resolverUser;

@@ -1,14 +1,22 @@
 import { add_order } from "../../Querys/Order/addOrder";
 import { getOrder } from "../../Querys/Order/getOrder";
 import { getOrders } from "../../Querys/Order/getOrders";
+import { ApolloError } from "apollo-server-errors";
+import { ERROR_CODES } from "../../errorCodes/errorCodes";
 
 const resolverUser = {
   Query: {
-    async getOrder(_, { order_id }, { pool }) {
+    async getOrder(_, { order_id }, { pool, user }) {
+      if (!user) {
+        return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
+      }
       const data = await getOrder(order_id, pool);
       return data;
     },
-    async getOrders(_, { user_id }, { pool }) {
+    async getOrders(_, { user_id }, { pool, user }) {
+      if (!user) {
+        return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
+      }
       const data = await getOrders(user_id, pool);
       return data;
     },
@@ -36,8 +44,11 @@ const resolverUser = {
         zip_code,
         ip,
       },
-      { pool }
+      { pool, user }
     ) {
+      if (!user) {
+        return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
+      }
       const data = await add_order(
         user_id,
         email,

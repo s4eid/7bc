@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 import { setCookie } from "../setCookie/setCookie";
-import cookie from "cookie";
 export const jwtCheck = async (token, pool, res) => {
   const accessToken = token.accessToken;
   const refreshToken = token.refreshToken;
@@ -71,15 +70,7 @@ export const jwtCheck = async (token, pool, res) => {
             process.env.ACCESS_TOKEN,
             { expiresIn: "1m" }
           );
-          console.log("asdfjasdfsadk");
-          const accessC = cookie.serialize("accessToken", newAccessToken, {
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
-            path: "/",
-            maxAge: 60 * 60,
-          });
-          res.setHeader("Set-Cookie", accessC);
-          // await setCookie(newAccessToken, res);
+          await setCookie(newAccessToken, res);
           return isValid;
         } else {
           return null;

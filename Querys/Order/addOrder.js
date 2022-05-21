@@ -116,8 +116,6 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
     };
 
     await iyzipay.payment.create(request, async function (err, result) {
-      console.log(err);
-      console.log(result);
       let status = result.status;
       let currency = result.currency;
       let paymentId = result.paymentId;
@@ -174,7 +172,6 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       for (let i = 0; i < cart_items.length; i++) {
         let currentIY = itemTransactions[i];
         let findOne = cart_items.find(({ id }) => id === currentIY.itemId);
-        console.log(findOne);
         await pool.query(
           `INSERT INTO order_items (order_id,product_id,quantity,payment_transaction_id,price,
   paid_price,transaction_status,iyzico_commission_fee,iyzico_commission_rate) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
