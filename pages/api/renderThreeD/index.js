@@ -12,6 +12,10 @@ export default async function handler(req, res) {
       ]);
       const payHtml = user.rows[0].p_html;
       let payPage = Buffer.from(payHtml, "base64").toString("utf8");
+      await pool.query(`update users set p_html=$1 where email=$2`, [
+        null,
+        session.user.email,
+      ]);
       return res.send(payPage);
     }
     const token = req.cookies.refreshToken;

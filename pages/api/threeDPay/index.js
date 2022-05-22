@@ -37,6 +37,18 @@ export default async function handlre(req, res) {
             let iyziCommissionRateAmount = result.iyziCommissionRateAmount;
             let itemTransactions = result.itemTransactions;
             if (status === "failure") {
+              await pool.query(`delete from order_payment where order_id=$1`, [
+                conversationId,
+              ]);
+              await pool.query(`delete from order_shipping where order_id=$1`, [
+                conversationId,
+              ]);
+              await pool.query(`delete from order_items where order_id=$1`, [
+                conversationId,
+              ]);
+              await pool.query(`delete from orders where order_id=$1`, [
+                conversationId,
+              ]);
               return res
                 .status(500)
                 .json({ error: "Payment Failed!", code: ERROR_CODES.PAYMENT });
@@ -45,6 +57,7 @@ export default async function handlre(req, res) {
               `update orders set status=$1 where order_id=$2 returning order_id`,
               [0, conversationId]
             );
+            console.log(order.rows);
             const order_id = order.rows[0].order_id;
             await pool.query(
               `update order_payment set
@@ -106,7 +119,23 @@ export default async function handlre(req, res) {
             }
           }
         );
-        return res.redirect(`${process.env.URLL}/`);
+        return res.redirect(`${process.env.URLL}`);
+      } else if (status == "failure") {
+        await pool.query(`delete from order_payment where order_id=$1`, [
+          conversationId,
+        ]);
+        await pool.query(`delete from order_shipping where order_id=$1`, [
+          conversationId,
+        ]);
+        await pool.query(`delete from order_items where order_id=$1`, [
+          conversationId,
+        ]);
+        await pool.query(`delete from orders where order_id=$1`, [
+          conversationId,
+        ]);
+        return res
+          .status(500)
+          .json({ error: "Payment Failed!", code: ERROR_CODES.PAYMENT });
       }
     } catch (error) {
       return res

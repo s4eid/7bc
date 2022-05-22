@@ -2,14 +2,14 @@ import React from "react";
 import OrdersPage from "../../../components/AccountPage/OrdersPage/OrdersPage";
 import Nav from "../../../Layouts/Nav/Nav";
 import Footer from "../../../Layouts/Footer/Footer";
-import { initializeApollo } from "../../../apolloConfig/apollo";
+// import { initializeApollo } from "../../../apolloConfig/apollo";
 import { GET_ORDERS } from "../../../graphql_f/order/Query/getOrders";
 import { useSelector } from "react-redux";
 import Loading from "../../../Layouts/Loading";
 import { useQuery } from "@apollo/client";
 import DashboardS from "../../../Layouts/Dashboard/DashboardS";
 import { getSession } from "next-auth/react";
-import { getUser_server } from "../../../Functions/userC";
+// import { getUser_server } from "../../../Functions/userC";
 
 export default function Orders() {
   const user = useSelector((d) => d.user);

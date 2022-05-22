@@ -28,7 +28,7 @@ export default function Address() {
       user_id: user.user_id,
     },
     skip: !user.user_id,
-    // fetchPolicy: "network-only",
+    fetchPolicy: "network-only",
   });
 
   return (

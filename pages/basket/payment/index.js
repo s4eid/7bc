@@ -18,6 +18,7 @@ export default function Payment() {
     variables: {
       userId: user.user_id,
     },
+    fetchPolicy: "network-only",
   });
   // const router = useRouter();
 

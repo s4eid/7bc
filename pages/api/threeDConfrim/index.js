@@ -56,6 +56,7 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
         `insert into orders(status,user_id)values($1,$2) returning order_id`,
         [2, user_id]
       );
+      console.log(order.rows[0]);
       var iyzipay = new Iyzipay({
         apiKey: process.env.IYZICO_API_KEY,
         secretKey: process.env.IYZICO_SECRET_KEY,
@@ -168,12 +169,44 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
               ]
             );
             await success(result.status);
+          } else if (result.status === "failure") {
+            await pool.query(`delete from order_payment where order_id=$1`, [
+              order.rows[0].order_id,
+            ]);
+            await pool.query(`delete from order_shipping where order_id=$1`, [
+              order.rows[0].order_id,
+            ]);
+            await pool.query(`delete from order_items where order_id=$1`, [
+              order.rows[0].order_id,
+            ]);
+            await pool.query(`delete from orders where order_id=$1`, [
+              order.rows[0].order_id,
+            ]);
+            return res
+              .status(500)
+              .json({ error: "Payment Failed!", code: ERROR_CODES.PAYMENT });
           }
         }
       );
       const success = (status) => {
         return res.status(200).json({ status: status });
       };
-    } catch (error) {}
+    } catch (error) {
+      await pool.query(`delete from order_payment where order_id=$1`, [
+        order.rows[0].order_id,
+      ]);
+      await pool.query(`delete from order_shipping where order_id=$1`, [
+        order.rows[0].order_id,
+      ]);
+      await pool.query(`delete from order_items where order_id=$1`, [
+        order.rows[0].order_id,
+      ]);
+      await pool.query(`delete from orders where order_id=$1`, [
+        order.rows[0].order_id,
+      ]);
+      return res
+        .status(500)
+        .json({ error: "Payment Failed!", code: ERROR_CODES.PAYMENT });
+    }
   }
 }

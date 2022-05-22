@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import order from "./order.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +6,6 @@ import {
   faBoxOpen,
   faTruck,
   faCheckCircle,
-  faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 
@@ -31,10 +29,8 @@ export default function Order({ o }) {
           <FontAwesomeIcon icon={faBoxOpen} />
         ) : o.status === 1 ? (
           <FontAwesomeIcon icon={faTruck} />
-        ) : o.status == 3 ? (
-          <FontAwesomeIcon icon={faCheckCircle} />
         ) : (
-          <FontAwesomeIcon icon={faCircle} />
+          <FontAwesomeIcon icon={faCheckCircle} />
         )}
       </div>
       <div className={order.iconHolder}>

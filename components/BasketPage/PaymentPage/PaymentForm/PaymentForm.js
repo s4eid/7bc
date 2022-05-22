@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import paymentForm from "./paymentForm.module.css";
 import { Formik, Field, Form } from "formik";
 import { paymentSchema } from "../../../../validation/payment";
@@ -12,6 +12,7 @@ import { clearCart } from "../../../../Redux/Actions/Product";
 
 export default function PaymentForm({ info, user, product }) {
   const [addOrder, { loading, error }] = useMutation(ADD_ORDER);
+  const [payLoading, setPayLoading] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
   const initialValues = {
@@ -36,6 +37,7 @@ export default function PaymentForm({ info, user, product }) {
               const _month = parseInt(data.month);
               const _year = parseInt(data.year);
               if (data.threeD) {
+                setPayLoading(true);
                 fetch("/api/threeDConfrim", {
                   method: "POST",
                   body: JSON.stringify({
@@ -63,6 +65,8 @@ export default function PaymentForm({ info, user, product }) {
                   .then((data) => {
                     console.log(data);
                     if (data.status === "success") {
+                      setPayLoading(false);
+                      dispatch(clearCart());
                       router.push("/api/renderThreeD");
                     }
                     if (data.code === "CART_ITEMS") {
@@ -95,9 +99,11 @@ export default function PaymentForm({ info, user, product }) {
                     ip: info.ip,
                     cartItems: _info,
                   },
-                  onCompleted: () => {
-                    localStorage.removeItem("cartItems");
-                    // router.reload("/");
+                  onCompleted: (data) => {
+                    if (data.add_order.status == "success") {
+                      dispatch(clearCart());
+                      router.push("/");
+                    }
                   },
                 });
               }
@@ -248,7 +254,7 @@ export default function PaymentForm({ info, user, product }) {
                 </div>
               </div>
               <div className={paymentForm.loginOr}>
-                {!loading ? (
+                {!loading && !payLoading ? (
                   <button
                     type="submit"
                     disabled={!isValid && dirty}
