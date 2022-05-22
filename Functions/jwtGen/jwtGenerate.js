@@ -13,3 +13,11 @@ export const jwtGenerate = async (email, name, user_id) => {
   );
   return { accessToken, refreshToken };
 };
+export const jwtGenerateAccess = async (email, name, user_id) => {
+  const accessToken = await sign(
+    { email, name, user_id },
+    process.env.ACCESS_TOKEN,
+    { expiresIn: "1h" }
+  );
+  return { accessToken };
+};

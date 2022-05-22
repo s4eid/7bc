@@ -3,12 +3,6 @@ import { setCookie } from "../setCookie/setCookie";
 export const jwtCheck = async (token, pool, res) => {
   const accessToken = token.accessToken;
   const refreshToken = token.refreshToken;
-  let option = {
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    path: "/",
-    maxAge: 60 * 60,
-  };
   if (accessToken) {
     try {
       const user = await jwt.verify(accessToken, process.env.ACCESS_TOKEN);
@@ -47,6 +41,7 @@ export const jwtCheck = async (token, pool, res) => {
     }
   } else {
     try {
+      console.log(refreshToken);
       if (refreshToken) {
         const isValid = await jwt.verify(
           refreshToken,

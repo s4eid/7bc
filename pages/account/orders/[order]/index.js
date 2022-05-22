@@ -17,6 +17,7 @@ export default function OrderDetails() {
     variables: {
       orderId: order_id.order,
     },
+    fetchPolicy: "network-only",
   });
   return (
     <>{!loading ? <OrderDetailsPage order={data.getOrder} /> : <Loading />}</>

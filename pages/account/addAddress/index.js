@@ -16,6 +16,7 @@ export default function AddAddress() {
       .then((data) => setIp(data.ip));
   }, []);
   const user = useSelector((state) => state.user);
+  console.log(user);
   return (
     <>
       {ip && !user.loading ? (

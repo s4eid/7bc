@@ -16,6 +16,7 @@ import { ERROR_CODES } from "../../errorCodes/errorCodes";
 const resolverUser = {
   Query: {
     async getUserAddress(_, { user_id }, { pool, user, _user }) {
+      console.log(`usersrjeskjsdfjskfsjk ${user}`);
       if (!user && !_user) {
         return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
       }

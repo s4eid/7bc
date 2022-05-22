@@ -19,6 +19,7 @@ export default function Orders() {
       userId: user.user_id,
     },
     skip: !user.user_id,
+    fetchPolicy: "network-only",
   });
 
   return (
