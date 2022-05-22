@@ -14,6 +14,7 @@ const errorLink = onError(
   ({ graphQLErrors, networkError, operation, response }) => {
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path, extensions }) => {
+        console.log(extensions.code);
         if (extensions.code === "UNAUTHENTICATED") {
           Cookies.remove("refresh");
         }
