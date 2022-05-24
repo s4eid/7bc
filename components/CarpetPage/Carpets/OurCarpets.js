@@ -16,9 +16,9 @@ export default function OurCarpets({ products, pageInfo, refetch, filter }) {
           first: 5,
         },
         updateQuery: (prevResult, { fetchMoreResult }) => {
-          fetchMoreResult.products.edges.node = [
-            ...prevResult.products.edges.node,
-            ...fetchMoreResult.products.edges.node,
+          fetchMoreResult?.products?.edges?.node = [
+            ...prevResult?.products?.edges?.node,
+            ...fetchMoreResult?.products?.edges?.node,
           ];
           return fetchMoreResult;
         },

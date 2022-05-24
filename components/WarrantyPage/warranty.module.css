@@ -1,0 +1,79 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.title {
+  color: #111111;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+.holder {
+  width: 100%;
+  border: 2px solid #111111;
+  width: 90%;
+  border-radius: 10px;
+}
+.topicC {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.subTitle {
+  font-size: 17px;
+  color: #0081ef;
+}
+.toggleC {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  align-items: center;
+}
+.icon {
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #111111;
+  padding: 10px;
+  flex-direction: column;
+  text-align: center;
+  font-size: 14px;
+}
+.content p {
+  margin: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .toggleC {
+    flex-direction: column;
+  }
+  .icon {
+    position: relative;
+    right: auto;
+  }
+}

@@ -29,6 +29,7 @@ export default function Footer({ children }) {
               width={50}
               layout="fixed"
             />
+            <Image src="/troy.svg" height={50} width={50} layout="fixed" />
           </div>
 
           <div className={footer.shippingC}>
