@@ -17,7 +17,9 @@ export default function Child({ text, name }) {
         </div>
         {content ? (
           <div className={distance.content}>
-            <p>{text}</p>
+            {text.map((t, index) => (
+              <p key={index}>{t}</p>
+            ))}
           </div>
         ) : (
           <></>

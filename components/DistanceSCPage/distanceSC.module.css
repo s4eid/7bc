@@ -60,11 +60,12 @@
   align-items: center;
   color: #111111;
   padding: 10px;
+  flex-direction: column;
   text-align: center;
   font-size: 14px;
 }
 .content p {
-  margin: 0px;
+  margin: 5px;
 }
 
 @media screen and (max-width: 500px) {
