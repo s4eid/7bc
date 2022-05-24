@@ -8,7 +8,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faShippingFast } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import GoogleMapReact from "google-map-react";
 
 export default function Footer({ children }) {
   return (
@@ -36,13 +35,6 @@ export default function Footer({ children }) {
             <p className={footer.secureTitle}>Fast Shipping</p>
             <FontAwesomeIcon icon={faShippingFast} />
           </div>
-          {/* <GoogleMapReact
-            bootstrapURLKeys={{
-              key: process.env.NEXT_PUBLIC_GOOGLE_MAP,
-            }}
-            defaultCenter={{ lat: 38.64403004130668, lng: 34.83221456271912 }}
-            defaultZoom={10}
-          ></GoogleMapReact> */}
         </div>
         <div className={footer.contactHolder}>
           <div className={footer.contactContainer}>

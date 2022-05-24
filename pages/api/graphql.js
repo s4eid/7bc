@@ -9,19 +9,11 @@ import resolverProduct from "../../graphql/product/resolverProduct";
 import typeOrder from "../../graphql/order/order_type";
 import resolverOrder from "../../graphql/order/order_resolver";
 import { getSession } from "next-auth/react";
-// import {getServerSession} from "next-auth"
-// import { makeExecutableSchema } from "@graphql-tools/schema";
-
-// import pkg from "graphql";
 
 const cors = Cors({
   allowCredentials: true,
   origin: process.env.URLL,
 });
-// const schema = makeExecutableSchema({
-//   typeDefs: [typeUser, typeProduct, typeOrder],
-//   resolvers: [resolverUser, resolverProduct, resolverOrder],
-// });
 
 const apolloServer = new ApolloServer({
   resolvers: [resolverUser, resolverProduct, resolverOrder],

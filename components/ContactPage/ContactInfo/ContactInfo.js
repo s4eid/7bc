@@ -6,9 +6,11 @@ import {
   faTelegram,
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
+import Map from "./Map";
+import { withGoogleMap, withScriptjs } from "react-google-maps";
 import { faMailBulk, faPhone } from "@fortawesome/free-solid-svg-icons";
-import GoogleMapReact from "google-map-react";
 
+const MapWrapped = withScriptjs(withGoogleMap(Map));
 export default function ContactInfo() {
   return (
     <div className={contactInfo.mainC}>
@@ -40,13 +42,12 @@ export default function ContactInfo() {
         </div>
       </div>
       <div className={contactInfo.childCMap}>
-        <GoogleMapReact
-          bootstrapURLKeys={{
-            key: process.env.NEXT_PUBLIC_GOOGLE_MAP,
-          }}
-          defaultCenter={{ lat: 38.64403004130668, lng: 34.83221456271912 }}
-          defaultZoom={10}
-        ></GoogleMapReact>
+        <MapWrapped
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.NEXT_PUBLIC_GOOGLE_MAP}`}
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `100%` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
       </div>
     </div>
   );
