@@ -23,6 +23,13 @@ export const add_order = async (
   pool
 ) => {
   try {
+    // const done = (status) => {
+    //   if (status) {
+    //     return { status: "success" };
+    //   } else if (status === false) {
+    //     return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
+    //   }
+    // };
     const existPI = await pool.query(
       `
 SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory i ON
@@ -49,7 +56,9 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
         ERROR_CODES.CART_ITEMS
       );
     }
-
+    var fullName = full_name.split(" ");
+    var firstName = fullName[0];
+    var lastName = fullName[fullName.length - 1];
     var iyzipay = new Iyzipay({
       apiKey: process.env.IYZICO_API_KEY,
       secretKey: process.env.IYZICO_SECRET_KEY,
@@ -75,8 +84,8 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       },
       buyer: {
         id: user_id,
-        name: full_name,
-        surname: full_name,
+        name: firstName,
+        surname: lastName,
         gsmNumber: phone_number,
         email: email,
         identityNumber: user_id,
@@ -114,8 +123,9 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       //     },
       // ]
     };
-
+    // let _status;
     await iyzipay.payment.create(request, async function (err, result) {
+      // _status = false;
       let status = result.status;
       let currency = result.currency;
       let paymentId = result.paymentId;
@@ -198,20 +208,10 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
           [currnetP.quantity, currnetP.id]
         );
       }
+      // _status = true;
+      // done(_status);
     });
-
     return { status: "success" };
-    //     const data = await pool.query(
-    //       `
-    //        SELECT * FROM product p
-    //        INNER JOIN product_details b ON p.product_id=b.product_id
-    //        INNER JOIN product_inventory i ON p.product_id=i.product_id
-    //        INNER JOIN product_img m ON p.product_id=m.product_id
-    //       WHERE p.product_id NOT IN ($1) LIMIT 3
-    // 	    `,
-    //       [product_id]
-    //     );
-    //     return data.rows;
   } catch (error) {
     return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
   }

@@ -22,13 +22,16 @@ const errorLink = onError(
           store.dispatch(clearCart());
           store.dispatch(addError(message, true));
         }
+        if (extensions.code === "PAYMENT") {
+          store.dispatch(clearCart());
+          store.dispatch(addError(message, true));
+        }
         console.log(
           `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path} code:${extensions.code}`
         );
       });
     }
     if (networkError) {
-      console.log(networkError);
       store.dispatch(addError(networkError.statusCode, true));
     }
   }

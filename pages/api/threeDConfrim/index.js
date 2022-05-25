@@ -56,7 +56,9 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
         `insert into orders(status,user_id)values($1,$2) returning order_id`,
         [2, user_id]
       );
-      console.log(order.rows[0]);
+      var fullName = full_name.split(" ");
+      let firstName = fullName[0];
+      let lastName = fullName[fullName.length - 1];
       var iyzipay = new Iyzipay({
         apiKey: process.env.IYZICO_API_KEY,
         secretKey: process.env.IYZICO_SECRET_KEY,
@@ -83,8 +85,8 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
         },
         buyer: {
           id: user_id,
-          name: full_name,
-          surname: full_name,
+          name: firstName,
+          surname: lastName,
           gsmNumber: phone_number,
           email: email,
           identityNumber: user_id,

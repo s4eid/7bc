@@ -102,7 +102,7 @@ export default function PaymentForm({ info, user, product }) {
                       cartItems: _info,
                     },
                     onCompleted: (data) => {
-                      if (data.add_order.status == "success") {
+                      if (data?.add_order?.status == "success") {
                         dispatch(clearCart());
                         router.push("/");
                       }
