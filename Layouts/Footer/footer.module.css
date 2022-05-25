@@ -10,7 +10,7 @@
   padding: 20px;
   background-color: #111111;
   margin-top: auto;
-  z-index: 999;
+  z-index: 900;
 }
 .logo {
   display: flex;
