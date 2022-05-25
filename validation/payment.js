@@ -21,4 +21,7 @@ export const paymentSchema = Yup.object().shape({
     .max(6, "Must be max 6 digits")
     .required("Required"),
   threeD: Yup.boolean(),
+  agree: Yup.boolean()
+    .oneOf([true], "Field must be checked")
+    .required("Required"),
 });

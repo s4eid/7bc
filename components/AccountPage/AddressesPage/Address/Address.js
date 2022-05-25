@@ -1,7 +1,7 @@
 import React from "react";
 import address from "./address.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Address({ userAddress }) {
   return (

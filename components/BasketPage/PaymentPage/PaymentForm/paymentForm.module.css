@@ -9,7 +9,6 @@
 
 .fields {
   display: flex;
-  /* position: relative; */
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
@@ -20,7 +19,6 @@
   width: 400px;
   background-color: #111111;
   outline: none;
-  /* position: relative; */
   color: #fff;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -93,11 +91,63 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* height: 80px; */
   flex-direction: column;
 }
+
+.switchBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.switchBox input {
+  font-size: 17px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 3.5em;
+  height: 1.5em;
+  background: #666666;
+  border-radius: 3em;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.switchBox input:checked {
+  background: #0081ef;
+}
+.switchBox input::after {
+  position: absolute;
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
+  left: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.switchBox input:checked::after {
+  left: calc(100% - 1.5em);
+}
+
 .errorC {
   color: #666666;
+  text-align: center;
 }
 .error {
   color: rgb(255, 68, 68);

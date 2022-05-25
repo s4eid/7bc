@@ -22,6 +22,7 @@ export default function PaymentForm({ info, user, product }) {
     year: info?.expire_y ? info.expire_y : "",
     cvv: info?.cvv ? info.cvv : "",
     threeD: false,
+    agree: false,
   };
   return (
     <>
@@ -30,84 +31,86 @@ export default function PaymentForm({ info, user, product }) {
           initialValues={initialValues}
           validationSchema={paymentSchema}
           onSubmit={async (data) => {
-            try {
-              const { _info, list } = await getRightInfo(product.cartItems);
-              const total = _info.reduce((x, y) => x + y.price, 0);
-              const _cvv = parseInt(data.cvv);
-              const _month = parseInt(data.month);
-              const _year = parseInt(data.year);
-              if (data.threeD) {
-                setPayLoading(true);
-                fetch("/api/threeDConfrim", {
-                  method: "POST",
-                  body: JSON.stringify({
-                    user_id: user.user_id,
-                    email: user.email,
-                    full_name: user.name,
-                    owner: data.ownerName,
-                    card_number: data.cardNumber,
-                    expire_m: _month,
-                    expire_y: _year,
-                    total_price: total,
-                    product_list: list,
-                    cvv: _cvv,
-                    address: info.address,
-                    country: info.country,
-                    phone_number: info.phone_number,
-                    city: info.city,
-                    area: info.area,
-                    zip_code: info.zip_code,
-                    ip: info.ip,
-                    cart_items: _info,
-                  }),
-                })
-                  .then((res) => res.json())
-                  .then((data) => {
-                    console.log(data);
-                    if (data.status === "success") {
-                      setPayLoading(false);
-                      dispatch(clearCart());
-                      router.push("/api/renderThreeD");
-                    }
-                    if (data.code === "CART_ITEMS") {
-                      dispatch(clearCart());
-                      dispatch(addError(data.error, true));
-                    }
-                    if (data.error) {
-                      dispatch(addError(data.error, true));
-                    }
+            if (data.agree) {
+              try {
+                const { _info, list } = await getRightInfo(product.cartItems);
+                const total = _info.reduce((x, y) => x + y.price, 0);
+                const _cvv = parseInt(data.cvv);
+                const _month = parseInt(data.month);
+                const _year = parseInt(data.year);
+                if (data.threeD) {
+                  setPayLoading(true);
+                  fetch("/api/threeDConfrim", {
+                    method: "POST",
+                    body: JSON.stringify({
+                      user_id: user.user_id,
+                      email: user.email,
+                      full_name: user.name,
+                      owner: data.ownerName,
+                      card_number: data.cardNumber,
+                      expire_m: _month,
+                      expire_y: _year,
+                      total_price: total,
+                      product_list: list,
+                      cvv: _cvv,
+                      address: info.address,
+                      country: info.country,
+                      phone_number: info.phone_number,
+                      city: info.city,
+                      area: info.area,
+                      zip_code: info.zip_code,
+                      ip: info.ip,
+                      cart_items: _info,
+                    }),
+                  })
+                    .then((res) => res.json())
+                    .then((data) => {
+                      console.log(data);
+                      if (data.status === "success") {
+                        setPayLoading(false);
+                        dispatch(clearCart());
+                        router.push("/api/renderThreeD");
+                      }
+                      if (data.code === "CART_ITEMS") {
+                        dispatch(clearCart());
+                        dispatch(addError(data.error, true));
+                      }
+                      if (data.error) {
+                        dispatch(addError(data.error, true));
+                      }
+                    });
+                } else {
+                  addOrder({
+                    variables: {
+                      userId: user.user_id,
+                      email: user.email,
+                      fullName: user.name,
+                      owner: data.ownerName,
+                      cardNumber: data.cardNumber,
+                      expireM: _month,
+                      expireY: _year,
+                      totalPrice: total,
+                      productList: list,
+                      cvv: _cvv,
+                      address: info.address,
+                      country: info.country,
+                      phoneNumber: info.phone_number,
+                      city: info.city,
+                      area: info.area,
+                      zipCode: info.zip_code,
+                      ip: info.ip,
+                      cartItems: _info,
+                    },
+                    onCompleted: (data) => {
+                      if (data.add_order.status == "success") {
+                        dispatch(clearCart());
+                        router.push("/");
+                      }
+                    },
                   });
-              } else {
-                addOrder({
-                  variables: {
-                    userId: user.user_id,
-                    email: user.email,
-                    fullName: user.name,
-                    owner: data.ownerName,
-                    cardNumber: data.cardNumber,
-                    expireM: _month,
-                    expireY: _year,
-                    totalPrice: total,
-                    productList: list,
-                    cvv: _cvv,
-                    address: info.address,
-                    country: info.country,
-                    phoneNumber: info.phone_number,
-                    city: info.city,
-                    area: info.area,
-                    zipCode: info.zip_code,
-                    ip: info.ip,
-                    cartItems: _info,
-                  },
-                  onCompleted: (data) => {
-                    if (data.add_order.status == "success") {
-                      dispatch(clearCart());
-                      router.push("/");
-                    }
-                  },
-                });
-              }
-            } catch (error) {}
+                }
+              } catch (error) {}
+            }
           }}
         >
           {({ errors, touched, isValid, dirty }) => (
@@ -248,9 +251,40 @@ export default function PaymentForm({ info, user, product }) {
                     required
                   />
                 </div>
+              </div>
+              <div className={paymentForm.inputsContainer}>
                 <div className={paymentForm.holder}>
-                  <label className={paymentForm.errorC}>3D Secure</label>
-                  <Field type="checkbox" name="threeD" />
+                  <label for="cbx" className={paymentForm.errorC}>
+                    3D Secure
+                  </label>
+                  <div className={paymentForm.switchBox}>
+                    <Field
+                      type="checkbox"
+                      className={paymentForm.cbx}
+                      id="cbx"
+                      name="threeD"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={paymentForm.inputsContainer}>
+                <div className={paymentForm.holder}>
+                  {errors.agree && touched.agree ? (
+                    <label className={paymentForm.error}>{errors.agree}</label>
+                  ) : (
+                    <label for="agree" className={paymentForm.errorC}>
+                      I Agree With Distance Sales Contract
+                    </label>
+                  )}
+                  <div className={paymentForm.switchBox}>
+                    <Field
+                      type="checkbox"
+                      className={paymentForm.cbx}
+                      id="agree"
+                      name="agree"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
               <div className={paymentForm.loginOr}>
