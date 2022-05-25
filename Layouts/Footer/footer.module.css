@@ -96,6 +96,7 @@
   .mainContainer {
     height: auto;
     flex-direction: column;
+    gap: 20px;
   }
   .logo {
     width: 100%;
@@ -119,6 +120,12 @@
   }
 }
 
+@media screen and (max-width: 470px) {
+  .mapContainer {
+    flex-direction: column;
+  }
+}
+
 @media screen and (max-width: 420px) {
   .brandPayI {
     width: 300px;
@@ -126,7 +133,7 @@
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 400px) {
   .brandPayI {
     width: 280px;
     height: 20px;
