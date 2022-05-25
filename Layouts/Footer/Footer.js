@@ -37,7 +37,7 @@ export default function Footer({ children }) {
         </div>
         <div className={footer.mapContainer}>
           <div className={footer.policyC}>
-            <h1>Policys</h1>
+            <h1>Policy</h1>
             <Link href="/distance-sales-contract">
               <li>Distance And Sales</li>
             </Link>
