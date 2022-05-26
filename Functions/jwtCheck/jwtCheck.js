@@ -41,7 +41,6 @@ export const jwtCheck = async (token, pool, res) => {
     }
   } else {
     try {
-      console.log(refreshToken);
       if (refreshToken) {
         const isValid = await jwt.verify(
           refreshToken,

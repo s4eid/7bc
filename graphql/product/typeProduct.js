@@ -3,21 +3,23 @@ const typeProduct = gql`
   type Product {
     product_id: ID!
     name: String!
-    price: Int!
-    made: String
+    price: String!
     type: String!
     created_at: String!
     product_details_id: ID
-    width: Int!
-    height: Int!
+    width: String!
+    height: String!
     origin: String
     age: Int
     family: String
     main_color: String
     description: String
-    weight: Int!
+    weight: String!
     product_inventory_id: ID!
     pieces: Int!
+    made: String
+    shape: String
+    material: String
     # product_discount_id: ID!
     # percent: Int!
     # active: Boolean!

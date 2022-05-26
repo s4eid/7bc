@@ -29,6 +29,9 @@ export default function Product({ p }) {
             width={p.width}
             height={p.height}
             stock={p.pieces}
+            made={p.made}
+            material={p.material}
+            shape={p.shape}
             origin={p.origin}
             description={p.description}
             id={p.product_id}

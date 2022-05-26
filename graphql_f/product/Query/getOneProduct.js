@@ -15,6 +15,9 @@ export const GET_PRODUCT = gql`
       family
       age
       pieces
+      made
+      shape
+      material
       origin
       description
       width

@@ -25,7 +25,7 @@ export default function BasketC({ products }) {
           <div className={basketC.infoHolder}>
             <p className={basketC.title}>Price</p>
             <p className={basketC.info}>
-              ${products.reduce((x, y) => x + y._price, 0)}
+              ${products.reduce((x, y) => x + y.price * y.quantity, 0)}
             </p>
           </div>
           <div className={basketC.infoHolder}>

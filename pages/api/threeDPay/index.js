@@ -57,7 +57,6 @@ export default async function handlre(req, res) {
               `update orders set status=$1 where order_id=$2 returning order_id`,
               [0, conversationId]
             );
-            console.log(order.rows);
             const order_id = order.rows[0].order_id;
             await pool.query(
               `update order_payment set

@@ -32,7 +32,6 @@ export default function Carpet() {
   });
   useEffect(() => {
     if (data?.products.edges.node) {
-      console.log(filter.action);
       if (filter.action == true) {
         dispatch(
           getProduct_filter(data.products.edges.node, data.products.pageInfo)

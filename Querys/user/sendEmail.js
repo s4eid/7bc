@@ -1,7 +1,6 @@
 import sendGrid from "../../emailConfig";
 
 export const sendEmail = async (email, name, message, phone_number) => {
-  console.log(email, name, message, phone_number);
   let _message = message;
   try {
     const message = {
