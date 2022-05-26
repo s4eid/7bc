@@ -7,6 +7,7 @@ import { getProduct_k, getProduct_filter } from "../../Redux/Actions/Product_k";
 import { GET_PRODUCTS } from "../../graphql_f/product/Query/getProduct";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
+import Head from "next/head";
 import Loading from "../../Layouts/Loading/index.js";
 
 export default function Kilim() {
@@ -43,6 +44,24 @@ export default function Kilim() {
   }, [data]);
   return (
     <>
+      <Head>
+        <title>
+          Check Our Big Kilim Collection Free Shipping - arisoyhandicraft
+        </title>
+        <meta
+          name="description"
+          content="Over 1000 Collection Of Kilims We Will Make Your Place Royal For Every Budget Fast And Free Shipping  To Your Country  In Any Size & Shape"
+        ></meta>
+        <meta charset="UTF-8"></meta>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        ></meta>
+        <meta
+          name="keywords"
+          content="carpet,rug,kilim,handmade,handicraft,iran carpet,turkey carpet,online store,free shipping"
+        ></meta>
+      </Head>
       {!products.loading && !loading ? (
         <KilimPage
           products={products.products}
