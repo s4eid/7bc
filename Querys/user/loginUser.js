@@ -58,7 +58,7 @@ export const loginUser = async (email, password, token, res, pool) => {
       maxAge: 60 * 60,
     });
     res.setHeader("Set-Cookie", [refreshC, accessC]);
-    return exist.rows[0];
+    return "done";
   } catch (error) {
     const { accessToken, refreshToken } = await jwtGenerate(
       email,
@@ -85,7 +85,7 @@ export const loginUser = async (email, password, token, res, pool) => {
           maxAge: 60 * 60,
         });
         res.setHeader("Set-Cookie", [refreshC, accessC]);
-        return exist.rows[0];
+        return "done";
       })
       .catch((error) => {
         return new ApolloError("Login Failed!", ERROR_CODES.LOGIN);
