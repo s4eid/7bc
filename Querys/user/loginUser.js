@@ -8,7 +8,18 @@ import cookie from "cookie";
 import jwt from "jsonwebtoken";
 import { ERROR_CODES } from "../../errorCodes/errorCodes";
 
-export const loginUser = async (email, password, res, pool) => {
+export const loginUser = async (email, password, token, res, pool) => {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  const response = await fetch(
+    `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
+    {
+      method: "POST",
+    }
+  );
+  const data = await response.json();
+  if (!data.success) {
+    return new ApolloError("Login Failed!", ERROR_CODES.LOGIN);
+  }
   const exist = await pool.query("SELECT * FROM users WHERE email=$1", [email]);
   if (!exist.rows[0]) {
     return new ApolloError("Login Failed!", ERROR_CODES.LOGIN);

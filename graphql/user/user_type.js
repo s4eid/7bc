@@ -103,7 +103,7 @@ const typeUser = gql`
       zip_code: String!
       ip: String!
       user_id: ID!
-    ): addUserAddress!
+    ): String!
     editUser_address(
       address: String!
       country: String!
@@ -113,7 +113,7 @@ const typeUser = gql`
       zip_code: String!
       ip: String!
       user_id: ID!
-    ): addUserAddress!
+    ): String!
 
     # addUser_payment(
     #   owner: String!
@@ -125,8 +125,13 @@ const typeUser = gql`
     #   company: String
     #   user_id: ID!
     # ): addUserPayment!
-    registerUser(name: String!, email: String!, password: String!): User
-    loginUser(email: String!, password: String!): User
+    registerUser(
+      name: String!
+      email: String!
+      password: String!
+      token: String!
+    ): User
+    loginUser(email: String!, password: String!, token: String!): String
     confrimPassword(user_id: ID!, password: String!): String
   }
 `;

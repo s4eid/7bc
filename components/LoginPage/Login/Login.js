@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import login from "../login.module.css";
 import { initialValues, loginSchema } from "../../../validation/login";
 import { Formik, Field, Form } from "formik";
@@ -9,14 +9,14 @@ import { getUserInfo } from "../../../Redux/Actions/User/user";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import ReCAPTCHA from "react-google-recaptcha";
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
   const [errorMessage, setErrorMessage] = useState("");
+  const reRef = useRef();
   const router = useRouter();
-  console.log(error);
-  console.log(errorMessage.message);
   return (
     <div className={login.mainContainer}>
       {error ? (
@@ -34,11 +34,14 @@ export default function Login() {
           initialValues={initialValues}
           validationSchema={loginSchema}
           onSubmit={async (data) => {
+            const token = await reRef.current.executeAsync();
+            reRef.current.reset();
             data.email = await data.email.toLowerCase();
             loginUser({
               variables: {
                 email: data.email,
                 password: data.password,
+                token: token,
               },
               onError: (err) => setErrorMessage(err.message),
               onCompleted: () => {
@@ -50,6 +53,12 @@ export default function Login() {
         >
           {({ errors, touched, isValid, dirty }) => (
             <Form className={login.fields}>
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                size="invisible"
+                ref={reRef}
+                className={login.reCaptcha}
+              />
               <div className={login.inputsContainer}>
                 <div className={login.holder}>
                   <Field

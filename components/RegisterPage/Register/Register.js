@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import register from "../register.module.css";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { REGISTER_USER } from "../../../graphql_f/users/Mutation/registerUser";
 import { Formik, Field, Form } from "formik";
+import ReCAPTCHA from "react-google-recaptcha";
 import SendEmail from "../../../Modals/SendEmail/SendEmail";
 
 export default function Register() {
@@ -15,6 +16,7 @@ export default function Register() {
   const [registerUser, { data, loading, error }] = useMutation(REGISTER_USER);
   const [openM, setOpenM] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const reRef = useRef();
   return (
     <div className={register.mainContainer}>
       {error ? (
@@ -32,6 +34,8 @@ export default function Register() {
           initialValues={initialValues}
           validationSchema={registerSchema}
           onSubmit={async (data) => {
+            const token = await reRef.current.executeAsync();
+            reRef.current.reset();
             let _email = data.email.toLowerCase();
             let _name = data.full_name.toLowerCase();
             registerUser({
@@ -39,6 +43,7 @@ export default function Register() {
                 name: _name,
                 email: _email,
                 password: data.password,
+                token: token,
               },
               onError: (err) => setErrorMessage(err.message),
               onCompleted: (data) => {
@@ -49,6 +54,12 @@ export default function Register() {
         >
           {({ errors, touched, isValid, dirty }) => (
             <Form className={register.fields}>
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                size="invisible"
+                ref={reRef}
+                className={register.reCaptcha}
+              />
               <div className={register.inputsContainer}>
                 <div className={register.holder}>
                   <Field

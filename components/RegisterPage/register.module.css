@@ -45,14 +45,8 @@
 .title h1 {
   font-size: 20px;
 }
-
-.logo {
-  width: 100%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20%;
+.reCaptcha {
+  z-index: 901;
 }
 .fields {
   display: flex;

@@ -20,16 +20,6 @@ export const EDIT_USER_ADDRESS = gql`
       ip: $ip
       phone_number: $phone_number
       user_id: $userId
-    ) {
-      user_address_id
-      user_id
-      address
-      area
-      city
-      country
-      phone_number
-      ip
-      zip_code
-    }
+    )
   }
 `;

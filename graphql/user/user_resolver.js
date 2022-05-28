@@ -40,12 +40,12 @@ const resolverUser = {
     },
   },
   Mutation: {
-    async registerUser(_, { email, password, name }, { pool }) {
-      const data = await registerUser(name, email, password, pool);
+    async registerUser(_, { email, password, name, token }, { pool }) {
+      const data = await registerUser(name, email, password, token, pool);
       return data;
     },
-    async loginUser(_, { email, password }, { res, pool }) {
-      const data = await loginUser(email, password, res, pool);
+    async loginUser(_, { email, password, token }, { res, pool }) {
+      const data = await loginUser(email, password, token, res, pool);
       return data;
     },
     async addUser_address(

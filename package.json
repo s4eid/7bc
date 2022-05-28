@@ -40,6 +40,7 @@
     "react-geocode": "^0.2.3",
     "react-google-autocomplete": "^2.6.1",
     "react-google-maps": "^9.4.5",
+    "react-google-recaptcha": "^2.1.0",
     "react-image-magnifiers": "^1.4.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-redux": "^7.2.6",

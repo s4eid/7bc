@@ -20,10 +20,6 @@ export const ADD_USER_ADDRESS = gql`
       ip: $ip
       phone_number: $phone_number
       user_id: $userId
-    ) {
-      address
-      user_id
-      user_address_id
-    }
+    )
   }
 `;

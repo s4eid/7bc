@@ -5,8 +5,19 @@ import jwt from "jsonwebtoken";
 import { ERROR_CODES } from "../../errorCodes/errorCodes";
 import { verifi } from "../../emailTemplates/VerifiAccount";
 
-export const registerUser = async (name, email, password, pool) => {
+export const registerUser = async (name, email, password, token, pool) => {
   try {
+    const secret = process.env.RECAPTCHA_SECRET_KEY;
+    const response = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
+      {
+        method: "POST",
+      }
+    );
+    const _data = await response.json();
+    if (!_data.success) {
+      return new ApolloError("Register Failed!", ERROR_CODES.REGISTER);
+    }
     const exist = await pool.query("SELECT user_id FROM users WHERE email=$1", [
       email,
     ]);
@@ -19,10 +30,10 @@ export const registerUser = async (name, email, password, pool) => {
       [name, email, _password]
     );
     const user_id = data.rows[0].user_id;
-    const token = await jwt.sign({ user_id }, process.env.EMAIL_CONFRIM_SEC, {
+    const _token = await jwt.sign({ user_id }, process.env.EMAIL_CONFRIM_SEC, {
       expiresIn: "1h",
     });
-    const url = `${process.env.URLL}/api/email_confrim/${token}`;
+    const url = `${process.env.URLL}/api/email_confrim/${_token}`;
     const page = verifi(url);
     const message = {
       to: email,
