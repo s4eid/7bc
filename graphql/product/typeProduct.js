@@ -63,7 +63,7 @@ const typeProduct = gql`
       afterCursor: String
       first: Int
     ): GetProductss
-    product(product_id: ID!): Product!
+    product(product_id: ID): Product
     notOneProduct(product_id: ID!): [Product]!
     getProducts(product_array: [String!]!): [Product]!
     searchProduct(text: String!): [searchProductR]

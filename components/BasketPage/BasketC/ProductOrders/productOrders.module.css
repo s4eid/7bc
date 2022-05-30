@@ -17,6 +17,10 @@
 }
 .productC p {
   margin: 10px;
+  color: #666666;
+}
+.price {
+  cursor: pointer;
 }
 .productImage {
   position: relative;
@@ -82,13 +86,6 @@
   .icon {
     font-size: 18px;
   }
-  /* .productC {
-    width: 100%;
-  } */
-  /* .price {
-    text-align: center;
-    width: 50%;
-  } */
   .quantityContainer {
     width: 100%;
   }

@@ -29,7 +29,10 @@ export default function ProductOrders({ o }) {
         </div>
         <p>{o.name}</p>
       </div>
-      <div className={productOrders.price}>
+      <div
+        className={productOrders.price}
+        onClick={() => router.push(`/carpets/${o.product_id}`)}
+      >
         <p>${o._price}</p>
       </div>
       <div className={productOrders.quantityContainer}>

@@ -1,8 +1,10 @@
 import React from "react";
 import ourCarpets from "./ourCarpets.module.css";
 import Carpet from "./Carpet";
+import { useRouter } from "next/router";
 import { carpetsItems } from "../../../data/carpetsItems";
 export default function OurCarpets() {
+  const router = useRouter();
   return (
     <div className={ourCarpets.container}>
       <div className={ourCarpets.mainContainer}>
@@ -13,7 +15,12 @@ export default function OurCarpets() {
           <Carpet c={carpet} key={index} />
         ))}
       </div>
-      <button className={ourCarpets.more}>More</button>
+      <button
+        className={ourCarpets.more}
+        onClick={() => router.push("/carpets")}
+      >
+        More
+      </button>
     </div>
   );
 }

@@ -2,7 +2,9 @@ import React from "react";
 import ourKilims from "./ourKilims.module.css";
 import Kilim from "./Kilim";
 import { kilimsItems } from "../../../data/kilimsItems";
+import { useRouter } from "next/router";
 export default function OurKilims() {
+  const router = useRouter();
   return (
     <div className={ourKilims.container}>
       <div className={ourKilims.mainContainer}>
@@ -13,7 +15,9 @@ export default function OurKilims() {
           <Kilim k={kilim} key={index} />
         ))}
       </div>
-      <button className={ourKilims.more}>More</button>
+      <button className={ourKilims.more} onClick={() => router.push("/kilims")}>
+        More
+      </button>
     </div>
   );
 }

@@ -8,32 +8,14 @@ export default function ExistAddress({ userAddress }) {
     <div className={address.mainContainer}>
       <div className={address.iconC}>
         <FontAwesomeIcon className={address.iconCIcon} icon={faMapMarkerAlt} />
-        <h1 className={address.title}>Location</h1>
       </div>
       <div className={address.mainHolder}>
         <div className={address.addressHolder}>
           <p className={address.main}>Address:</p>
-          <p>{userAddress.address}</p>
-        </div>
-        <div className={address.addressHolder}>
-          <p className={address.main}>Country:</p>
-          <p>{userAddress.country}</p>
-        </div>
-        <div className={address.addressHolder}>
-          <p className={address.main}>City:</p>
-          <p>{userAddress.city}</p>
-        </div>
-        <div className={address.addressHolder}>
-          <p className={address.main}>Area:</p>
-          <p>{userAddress.area}</p>
-        </div>
-        <div className={address.addressHolder}>
-          <p className={address.main}>Phone_number:</p>
-          <p>{userAddress.phone_number}</p>
-        </div>
-        <div className={address.addressHolder}>
-          <p className={address.main}>Zip_code:</p>
-          <p>{userAddress.zip_code}</p>
+          <p className={address.addressP}>
+            {userAddress.address} {userAddress.country} {userAddress.city}
+            {userAddress.area} {userAddress.zip_code} {userAddress.phone_number}
+          </p>
         </div>
       </div>
     </div>
