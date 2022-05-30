@@ -9,14 +9,13 @@ import store from "../Redux/Store/store";
 import { addError } from "../Redux/Actions/Error/error";
 import { clearCart } from "../Redux/Actions/Product";
 import Cookies from "js-cookie";
-
 const errorLink = onError(
   ({ graphQLErrors, networkError, operation, response }) => {
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path, extensions }) => {
-        console.log(extensions.code);
         if (extensions.code === "UNAUTHENTICATED") {
-          Cookies.remove("refresh");
+          Cookies.remove("refreshToken");
+          window.location.reload();
         }
         if (extensions.code === "CART_ITEMS") {
           store.dispatch(clearCart());
