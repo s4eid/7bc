@@ -8,7 +8,7 @@ export default function Basket({ p }) {
   return (
     <div
       className={basket.holder}
-      onClick={() => router.push(`/carpet/${p.product_id}`)}
+      onClick={() => router.push(`/carpets/${p.product_id}`)}
     >
       <div className={basket.imageC}>
         <Image src={p.img_1} layout="fill" />
