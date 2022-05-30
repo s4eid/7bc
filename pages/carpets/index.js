@@ -75,7 +75,7 @@ export default function Carpet() {
     </>
   );
 }
-export async function getStaticProps({ req, res }) {
+export async function getStaticProps() {
   const client = initializeApollo();
   await client.query({
     query: GET_PRODUCTS,

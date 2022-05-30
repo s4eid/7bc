@@ -18,9 +18,6 @@ export default function Kilim() {
     variables: {
       type: "kilim",
       first: 4,
-      made: null,
-      origin: null,
-      price: null,
     },
   });
   const [filter, setFilter] = useState({
