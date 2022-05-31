@@ -30,8 +30,6 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
 	    `,
       [product_list]
     );
-    console.log(total_price);
-    console.log(cart_items);
     const existP = existPI.rows;
     let hasError = false;
     for (let i = 0; i < existP.length; i++) {
@@ -203,15 +201,8 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
           [currnetP.quantity, currnetP.id]
         );
       }
-      await done(status);
     });
-    const done = (status) => {
-      if (status) {
-        return { status: "success" };
-      } else if (status === false) {
-        return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
-      }
-    };
+    return { status: "success" };
   } catch (error) {
     return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
   }
