@@ -17,11 +17,16 @@
   left: 50%;
   padding: 5px;
   width: 60%;
-  /* max-height: 80%; */
   height: 80%;
 }
 .mainContainer img {
   object-fit: contain;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 .close {
   position: absolute;
@@ -49,6 +54,44 @@
   padding: 10px;
   text-align: center;
 }
+.iconR {
+  position: absolute;
+  right: 5px;
+  font-size: 30px;
+  color: #111111;
+  cursor: pointer;
+  z-index: 1;
+  top: 50%;
+}
+.iconL {
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 30px;
+  color: #111111;
+  left: 5px;
+  top: 50%;
+}
+
+@media screen and (max-width: 1200px) {
+  .iconR {
+    right: 20px;
+  }
+  .iconL {
+    left: 20px;
+  }
+}
+
+@media screen and (max-width: 416px) {
+  .iconL {
+    left: 0;
+    font-size: 20px;
+  }
+  .iconR {
+    right: 0;
+    font-size: 20px;
+  }
+}
 
 @media screen and (max-width: 500px) {
   .mainContainer {
@@ -56,9 +99,3 @@
     height: 60%;
   }
 }
-
-/* @media screen and (max-height: 650px) {
-  .close {
-    margin-top: 30px;
-  }
-} */

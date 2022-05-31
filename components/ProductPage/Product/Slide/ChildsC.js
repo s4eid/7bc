@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import slide from "./slide.module.css";
 import Image from "next/image";
 import ShowImage from "../../../../Modals/ShowImage/ShowImage";
-export default function ChildsC({ img, direction, page }) {
+export default function ChildsC({ img, direction, page, paginate }) {
   const [openM, setOpenM] = useState(null);
   return (
     <motion.div
@@ -22,7 +22,9 @@ export default function ChildsC({ img, direction, page }) {
           className={slide.slideZoom}
         />
       </div>
-      {openM && <ShowImage setOpenM={setOpenM} openM={openM} />}
+      {openM && (
+        <ShowImage setOpenM={setOpenM} paginate={paginate} openM={img} />
+      )}
     </motion.div>
   );
 }

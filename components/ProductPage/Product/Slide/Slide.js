@@ -33,6 +33,7 @@ export default function SliderC({ imgs }) {
           <ChildsC
             img={imgs[imageIndex]}
             direction={direction}
+            paginate={paginate}
             imageIndex={imageIndex}
             page={page}
           />
