@@ -18,8 +18,8 @@ export default async function handler(req, res) {
       ]);
       return res.send(payPage);
     }
-    const token = req.cookies.refreshToken;
-    const decodeToken = await jwt.verify(token, process.env.REFRESH_TOKEN);
+    const token = req.cookies.accessToken;
+    const decodeToken = await jwt.verify(token, process.env.ACCESS_TOKEN);
     const user = await pool.query(`select p_html from users where email=$1`, [
       decodeToken.email,
     ]);

@@ -172,15 +172,6 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
             );
             await success(result.status);
           } else if (result.status === "failure") {
-            await pool.query(`delete from order_payment where order_id=$1`, [
-              order.rows[0].order_id,
-            ]);
-            await pool.query(`delete from order_shipping where order_id=$1`, [
-              order.rows[0].order_id,
-            ]);
-            await pool.query(`delete from order_items where order_id=$1`, [
-              order.rows[0].order_id,
-            ]);
             await pool.query(`delete from orders where order_id=$1`, [
               order.rows[0].order_id,
             ]);

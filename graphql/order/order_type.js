@@ -4,8 +4,8 @@ const typeOrder = gql`
     status: String
   }
   input Cart_items {
-    price: Int!
-    priceEach: Int!
+    price: Float!
+    priceEach: String!
     id: ID!
     name: String!
     category1: String!
@@ -15,7 +15,7 @@ const typeOrder = gql`
   # directive @auth on FIELD_DEFINITION
   type OrderItems {
     quantity: Int!
-    paid_price: Int!
+    paid_price: String!
     img_1: String!
     product_id: ID!
   }
@@ -31,13 +31,13 @@ const typeOrder = gql`
     zip_code: String!
     phone_number: String!
     currency: String!
-    paid_price: Int!
+    paid_price: String!
   }
   type getOrdersT {
     order_id: ID!
     status: Int
     created_at: String
-    paid_price: Int
+    paid_price: String
   }
 
   type OneOrder {
@@ -57,7 +57,7 @@ const typeOrder = gql`
       card_number: String!
       expire_m: Int!
       expire_y: Int!
-      total_price: Int!
+      total_price: Float!
       product_list: [String!]!
       cart_items: [Cart_items!]!
       cvv: Int!

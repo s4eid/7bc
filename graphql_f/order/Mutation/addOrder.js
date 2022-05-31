@@ -9,7 +9,7 @@ export const ADD_ORDER = gql`
     $cardNumber: String!
     $expireM: Int!
     $expireY: Int!
-    $totalPrice: Int!
+    $totalPrice: Float!
     $productList: [String!]!
     $cvv: Int!
     $address: String!

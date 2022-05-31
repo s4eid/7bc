@@ -34,7 +34,10 @@ export default function PaymentForm({ info, user, product }) {
             if (data.agree) {
               try {
                 const { _info, list } = await getRightInfo(product.cartItems);
-                const total = _info.reduce((x, y) => x + y.price, 0);
+                const total = _info.reduce(
+                  (x, y) => x + y.priceEach * y.quantity,
+                  0
+                );
                 const _cvv = parseInt(data.cvv);
                 const _month = parseInt(data.month);
                 const _year = parseInt(data.year);
