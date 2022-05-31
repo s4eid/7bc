@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.title {
+  color: #111111;
+  font-size: 25px;
+  font-weight: 700;
+}
+.imageHolder {
+  position: relative;
+  width: 300px;
+  height: 350px;
+}
+.imageHolder img {
+  border-radius: 10px;
+}
+
+.customersMainContainer {
+  margin-top: 40px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.more {
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #666666;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  margin-top: 40px;
+  font-weight: bold;
+}
+.more:hover {
+  background-color: #0081ef;
+}
