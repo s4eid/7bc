@@ -4,7 +4,6 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import Router from "next/router";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Provider } from "react-redux";
 import { SessionProvider } from "next-auth/react";
 import Head from "next/head";

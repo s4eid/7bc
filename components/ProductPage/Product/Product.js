@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import Info from "./Info/Info";
 import productC from "./product.module.css";
 import Slide from "./Slide/Slide";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addProduct } from "../../../Redux/Actions/Product";
 import AddBasket from "../../../Modals/AddBasket/AddBasket";
 
 export default function Product({ p }) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const { product } = useSelector((state) => state);
   let imgs = [p.img_1, p.img_2, p.img_3];
   imgs = imgs.filter(function (item) {
     return item !== null;

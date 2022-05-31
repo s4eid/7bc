@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import slide from "./slide.module.css";
 import Image from "next/image";
+import ShowImage from "../../../../Modals/ShowImage/ShowImage";
 export default function ChildsC({ img, direction, page }) {
+  const [openM, setOpenM] = useState(null);
   return (
     <motion.div
       className={slide.childs}
@@ -13,12 +15,14 @@ export default function ChildsC({ img, direction, page }) {
     >
       <div className={slide.slideHolder}>
         <Image
+          onClick={() => setOpenM(img)}
           layout="fill"
           src={img}
           alt="product_image"
           className={slide.slideZoom}
         />
       </div>
+      {openM && <ShowImage setOpenM={setOpenM} openM={openM} />}
     </motion.div>
   );
 }
