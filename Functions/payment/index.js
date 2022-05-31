@@ -3,7 +3,7 @@ export const getRightInfo = (info) => {
   let list = [];
   for (let i = 0; i < info.length; i++) {
     _info[i] = {
-      price: info[i]._price,
+      price: parseFloat(info[i]._price),
       priceEach: info[i].price,
       name: info[i].name,
       id: info[i].product_id,

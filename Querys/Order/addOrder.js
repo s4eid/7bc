@@ -23,13 +23,6 @@ export const add_order = async (
   pool
 ) => {
   try {
-    // const done = (status) => {
-    //   if (status) {
-    //     return { status: "success" };
-    //   } else if (status === false) {
-    //     return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
-    //   }
-    // };
     const existPI = await pool.query(
       `
 SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory i ON
@@ -37,6 +30,8 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
 	    `,
       [product_list]
     );
+    console.log(total_price);
+    console.log(cart_items);
     const existP = existPI.rows;
     let hasError = false;
     for (let i = 0; i < existP.length; i++) {
@@ -125,7 +120,10 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
     };
     // let _status;
     await iyzipay.payment.create(request, async function (err, result) {
-      // _status = false;
+      console.log(result);
+      if (result.status === "failure") {
+        return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
+      }
       let status = result.status;
       let currency = result.currency;
       let paymentId = result.paymentId;
@@ -139,9 +137,6 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
       let iyziCommissionFee = result.iyziCommissionFee;
       let iyziCommissionRateAmount = result.iyziCommissionRateAmount;
       let itemTransactions = result.itemTransactions;
-      if (status === "failure") {
-        return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
-      }
       const order = await pool.query(
         `INSERT INTO orders (status,user_id) VALUES ($1,$2) RETURNING order_id`,
         [0, user_id]
@@ -208,10 +203,15 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
           [currnetP.quantity, currnetP.id]
         );
       }
-      // _status = true;
-      // done(_status);
+      await done(status);
     });
-    return { status: "success" };
+    const done = (status) => {
+      if (status) {
+        return { status: "success" };
+      } else if (status === false) {
+        return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
+      }
+    };
   } catch (error) {
     return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
   }
