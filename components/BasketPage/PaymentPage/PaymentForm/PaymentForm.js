@@ -276,7 +276,7 @@ export default function PaymentForm({ info, user, product }) {
                     <label className={paymentForm.error}>{errors.agree}</label>
                   ) : (
                     <label for="agree" className={paymentForm.errorC}>
-                      I Agree With Distance Sales Contract
+                      I Agree With Terms
                     </label>
                   )}
                   <div className={paymentForm.switchBox}>

@@ -14,7 +14,7 @@ import { ApolloProvider } from "@apollo/client";
 import NProgress from "nprogress";
 import { useSelector } from "react-redux";
 import Error from "next/error";
-NProgress.configure({ showSpinner: false });
+// NProgress.configure({ showSpinner: false });
 
 function App({ Component, pageProps }) {
   const apolloClient = useApollo(pageProps.initialApolloState);
