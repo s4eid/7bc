@@ -5,6 +5,7 @@ export const GET_ORDER = gql`
     getOrder(order_id: $orderId) {
       order_info {
         order_id
+        order_client_id
         address
         area
         city

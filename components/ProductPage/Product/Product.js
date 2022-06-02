@@ -33,7 +33,7 @@ export default function Product({ p }) {
             shape={p.shape}
             origin={p.origin}
             description={p.description}
-            id={p.product_id}
+            id={p.product_client_id}
           />
         </div>
         <div className={productC.productBtnC}>

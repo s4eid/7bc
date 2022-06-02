@@ -21,6 +21,7 @@ const typeOrder = gql`
   }
   type OrderInfo {
     order_id: ID!
+    order_client_id: ID!
     status: Int!
     created_at: String!
     shipping_price: Int!

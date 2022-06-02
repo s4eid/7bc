@@ -4,7 +4,6 @@ import Order from "./Order/Order";
 import Title from "./Title/Title";
 
 export default function OrdersPage({ _orders }) {
-  console.log(_orders);
   return (
     <div className={orders.mainContainer}>
       <div className={orders.titleContainer}>

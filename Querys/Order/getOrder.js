@@ -2,7 +2,7 @@ export const getOrder = async (order_id, pool) => {
   try {
     const order = await pool.query(
       `
-select o.order_id,o.status,o.created_at,s.address,s.shipping_price,s.country,s.city,s.area,  
+select o.order_id,o.order_client_id,o.status,o.created_at,s.address,s.shipping_price,s.country,s.city,s.area,  
 s.zip_code,s.phone_number,p.currency,p.paid_price from orders o left join order_shipping s on o.order_id=s.order_id
  left join order_payment 
 p on o.order_id=p.order_id where o.order_id=$1

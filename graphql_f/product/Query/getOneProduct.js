@@ -4,6 +4,7 @@ export const GET_PRODUCT = gql`
   query getOneProduct($product_id: ID) {
     product(product_id: $product_id) {
       product_id
+      product_client_id
       name
       price
       img_1

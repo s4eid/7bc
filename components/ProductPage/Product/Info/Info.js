@@ -56,6 +56,7 @@ export default function Info({
           {/* <p className={product.info}>{price}$</p> */}
         </div>
         <div className={product.holder}>
+          <p className={product.for}>Id:</p>
           <p className={product.infoId}>{id}</p>
         </div>
       </div>

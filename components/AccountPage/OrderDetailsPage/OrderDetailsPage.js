@@ -10,7 +10,7 @@ export default function OrderDetailsPage({ order }) {
       <div className={orderDetails.titleContainer}>
         <Title
           date={order.order_info.created_at}
-          order_id={order.order_info.order_id}
+          order_id={order.order_info.order_client_id}
           total={order.order_info.paid_price}
           status={order.order_info.status}
         />

@@ -2,6 +2,7 @@ import { gql } from "apollo-server-micro";
 const typeProduct = gql`
   type Product {
     product_id: ID!
+    product_client_id: ID!
     name: String!
     price: String!
     type: String!
