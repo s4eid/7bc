@@ -77,11 +77,14 @@
 .more:hover {
   background-color: #0081ef;
 }
-/* @media screen and (max-width: 370px) {
-  .imageHolder::after {
-    display: none;
+@media screen and (max-width: 370px) {
+  .item {
+    min-width: 300px;
+    min-height: 350px;
+    max-width: 300px;
+    max-height: 350px;
   }
-  .imageHolder {
-    margin: 0px;
+  .item {
+    padding: 3px;
   }
-} */
+}
