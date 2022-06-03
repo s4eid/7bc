@@ -8,8 +8,12 @@ import { GET_NOT_ONE_PRODUCT } from "../../../graphql_f/product/Query/getNotOneP
 import Loading from "../../../Layouts/Loading";
 
 export default function Related({ product_id }) {
-  const [moreProduct, { data, loading, error }] =
-    useLazyQuery(GET_NOT_ONE_PRODUCT);
+  const [moreProduct, { data, loading, error }] = useLazyQuery(
+    GET_NOT_ONE_PRODUCT
+    // {
+    //   fetchPolicy: "network-only",
+    // }
+  );
   const getMore = () => {
     moreProduct({
       variables: {
