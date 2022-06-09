@@ -10,7 +10,6 @@ export default function Home() {
   const { data, loading } = useQuery(GET_HOME_PRODUCTS, {
     fetchPolicy: "cache-first",
   });
-  console.log(data);
   return (
     <>
       <Head>

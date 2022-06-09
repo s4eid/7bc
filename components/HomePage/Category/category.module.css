@@ -1,0 +1,57 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+  gap: 10px;
+}
+.container {
+  position: relative;
+  display: flex;
+  width: 300px;
+  height: 300px;
+  justify-content: space-around;
+  cursor: pointer;
+}
+.container:hover .title {
+  background-color: #0081ef;
+  color: #fff;
+  opacity: 100%;
+}
+.container img {
+  opacity: 80%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.title {
+  position: absolute;
+  transition: 0.3s ease-in;
+  width: 100%;
+  bottom: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  opacity: 80%;
+  /* top: 50%; */
+  font-weight: bold;
+  padding: 10px;
+  margin: 0px;
+  /* font-size: 18px; */
+  color: #111111;
+}
+
+@media screen and (max-width: 615px) {
+  .container {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .container {
+    width: 150px;
+    height: 150px;
+  }
+}
