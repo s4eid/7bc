@@ -1,5 +1,15 @@
 import { gql } from "apollo-server-micro";
 const typeProduct = gql`
+  type HomeProducts {
+    carpet: [HomeCarpet]
+    kilim: [HomeCarpet]
+  }
+  type HomeCarpet {
+    name: String!
+    img_1: String!
+    product_id: ID!
+  }
+
   type Product {
     product_id: ID!
     product_client_id: ID!
@@ -64,6 +74,7 @@ const typeProduct = gql`
       afterCursor: String
       first: Int
     ): GetProductss
+    getHomeProducts: HomeProducts!
     product(product_id: ID): Product
     notOneProduct(product_id: ID!): [Product]!
     getProducts(product_array: [String!]!): [Product]!

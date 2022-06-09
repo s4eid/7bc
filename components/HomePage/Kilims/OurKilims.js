@@ -3,7 +3,7 @@ import ourKilims from "./ourKilims.module.css";
 import Kilim from "./Kilim";
 import { kilimsItems } from "../../../data/kilimsItems";
 import { useRouter } from "next/router";
-export default function OurKilims() {
+export default function OurKilims({ kilim }) {
   const router = useRouter();
   return (
     <div className={ourKilims.container}>
@@ -11,7 +11,7 @@ export default function OurKilims() {
         <h1 className={ourKilims.title}>Our Kilims</h1>
       </div>
       <div className={ourKilims.kilimMainContainer}>
-        {kilimsItems.map((kilim, index) => (
+        {kilim.map((kilim, index) => (
           <Kilim k={kilim} key={index} />
         ))}
       </div>

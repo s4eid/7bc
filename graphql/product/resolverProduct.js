@@ -3,9 +3,14 @@ import { getOneProduct } from "../../Querys/product/getOneProduct";
 import { getProductsP } from "../../Querys/product/getProductsP";
 import { getNotOneProduct } from "../../Querys/product/getNotOneProduct";
 import { searchProducts } from "../../Querys/product/searchProducts";
+import { getHomeProduct } from "../../Querys/product/getHomeProduct";
 
 const resolverProduct = {
   Query: {
+    async getHomeProducts(_, __, { pool }) {
+      const data = await getHomeProduct(pool);
+      return data;
+    },
     async products(
       _,
       { type, first, afterCursor, price, made, origin },

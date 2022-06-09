@@ -12,7 +12,7 @@ import { getSession } from "next-auth/react";
 
 const cors = Cors({
   allowCredentials: true,
-  origin: process.env.URLL,
+  // origin: process.env.URLL,
 });
 
 const apolloServer = new ApolloServer({

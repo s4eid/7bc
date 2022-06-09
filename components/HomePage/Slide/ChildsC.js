@@ -59,8 +59,10 @@ export default function ChildsC() {
     <div className={sliderComment.slideHolder}>
       <div className={sliderComment.title}>
         <h1>Welcome To Arisoy Shop</h1>
-        <p>Take A Look At Collection</p>
-        <button className={sliderComment.slideBtn}>Discover</button>
+        <p>Take A Look At Collections</p>
+        <a href="#discover" className={sliderComment.slideBtn}>
+          <p>Discover</p>
+        </a>
       </div>
       <video className={sliderComment.imageItems} loop muted autoPlay>
         <source src="/video.webm" />
