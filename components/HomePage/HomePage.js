@@ -8,8 +8,8 @@ export default function HomePage() {
   return (
     <>
       <SliderC />
-      {/* <OurCarpets carpet={products.carpet} />
-      <OurKilims kilim={products.kilim} /> */}
+      <OurCarpets carpet={products.carpet} />
+      <OurKilims kilim={products.kilim} />
       <Customers />
     </>
   );
