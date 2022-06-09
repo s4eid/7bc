@@ -63,7 +63,7 @@ export default function ChildsC() {
         <button className={sliderComment.slideBtn}>Discover</button>
       </div>
       <video className={sliderComment.imageItems} loop muted autoPlay>
-        <source src="/video.mp4" />
+        <source src="/video.webm" />
       </video>
       {/* <Image
           src={person.link}
