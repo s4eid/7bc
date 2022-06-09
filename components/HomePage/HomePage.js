@@ -4,12 +4,12 @@ import Customers from "./Customers/Customers";
 import OurKilims from "./Kilims/OurKilims";
 import SliderC from "./Slide/SliderC";
 
-export default function HomePage({ products }) {
+export default function HomePage() {
   return (
     <>
       <SliderC />
-      <OurCarpets carpet={products.carpet} />
-      <OurKilims kilim={products.kilim} />
+      {/* <OurCarpets carpet={products.carpet} />
+      <OurKilims kilim={products.kilim} /> */}
       <Customers />
     </>
   );
