@@ -37,9 +37,9 @@ export default function Customers() {
       </div>
       <button
         className={customers.more}
-        //       onClick={() => router.push("/")}
+        // onClick={() => router.push("/")}
       >
-        More
+        <a href="https://www.instagram.com/rughousesb/">More</a>
       </button>
     </div>
   );

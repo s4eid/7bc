@@ -28,9 +28,10 @@
   /* width: 100%; */
 }
 .item {
-  min-width: 30rem;
+  min-width: 300px;
+  width: 350px;
   overflow: hidden;
-  min-height: 35rem;
+  /* min-height: 300px; */
   border-radius: 10px;
   position: relative;
   padding: 40px;
@@ -65,7 +66,7 @@
   width: 100px;
   height: 30px;
   cursor: pointer;
-  background-color: #666666;
+  background-color: #0081ef;
   font-size: 16px;
   color: #fff;
   border: none;
@@ -75,7 +76,9 @@
   font-weight: bold;
 }
 .more:hover {
-  background-color: #0081ef;
+  background-color: #fff;
+  border: 2px solid #0081ef;
+  color: #111111;
 }
 @media screen and (max-width: 370px) {
   .item {

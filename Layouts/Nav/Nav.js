@@ -36,7 +36,7 @@ export default function NavBar({ children }) {
                       : nav.notActiveLink
                   }
                 >
-                  {n.name}
+                  <a href={n.link}>{n.name}</a>
                 </li>
               </Link>
             ))}
