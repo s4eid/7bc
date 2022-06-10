@@ -1,13 +1,13 @@
 import { gql } from "apollo-server-micro";
 const typeProduct = gql`
   type HomeProducts {
-    carpet: [HomeCarpet]
-    kilim: [HomeCarpet]
+    products: [HomeProduct]
   }
-  type HomeCarpet {
+  type HomeProduct {
     name: String!
     img_1: String!
     product_id: ID!
+    price: String!
   }
 
   type Product {

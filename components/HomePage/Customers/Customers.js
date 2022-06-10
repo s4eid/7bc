@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import customers from "./customers.module.css";
 import { customersImages } from "../../../data/customers";
-import Image from "next/image";
 import { motion } from "framer-motion";
 export default function Customers() {
   const [width, setWidth] = useState(0);
