@@ -3,7 +3,7 @@ import OrderDetailsPage from "../../../../components/AccountPage/OrderDetailsPag
 import Nav from "../../../../Layouts/Nav/Nav";
 import Footer from "../../../../Layouts/Footer/Footer";
 import DashboardS from "../../../../Layouts/Dashboard/DashboardS";
-import { initializeApollo } from "../../../../apolloConfig/apollo";
+// import { initializeApollo } from "../../../../apolloConfig/apollo";
 import { useQuery } from "@apollo/client";
 import { getSession } from "next-auth/react";
 import { GET_ORDER } from "../../../../graphql_f/order/Query/getOrder";

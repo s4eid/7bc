@@ -21,6 +21,9 @@ const errorLink = onError(
           store.dispatch(clearCart());
           store.dispatch(addError(message, true));
         }
+        if (extensions.code === "ALLOW") {
+          store.dispatch(addError(message, true));
+        }
         if (extensions.code === "PAYMENT") {
           store.dispatch(clearCart());
           store.dispatch(addError(message, true));

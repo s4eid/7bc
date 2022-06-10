@@ -6,4 +6,5 @@ export const ERROR_CODES = {
   REGISTER: "REGISTER",
   VERIFI: "VERIFI",
   AUTH: "UNAUTHENTICATED",
+  ALLOW: "ALLOW",
 };

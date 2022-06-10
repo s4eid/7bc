@@ -10,7 +10,8 @@ const resolverUser = {
       if (!user && !_user) {
         return new ApolloError("You Are Not Authenticated!", ERROR_CODES.AUTH);
       }
-      const data = await getOrder(order_id, pool);
+      let currnetUser = user ? user : _user;
+      const data = await getOrder(order_id, currnetUser, pool);
       return data;
     },
     async getOrders(_, { user_id }, { pool, user, _user }) {
