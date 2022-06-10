@@ -27,20 +27,21 @@ export default function OurCarpets({ products, pageInfo, refetch, filter }) {
   };
   return (
     <div className={ourCarpets.container}>
-      <InfiniteScroll
-        dataLength={products.length}
-        next={() => getMore(pageInfo.startCursor, pageInfo.hasNextPage)}
+      <div
+        // dataLength={products.length}
+        // next={() => getMore(pageInfo.startCursor, pageInfo.hasNextPage)}
         className={ourCarpets.productsHolder}
-        hasMore={pageInfo.hasNextPage}
-        loader={<Loading />}
-        scrollableTarget="scrollableDiv"
+        // hasMore={pageInfo.hasNextPage}
+        // loader={<Loading />}
+        // scrollableTarget="scrollableDiv"
       >
         <div className={ourCarpets.productMainContainer}>
           {products.map((carpet, index) => (
             <Carpet c={carpet} key={index} />
           ))}
         </div>
-      </InfiniteScroll>
+       {pageInfo.hasNextPage? <button className={ourCarpets.moreBtn} onClick={()=>getMore(pageInfo.startCursor, pageInfo.hasNextPage)}>Load More</button>:<></>}
+      </div>
     </div>
   );
 }

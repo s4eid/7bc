@@ -1,8 +1,8 @@
 import React from "react";
 import ourKilims from "./ourKilims.module.css";
 import Kilim from "./Kilim";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Loading from "../../../Layouts/Loading";
+// import InfiniteScroll from "react-infinite-scroll-component";
+// import Loading from "../../../Layouts/Loading";
 export default function OurKilims({ products, pageInfo, refetch, filter }) {
   const getMore = (afterCursor, hasMore) => {
     if (hasMore) {
@@ -27,20 +27,21 @@ export default function OurKilims({ products, pageInfo, refetch, filter }) {
   };
   return (
     <div className={ourKilims.container}>
-      <InfiniteScroll
-        dataLength={products.length}
-        next={() => getMore(pageInfo.startCursor, pageInfo.hasNextPage)}
+      <div
+        // dataLength={products.length}
+        // next={() => getMore(pageInfo.startCursor, pageInfo.hasNextPage)}
         className={ourKilims.productsHolder}
-        hasMore={pageInfo.hasNextPage}
-        loader={<Loading />}
-        scrollableTarget="scrollableDiv"
+        // hasMore={pageInfo.hasNextPage}
+        // loader={<Loading />}
+        // scrollableTarget="scrollableDiv"
       >
         <div className={ourKilims.productMainContainer}>
           {products.map((carpet, index) => (
             <Kilim c={carpet} key={index} />
           ))}
         </div>
-      </InfiniteScroll>
+       {pageInfo.hasNextPage? <button className={ourKilims.moreBtn} onClick={()=>getMore(pageInfo.startCursor, pageInfo.hasNextPage)}>Load More</button>:<></>}
+       </div>
     </div>
   );
 }
