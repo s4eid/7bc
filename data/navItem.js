@@ -20,6 +20,11 @@ export const navItems = [
     id: "4",
   },
   {
+    name: "Tablecloth",
+    link: "/tablecloths",
+    id: "4",
+  },
+  {
     name: "About",
     link: "/about",
     id: "4",

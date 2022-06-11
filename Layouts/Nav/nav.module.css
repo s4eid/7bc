@@ -239,7 +239,11 @@
 .burgerOpen {
   rotate: (45deg);
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1150px) {
+  .loginContainer {
+    width: 50%;
+    justify-content: center;
+  }
   .linksContainer {
     display: none;
   }

@@ -28,7 +28,10 @@ export default function Category() {
         <Image src="/leatherC.jpg" layout="fill" />
         <p className={category.title}>Leather</p>
       </div>
-      <div className={category.container}>
+      <div
+        className={category.container}
+        onClick={() => router.push("/tablecloths")}
+      >
         <Image src="/tableClothC.jpg" layout="fill" />
         <p className={category.title}>Table & Bedcover</p>
       </div>

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import LeatherPage from "../../components/LeatherPage/LeatherPage.js";
+import TableclothPage from "../../components/TableclothPage/TableclothPage";
 import Footer from "../../Layouts/Footer/Footer.js";
 import Nav from "../../Layouts/Nav/Nav.js";
 import { initializeApollo } from "../../apolloConfig/apollo";
-import { getProduct_l, getProduct_filter } from "../../Redux/Actions/Product_l";
+import { getProduct_t, getProduct_filter } from "../../Redux/Actions/Product_t";
 import { GET_PRODUCTS } from "../../graphql_f/product/Query/getProduct";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
 import Loading from "../../Layouts/Loading/index.js";
 
-export default function Leathers() {
+export default function Tablecloth() {
   const dispatch = useDispatch();
-  const products = useSelector((s) => s.products_l);
+  const products = useSelector((s) => s.products_t);
   const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
     fetchPolicy: "cache-first",
     variables: {
-      type: "leather",
+      type: "tablecloth",
       first: 4,
     },
   });
@@ -34,7 +34,7 @@ export default function Leathers() {
         );
       } else if (filter.action == false) {
         dispatch(
-          getProduct_l(data.products.edges.node, data.products.pageInfo)
+          getProduct_t(data.products.edges.node, data.products.pageInfo)
         );
       }
     }
@@ -43,11 +43,11 @@ export default function Leathers() {
     <>
       <Head>
         <title>
-          Check Our Big Leather Collection Free Shipping - arisoyhandicraft
+          Check Our Big Tablecloth Collection Free Shipping - arisoyhandicraft
         </title>
         <meta
           name="description"
-          content="Over 1000 Collection Of Leathers We Will Make Your Place Royal For Every Budget Fast And Free Shipping  To Your Country  In Any Size & Shape"
+          content="Over 1000 Collection Of Tablecloth We Will Make Your Place Royal For Every Budget Fast And Free Shipping  To Your Country  In Any Size & Shape"
         ></meta>
         <meta charSet="UTF-8"></meta>
         <meta
@@ -60,7 +60,7 @@ export default function Leathers() {
         ></meta>
       </Head>
       {!products.loading && !loading ? (
-        <LeatherPage
+        <TableclothPage
           products={products.products}
           pageInfo={products.pageInfo}
           filter={filter}
@@ -77,7 +77,7 @@ export async function getStaticProps() {
   const client = initializeApollo();
   await client.query({
     query: GET_PRODUCTS,
-    variables: { type: "leather", first: 4 },
+    variables: { type: "tablecloth", first: 4 },
   });
   return {
     props: {
@@ -87,5 +87,5 @@ export async function getStaticProps() {
   };
 }
 
-Leathers.Nav = Nav;
-Leathers.Footer = Footer;
+Tablecloth.Nav = Nav;
+Tablecloth.Footer = Footer;
