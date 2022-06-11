@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-import KilimPage from "../../components/KilimPage/KilimPage.js";
+import LeatherPage from "../../components/LeatherPage/LeatherPage.js";
 import Footer from "../../Layouts/Footer/Footer.js";
 import Nav from "../../Layouts/Nav/Nav.js";
 import { initializeApollo } from "../../apolloConfig/apollo";
-import { getProduct_k, getProduct_filter } from "../../Redux/Actions/Product_k";
+import { getProduct_l, getProduct_filter } from "../../Redux/Actions/Product_l";
 import { GET_PRODUCTS } from "../../graphql_f/product/Query/getProduct";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
 import Loading from "../../Layouts/Loading/index.js";
 
-export default function Kilim() {
+export default function Leathers() {
   const dispatch = useDispatch();
-  const products = useSelector((s) => s.products_k);
+  const products = useSelector((s) => s.products_l);
+  console.log(products);
   const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
     fetchPolicy: "cache-first",
     variables: {
-      type: "kilim",
+      type: "leather",
       first: 4,
     },
   });
@@ -34,7 +35,7 @@ export default function Kilim() {
         );
       } else if (filter.action == false) {
         dispatch(
-          getProduct_k(data.products.edges.node, data.products.pageInfo)
+          getProduct_l(data.products.edges.node, data.products.pageInfo)
         );
       }
     }
@@ -43,11 +44,11 @@ export default function Kilim() {
     <>
       <Head>
         <title>
-          Check Our Big Kilim Collection Free Shipping - arisoyhandicraft
+          Check Our Big Leather Collection Free Shipping - arisoyhandicraft
         </title>
         <meta
           name="description"
-          content="Over 1000 Collection Of Kilims We Will Make Your Place Royal For Every Budget Fast And Free Shipping  To Your Country  In Any Size & Shape"
+          content="Over 1000 Collection Of Leathers We Will Make Your Place Royal For Every Budget Fast And Free Shipping  To Your Country  In Any Size & Shape"
         ></meta>
         <meta charSet="UTF-8"></meta>
         <meta
@@ -60,7 +61,7 @@ export default function Kilim() {
         ></meta>
       </Head>
       {!products.loading && !loading ? (
-        <KilimPage
+        <LeatherPage
           products={products.products}
           pageInfo={products.pageInfo}
           filter={filter}
@@ -77,7 +78,7 @@ export async function getStaticProps() {
   const client = initializeApollo();
   await client.query({
     query: GET_PRODUCTS,
-    variables: { type: "kilim", first: 4 },
+    variables: { type: "leather", first: 4 },
   });
   return {
     props: {
@@ -87,5 +88,5 @@ export async function getStaticProps() {
   };
 }
 
-Kilim.Nav = Nav;
-Kilim.Footer = Footer;
+Leathers.Nav = Nav;
+Leathers.Footer = Footer;

@@ -13,7 +13,7 @@ export default function Contact() {
           name="description"
           content="Over 1000 Collection Of Kilims We Will Make Your Place Royal For Every Budget Fast And Free Shipping  To Your Country  In Any Size & Shape"
         ></meta> */}
-        <meta charset="UTF-8"></meta>
+        <meta charSet="UTF-8"></meta>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0"

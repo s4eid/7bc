@@ -17,15 +17,15 @@ export default function ContactInfo() {
       <div className={contactInfo.childC}>
         <div className={contactInfo.infoHolder}>
           <FontAwesomeIcon className={contactInfo.icon} icon={faInstagram} />
-          <p>@7bc</p>
+          <p>rughousesb</p>
         </div>
         <div className={contactInfo.infoHolder}>
           <FontAwesomeIcon className={contactInfo.icon} icon={faTelegram} />
-          <p>@7bc</p>
+          <p>+905393703956</p>
         </div>
         <div className={contactInfo.infoHolder}>
           <FontAwesomeIcon className={contactInfo.icon} icon={faWhatsapp} />
-          <p>@7bc</p>
+          <p>+905510193686</p>
         </div>
       </div>
       <div className={contactInfo.childC}>
@@ -35,7 +35,7 @@ export default function ContactInfo() {
         </div>
         <div className={contactInfo.infoHolder}>
           <FontAwesomeIcon className={contactInfo.icon} icon={faPhone} />
-          <p>+905510193686</p>
+          <p>+905393703956</p>
         </div>
         <div className={contactInfo.infoHolder}>
           <p>Müze Cd. No:36, 50180 Göreme/Nevşehir Merkez/Nevşehir</p>

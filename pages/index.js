@@ -18,7 +18,7 @@ export default function Home() {
           name="description"
           content="Big Collection Of Handmade Carpets & Machine Made Carpets For Every Budget & Free Shipping To Your Country For Your Home,Office...In Any Size & Shape"
         ></meta>
-        <meta charset="UTF-8"></meta>
+        <meta charSet="UTF-8"></meta>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0"
