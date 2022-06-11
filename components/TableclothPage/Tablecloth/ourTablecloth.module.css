@@ -67,12 +67,13 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  flex-wrap: wrap;
   margin-top: 10px;
 }
 .detailSize {
   text-align: right;
   margin: 3px;
-  width: 50%;
+  width: 100%;
   color: #111111;
   font-weight: bold;
 }
@@ -94,7 +95,7 @@
 }
 .detailName {
   margin: 3px;
-  width: 50%;
+  width: 100%;
   color: #666666;
 }
 .detailPrice {
