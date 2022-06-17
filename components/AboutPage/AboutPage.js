@@ -15,8 +15,8 @@ export default function AboutPage() {
     <div className={about.mainContainer}>
       <div className={about.heroC}>
         <div className={about.titleContainer}>
-          <h1 className={about.title}>Seven Brothers Collection</h1>
           <h1 className={about.titleSub}>We Will Make Your Place Royal</h1>
+          <h1 className={about.title}>Seven Brothers Collection</h1>
           <div className={about.sosial}>
             <Image
               src={"/rugOptimize.png"}

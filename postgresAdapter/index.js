@@ -1,7 +1,6 @@
 export default function PostgresAdapter(client, options = {}) {
   return {
     async createUser(user) {
-      console.log(user);
       try {
         const sql = `
 	      INSERT INTO users (name, email, verified, image ) 
