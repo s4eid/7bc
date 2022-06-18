@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ourTablecloth from "./ourTablecloth.module.css";
 import Tablecloth from "./Tablecloth";
-// import InfiniteScroll from "react-infinite-scroll-component";
-// import Loading from "../../../Layouts/Loading";
 export default function OurTablecloth({ products, pageInfo, refetch, filter }) {
+  const [loading,setLoading]=useState(false);
   const getMore = (afterCursor, hasMore) => {
     if (hasMore) {
       refetch({
@@ -22,7 +21,7 @@ export default function OurTablecloth({ products, pageInfo, refetch, filter }) {
           ];
           return fetchMoreResult;
         },
-      });
+      }).then(()=>{setLoading(false)})
     }
   };
   return (
@@ -40,7 +39,16 @@ export default function OurTablecloth({ products, pageInfo, refetch, filter }) {
             <Tablecloth c={carpet} key={index} />
           ))}
         </div>
-       {pageInfo.hasNextPage? <button className={ourTablecloth.moreBtn} onClick={()=>getMore(pageInfo.startCursor, pageInfo.hasNextPage)}>Load More</button>:<></>}
+       {pageInfo.hasNextPage && !loading? 
+       <button className={ourTablecloth.moreBtn} onClick={()=>{
+        setLoading(true)
+        getMore(pageInfo.startCursor, pageInfo.hasNextPage)
+      }}>Load More</button>
+       :loading?
+              <button disabled={true} className={ourTablecloth.button}>
+                    <span className={ourTablecloth.buttonLoading}> </span>
+                  </button>
+       :<></>}
        </div>
     </div>
   );

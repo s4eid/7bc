@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import ourKilims from "./ourKilims.module.css";
 import Kilim from "./Kilim";
 // import InfiniteScroll from "react-infinite-scroll-component";
 // import Loading from "../../../Layouts/Loading";
 export default function OurKilims({ products, pageInfo, refetch, filter }) {
+  const [loading,setLoading]=useState(false);
   const getMore = (afterCursor, hasMore) => {
     if (hasMore) {
       refetch({
@@ -22,7 +23,9 @@ export default function OurKilims({ products, pageInfo, refetch, filter }) {
           ];
           return fetchMoreResult;
         },
-      });
+      }).then(()=>{
+setLoading(false)
+      })
     }
   };
   return (
@@ -40,7 +43,18 @@ export default function OurKilims({ products, pageInfo, refetch, filter }) {
             <Kilim c={carpet} key={index} />
           ))}
         </div>
-       {pageInfo.hasNextPage? <button className={ourKilims.moreBtn} onClick={()=>getMore(pageInfo.startCursor, pageInfo.hasNextPage)}>Load More</button>:<></>}
+       {pageInfo.hasNextPage && !loading?
+        <button className={ourKilims.moreBtn} onClick={()=>{
+setLoading(true)
+          getMore(pageInfo.startCursor, pageInfo.hasNextPage)
+        }
+        }>Load More</button>
+        :loading?
+              <button disabled={true} className={ourKilims.button}>
+                    <span className={ourKilims.buttonLoading}> </span>
+                  </button>
+        :
+        <></>}
        </div>
     </div>
   );

@@ -26,7 +26,7 @@ export const jwtCheck = async (token, pool, res) => {
             {
               name,
               email,
-              id,
+              user_id: id,
             },
             process.env.ACCESS_TOKEN,
             { expiresIn: "1h" }
@@ -46,7 +46,6 @@ export const jwtCheck = async (token, pool, res) => {
           refreshToken,
           process.env.REFRESH_TOKEN
         );
-        console.log(isValid);
         const email = isValid.email;
         const id = isValid.user_id;
         const name = isValid.name;
@@ -60,7 +59,7 @@ export const jwtCheck = async (token, pool, res) => {
             {
               name,
               email,
-              id,
+              user_id: id,
             },
             process.env.ACCESS_TOKEN,
             { expiresIn: "1h" }

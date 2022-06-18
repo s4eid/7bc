@@ -9,6 +9,7 @@ export default function CarpetPage({
   refetch,
   filter,
   setFilter,
+  loading,
 }) {
   return (
     <div className={carpetPage.mainContainer}>
@@ -21,6 +22,7 @@ export default function CarpetPage({
       <OurCarpets
         products={products}
         pageInfo={pageInfo}
+        loading={loading}
         filter={filter}
         refetch={refetch}
       />

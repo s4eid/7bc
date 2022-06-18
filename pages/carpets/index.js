@@ -63,6 +63,7 @@ export default function Carpet() {
       </Head>
       {!products.loading && !loading ? (
         <CarpetPage
+          loading={loading}
           products={products.products}
           filter={filter}
           setFilter={setFilter}

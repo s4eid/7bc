@@ -2,16 +2,16 @@ export const teamData = [
   {
     name: "Saeid Nourmohammad",
     img: "/me.jpg",
-    job: "Developer",
+    job: "Web Developer",
   },
   {
-    name: "Saeid Nourmohammad",
+    name: "Fatih Arisoy",
     img: "/me.jpg",
-    job: "Developer",
+    job: "Product Manager",
   },
   {
-    name: "Saeid Nourmohammad",
+    name: "Ibrahim Arisoy",
     img: "/me.jpg",
-    job: "Seller",
+    job: "CEO",
   },
 ];

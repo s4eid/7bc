@@ -22,13 +22,16 @@
 .personContainer {
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
   width: 300px;
   height: 300px;
   padding: 20px;
+}
+.personImage {
+  font-size: 60px;
 }
 .personContainer img {
   object-fit: cover;

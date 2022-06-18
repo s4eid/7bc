@@ -1,9 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import ourLeathers from "./ourLeathers.module.css";
 import Leather from "./Leather";
 // import InfiniteScroll from "react-infinite-scroll-component";
 // import Loading from "../../../Layouts/Loading";
 export default function OurLeathers({ products, pageInfo, refetch, filter }) {
+  const [loading,setLoading]=useState(false);
   const getMore = (afterCursor, hasMore) => {
     if (hasMore) {
       refetch({
@@ -22,7 +23,7 @@ export default function OurLeathers({ products, pageInfo, refetch, filter }) {
           ];
           return fetchMoreResult;
         },
-      });
+      }).then(()=>{setLoading(false)})
     }
   };
   return (
@@ -40,7 +41,17 @@ export default function OurLeathers({ products, pageInfo, refetch, filter }) {
             <Leather c={carpet} key={index} />
           ))}
         </div>
-       {pageInfo.hasNextPage? <button className={ourLeathers.moreBtn} onClick={()=>getMore(pageInfo.startCursor, pageInfo.hasNextPage)}>Load More</button>:<></>}
+       {pageInfo.hasNextPage && !loading? 
+       <button className={ourLeathers.moreBtn} onClick={()=>{
+        setLoading(true)
+        getMore(pageInfo.startCursor, pageInfo.hasNextPage)
+       }
+      }>Load More</button>
+       :loading?
+              <button disabled={true} className={ourLeathers.button}>
+                    <span className={ourLeathers.buttonLoading}> </span>
+                  </button>
+       :<></>}
        </div>
     </div>
   );
