@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CarpetPage from "../../components/CarpetPage/CarpetPage.js";
+import ProductsPage from "../../components/ProductsPage/ProductsPage";
 import Footer from "../../Layouts/Footer/Footer.js";
 import Nav from "../../Layouts/Nav/Nav.js";
 import Loading from "../../Layouts/Loading";
@@ -62,8 +62,9 @@ export default function Carpet() {
         ></meta>
       </Head>
       {!products.loading && !loading ? (
-        <CarpetPage
+        <ProductsPage
           loading={loading}
+          type="carpet"
           products={products.products}
           filter={filter}
           setFilter={setFilter}

@@ -21,10 +21,9 @@ export default function Customers() {
             className={customers.innerCarousel}
           >
             {customersImages.map((c, index) => (
-              <motion.div className={customers.item}>
+              <motion.div key={index} className={customers.item}>
                 <img
                   src={c}
-                  key={index}
                   alt="projects"
                   // layout="responsive"
                   // height={350}

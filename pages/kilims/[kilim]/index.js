@@ -15,7 +15,15 @@ export default function Product() {
   const { data, loading, error } = useQuery(GET_PRODUCT, {
     variables: { product_id: route },
   });
-  return <>{!loading ? <ProductPage product={data.product} /> : <Loading />}</>;
+  return (
+    <>
+      {!loading ? (
+        <ProductPage type={"kilim"} product={data.product} />
+      ) : (
+        <Loading />
+      )}
+    </>
+  );
 }
 export async function getStaticPaths() {
   const client = initializeApollo();

@@ -1,6 +1,6 @@
 import React from "react";
 import filter from "./filter.module.css";
-export default function Filter({ index, setFilter, _filter, refetch }) {
+export default function Filter({ index, setFilter, _filter, refetch, type }) {
   return (
     <div className={filter.mainContainer}>
       <div className={filter.selectContainer}>
@@ -13,7 +13,7 @@ export default function Filter({ index, setFilter, _filter, refetch }) {
             });
             refetch({
               variables: {
-                type: "carpet",
+                type: type,
                 price: _filter.price ? _filter.price : null,
                 made: _filter.made ? _filter.made : null,
                 origin: e.target.value == "Origin" ? null : e.target.value,
@@ -48,7 +48,7 @@ export default function Filter({ index, setFilter, _filter, refetch }) {
             });
             refetch({
               variables: {
-                type: "carpet",
+                type: type,
                 price: _filter.price ? _filter.price : null,
                 made: e.target.value == "Made" ? null : e.target.value,
                 origin: _filter.origin ? _filter.origin : null,
@@ -81,7 +81,7 @@ export default function Filter({ index, setFilter, _filter, refetch }) {
             setFilter({ price: "", made: "", origin: "", action: false });
             refetch({
               variables: {
-                type: "carpet",
+                type: type,
                 first: 5,
               },
               updateQuery: (prevResult, { fetchMoreResult }) => {

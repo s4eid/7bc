@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import KilimPage from "../../components/KilimPage/KilimPage.js";
+import ProductsPage from "../../components/ProductsPage/ProductsPage";
 import Footer from "../../Layouts/Footer/Footer.js";
 import Nav from "../../Layouts/Nav/Nav.js";
 import { initializeApollo } from "../../apolloConfig/apollo";
@@ -60,9 +60,10 @@ export default function Kilim() {
         ></meta>
       </Head>
       {!products.loading && !loading ? (
-        <KilimPage
+        <ProductsPage
           products={products.products}
           pageInfo={products.pageInfo}
+          type={"kilim"}
           filter={filter}
           setFilter={setFilter}
           refetch={fetchMore}

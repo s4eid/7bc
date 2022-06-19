@@ -1,18 +1,18 @@
 import Image from "next/image";
 import React from "react";
-import productItems from "./ourCarpets.module.css";
+import productItems from "./ourProducts.module.css";
 import Link from "next/link";
 
-export default function Carpet({ c }) {
+export default function Product({ c, type }) {
   return (
-    <Link href={`/carpets/${c.product_id}`} passHref>
+    <Link href={`/${type}s/${c.product_id}`} passHref>
       <a>
         <div className={productItems.productMainHolder}>
           <div className={productItems.productContainer}>
             <Image
               className={c.pieces <= 0 ? productItems.notAvailable : null}
               src={c.img_1}
-              alt="carpets"
+              alt={type}
               layout="fill"
               loading="lazy"
             />

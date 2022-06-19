@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TableclothPage from "../../components/TableclothPage/TableclothPage";
+import ProductsPage from "../../components/ProductsPage/ProductsPage";
 import Footer from "../../Layouts/Footer/Footer.js";
 import Nav from "../../Layouts/Nav/Nav.js";
 import { initializeApollo } from "../../apolloConfig/apollo";
@@ -60,9 +60,10 @@ export default function Tablecloth() {
         ></meta>
       </Head>
       {!products.loading && !loading ? (
-        <TableclothPage
+        <ProductsPage
           products={products.products}
           pageInfo={products.pageInfo}
+          type="tablecloth"
           filter={filter}
           setFilter={setFilter}
           refetch={fetchMore}

@@ -1,27 +1,32 @@
 import React from "react";
+import OurProducts from "./Products/OurProducts";
 import Filter from "./Filter/Filter";
-import tableclothPage from "./tableclothPage.module.css";
-import OurTablecloth from "./Tablecloth/OurTablecloth";
+import productsPage from "./productsPage.module.css";
 
-export default function TableclothPage({
+export default function ProductPage({
   products,
   pageInfo,
   refetch,
   filter,
+  type,
   setFilter,
+  loading,
 }) {
   return (
-    <div className={tableclothPage.mainContainer}>
+    <div className={productsPage.mainContainer}>
       <Filter
         _filter={filter}
         index={products.length}
         setFilter={setFilter}
+        type={type}
         refetch={refetch}
       />
-      <OurTablecloth
+      <OurProducts
         products={products}
-        filter={filter}
         pageInfo={pageInfo}
+        loading={loading}
+        filter={filter}
+        type={type}
         refetch={refetch}
       />
     </div>

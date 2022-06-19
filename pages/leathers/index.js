@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LeatherPage from "../../components/LeatherPage/LeatherPage.js";
+import ProductsPage from "../../components/ProductsPage/ProductsPage";
 import Footer from "../../Layouts/Footer/Footer.js";
 import Nav from "../../Layouts/Nav/Nav.js";
 import { initializeApollo } from "../../apolloConfig/apollo";
@@ -60,7 +60,8 @@ export default function Leathers() {
         ></meta>
       </Head>
       {!products.loading && !loading ? (
-        <LeatherPage
+        <ProductsPage
+          type="leather"
           products={products.products}
           pageInfo={products.pageInfo}
           filter={filter}

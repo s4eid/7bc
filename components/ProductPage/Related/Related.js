@@ -1,13 +1,12 @@
 import React from "react";
 import related from "./related.module.css";
-import { carpetsItems } from "../../../data/carpetsItems";
-import Carpet from "../../CarpetPage/Carpets/Carpet";
+import Product from "../../ProductsPage/Products/Product";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useLazyQuery } from "@apollo/client";
 import { GET_NOT_ONE_PRODUCT } from "../../../graphql_f/product/Query/getNotOneProduct";
 import Loading from "../../../Layouts/Loading";
 
-export default function Related({ product_id }) {
+export default function Related({ product_id, type }) {
   const [moreProduct, { data, loading, error }] = useLazyQuery(
     GET_NOT_ONE_PRODUCT
     // {
@@ -36,7 +35,7 @@ export default function Related({ product_id }) {
         </div>
         <div className={related.mainRelateHolder}>
           {data?.notOneProduct.map((c, index) => (
-            <Carpet c={c} key={index} />
+            <Product type={type} c={c} key={index} />
           ))}
         </div>
       </InfiniteScroll>

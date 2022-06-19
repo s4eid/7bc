@@ -23,8 +23,8 @@ export default function OurProducts({ products }) {
             className={ourProducts.innerCarousel}
           >
             {products.map((p, index) => (
-              <motion.div className={ourProducts.item}>
-                <Product c={p} key={index} />
+              <motion.div key={index} className={ourProducts.item}>
+                <Product c={p} />
               </motion.div>
             ))}
           </motion.div>
