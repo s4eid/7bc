@@ -110,6 +110,9 @@
     min-width: 150px;
     width: 150px;
   }
+  .innerCarousel {
+    gap: 20px;
+  }
   .carpetMainHolder {
     width: 150px;
     height: auto;

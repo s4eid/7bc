@@ -92,10 +92,10 @@
   }
   .iconL {
     left: 0;
-    font-size: 20px;
+    /* font-size: 20px; */
   }
   .iconR {
     right: 0;
-    font-size: 20px;
+    /* font-size: 20px; */
   }
 }

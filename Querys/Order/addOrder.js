@@ -118,7 +118,6 @@ SELECT p.product_id,p.price,i.pieces FROM product p LEFT JOIN product_inventory 
     };
     // let _status;
     await iyzipay.payment.create(request, async function (err, result) {
-      console.log(result);
       if (result.status === "failure") {
         return new ApolloError("Payment Failed!", ERROR_CODES.PAYMENT);
       }
