@@ -17,7 +17,7 @@ Db:
 * Postgresql
 
 Payment:
-* Iyzico
+* Iyzico Api
  
 ## Getting Started
 
