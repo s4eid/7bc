@@ -16,7 +16,9 @@ Server:
 Db:
 * Postgresql
 
-
+Payment:
+* Iyzico
+ 
 ## Getting Started
 
 First, run the development server:
