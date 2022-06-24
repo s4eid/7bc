@@ -6,11 +6,13 @@ Web:
 * React
 * Nextjs
 * Redux(State Management)
+
 Server:
 * Nodejs
 * Graphql
 * Apollo
 * Nextjs Api Routes
+
 Db:
 * Postgresql
 
