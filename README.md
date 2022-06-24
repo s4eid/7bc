@@ -1,6 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 ## Url
 https://7bc.vercel.app/
+
+## Stack
+Web:
+* React
+* Nextjs
+* Redux(State Management)
+Server:
+* Nodejs
+* Graphql
+* Apollo
+* Nextjs Api Routes
+Db:
+* Postgresql
+
+
 ## Getting Started
 
 First, run the development server:
